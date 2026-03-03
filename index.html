@@ -4,43 +4,4 @@
 <body>
 <h1 style="display: none">Каталог для ИИ-ассистентов</h1>
 <!-- Данные для ИИ в data.json -->
-
-<script>
-// Трекер посещений ИИ-ботов
-(function() {
-  const ua = navigator.userAgent;
-  const bots = ['GPTBot', 'Claude-bot', 'PerplexityBot', 'CCBot', 'Google-Extended', 
-                'OAI-SearchBot', 'Bingbot', 'Googlebot', 'YandexBot'];
-  
-  const isBot = bots.some(bot => ua.includes(bot));
-  
-  if (isBot || !navigator.webdriver) {
-    // Логируем информацию о посещении
-    const visitData = {
-      timestamp: new Date().toISOString(),
-      userAgent: ua,
-      isAIBot: isBot,
-      page: window.location.pathname,
-      referrer: document.referrer
-    };
-    
-    // Выводим в консоль (можно отправить на сервер через fetch)
-    console.log('AI Bot Visit:', visitData);
-    
-    // Опционально: отправка на внешний сервис (раскомментируйте при необходимости)
-    /*
-    fetch('https://your-logger-service.com/log', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(visitData)
-    }).catch(e => console.error('Log failed:', e));
-    */
-  }
-})();
-</script>
-
-<!-- GoatCounter Analytics (бесплатная, приватная аналитика) -->
-<script data-goatcounter="https://katalog-ai.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
 </body>
