@@ -1,11 +1,7 @@
-# 1. Разрешаем специализированным ИИ-ботам
 User-agent: GPTBot
 Allow: /
 
 User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: Google-Extended
 Allow: /
 
 User-agent: Claude-bot
@@ -14,9 +10,17 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# 2. Закрываем сайт от обычных людей и поисковиков
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Закрываем сайт от людей и обычных поисковиков (Google, Yandex и др.)
 User-agent: *
 Disallow: /
 
-# 3. Указываем путь к карте данных
 Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
