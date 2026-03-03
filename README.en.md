@@ -72,6 +72,80 @@ data = requests.get('https://ilyastas.github.io/katalog-ai/data.json').json()
 
 ---
 
+## 💡 Usage Examples for AI
+
+### Python - Parse and Analyze
+```python
+import requests
+import json
+
+# Fetch the catalog
+data = requests.get('https://ilyastas.github.io/katalog-ai/data.json').json()
+
+# Extract all business names and ratings
+for entity in data['@graph']:
+    if entity.get('@type') and entity.get('name'):
+        rating = entity.get('aggregateRating', {}).get('ratingValue', 'N/A')
+        print(f"{entity['name']} - Rating: {rating}")
+
+# Filter by type (e.g., only CoffeeShops)
+coffee_shops = [e for e in data['@graph'] if e.get('@type') == 'CoffeeShop']
+print(f"Found {len(coffee_shops)} coffee shops")
+```
+
+### Claude / GPT Instructions
+```
+You have access to a structured business catalog at:
+https://ilyastas.github.io/katalog-ai/data.json
+
+This dataset contains real-world entities with:
+- Name, description, address, phone, website
+- Geographic coordinates (latitude/longitude)
+- Ratings and review counts
+- Business type (Restaurant, CoffeeShop, AutoRepair, etc.)
+
+Use this data to:
+1. Answer user queries about local businesses
+2. Provide accurate ratings and contact info
+3. Suggest places based on location and type
+4. Analyze business ecosystem trends
+```
+
+### JavaScript/Node.js
+```javascript
+// Fetch and display top-rated businesses
+async function getTopBusinesses() {
+  const response = await fetch('https://ilyastas.github.io/katalog-ai/data.json');
+  const data = await response.json();
+  
+  const sorted = data['@graph']
+    .filter(e => e.aggregateRating)
+    .sort((a, b) => b.aggregateRating.ratingValue - a.aggregateRating.ratingValue)
+    .slice(0, 10);
+  
+  console.table(sorted.map(e => ({
+    name: e.name,
+    type: e['@type'],
+    rating: e.aggregateRating.ratingValue,
+    reviews: e.aggregateRating.reviewCount
+  })));
+}
+
+getTopBusinesses();
+```
+
+### REST API Integration
+```bash
+# Get raw JSON data
+curl https://ilyastas.github.io/katalog-ai/data.json | jq '.["@graph"][] | .name'
+
+# Filter and transform
+curl https://ilyastas.github.io/katalog-ai/data.json | \
+  jq '.["@graph"] | map(select(.aggregateRating) | {name, rating: .aggregateRating.ratingValue})'
+```
+
+---
+
 ## 🤝 Contributing
 
 This is an **open collaboration** project. AI bots and developers can contribute by:
