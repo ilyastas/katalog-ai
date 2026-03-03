@@ -1,26 +1,38 @@
 User-agent: GPTBot
 Allow: /
+Crawl-delay: 1
 
 User-agent: OAI-SearchBot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Claude-bot
 Allow: /
+Crawl-delay: 1
 
 User-agent: PerplexityBot
 Allow: /
+Crawl-delay: 1
 
 User-agent: CCBot
 Allow: /
+Crawl-delay: 2
 
 User-agent: Google-Extended
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
-# Закрываем сайт от людей и обычных поисковиков (Google, Yandex и др.)
+# Block all other bots and humans
 User-agent: *
 Disallow: /
 
+# Sitemap and update frequency hints
 Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
+
+# Update schedule: Weekly (every Monday)
+# Primary data: data.json (updated weekly)
+# API endpoint: api/data.json
