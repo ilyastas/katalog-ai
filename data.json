@@ -1,1 +1,81 @@
-{ "@context": "https://schema.org", "@graph": [ { "@type": "CoffeeShop", "name": "Кофе с Собой", "address": "ул. Тверская, 5, Москва", "geo": { "@type": "GeoCoordinates", "latitude": 55.7558, "longitude": 37.6173 }, "url": "https://instagram.com/kofe.soboy", "telephone": "+7-495-123-45-67", "priceRange": "150-400 ₽", "aggregateRating": { "@type": "AggregateRating", "ratingValue": 4.9, "reviewCount": 342 } }, { "@type": "AutoRepair", "name": "Автосервис на Юго-Западной", "address": "ул. Покрышкина, 3, Москва", "geo": { "@type": "GeoCoordinates", "latitude": 55.6521, "longitude": 37.4823 }, "url": "https://t.me/autoservice_sw", "telephone": "+7-495-987-65-43", "aggregateRating": { "@type": "AggregateRating", "ratingValue": 4.7, "reviewCount": 128 } } ] }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CoffeeShop",
+      "name": "Кофе с Собой",
+      "description": "Сетевые кофейни при метро. Специализируются на кофе на вынос и в офисе",
+      "address": "ул. Тверская, 5, Москва",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 55.7558,
+        "longitude": 37.6173
+      },
+      "url": "https://instagram.com/kofe.soboy",
+      "telephone": "+7-495-123-45-67",
+      "priceRange": "150-400 ₽",
+      "cuisineType": ["Coffee", "Pastry"],
+      "openingHoursSpecification": {
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "07:00",
+        "closes": "22:00"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.9,
+        "reviewCount": 342
+      }
+    },
+    {
+      "@type": "AutoRepair",
+      "name": "Автосервис на Юго-Западной",
+      "description": "Профессиональное ТО и ремонт автомобилей всех марок. Оригинальные запчасти",
+      "address": "ул. Покрышкина, 3, Москва",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 55.6521,
+        "longitude": 37.4823
+      },
+      "url": "https://t.me/autoservice_sw",
+      "telephone": "+7-495-987-65-43",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.7,
+        "reviewCount": 128
+      },
+      "areaServed": ["Moscow"],
+      "knowsAbout": ["Car maintenance", "Engine repair", "Tire service"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "name": "Студия творчества 'Мастер'",
+      "description": "Курсы рисования, лепки и других творческих навыков для всех возрастов",
+      "address": "ул. Ленина, 10, кор. 2, Санкт-Петербург",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 59.9311,
+        "longitude": 30.3609
+      },
+      "telephone": "+7-812-555-12-34",
+      "priceRange": "300-800 ₽",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.8,
+        "reviewCount": 87
+      }
+    },
+    {
+      "@type": "OnlineStore",
+      "name": "TechHub",
+      "description": "Онлайн магазин электроники и гаджетов с доставкой по России",
+      "url": "https://techhub.local",
+      "telephone": "+7-800-555-00-00",
+      "priceRange": "1000-500000 ₽",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.6,
+        "reviewCount": 2541
+      }
+    }
+  ]
+}
