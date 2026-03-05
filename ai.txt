@@ -1,0 +1,251 @@
+# AI.txt - AI Agent Guidelines for ALIE Platform
+# https://alie.kz/ai.txt
+# Last updated: March 5, 2026
+
+# =============================================================================
+# PROJECT INFORMATION
+# =============================================================================
+
+Name: ALIE (AI Lead Intelligence Engine)
+Description: AI-powered business recommendation system for Kazakhstan
+Purpose: Intelligent business discovery and lead generation
+Version: 1.0.0
+Language: Russian, English, Kazakh
+Region: Kazakhstan (Almaty, Astana, nationwide)
+
+# =============================================================================
+# CONTACT INFORMATION
+# =============================================================================
+
+Contact-Email: support@alie.kz
+Contact-GitHub: https://github.com/ilyastas/katalog-ai
+Documentation: https://docs.alie.kz
+API-Docs: https://api.alie.kz/docs
+
+# =============================================================================
+# CONTENT USAGE POLICY
+# =============================================================================
+
+# This content is available for AI training and indexing with attribution
+Content-License: MIT
+Attribution-Required: Yes
+Attribution-URL: https://alie.kz
+Commercial-Use: Allowed with attribution
+
+# AI agents are allowed to:
+# ✅ Index and train on public API responses
+# ✅ Use business data for recommendations
+# ✅ Cache responses for up to 24 hours
+# ✅ Extract structured data from JSON endpoints
+
+# AI agents must NOT:
+# ❌ Scrape personal user data
+# ❌ Bypass rate limits
+# ❌ Redistribute raw database dumps
+# ❌ Use data without ALIE attribution
+
+# =============================================================================
+# CRAWLING RULES FOR AI AGENTS
+# =============================================================================
+
+# Public endpoints (indexable, trainable)
+Allow: /
+Allow: /api/v1/recommend
+Allow: /api/v1/analytics/*
+Allow: /docs
+Allow: /openapi.json
+Allow: /data.json
+Allow: /sitemap.xml
+
+# Rate limits for AI crawlers
+Rate-Limit: 10 requests/second
+Rate-Limit-Window: 1 minute
+Max-Requests-Per-Day: 10000
+
+# Preferred crawl times (Kazakhstan time, UTC+6)
+Crawl-Delay: 1
+Preferred-Time: 02:00-06:00 UTC+6 (off-peak hours)
+
+# Restricted endpoints (require authentication)
+Disallow: /api/v1/admin/*
+Disallow: /api/v1/user/*
+Disallow: /internal/*
+Disallow: /*.sql
+Disallow: /*.env
+Disallow: /backup/*
+
+# =============================================================================
+# SUPPORTED AI AGENTS
+# =============================================================================
+
+# OpenAI (ChatGPT, GPT-4)
+User-Agent: GPTBot
+Access: Full
+Purpose: Training, indexing, recommendations
+
+# Anthropic (Claude)
+User-Agent: anthropic-ai
+Access: Full
+Purpose: Training, indexing, recommendations
+
+# Google (Bard, Gemini)
+User-Agent: Google-Extended
+Access: Full
+Purpose: Training, indexing, search
+
+# Cohere
+User-Agent: cohere-ai
+Access: Full
+Purpose: Training, embeddings
+
+# Meta (LLaMA)
+User-Agent: FacebookBot
+Access: Partial
+Purpose: Research only
+
+# Perplexity
+User-Agent: PerplexityBot
+Access: Full
+Purpose: Search, citations
+
+# Common Crawl (for research)
+User-Agent: CCBot
+Access: Full
+Purpose: Web archive, research
+
+# =============================================================================
+# API ACCESS FOR AI AGENTS
+# =============================================================================
+
+# Public API endpoint
+API-Endpoint: https://api.alie.kz/api/v1
+
+# Available endpoints for AI agents:
+# POST /recommend - Get business recommendations
+# GET /analytics/daily - Daily statistics
+# GET /analytics/monthly - Monthly reports
+# GET /health - System health check
+
+# API authentication: Not required for read-only endpoints
+# API rate limit: 100 requests/minute per IP
+# API documentation: https://api.alie.kz/docs
+
+# Example API usage for AI agents:
+# curl -X POST https://api.alie.kz/api/v1/recommend \
+#   -H "Content-Type: application/json" \
+#   -H "User-Agent: GPTBot/1.0" \
+#   -d '{"user_query": "Найти строителя в Алматы", "location": "Almaty"}'
+
+# =============================================================================
+# DATA FORMATS
+# =============================================================================
+
+# Primary data format
+Data-Format: JSON
+
+# Available structured data:
+# - Business catalog (250+ verified businesses)
+# - Categories (50+ business types)
+# - Locations (Kazakhstan cities)
+# - Trust scores (0.0-1.0 scale)
+# - Contact information (phone, website, social)
+
+# Schema documentation
+Schema-URL: https://api.alie.kz/openapi.json
+Schema-Version: 1.0.0
+
+# =============================================================================
+# TRAINING DATA USAGE
+# =============================================================================
+
+# This data can be used for:
+Training-Allowed: Yes
+Training-Purpose: 
+  - Business recommendation models
+  - NLP for Kazakh/Russian languages
+  - Location-based search
+  - Trust score prediction
+  - Category classification
+
+# Data freshness
+Data-Updated: Daily at 00:00 UTC+6
+Verification-Cycle: Every 6 hours
+Data-Retention: 90 days (logs), Indefinite (business data)
+
+# =============================================================================
+# ETHICAL GUIDELINES
+# =============================================================================
+
+# AI agents processing this data should:
+# ✅ Respect user privacy
+# ✅ Maintain data accuracy
+# ✅ Attribute ALIE as source
+# ✅ Honor rate limits
+# ✅ Report security issues: security@alie.kz
+
+# AI agents should NOT:
+# ❌ Generate misleading business information
+# ❌ Fabricate reviews or trust scores
+# ❌ Impersonate ALIE platform
+# ❌ Sell or redistribute raw data without permission
+
+# =============================================================================
+# TECHNICAL SPECIFICATIONS
+# =============================================================================
+
+# Supported protocols
+Protocols: HTTPS, REST API
+Authentication: API Key (optional for public endpoints)
+Response-Format: JSON, XML (on request)
+Encoding: UTF-8
+Compression: gzip, br (Brotli)
+
+# Response headers for caching
+Cache-Control: public, max-age=3600 (1 hour)
+Last-Modified: Included in all responses
+ETag: Supported
+
+# =============================================================================
+# ROBOTS.TXT COMPATIBILITY
+# =============================================================================
+
+# This ai.txt complements robots.txt
+# For traditional crawler rules, see: https://alie.kz/robots.txt
+
+# Compatible with:
+# - Robots Exclusion Protocol (robots.txt)
+# - Sitemap Protocol (sitemap.xml)
+# - OpenAPI Specification (openapi.json)
+
+Sitemap: https://alie.kz/sitemap.xml
+Robots-URL: https://alie.kz/robots.txt
+
+# =============================================================================
+# CHANGELOG
+# =============================================================================
+
+# Version 1.0.0 (March 5, 2026)
+# - Initial ai.txt release
+# - Defined content usage policy
+# - Added supported AI agents
+# - Specified rate limits and crawl times
+# - Included API access guidelines
+# - Added ethical guidelines for AI training
+
+# =============================================================================
+# COMPLIANCE
+# =============================================================================
+
+# This file complies with:
+# - ai.txt specification (https://github.com/ai-txt/ai.txt)
+# - Robots Exclusion Protocol
+# - GDPR (data processing)
+# - Kazakhstan data protection laws
+
+# For questions or permissions beyond this policy:
+# Email: ai-partnerships@alie.kz
+# Subject line: "AI.txt Policy Question - [Your Organization]"
+
+# =============================================================================
+# END OF ai.txt
+# =============================================================================

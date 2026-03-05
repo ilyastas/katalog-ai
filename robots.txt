@@ -1,3 +1,10 @@
+# ============================================================================
+# ROBOTS.TXT for ALIE Platform
+# For AI-specific rules, see: https://alie.kz/ai.txt
+# Last updated: March 5, 2026
+# ============================================================================
+
+# OpenAI Crawlers (ChatGPT, GPT-4)
 User-agent: GPTBot
 Allow: /
 Crawl-delay: 1
@@ -6,33 +13,85 @@ User-agent: OAI-SearchBot
 Allow: /
 Crawl-delay: 1
 
-User-agent: Claude-bot
+# Anthropic (Claude)
+User-agent: Claude-Bot
 Allow: /
 Crawl-delay: 1
 
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 1
+
+# Perplexity AI
 User-agent: PerplexityBot
 Allow: /
 Crawl-delay: 1
 
+# Common Crawl (research & training)
 User-agent: CCBot
 Allow: /
 Crawl-delay: 2
 
+# Google (Bard, Gemini)
 User-agent: Google-Extended
 Allow: /
 Crawl-delay: 1
 
+User-agent: GoogleOther
+Allow: /
+Crawl-delay: 1
+
+# Microsoft Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# Block all other bots and humans
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+Crawl-delay: 1
+
+# Meta AI (LLaMA)
+User-agent: FacebookBot
+Allow: /
+Crawl-delay: 2
+
+# Traditional search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+# Allow all other bots (updated from blocking)
 User-agent: *
-Disallow: /
+Allow: /
+Crawl-delay: 2
 
-# Sitemap and update frequency hints
+# Disallow sensitive paths
+Disallow: /admin/
+Disallow: /internal/
+Disallow: /backup/
+Disallow: /*.sql
+Disallow: /*.env
+Disallow: /.git/
+
+# ============================================================================
+# AI-Specific Guidelines
+# ============================================================================
+# For detailed AI agent rules, training policies, and API access:
+# See: https://alie.kz/ai.txt
+
+# ============================================================================
+# Sitemap & Data Sources
+# ============================================================================
 Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
+Sitemap: https://alie.kz/sitemap.xml
 
-# Update schedule: Weekly (every Monday)
-# Primary data: data.json (updated weekly)
-# API endpoint: api/data.json
+# Primary data endpoint
+# https://alie.kz/data.json (updated daily)
+# https://alie.kz/api/data.json (API version)
+
+# Update schedule: Daily at 00:00 UTC+6
