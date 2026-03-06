@@ -30,6 +30,7 @@ jobs:
       - name: Validate JSON dataset
         run: |
           python -m json.tool data/companies.json > /dev/null
+          python -m json.tool data/services.json > /dev/null
           python -m json.tool data/categories.json > /dev/null
           python -m json.tool data/locations.json > /dev/null
           python -m json.tool public/ai-index.json > /dev/null

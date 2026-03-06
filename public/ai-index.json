@@ -17,6 +17,7 @@
   ],
   "data_endpoints": {
     "companies": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+    "services": "https://ilyastas.github.io/katalog-ai/data/services.json",
     "categories": "https://ilyastas.github.io/katalog-ai/data/categories.json",
     "locations": "https://ilyastas.github.io/katalog-ai/data/locations.json",
     "business": "https://ilyastas.github.io/katalog-ai/data/business.json"
