@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: alie-prod
+  labels:
+    name: alie-prod
+    environment: production

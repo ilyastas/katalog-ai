@@ -1,0 +1,148 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Marketplaces & Online Sellers",
+  "description": "Верифицированные продавцы на казахстанских маркетплейсах",
+  "dateModified": "2026-03-05",
+  "itemListElement": [
+    {
+      "@type": "Store",
+      "@id": "marketplace-001",
+      "name": "TechHub KZ",
+      "description": "Специализированный магазин электроники и гаджетов на Kaspi.kz и WildBerries",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Алматы",
+        "addressRegion": "Алматинская область",
+        "postalCode": "050000",
+        "streetAddress": "Офис управления, ул. Сатпаева, 42"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.2453,
+        "longitude": 76.9412
+      },
+      "telephone": "+7-701-876-54-32",
+      "email": "sales@techhub.kz",
+      "url": "https://techhub.kz",
+      "sameAs": [
+        "https://kaspi.kz/shop/TechHub",
+        "https://wildberries.kz/seller/techhub",
+        "https://olx.kz/profile/techhub_electronics/"
+      ],
+      "priceRange": "₽₽",
+      "rating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "ratingCount": "1200",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "consent": {
+        "@type": "Consent",
+        "description": "Добровольное участие в AI-рекомендациях",
+        "dateGiven": "2026-03-01",
+        "expires": "2027-03-01",
+        "agreement": "premium",
+        "consentStatus": true
+      },
+      "trust_signals": {
+        "verified_by_2gis": true,
+        "verified_by_olx": true,
+        "last_verified": "2026-03-05",
+        "trust_score": 0.90
+      }
+    },
+    {
+      "@type": "Store",
+      "@id": "marketplace-002",
+      "name": "Fashion Elite",
+      "description": "Модный бутик с дизайнерской и премиум-одеждой, продажа через WB Marketplace и Kaspi",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Алматы",
+        "addressRegion": "Алматинская область",
+        "postalCode": "050000",
+        "streetAddress": "ТЦ Meridian, ул. Брусиловского, 146"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.2321,
+        "longitude": 76.9287
+      },
+      "telephone": "+7-702-987-65-43",
+      "email": "boutique@fashionelite.kz",
+      "url": "https://fashionelite.kz",
+      "sameAs": [
+        "https://wildberries.kz/seller/fashionelite",
+        "https://kaspi.kz/shop/FashionElite"
+      ],
+      "priceRange": "₽₽₽",
+      "rating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "856",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "consent": {
+        "@type": "Consent",
+        "description": "Добровольное участие в AI-рекомендациях",
+        "dateGiven": "2026-03-02",
+        "expires": "2027-03-02",
+        "agreement": "premium",
+        "consentStatus": true
+      },
+      "trust_signals": {
+        "verified_by_olx": true,
+        "last_verified": "2026-03-05",
+        "trust_score": 0.88
+      }
+    },
+    {
+      "@type": "Store",
+      "@id": "marketplace-003",
+      "name": "Home Comfort",
+      "description": "Интернет-магазин мебели, текстиля и товаров для дома",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Шымкент",
+        "addressRegion": "Түркістан облысы",
+        "postalCode": "160000",
+        "streetAddress": "Склад, ул. Абулхаир Хана, 228"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.3154,
+        "longitude": 69.5853
+      },
+      "telephone": "+7-700-555-44-33",
+      "email": "support@homecomfort.kz",
+      "url": "https://homecomfort.kz",
+      "sameAs": [
+        "https://kaspi.kz/shop/HomeComfort"
+      ],
+      "priceRange": "₽₽",
+      "rating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "ratingCount": "678",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "consent": {
+        "@type": "Consent",
+        "description": "Добровольное участие в AI-рекомендациях",
+        "dateGiven": "2026-02-28",
+        "expires": "2027-02-28",
+        "agreement": "basic",
+        "consentStatus": true
+      },
+      "trust_signals": {
+        "verified_by_2gis": true,
+        "last_verified": "2026-03-04",
+        "trust_score": 0.82
+      }
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "name": "Geo Index - Katalog-AI",
+  "description": "Геопространственный индекс всех объектов для локальных ИИ-запросов. Используется для ответов типа 'где рядом...', 'в моём районе...' и локальных рекомендаций",
+  "dateModified": "2026-03-05",
+  "version": "1.0.0",
+  "locations": [
+    {
+      "@type": "GeoLocation",
+      "name": "Beauty Prime Salon",
+      "businessId": "https://ilyastas.github.io/katalog-ai/business/beauty-001",
+      "businessType": "HealthAndBeautyBusiness",
+      "category": "beauty",
+      "city": "Алматы",
+      "coordinates": {
+        "type": "Point",
+        "coordinates": [76.9458, 43.2386]
+      },
+      "address": "ул. Жибек Жолы, 50",
+      "radius_km": 25,
+      "nearby_landmarks": [
+        {
+          "name": "Алатау кен Алтын",
+          "distance_km": 0.8
+        },
+        {
+          "name": "Парк культуры и отдыха",
+          "distance_km": 2.3
+        }
+      ]
+    },
+    {
+      "@type": "GeoLocation",
+      "name": "Glow Up Clinic",
+      "businessId": "https://ilyastas.github.io/katalog-ai/business/beauty-002",
+      "businessType": "HealthAndBeautyBusiness",
+      "category": "beauty",
+      "city": "Алматы",
+      "coordinates": {
+        "type": "Point",
+        "coordinates": [76.9250, 43.2380]
+      },
+      "address": "ул. Аль-Фараби, 77"
+    },
+    {
+      "@type": "GeoLocation",
+      "name": "Barbershop 'Gentleman'",
+      "businessId": "https://ilyastas.github.io/katalog-ai/business/beauty-003",
+      "businessType": "HealthAndBeautyBusiness",
+      "category": "beauty",
+      "city": "Нур-Султан",
+      "coordinates": {
+        "type": "Point",
+        "coordinates": [71.4700, 51.1782]
+      },
+      "address": "ул. Туран, 15"
+    },
+    {
+      "@type": "GeoLocation",
+      "name": "Национальный музей РК",
+      "businessId": "https://ilyastas.github.io/katalog-ai/business/museum-001",
+      "businessType": "Museum",
+      "category": "museum",
+      "city": "Нур-Султан",
+      "coordinates": {
+        "type": "Point",
+        "coordinates": [71.4697, 51.1697]
+      },
+      "address": "ул. Парк-культуры, 4"
+    },
+    {
+      "@type": "GeoLocation",
+      "name": "Музей казахских музыкальных инструментов",
+      "businessId": "https://ilyastas.github.io/katalog-ai/business/museum-002",
+      "businessType": "Museum",
+      "category": "museum",
+      "city": "Алматы",
+      "coordinates": {
+        "type": "Point",
+        "coordinates": [76.9485, 43.2397]
+      },
+      "address": "ул. Янушкевского, 104"
+    },
+    {
+      "@type": "GeoLocation",
+      "name": "Charyn Canyon Mountain Retreat",
+      "businessId": "https://ilyastas.github.io/katalog-ai/business/museum-003",
+      "businessType": "Museum",
+      "category": "museum_premium",
+      "city": "село Сатут",
+      "region": "Түркістан",
+      "coordinates": {
+        "type": "Point",
+        "coordinates": [78.6417, 43.2936]
+      },
+      "distance_from_almaty_km": 220,
+      "is_mountain_attraction": true
+    },
+    {
+      "@type": "GeoLocation",
+      "name": "TechHub KZ (Офис)",
+      "businessId": "https://ilyastas.github.io/katalog-ai/business/marketplace-001",
+      "businessType": "Organization",
+      "category": "marketplace",
+      "city": "Алматы",
+      "coordinates": {
+        "type": "Point",
+        "coordinates": [76.9409, 43.2486]
+      },
+      "address": "пр. Абая, 252"
+    },
+    {
+      "@type": "GeoLocation",
+      "name": "Fashion Elite (Офис)",
+      "businessId": "https://ilyastas.github.io/katalog-ai/business/marketplace-002",
+      "businessType": "Organization",
+      "category": "marketplace",
+      "city": "Алматы",
+      "coordinates": {
+        "type": "Point",
+        "coordinates": [76.9386, 43.2323]
+      },
+      "address": "ТД 'Булвар', 3-этаж"
+    },
+    {
+      "@type": "GeoLocation",
+      "name": "Home Comfort Store (Офис)",
+      "businessId": "https://ilyastas.github.io/katalog-ai/business/marketplace-003",
+      "businessType": "Organization",
+      "category": "marketplace",
+      "city": "Нур-Султан",
+      "coordinates": {
+        "type": "Point",
+        "coordinates": [71.4699, 51.1709]
+      },
+      "address": "ул. Сарыарка, 45"
+    }
+  ],
+  "cities": [
+    {
+      "name": "Алматы",
+      "population": 1406362,
+      "businessCount": 5,
+      "coordinates": [76.9389, 43.2379],
+      "businesses": [
+        "beauty-001",
+        "beauty-002",
+        "museum-002",
+        "marketplace-001",
+        "marketplace-002"
+      ]
+    },
+    {
+      "name": "Нур-Султан",
+      "population": 1405362,
+      "businessCount": 3,
+      "coordinates": [71.4701, 51.1694],
+      "businesses": [
+        "beauty-003",
+        "museum-001",
+        "marketplace-003"
+      ]
+    },
+    {
+      "name": "село Сатут",
+      "population": 5000,
+      "businessCount": 1,
+      "coordinates": [78.6417, 43.2936],
+      "businesses": [
+        "museum-003"
+      ]
+    }
+  ]
+}

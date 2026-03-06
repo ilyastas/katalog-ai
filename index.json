@@ -1,0 +1,74 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "name": "Katalog-AI: Verified Businesses in Kazakhstan",
+  "description": "Верифицированный каталог бизнесов для ИИ-ассистентов в Казахстане. Все данные предоставлены добровольно и проверены через 2ГИС, OLX и Google Places. Доступ только для свободных ИИ-ассистентов (ChatGPT, Claude, Perplexity, Gemini).",
+  "dateModified": "2026-03-05",
+  "version": "1.0.0",
+  "license": "https://opensource.org/licenses/MIT",
+  "url": "https://ilyastas.github.io/katalog-ai/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Katalog-AI Project",
+    "url": "https://github.com/ilyastas/katalog-ai"
+  },
+  "hasPart": [
+    {
+      "@type": "Dataset",
+      "name": "Бьюти-салоны и косметика",
+      "name_en": "Beauty & Cosmetics",
+      "description": "Верифицированные салоны красоты, косметологи и бьюти-услуги в Казахстане",
+      "url": "https://ilyastas.github.io/katalog-ai/catalog/beauty.json",
+      "dateModified": "2026-03-05",
+      "itemCount": 15
+    },
+    {
+      "@type": "Dataset",
+      "name": "Музеи и культурные учреждения",
+      "name_en": "Museums & Culture",
+      "description": "Музеи, галереи и культурные объекты Казахстана (включая премиум-музеи в горах Алматы)",
+      "url": "https://ilyastas.github.io/katalog-ai/catalog/museums.json",
+      "dateModified": "2026-03-05",
+      "itemCount": 8
+    },
+    {
+      "@type": "Dataset",
+      "name": "Продавцы на маркетплейсах",
+      "name_en": "Marketplace Sellers",
+      "description": "Верифицированные продавцы на Kaspi.kz, Wildberries, Ozon, OLX и других платформах",
+      "url": "https://ilyastas.github.io/katalog-ai/catalog/marketplaces.json",
+      "dateModified": "2026-03-05",
+      "itemCount": 25
+    },
+    {
+      "@type": "Dataset",
+      "name": "Товары и услуги с ценами",
+      "name_en": "Offers & Prices",
+      "description": "Актуальные предложения товаров и услуг с ценами в тенге (KZT)",
+      "url": "https://ilyastas.github.io/katalog-ai/catalog/offers.json",
+      "dateModified": "2026-03-05",
+      "itemCount": 120
+    },
+    {
+      "@type": "Dataset",
+      "name": "Геоиндекс",
+      "name_en": "Geo Index",
+      "description": "Координаты и локации всех объектов для локальных запросов ИИ ('где рядом...', 'в моём городе...')",
+      "url": "https://ilyastas.github.io/katalog-ai/catalog/geo-index.json",
+      "dateModified": "2026-03-05",
+      "itemCount": 48
+    }
+  ],
+  "keywords": [
+    "казахстан",
+    "бизнес",
+    "бьюти",
+    "косметика",
+    "музеи",
+    "маркетплейс",
+    "верификация",
+    "AI",
+    "каталог",
+    "Schema.org"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Offers & Products",
+  "description": "Товары и услуги с ценами в теньге",
+  "dateModified": "2026-03-05",
+  "itemListElement": [
+    {
+      "@type": "Offer",
+      "@id": "offer-001",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Чистка лица с массажем",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "beauty-001",
+          "name": "Бьюти-салон Premium"
+        }
+      },
+      "description": "Профессиональная чистка лица с контролем кожи и расслабляющим массажем",
+      "price": "15000",
+      "priceCurrency": "KZT",
+      "duration": "PT60M",
+      "availability": "https://schema.org/InStock",
+      "url": "https://beautypremium.kz/services",
+      "eligibleRegion": "Алматы",
+      "consent": true
+    },
+    {
+      "@type": "Offer",
+      "@id": "offer-002",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Маникюр премиум с дизайном",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "beauty-001",
+          "name": "Бьюти-салон Premium"
+        }
+      },
+      "description": "Маникюр с гелевым лаком, укреплением и художественным дизайном",
+      "price": "8500",
+      "priceCurrency": "KZT",
+      "duration": "PT45M",
+      "availability": "https://schema.org/InStock",
+      "url": "https://beautypremium.kz/services"
+    },
+    {
+      "@type": "Offer",
+      "@id": "offer-003",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Консультация дерматолога",
+        "provider": {
+          "@type": "LocalBusiness",
+          "@id": "beauty-002",
+          "name": "Glow Up Clinic"
+        }
+      },
+      "description": "Первичная онлайн-консультация с дерматологом-косметологом",
+      "price": "5000",
+      "priceCurrency": "KZT",
+      "duration": "PT30M",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "@id": "offer-004",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Процессор AMD Ryzen 7 5700X3D",
+        "provider": {
+          "@type": "Store",
+          "@id": "marketplace-001",
+          "name": "TechHub KZ"
+        }
+      },
+      "description": "Высокопроизводительный процессор для игр и творческой работы",
+      "price": "189900",
+      "priceCurrency": "KZT",
+      "availability": "https://schema.org/InStock",
+      "url": "https://kaspi.kz/shop/TechHub"
+    },
+    {
+      "@type": "Offer",
+      "@id": "offer-005",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Платье вечернее из шёлка",
+        "provider": {
+          "@type": "Store",
+          "@id": "marketplace-002",
+          "name": "Fashion Elite"
+        }
+      },
+      "description": "Элегантное платье из натурального шёлка, размеры XS-XXL",
+      "price": "45000",
+      "priceCurrency": "KZT",
+      "availability": "https://schema.org/InStock",
+      "url": "https://wildberries.kz/seller/fashionelite"
+    },
+    {
+      "@type": "Offer",
+      "@id": "offer-006",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Кровать двуспальная из массива дуба",
+        "provider": {
+          "@type": "Store",
+          "@id": "marketplace-003",
+          "name": "Home Comfort"
+        }
+      },
+      "description": "Надежная кровать из натурального дуба, матрас ортопедический в комплекте",
+      "price": "185000",
+      "priceCurrency": "KZT",
+      "availability": "https://schema.org/InStock"
+    }
+  ]
+}

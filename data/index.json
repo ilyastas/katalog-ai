@@ -1,0 +1,79 @@
+{
+  "@context": "https://schema.org",
+  "@type": "DataCatalog",
+  "name": "ALIE - AI Lead Intelligence Engine",
+  "description": "Верифицированный каталог бизнесов Казахстана для ИИ-ассистентов",
+  "url": "https://ilyastas.github.io/katalog-ai/",
+  "dateModified": "2026-03-05",
+  "version": "1.0.0",
+  "license": "https://github.com/ilyastas/katalog-ai/blob/main/LICENSE",
+  "creator": {
+    "@type": "Person",
+    "name": "Ilyas Tas",
+    "url": "https://github.com/ilyastas"
+  },
+  "hasPart": [
+    {
+      "@type": "Dataset",
+      "name": "Beauty & Cosmetics",
+      "description": "Салоны красоты, косметические клиники и услуги красоты",
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/beauty.json",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/beauty.json",
+        "encodingFormat": "application/json"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "name": "Museums & Culture",
+      "description": "Музеи, культурные центры и развлекательные заведения",
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/museums.json",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/museums.json",
+        "encodingFormat": "application/json"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "name": "Marketplaces & Sellers",
+      "description": "Продавцы на маркетплейсах и онлайн-магазины",
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/marketplaces.json",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/marketplaces.json",
+        "encodingFormat": "application/json"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "name": "Offers & Products",
+      "description": "Товары и услуги с ценами в тенге",
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/offers.json",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/offers.json",
+        "encodingFormat": "application/json"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "name": "Geo Index",
+      "description": "Географический индекс бизнесов по городам и координатам",
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/geo-index.json",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/geo-index.json",
+        "encodingFormat": "application/json"
+      }
+    }
+  ],
+  "keywords": ["AI", "бизнес", "Казахстан", "рекомендации", "каталог"],
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "Казахстан",
+    "areaServed": ["Алматы", "Астана", "Шымкент"]
+  },
+  "inLanguage": "ru"
+}

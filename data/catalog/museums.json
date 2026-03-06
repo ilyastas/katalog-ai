@@ -1,0 +1,144 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Museums & Culture Catalog",
+  "description": "Верифицированные музеи и культурные учреждения",
+  "dateModified": "2026-03-05",
+  "itemListElement": [
+    {
+      "@type": "Museum",
+      "@id": "museum-001",
+      "name": "Национальный музей РК",
+      "description": "Главный музей страны с коллекцией истории и культуры Казахстана",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Астана",
+        "addressRegion": "Акмолинская область",
+        "postalCode": "010000",
+        "streetAddress": "ул. Музея, 1"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.1694,
+        "longitude": 71.4491
+      },
+      "telephone": "+7-7172-49-44-29",
+      "email": "info@nationalmuseum.kz",
+      "url": "https://nationalmuseum.kz",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "10:00",
+        "closes": "18:00"
+      },
+      "priceRange": "₽",
+      "rating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "ratingCount": "512",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "consent": {
+        "@type": "Consent",
+        "description": "Добровольное участие в AI-рекомендациях",
+        "dateGiven": "2026-03-01",
+        "expires": "2027-03-01",
+        "agreement": "premium",
+        "consentStatus": true
+      },
+      "trust_signals": {
+        "verified_by_2gis": true,
+        "verified_by_google": true,
+        "last_verified": "2026-03-05",
+        "trust_score": 0.98
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "museum-002",
+      "name": "Charyn Canyon Premium Experience",
+      "description": "Экстремальный туризм в Мраморном Каньоне Чарына с гайдом",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Алматы",
+        "addressRegion": "Алматинская область",
+        "postalCode": "050000",
+        "streetAddress": "Национальный парк Чарын, 150км от Алматы"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.9500,
+        "longitude": 77.2500
+      },
+      "telephone": "+7-703-567-89-01",
+      "email": "tours@charyn.kz",
+      "url": "https://charyn-tours.kz",
+      "priceRange": "₽₽₽",
+      "rating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "156",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "consent": {
+        "@type": "Consent",
+        "description": "Добровольное участие в AI-рекомендациях",
+        "dateGiven": "2026-03-02",
+        "expires": "2027-03-02",
+        "agreement": "premium",
+        "consentStatus": true
+      },
+      "trust_signals": {
+        "verified_by_2gis": true,
+        "verified_by_google": true,
+        "last_verified": "2026-03-04",
+        "trust_score": 0.94
+      }
+    },
+    {
+      "@type": "PerformingArtsTheater",
+      "@id": "museum-003",
+      "name": "Театр оперы и балета имени Абая",
+      "description": "Историческое театрально-концертное учреждение с классическим репертуаром",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Алматы",
+        "addressRegion": "Алматинская область",
+        "postalCode": "050000",
+        "streetAddress": "ул. Театральная, 2"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.2390,
+        "longitude": 76.9400
+      },
+      "telephone": "+7-727-373-71-71",
+      "email": "tickets@abaya-theatre.kz",
+      "url": "https://abaateatre.kz",
+      "priceRange": "₽₽",
+      "rating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "434",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "consent": {
+        "@type": "Consent",
+        "description": "Добровольное участие в AI-рекомендациях",
+        "dateGiven": "2026-03-01",
+        "expires": "2027-03-01",
+        "agreement": "basic",
+        "consentStatus": true
+      },
+      "trust_signals": {
+        "verified_by_2gis": true,
+        "verified_by_google": true,
+        "last_verified": "2026-03-05",
+        "trust_score": 0.96
+      }
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+name: Update Catalog - 2GIS, OLX, Google Verification
+# Автоматическое обновление каталога и верификация данных через 2ГИС, OLX и Google Places
+
+on:
+  schedule:
+    # Запуск каждый день в 00:00 UTC (04:00 UTC+4 Казахстан)
+    - cron: '0 0 * * *'
+  
+  workflow_dispatch:  # Ручной запуск из GitHub Actions вкладки
+  
+  push:
+    branches: [ main ]
+    paths:
+      - 'catalog/**'
+      - 'verifiers/**'
+
+jobs:
+  verify-and-update:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests python-dotenv
+
+      - name: 🔍 Run 2GIS verifier
+        run: python verifiers/2gis_verifier.py
+        env:
+          TWOGIS_API_KEY: ${{ secrets.TWOGIS_API_KEY }}
+        continue-on-error: true
+
+      - name: 🔍 Run OLX verifier
+        run: python verifiers/olx_verifier.py
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        continue-on-error: true
+
+      - name: 🔍 Run Google Places verifier
+        run: python verifiers/google_verifier.py
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+        continue-on-error: true
+
+      - name: 📊 Generate verification report
+        run: |
+          echo "## Katalog-AI Verification Report" > verification_report.md
+          echo "Generated: $(date -u)" >> verification_report.md
+          echo "" >> verification_report.md
+          
+          if [ -f verification_results_2gis.json ]; then
+            echo "### 2GIS Verification" >> verification_report.md
+            cat verification_results_2gis.json >> verification_report.md
+            echo "" >> verification_report.md
+          fi
+          
+          if [ -f verification_results_olx.json ]; then
+            echo "### OLX Verification" >> verification_report.md
+            cat verification_results_olx.json >> verification_report.md
+            echo "" >> verification_report.md
+          fi
+          
+          if [ -f verification_results_google.json ]; then
+            echo "### Google Places Verification" >> verification_report.md
+            cat verification_results_google.json >> verification_report.md
+          fi
+
+      - name: 🔄 Update dateModified in catalog files
+        run: |
+          python -c "
+          import json
+          from datetime import datetime
+          
+          files = ['index.json', 'catalog/beauty.json', 'catalog/museums.json', 
+                   'catalog/marketplaces.json', 'catalog/offers.json', 'catalog/geo-index.json']
+          
+          for file in files:
+              try:
+                  with open(file, 'r', encoding='utf-8') as f:
+                      data = json.load(f)
+                  data['dateModified'] = datetime.utcnow().strftime('%Y-%m-%d')
+                  with open(file, 'w', encoding='utf-8') as f:
+                      json.dump(data, f, ensure_ascii=False, indent=2)
+                  print(f'✅ Updated {file}')
+              except Exception as e:
+                  print(f'⚠️ Could not update {file}: {e}')
+          "
+
+      - name: 🔐 Configure Git
+        run: |
+          git config --local user.name 'GitHub Action Bot'
+          git config --local user.email 'action@github.com'
+
+      - name: 📝 Commit verification results
+        run: |
+          git add -A
+          git diff --quiet && git diff --staged --quiet || (
+            git commit -m "🤖 Auto-update catalog and verification results $(date -u +'%Y-%m-%d %H:%M:%S UTC')" && echo "COMMIT_CREATED=true" >> $GITHUB_ENV
+          )
+        continue-on-error: true
+
+      - name: 🚀 Push changes
+        if: env.COMMIT_CREATED == 'true'
+        run: git push
+        continue-on-error: true
+
+      - name: 📧 Create pull request if verification failed
+        if: failure()
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: '⚠️ Verification issues detected - manual review required'
+          title: '⚠️ Catalog Verification Issues'
+          body: |
+            # Verification Issues Detected
+            
+            Some businesses failed verification. Please review:
+            - Check if API keys are configured in GitHub Secrets
+            - Verify business data in catalog files
+            - Update addresses or contact information if needed
+            
+            See logs above for details.
+          branch: 'verification-issues'
+        continue-on-error: true
+
+      - name: ✅ Workflow completed
+        run: |
+          echo "✅ Catalog verification and update completed!"
+          echo "📊 Check 'verification_report.md' for details"
