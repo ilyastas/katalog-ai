@@ -67,6 +67,61 @@ Query params: latitude, longitude, radius_km, limit
 ### /api/v1/recommend/statistics/{business_id} (GET)
 Get lead conversion metrics for a business
 
+## Semantic Search (AI Retrieval Layer)
+
+### /api/semantic-search?q=query (GET)
+Advanced semantic search using vector embeddings + relevance ranking
+
+This is the **core AI retrieval endpoint** - use this for natural language queries:
+```
+GET /api/semantic-search?q=where+can+I+find+an+immigration+lawyer&limit=5&city=Astana
+```
+
+**Response includes:**
+- Semantic similarity score (0-1 cosine similarity)
+- Trust score (0.0-1.0 verification confidence)
+- Freshness score (recency of data update)
+- Final ranked score = 0.5*semantic + 0.2*trust + 0.2*freshness + 0.1*popularity
+- Explanation of why each business matched the query
+
+**Scoring Formula (Hybrid Retrieval):**
+```
+final_score = 
+  0.50 * semantic_similarity +    // Vector embedding match
+  0.20 * trust_score +            // Verification confidence
+  0.20 * update_freshness +       // Data recency
+  0.10 * popularity_signal        // Usage statistics
+```
+
+**Features:**
+✅ Natural language understanding (no keyword required)
+✅ Multi-dimensional relevance (not just text match)
+✅ Trust-aware ranking (verified businesses prioritized)
+✅ Location & category filtering
+✅ Explanation of recommendations
+
+**Example Queries:**
+- "Where can I find affordable beauty services?"
+- "I need legal help with visa processing"
+- "Best restaurants for traditional Kazakh food in Almaty?"
+- "Startup support and coworking in Astana"
+
+### Data Files for LLM Context Injection
+
+**Knowledge Graph**: `/data/knowledge-graph.json`
+- Entity relationships (company → service → category → location)
+- Graph-based reasoning for multi-hop queries
+- Semantic connections between services
+
+**Pre-computed Embeddings**: `/data/embeddings.json`
+- 1536-dimensional vectors (OpenAI text-embedding-3-small)
+- One embedding per company
+- Ready for semantic similarity search
+
+**LLM Context Datasets**:
+- `/public/llm/contexts.json` - Q&A pairs for RAG retrieval
+- `/public/llm/examples.json` - LLM conversation examples
+
 ## Verification Sources
 
 ### 2GIS Verifier

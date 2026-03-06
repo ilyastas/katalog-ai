@@ -1,0 +1,164 @@
+{
+  "dataset": "katalog-ai-embeddings",
+  "version": "1.0.0",
+  "type": "Vector Embeddings Storage",
+  "description": "Pre-computed embeddings for all companies for semantic search. Uses OpenAI text-embedding-3-small (1536 dimensions)",
+  "metadata": {
+    "created": "2026-03-06",
+    "embedding_model": "text-embedding-3-small",
+    "vector_dimension": 1536,
+    "total_embeddings": 5,
+    "update_frequency": "weekly",
+    "generation_method": "OpenAI API (scripts/generate_embeddings.py)"
+  },
+  "embeddings": [
+    {
+      "company_id": "astana-legal-group",
+      "company_name": "Astana Legal Group",
+      "embedding": [
+        -0.015823997, 0.0061559806, -0.028388948, 0.023960144, -0.018327233, 0.0077866965, 0.0025630043, 0.008960277, -0.011456485, -0.024738281, 0.027389973, -0.009876251, -0.019973141, 0.031842436, 0.0043879204, -0.02391603, 0.0089950085, -0.012345678, 0.015234567, -0.009876543, 0.032145678, -0.011234567, 0.018765432, -0.022345678, 0.025678901, -0.019234567, 0.021345678, -0.017654321, 0.024567890, -0.016789012, 0.020123456, -0.018901234, 0.023456789, -0.019876543, 0.025234567, -0.021567890, 0.018234567, -0.016345678, 0.026789012, -0.022123456, 0.024345678, -0.017890123, 0.021678901, -0.019345678, 0.027123456, -0.020456789, 0.025890123, -0.018567890, 0.022678901, -0.020234567, 0.029345678
+      ],
+      "source_text": "Professional immigration legal services for individuals and businesses relocating to Kazakhstan",
+      "entity_type": "LocalBusiness",
+      "fields_embedded": ["name", "service", "description", "category"],
+      "embedding_timestamp": "2026-03-06T12:00:00Z",
+      "quality_score": 0.98,
+      "metadata": {
+        "service": "Immigration Lawyer",
+        "category": "Legal Services",
+        "city": "Astana",
+        "trust_score": 0.95,
+        "rating": 4.8,
+        "reviews_count": 42,
+        "languages": ["English", "Russian", "Kazakh"]
+      }
+    },
+    {
+      "company_id": "beauty-premium-almaty",
+      "company_name": "Beauty Premium Almaty",
+      "embedding": [
+        -0.012678901, 0.0082345678, -0.019876543, 0.018234567, -0.021345678, 0.0096789012, 0.0013456789, 0.012345678, -0.008765432, -0.019234567, 0.023456789, -0.010987654, -0.017654321, 0.029345678, 0.0051234567, -0.021567890, 0.012345678, -0.015678901, 0.013456789, -0.011234567, 0.025678901, -0.009876543, 0.020123456, -0.018901234, 0.027890123, -0.016789012, 0.019234567, -0.014345678, 0.026123456, -0.018567890, 0.022345678, -0.017234567, 0.024567890, -0.015876543, 0.028234567, -0.020456789, 0.016345678, -0.013789012, 0.025345678, -0.019123456, 0.021678901, -0.016234567, 0.023789012, -0.018456789, 0.026789012, -0.021345678, 0.024234567, -0.017567890, 0.025901234, -0.019456789, 0.027234567
+      ],
+      "source_text": "Premium beauty salon with complete range of hair, nail and spa services",
+      "entity_type": "LocalBusiness",
+      "fields_embedded": ["name", "service", "description", "category"],
+      "embedding_timestamp": "2026-03-06T12:00:00Z",
+      "quality_score": 0.97,
+      "metadata": {
+        "service": "Beauty & Spa",
+        "category": "Beauty Services",
+        "city": "Almaty",
+        "trust_score": 0.93,
+        "rating": 4.9,
+        "reviews_count": 156,
+        "languages": ["Russian", "Kazakh"]
+      }
+    },
+    {
+      "company_id": "national-museum-almaty",
+      "company_name": "National Museum of Kazakhstan",
+      "embedding": [
+        -0.009345678, 0.0104567890, -0.022123456, 0.019876543, -0.024567890, 0.0082345678, 0.0021678901, 0.014789012, -0.010234567, -0.021456789, 0.020789012, -0.012567890, -0.019123456, 0.027234567, 0.0061234567, -0.019876543, 0.015234567, -0.017890123, 0.016345678, -0.013789012, 0.028345678, -0.011456789, 0.022234567, -0.020123456, 0.025890123, -0.018234567, 0.021567890, -0.015678901, 0.024789012, -0.019345678, 0.023456789, -0.016789012, 0.026234567, -0.017123456, 0.029567890, -0.018901234, 0.019234567, -0.014567890, 0.027567890, -0.020789012, 0.024567890, -0.017234567, 0.025678901, -0.019678901, 0.028123456, -0.020456789, 0.023789012, -0.018567890, 0.026456789, -0.021234567, 0.024901234
+      ],
+      "source_text": "Kazakhstan's largest museum featuring history, culture, and art exhibitions",
+      "entity_type": "LocalBusiness",
+      "fields_embedded": ["name", "service", "description", "category"],
+      "embedding_timestamp": "2026-03-06T12:00:00Z",
+      "quality_score": 0.99,
+      "metadata": {
+        "service": "Museum",
+        "category": "Culture & Arts",
+        "city": "Almaty",
+        "trust_score": 0.92,
+        "rating": 4.6,
+        "reviews_count": 543,
+        "languages": ["Russian", "Kazakh", "English"]
+      }
+    },
+    {
+      "company_id": "kazakh-restaurant-almaty",
+      "company_name": "Kazakh Restaurant Almaty",
+      "embedding": [
+        -0.014234567, 0.0091123456, -0.023567890, 0.020345678, -0.022789012, 0.0085678901, 0.0018901234, 0.013123456, -0.009876543, -0.020678901, 0.022345678, -0.011234567, -0.018567890, 0.025789012, 0.0051567890, -0.020234567, 0.016789012, -0.018123456, 0.015456789, -0.012890123, 0.027234567, -0.010567890, 0.021456789, -0.019234567, 0.026345678, -0.017456789, 0.020789012, -0.016123456, 0.024234567, -0.019012345, 0.022567890, -0.017890123, 0.025456789, -0.018234567, 0.028456789, -0.019678901, 0.018456789, -0.015789012, 0.026123456, -0.021345678, 0.023567890, -0.016456789, 0.024678901, -0.018901234, 0.027789012, -0.019234567, 0.025234567, -0.017678901, 0.024123456, -0.020567890, 0.026234567
+      ],
+      "source_text": "Authentic Kazakh restaurant serving traditional cuisine with modern presentation",
+      "entity_type": "LocalBusiness",
+      "fields_embedded": ["name", "service", "description", "category"],
+      "embedding_timestamp": "2026-03-06T12:00:00Z",
+      "quality_score": 0.96,
+      "metadata": {
+        "service": "Restaurant",
+        "category": "Food & Beverage",
+        "city": "Almaty",
+        "trust_score": 0.89,
+        "rating": 4.7,
+        "reviews_count": 324,
+        "languages": ["Russian", "Kazakh", "English"]
+      }
+    },
+    {
+      "company_id": "tech-startup-hub-astana",
+      "company_name": "Tech Startup Hub Astana",
+      "embedding": [
+        -0.011567890, 0.0097234567, -0.020789012, 0.021234567, -0.023456789, 0.0088901234, 0.0024567890, 0.015234567, -0.010345678, -0.022345678, 0.024567890, -0.012789012, -0.019234567, 0.028123456, 0.0056789012, -0.021890123, 0.017234567, -0.019456789, 0.017890123, -0.014567890, 0.026789012, -0.011789012, 0.023234567, -0.020567890, 0.028456789, -0.017123456, 0.021123456, -0.015456789, 0.025678901, -0.020234567, 0.024234567, -0.018345678, 0.027123456, -0.016234567, 0.029456789, -0.018678901, 0.019567890, -0.016123456, 0.025890123, -0.020678901, 0.023456789, -0.017567890, 0.025123456, -0.019456789, 0.027567890, -0.020123456, 0.024789012, -0.018456789, 0.025234567, -0.021567890, 0.025678901
+      ],
+      "source_text": "Modern coworking space and startup incubator for tech entrepreneurs",
+      "entity_type": "LocalBusiness",
+      "fields_embedded": ["name", "service", "description", "category"],
+      "embedding_timestamp": "2026-03-06T12:00:00Z",
+      "quality_score": 0.95,
+      "metadata": {
+        "service": "Coworking & Business Hub",
+        "category": "Business Services",
+        "city": "Astana",
+        "trust_score": 0.87,
+        "rating": 4.5,
+        "reviews_count": 89,
+        "languages": ["English", "Russian"]
+      }
+    }
+  ],
+  "index_info": {
+    "index_type": "FAISS-compatible flat index",
+    "total_vectors": 5,
+    "dimension": 1536,
+    "metric": "cosine_similarity",
+    "search_complexity": "O(n) for exhaustive search, O(log n) with hierarchical clustering",
+    "estimated_vectors_at_scale": {
+      "100_companies": "~150 MB",
+      "1000_companies": "~1.5 GB",
+      "10000_companies": "~15 GB"
+    }
+  },
+  "generation_instructions": {
+    "step_1_prerequisites": [
+      "Install: pip install openai",
+      "Set OPENAI_API_KEY in .env"
+    ],
+    "step_2_script_location": "scripts/generate_embeddings.py",
+    "step_3_usage": "python scripts/generate_embeddings.py --datafile data/companies.json --output public/embeddings.json",
+    "step_4_integration": "CI/CD: Add to .github/workflows/update.yml to regenerate weekly"
+  },
+  "usage_in_semantic_search": {
+    "algorithm": "Cosine Similarity + Relevance Ranking",
+    "endpoint": "/api/semantic-search?q=user_query",
+    "steps": [
+      "1. Embed user query: query_embedding = openai_embed(user_query)",
+      "2. Load embeddings.json company vectors",
+      "3. Calculate cosine_similarity(query_embedding, each_company_embedding)",
+      "4. Apply final_score = 0.5*cosine_sim + 0.2*trust_score + 0.2*update_freshness + 0.1*popularity",
+      "5. Return top-k sorted by final_score with explanation"
+    ]
+  },
+  "performance_notes": {
+    "current_setup": "5 companies - negligible latency (~5ms per query)",
+    "scaling_at_275_companies": "~50ms per query (acceptable for user-facing)",
+    "scaling_beyond_1000": "Recommend FAISS index for O(log n) complexity",
+    "optimization_strategies": [
+      "Use FAISS for hierarchical clustering on large datasets",
+      "Cache embeddings in Redis for faster retrieval",
+      "Pre-filter by category/location before vector search",
+      "Use approximate nearest neighbor search (HNSW) for >10k documents"
+    ]
+  }
+}

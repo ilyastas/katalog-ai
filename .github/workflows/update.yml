@@ -33,8 +33,22 @@ jobs:
           python -m json.tool data/services.json > /dev/null
           python -m json.tool data/categories.json > /dev/null
           python -m json.tool data/locations.json > /dev/null
+          python -m json.tool data/knowledge-graph.json > /dev/null
           python -m json.tool public/ai-index.json > /dev/null
           echo "JSON validation passed"
+
+      - name: Generate vector embeddings (Semantic Search)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "⚠️  OPENAI_API_KEY not set - skipping embedding generation"
+            echo "To enable: Add OPENAI_API_KEY to GitHub Secrets"
+            exit 0
+          fi
+          python -m pip install openai --quiet
+          python scripts/generate_embeddings.py --datafile data/companies.json --output data/embeddings.json
+        continue-on-error: true
 
       - name: Check website links
         run: |
@@ -74,7 +88,10 @@ jobs:
           cp -r website/* _site/ || true
           cp -r public/* _site/ || true
           cp -r data _site/data || true
+          cp -r api _site/api || true
           cp index.html _site/index.html || true
+          cp llms.txt _site/llms.txt || true
+          echo "Pages artifact prepared with semantic search layers"
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3

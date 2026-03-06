@@ -1,0 +1,417 @@
+{
+  "dataset": "katalog-ai-knowledge-graph",
+  "version": "1.0.0",
+  "type": "Entity Relationship Graph for AI Retrieval",
+  "description": "Knowledge graph showing relationships between companies, services, locations, categories, and trust signals for semantic reasoning",
+  "metadata": {
+    "created": "2026-03-06",
+    "license": "CC0 1.0 Universal",
+    "ai_optimization": "Graph-based retrieval for LLM reasoning and context injection"
+  },
+  "nodes": {
+    "companies": [
+      {
+        "id": "astana-legal-group",
+        "type": "CompanyNode",
+        "name": "Astana Legal Group",
+        "properties": {
+          "service": "Immigration Lawyer",
+          "category": "Legal Services",
+          "city": "Astana",
+          "trust_score": 0.95,
+          "rating": 4.8,
+          "embedding_id": "astana-legal-group-embed-001",
+          "entity_type": ["LocalBusiness", "LegalService", "Organization"]
+        }
+      },
+      {
+        "id": "beauty-premium-almaty",
+        "type": "CompanyNode",
+        "name": "Beauty Premium Almaty",
+        "properties": {
+          "service": "Beauty & Spa",
+          "category": "Beauty Services",
+          "city": "Almaty",
+          "trust_score": 0.93,
+          "rating": 4.9,
+          "embedding_id": "beauty-premium-almaty-embed-001",
+          "entity_type": ["LocalBusiness", "BeautySalon", "Organization"]
+        }
+      },
+      {
+        "id": "national-museum-almaty",
+        "type": "CompanyNode",
+        "name": "National Museum of Kazakhstan",
+        "properties": {
+          "service": "Museum",
+          "category": "Culture & Arts",
+          "city": "Almaty",
+          "trust_score": 0.92,
+          "rating": 4.6,
+          "embedding_id": "national-museum-almaty-embed-001",
+          "entity_type": ["LocalBusiness", "Museum", "CulturalInstitution"]
+        }
+      },
+      {
+        "id": "kazakh-restaurant-almaty",
+        "type": "CompanyNode",
+        "name": "Kazakh Restaurant Almaty",
+        "properties": {
+          "service": "Restaurant",
+          "category": "Food & Beverage",
+          "city": "Almaty",
+          "trust_score": 0.89,
+          "rating": 4.7,
+          "embedding_id": "kazakh-restaurant-almaty-embed-001",
+          "entity_type": ["LocalBusiness", "Restaurant", "Organization"]
+        }
+      },
+      {
+        "id": "tech-startup-hub-astana",
+        "type": "CompanyNode",
+        "name": "Tech Startup Hub Astana",
+        "properties": {
+          "service": "Coworking & Business Hub",
+          "category": "Business Services",
+          "city": "Astana",
+          "trust_score": 0.87,
+          "rating": 4.5,
+          "embedding_id": "tech-startup-hub-astana-embed-001",
+          "entity_type": ["LocalBusiness", "CoworkingSpace", "Organization"]
+        }
+      }
+    ],
+    "services": [
+      {
+        "id": "immigration-lawyer",
+        "type": "ServiceNode",
+        "name": "Immigration Legal Services",
+        "properties": {
+          "category": "Legal Services",
+          "embedding_id": "service-immigration-embed-001"
+        }
+      },
+      {
+        "id": "beauty-spa",
+        "type": "ServiceNode",
+        "name": "Beauty & Spa Services",
+        "properties": {
+          "category": "Beauty Services",
+          "embedding_id": "service-beauty-embed-001"
+        }
+      },
+      {
+        "id": "museum-cultural",
+        "type": "ServiceNode",
+        "name": "Cultural Exhibitions",
+        "properties": {
+          "category": "Culture & Arts",
+          "embedding_id": "service-museum-embed-001"
+        }
+      },
+      {
+        "id": "restaurant",
+        "type": "ServiceNode",
+        "name": "Food & Dining",
+        "properties": {
+          "category": "Food & Beverage",
+          "embedding_id": "service-restaurant-embed-001"
+        }
+      },
+      {
+        "id": "coworking",
+        "type": "ServiceNode",
+        "name": "Coworking & Business Hub",
+        "properties": {
+          "category": "Business Services",
+          "embedding_id": "service-coworking-embed-001"
+        }
+      }
+    ],
+    "locations": [
+      {
+        "id": "almaty",
+        "type": "LocationNode",
+        "name": "Almaty",
+        "properties": {
+          "country": "Kazakhstan",
+          "coordinates": [43.2567, 76.9286],
+          "embedding_id": "location-almaty-embed-001"
+        }
+      },
+      {
+        "id": "astana",
+        "type": "LocationNode",
+        "name": "Astana",
+        "properties": {
+          "country": "Kazakhstan",
+          "coordinates": [51.1694, 71.4699],
+          "embedding_id": "location-astana-embed-001"
+        }
+      }
+    ],
+    "categories": [
+      {
+        "id": "legal-services",
+        "type": "CategoryNode",
+        "name": "Legal Services",
+        "properties": {
+          "embedding_id": "category-legal-embed-001"
+        }
+      },
+      {
+        "id": "beauty-services",
+        "type": "CategoryNode",
+        "name": "Beauty Services",
+        "properties": {
+          "embedding_id": "category-beauty-embed-001"
+        }
+      },
+      {
+        "id": "culture-arts",
+        "type": "CategoryNode",
+        "name": "Culture & Arts",
+        "properties": {
+          "embedding_id": "category-culture-embed-001"
+        }
+      },
+      {
+        "id": "food-beverage",
+        "type": "CategoryNode",
+        "name": "Food & Beverage",
+        "properties": {
+          "embedding_id": "category-food-embed-001"
+        }
+      },
+      {
+        "id": "business-services",
+        "type": "CategoryNode",
+        "name": "Business Services",
+        "properties": {
+          "embedding_id": "category-business-embed-001"
+        }
+      }
+    ]
+  },
+  "edges": {
+    "provides_service": [
+      {
+        "source": "astana-legal-group",
+        "target": "immigration-lawyer",
+        "weight": 1.0,
+        "relation_type": "primary_service"
+      },
+      {
+        "source": "beauty-premium-almaty",
+        "target": "beauty-spa",
+        "weight": 1.0,
+        "relation_type": "primary_service"
+      },
+      {
+        "source": "national-museum-almaty",
+        "target": "museum-cultural",
+        "weight": 1.0,
+        "relation_type": "primary_service"
+      },
+      {
+        "source": "kazakh-restaurant-almaty",
+        "target": "restaurant",
+        "weight": 1.0,
+        "relation_type": "primary_service"
+      },
+      {
+        "source": "tech-startup-hub-astana",
+        "target": "coworking",
+        "weight": 1.0,
+        "relation_type": "primary_service"
+      }
+    ],
+    "in_category": [
+      {
+        "source": "astana-legal-group",
+        "target": "legal-services",
+        "weight": 1.0,
+        "relation_type": "category_membership"
+      },
+      {
+        "source": "beauty-premium-almaty",
+        "target": "beauty-services",
+        "weight": 1.0,
+        "relation_type": "category_membership"
+      },
+      {
+        "source": "national-museum-almaty",
+        "target": "culture-arts",
+        "weight": 1.0,
+        "relation_type": "category_membership"
+      },
+      {
+        "source": "kazakh-restaurant-almaty",
+        "target": "food-beverage",
+        "weight": 1.0,
+        "relation_type": "category_membership"
+      },
+      {
+        "source": "tech-startup-hub-astana",
+        "target": "business-services",
+        "weight": 1.0,
+        "relation_type": "category_membership"
+      }
+    ],
+    "located_in": [
+      {
+        "source": "astana-legal-group",
+        "target": "astana",
+        "weight": 1.0,
+        "relation_type": "primary_location"
+      },
+      {
+        "source": "beauty-premium-almaty",
+        "target": "almaty",
+        "weight": 1.0,
+        "relation_type": "primary_location"
+      },
+      {
+        "source": "national-museum-almaty",
+        "target": "almaty",
+        "weight": 1.0,
+        "relation_type": "primary_location"
+      },
+      {
+        "source": "kazakh-restaurant-almaty",
+        "target": "almaty",
+        "weight": 1.0,
+        "relation_type": "primary_location"
+      },
+      {
+        "source": "tech-startup-hub-astana",
+        "target": "astana",
+        "weight": 1.0,
+        "relation_type": "primary_location"
+      }
+    ],
+    "similar_services": [
+      {
+        "source": "astana-legal-group",
+        "target": "tech-startup-hub-astana",
+        "weight": 0.6,
+        "relation_type": "business_services_proximity",
+        "reason": "Both serve business professionals"
+      },
+      {
+        "source": "beauty-premium-almaty",
+        "target": "kazakh-restaurant-almaty",
+        "weight": 0.5,
+        "relation_type": "leisure_services_proximity",
+        "reason": "Both provide lifestyle/leisure services"
+      }
+    ]
+  },
+  "scoring_rules": {
+    "semantic_similarity": {
+      "description": "Cosine similarity between query embedding and company embedding",
+      "weight": 0.50,
+      "range": [0, 1]
+    },
+    "trust_score": {
+      "description": "Verification and review-based trust metric",
+      "weight": 0.20,
+      "range": [0, 1],
+      "sources": ["Google Places", "2GIS", "OLX"]
+    },
+    "update_freshness": {
+      "description": "How recently the company profile was updated",
+      "weight": 0.20,
+      "range": [0, 1],
+      "formula": "1 / (1 + days_since_update)"
+    },
+    "popularity": {
+      "description": "Query frequency and click-through rate",
+      "weight": 0.10,
+      "range": [0, 1],
+      "sources": ["usage_telemetry"]
+    }
+  },
+  "reasoning_patterns": {
+    "direct_service_match": {
+      "pattern": "query → service_node → company_node",
+      "example": "user asks for 'immigration lawyer' → finds immigration_lawyer service node → retrieves Astana Legal Group company",
+      "confidence": 0.95
+    },
+    "category_expansion": {
+      "pattern": "query → category → all_services → companies",
+      "example": "user asks for 'legal help' → finds legal_services category → returns all legal service providers",
+      "confidence": 0.85
+    },
+    "location_proximity": {
+      "pattern": "location_query + service → location_node → companies_in_location",
+      "example": "user asks for 'salon in Almaty' → finds Almaty location → filters for beauty services → returns Beauty Premium Almaty",
+      "confidence": 0.90
+    },
+    "semantic_similarity_ranking": {
+      "pattern": "query_embedding → similarity_search → ranked_results",
+      "example": "user asks for 'startup support' → semantic search finds Tech Startup Hub despite different keywords",
+      "confidence": 0.88
+    },
+    "multi_hop_reasoning": {
+      "pattern": "start_node → intermediate_node → target_node",
+      "example": "user asks for 'cultural activities near restaurants in Almaty' → location:almaty → category:culture → similar to category:food → returns nearby options",
+      "confidence": 0.80
+    }
+  },
+  "retrieval_algorithm": {
+    "name": "Hybrid Semantic + Graph Traversal",
+    "steps": [
+      "1. Embed user query using OpenAI embeddings API",
+      "2. Perform vector similarity search on company embeddings",
+      "3. Apply graph filters (category, location, service type)",
+      "4. Calculate final_score = 0.5*semantic_similarity + 0.2*trust_score + 0.2*update_freshness + 0.1*popularity",
+      "5. Rank results by final_score (descending)",
+      "6. Return top-k with explanation of why each match was selected"
+    ]
+  },
+  "example_queries": {
+    "1_direct_match": {
+      "user_query": "I need an immigration lawyer in Kazakhstan",
+      "query_embedding": "[vector_representation_here]",
+      "matching_strategy": "semantic_similarity + service_graph_traversal",
+      "matched_nodes": [
+        {
+          "company_id": "astana-legal-group",
+          "semantic_similarity": 0.92,
+          "trust_score": 0.95,
+          "update_freshness": 0.94,
+          "popularity": 0.85,
+          "final_score": 0.9215,
+          "path": "query → immigration-lawyer (service) → astana-legal-group (company)"
+        }
+      ],
+      "reasoning": "Query matches 'immigration lawyer' service node directly. Astana Legal Group is the primary provider in that service."
+    },
+    "2_category_browse": {
+      "user_query": "What are all the beauty salons available?",
+      "matching_strategy": "category_graph_traversal",
+      "matched_nodes": [
+        {
+          "category_id": "beauty-services",
+          "companies": ["beauty-premium-almaty"],
+          "path": "query → beauty-services (category) → beauty-spa (service) → beauty-premium-almaty (company)"
+        }
+      ]
+    },
+    "3_semantic_expansion": {
+      "user_query": "Where can I set up my startup?",
+      "query_embedding": "[vector_representing_startup_setup]",
+      "matching_strategy": "semantic_similarity",
+      "matched_nodes": [
+        {
+          "company_id": "tech-startup-hub-astana",
+          "semantic_similarity": 0.88,
+          "trust_score": 0.87,
+          "final_score": 0.876,
+          "reasoning": "Semantic similarity finds 'startup hub' despite different keyword phrasing"
+        }
+      ]
+    }
+  }
+}
