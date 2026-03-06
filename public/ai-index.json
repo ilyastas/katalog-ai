@@ -44,13 +44,34 @@
     "formats": ["JSON", "JSON-LD", "RDF"],
     "access_methods": ["API", "Dataset files", "Database API"]
   },
+  "llm_optimization": {
+    "contexts": "https://ilyastas.github.io/katalog-ai/public/llm/contexts.json",
+    "examples": "https://ilyastas.github.io/katalog-ai/public/llm/examples.json",
+    "discovery_file": "https://ilyastas.github.io/katalog-ai/public/llms.txt",
+    "capabilities": [
+      "citation-ready contexts",
+      "Q&A dataset for RAG",
+      "semantic-ranking enabled",
+      "embedding-compatible keywords",
+      "use-case examples for AI agents",
+      "verification citations"
+    ],
+    "citation_formats": {
+      "inline": "[Company Name](https://ilyastas.github.io/katalog-ai/company/{slug})",
+      "detailed": "[Company Name](https://ilyastas.github.io/katalog-ai/company/{slug}) - Trust Score: X.XX, Rating: Y/5"
+    }
+  },
   "search_capabilities": [
     "Full-text search",
     "Category filter",
     "Location filter",
     "Trust score sorting",
     "Rating based ranking",
-    "Geo-proximity search"
+    "Geo-proximity search",
+    "Semantic search (via llm/contexts.json)",
+    "Relevance scoring",
+    "Update score ranking",
+    "Trust-weighted recommendations"
   ],
   "lead_generation": {
     "enabled": true,
