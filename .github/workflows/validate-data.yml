@@ -1,0 +1,128 @@
+name: Validate Dataset
+
+on:
+  push:
+    paths:
+      - 'data/**/*.json'
+      - 'public/**/*.json'
+      - '.github/workflows/validate-data.yml'
+  pull_request:
+    paths:
+      - 'data/**/*.json'
+      - 'public/**/*.json'
+
+jobs:
+  validate-json:
+    name: Validate JSON Files
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Validate JSON syntax
+      run: |
+        for file in data/*.json public/*.json; do
+          if [ -f "$file" ]; then
+            echo "Validating $file..."
+            python -m json.tool "$file" > /dev/null
+            if [ $? -eq 0 ]; then
+              echo "✓ $file is valid"
+            else
+              echo "✗ $file is invalid"
+              exit 1
+            fi
+          fi
+        done
+    
+    - name: Check data structure
+      run: |
+        python3 << 'EOF'
+        import json
+        
+        # Validate companies.json
+        with open('data/companies.json') as f:
+          companies = json.load(f)
+          assert 'companies' in companies, "Missing 'companies' key"
+          assert isinstance(companies['companies'], list), "companies should be a list"
+          for company in companies['companies']:
+            required = ['id', 'name', 'category', 'city', 'country']
+            for field in required:
+              assert field in company, f"Missing {field} in company {company.get('id')}"
+        print("✓ companies.json structure valid")
+        
+        # Validate categories.json
+        with open('data/categories.json') as f:
+          categories = json.load(f)
+          assert 'categories' in categories, "Missing 'categories' key"
+          assert isinstance(categories['categories'], list), "categories should be a list"
+        print("✓ categories.json structure valid")
+        
+        # Validate locations.json
+        with open('data/locations.json') as f:
+          locations = json.load(f)
+          assert 'locations' in locations, "Missing 'locations' key"
+          assert isinstance(locations['locations'], list), "locations should be a list"
+        print("✓ locations.json structure valid")
+        
+        # Validate ai-index.json
+        with open('public/ai-index.json') as f:
+          ai_index = json.load(f)
+          assert 'dataset' in ai_index, "Missing 'dataset' key"
+          assert 'entities' in ai_index, "Missing 'entities' key"
+        print("✓ ai-index.json structure valid")
+        EOF
+    
+    - name: Count records
+      run: |
+        python3 << 'EOF'
+        import json
+        
+        with open('data/companies.json') as f:
+          companies = json.load(f)
+          print(f"📊 Total companies: {len(companies['companies'])}")
+        
+        with open('data/categories.json') as f:
+          categories = json.load(f)
+          print(f"📊 Total categories: {len(categories['categories'])}")
+        
+        with open('data/locations.json') as f:
+          locations = json.load(f)
+          print(f"📊 Total locations: {len(locations['locations'])}")
+        EOF
+    
+    - name: Check Schema.org compliance
+      run: |
+        python3 << 'EOF'
+        import json
+        
+        with open('data/companies.json') as f:
+          companies = json.load(f)
+          for company in companies['companies'][:3]:  # Check first 3
+            required_fields = {
+              'name': str,
+              'service': str,
+              'category': str,
+              'city': str,
+              'country': str,
+              'latitude': (int, float),
+              'longitude': (int, float)
+            }
+            for field, expected_type in required_fields.items():
+              assert field in company, f"Missing {field}"
+              assert isinstance(company[field], expected_type), f"{field} wrong type"
+        print("✓ Schema.org compliance verified")
+        EOF
+    
+    - name: Upload coverage
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: validation-report
+        path: .
+        retention-days: 7

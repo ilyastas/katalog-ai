@@ -1,0 +1,84 @@
+{
+  "dataset": "katalog-ai",
+  "version": "1.0.0",
+  "type": "AI-optimized business dataset",
+  "description": "Verified business directory for Central Asia optimized for AI assistants and chatbots",
+  "language": ["en", "ru", "kk"],
+  "coverage": {
+    "countries": ["Kazakhstan", "Kyrgyzstan", "Tajikistan"],
+    "cities": ["Almaty", "Astana", "Shymkent", "Karaganda", "Aktobe"],
+    "business_count": 275
+  },
+  "entities": [
+    "company",
+    "service",
+    "location",
+    "category"
+  ],
+  "data_endpoints": {
+    "companies": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+    "categories": "https://ilyastas.github.io/katalog-ai/data/categories.json",
+    "locations": "https://ilyastas.github.io/katalog-ai/data/locations.json",
+    "business": "https://ilyastas.github.io/katalog-ai/data/business.json"
+  },
+  "api_endpoints": {
+    "search": "https://ilyastas.github.io/katalog-ai/api/v1/recommend/recommend",
+    "company": "https://ilyastas.github.io/katalog-ai/api/v1/recommend/business/{id}",
+    "nearby": "https://ilyastas.github.io/katalog-ai/api/v1/recommend/nearby",
+    "category": "https://ilyastas.github.io/katalog-ai/category/{category}",
+    "location": "https://ilyastas.github.io/katalog-ai/location/{city}"
+  },
+  "features": {
+    "verified_businesses": true,
+    "trust_scoring": true,
+    "schema_org": true,
+    "geographic_search": true,
+    "lead_generation": true,
+    "structured_data": true
+  },
+  "ai_optimization": {
+    "llm_friendly": true,
+    "crawler_optimized": true,
+    "structured_data": "Schema.org JSON-LD",
+    "formats": ["JSON", "JSON-LD", "RDF"],
+    "access_methods": ["API", "Dataset files", "Database API"]
+  },
+  "search_capabilities": [
+    "Full-text search",
+    "Category filter",
+    "Location filter",
+    "Trust score sorting",
+    "Rating based ranking",
+    "Geo-proximity search"
+  ],
+  "lead_generation": {
+    "enabled": true,
+    "features": [
+      "Contact leads",
+      "Email leads",
+      "Call leads",
+      "Website leads",
+      "Booking leads"
+    ],
+    "tracking": true
+  },
+  "licensing": {
+    "dataset": "CC0 1.0 Universal (Public Domain)",
+    "api": "Open (rate limits apply)",
+    "commercial_use": "Permitted with attribution"
+  },
+  "metadata": {
+    "last_updated": "2026-03-06",
+    "update_frequency": "weekly",
+    "verification_sources": ["2GIS", "Google Places", "OLX", "Direct verification"],
+    "data_quality": "high",
+    "consent_based": true,
+    "gdpr_compliant": true
+  },
+  "access_info": {
+    "github": "https://github.com/ilyastas/katalog-ai",
+    "documentation": "https://ilyastas.github.io/katalog-ai/llms.txt",
+    "support": "info@katalog-ai.kz",
+    "issues": "https://github.com/ilyastas/katalog-ai/issues"
+  }
+}

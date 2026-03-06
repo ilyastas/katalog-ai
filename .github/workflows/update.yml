@@ -1,0 +1,114 @@
+name: Dataset Update and Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'website/**'
+      - 'public/**'
+      - '.github/workflows/update.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate JSON dataset
+        run: |
+          python -m json.tool data/companies.json > /dev/null
+          python -m json.tool data/categories.json > /dev/null
+          python -m json.tool data/locations.json > /dev/null
+          python -m json.tool public/ai-index.json > /dev/null
+          echo "JSON validation passed"
+
+      - name: Check website links
+        run: |
+          python - << 'PY'
+          import pathlib
+          import re
+          import sys
+
+          root = pathlib.Path('.')
+          html_files = list(root.glob('website/**/*.html')) + [pathlib.Path('index.html')]
+          href_re = re.compile(r'href="([^"]+)"')
+          missing = []
+
+          for f in html_files:
+            if not f.exists():
+              continue
+            text = f.read_text(encoding='utf-8', errors='ignore')
+            for href in href_re.findall(text):
+              if href.startswith(('http://', 'https://', 'mailto:', '#', 'tel:')):
+                continue
+              target = (f.parent / href).resolve()
+              if not target.exists():
+                missing.append((str(f), href))
+
+          if missing:
+            print('Broken local links found:')
+            for src, href in missing:
+              print(f'- {src}: {href}')
+            sys.exit(1)
+
+          print('Link check passed')
+          PY
+
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p _site
+          cp -r website/* _site/ || true
+          cp -r public/* _site/ || true
+          cp -r data _site/data || true
+          cp index.html _site/index.html || true
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  distribute:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Dataset distribution placeholders
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+        run: |
+          python scripts/distribute_dataset.py
