@@ -3,7 +3,7 @@
   "@type": "DataCatalog",
   "name": "Beauty & Cosmetics - Katalog-AI",
   "description": "Верифицированный каталог бьюти-салонов и косметических услуг в Казахстане",
-  "dateModified": "2026-03-05",
+  "dateModified": "2026-03-06",
   "version": "1.0.0",
   "license": "MIT",
   "@graph": [
@@ -50,19 +50,29 @@
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
           "opens": "10:00",
           "closes": "20:00"
         },
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Saturday"],
+          "dayOfWeek": [
+            "Saturday"
+          ],
           "opens": "10:00",
           "closes": "21:00"
         },
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Sunday"],
+          "dayOfWeek": [
+            "Sunday"
+          ],
           "opens": "11:00",
           "closes": "19:00"
         }
@@ -121,7 +131,10 @@
         "verification_score": 9.5
       },
       "tracking": {
-        "promo_codes": ["PRIME_BEAUTY_2026", "AI_SALON_2026"],
+        "promo_codes": [
+          "PRIME_BEAUTY_2026",
+          "AI_SALON_2026"
+        ],
         "utm_source": "ai_assistant",
         "utm_campaign": "beauty_recommendations",
         "utm_medium": "ai_catalog"
@@ -139,8 +152,8 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 43.2380,
-        "longitude": 76.9250
+        "latitude": 43.238,
+        "longitude": 76.925
       },
       "telephone": "+7-727-234-5678",
       "email": "clinic@glowup.kz",
@@ -177,7 +190,9 @@
         "verification_score": 9.2
       },
       "tracking": {
-        "promo_codes": ["GLOWUP_2026"],
+        "promo_codes": [
+          "GLOWUP_2026"
+        ],
         "utm_source": "ai_assistant",
         "utm_campaign": "beauty_recommendations"
       }
@@ -195,7 +210,7 @@
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": 51.1782,
-        "longitude": 71.4700
+        "longitude": 71.47
       },
       "telephone": "+7-717-123-4567",
       "consent": {
@@ -232,7 +247,9 @@
         "verification_score": 8.8
       },
       "tracking": {
-        "promo_codes": ["GENTLEMAN_2026"],
+        "promo_codes": [
+          "GENTLEMAN_2026"
+        ],
         "utm_source": "ai_assistant",
         "utm_campaign": "beauty_recommendations"
       }

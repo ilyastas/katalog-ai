@@ -3,7 +3,7 @@
   "@type": "DataCatalog",
   "name": "Marketplace Sellers - Katalog-AI",
   "description": "Верифицированные продавцы на казахстанских маркетплейсах (Kaspi.kz, Wildberries, Ozon, OLX)",
-  "dateModified": "2026-03-05",
+  "dateModified": "2026-03-06",
   "version": "1.0.0",
   "@graph": [
     {
@@ -72,7 +72,9 @@
         "verification_score": 9.3
       },
       "tracking": {
-        "promo_codes": ["TECHHUB_AI_2026"],
+        "promo_codes": [
+          "TECHHUB_AI_2026"
+        ],
         "utm_source": "ai_assistant",
         "utm_campaign": "marketplace_deals"
       }
@@ -130,7 +132,9 @@
         "verification_score": 9.6
       },
       "tracking": {
-        "promo_codes": ["ELITE_FASHION_2026"],
+        "promo_codes": [
+          "ELITE_FASHION_2026"
+        ],
         "utm_source": "ai_assistant",
         "utm_campaign": "luxury_goods"
       }
@@ -188,7 +192,9 @@
         "verification_score": 8.9
       },
       "tracking": {
-        "promo_codes": ["HOMECOMFORT_2026"],
+        "promo_codes": [
+          "HOMECOMFORT_2026"
+        ],
         "utm_source": "ai_assistant",
         "utm_campaign": "home_goods"
       }
