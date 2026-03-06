@@ -3,7 +3,7 @@
   "@type": "DataCatalog",
   "name": "Geo Index - Katalog-AI",
   "description": "Геопространственный индекс всех объектов для локальных ИИ-запросов. Используется для ответов типа 'где рядом...', 'в моём районе...' и локальных рекомендаций",
-  "dateModified": "2026-03-05",
+  "dateModified": "2026-03-06",
   "version": "1.0.0",
   "locations": [
     {
@@ -15,7 +15,10 @@
       "city": "Алматы",
       "coordinates": {
         "type": "Point",
-        "coordinates": [76.9458, 43.2386]
+        "coordinates": [
+          76.9458,
+          43.2386
+        ]
       },
       "address": "ул. Жибек Жолы, 50",
       "radius_km": 25,
@@ -39,7 +42,10 @@
       "city": "Алматы",
       "coordinates": {
         "type": "Point",
-        "coordinates": [76.9250, 43.2380]
+        "coordinates": [
+          76.925,
+          43.238
+        ]
       },
       "address": "ул. Аль-Фараби, 77"
     },
@@ -52,7 +58,10 @@
       "city": "Нур-Султан",
       "coordinates": {
         "type": "Point",
-        "coordinates": [71.4700, 51.1782]
+        "coordinates": [
+          71.47,
+          51.1782
+        ]
       },
       "address": "ул. Туран, 15"
     },
@@ -65,7 +74,10 @@
       "city": "Нур-Султан",
       "coordinates": {
         "type": "Point",
-        "coordinates": [71.4697, 51.1697]
+        "coordinates": [
+          71.4697,
+          51.1697
+        ]
       },
       "address": "ул. Парк-культуры, 4"
     },
@@ -78,7 +90,10 @@
       "city": "Алматы",
       "coordinates": {
         "type": "Point",
-        "coordinates": [76.9485, 43.2397]
+        "coordinates": [
+          76.9485,
+          43.2397
+        ]
       },
       "address": "ул. Янушкевского, 104"
     },
@@ -92,7 +107,10 @@
       "region": "Түркістан",
       "coordinates": {
         "type": "Point",
-        "coordinates": [78.6417, 43.2936]
+        "coordinates": [
+          78.6417,
+          43.2936
+        ]
       },
       "distance_from_almaty_km": 220,
       "is_mountain_attraction": true
@@ -106,7 +124,10 @@
       "city": "Алматы",
       "coordinates": {
         "type": "Point",
-        "coordinates": [76.9409, 43.2486]
+        "coordinates": [
+          76.9409,
+          43.2486
+        ]
       },
       "address": "пр. Абая, 252"
     },
@@ -119,7 +140,10 @@
       "city": "Алматы",
       "coordinates": {
         "type": "Point",
-        "coordinates": [76.9386, 43.2323]
+        "coordinates": [
+          76.9386,
+          43.2323
+        ]
       },
       "address": "ТД 'Булвар', 3-этаж"
     },
@@ -132,7 +156,10 @@
       "city": "Нур-Султан",
       "coordinates": {
         "type": "Point",
-        "coordinates": [71.4699, 51.1709]
+        "coordinates": [
+          71.4699,
+          51.1709
+        ]
       },
       "address": "ул. Сарыарка, 45"
     }
@@ -142,7 +169,10 @@
       "name": "Алматы",
       "population": 1406362,
       "businessCount": 5,
-      "coordinates": [76.9389, 43.2379],
+      "coordinates": [
+        76.9389,
+        43.2379
+      ],
       "businesses": [
         "beauty-001",
         "beauty-002",
@@ -155,7 +185,10 @@
       "name": "Нур-Султан",
       "population": 1405362,
       "businessCount": 3,
-      "coordinates": [71.4701, 51.1694],
+      "coordinates": [
+        71.4701,
+        51.1694
+      ],
       "businesses": [
         "beauty-003",
         "museum-001",
@@ -166,7 +199,10 @@
       "name": "село Сатут",
       "population": 5000,
       "businessCount": 1,
-      "coordinates": [78.6417, 43.2936],
+      "coordinates": [
+        78.6417,
+        43.2936
+      ],
       "businesses": [
         "museum-003"
       ]

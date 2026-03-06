@@ -1,0 +1,29 @@
+[
+  {
+    "verified": false,
+    "source": "olx",
+    "profile_url": "https://olx.kz/profile/TechHubKZ/",
+    "timestamp": "2026-03-06T05:31:03.479515Z",
+    "data": null,
+    "error": "Профиль не найден или неактивен",
+    "note": "Для полной верификации требуется Apify токен"
+  },
+  {
+    "verified": false,
+    "source": "olx",
+    "profile_url": "https://olx.kz/profile/FashionEliteKZ/",
+    "timestamp": "2026-03-06T05:31:05.143401Z",
+    "data": null,
+    "error": "Профиль не найден или неактивен",
+    "note": "Для полной верификации требуется Apify токен"
+  },
+  {
+    "verified": false,
+    "source": "olx",
+    "profile_url": "https://olx.kz/profile/HomeComfortKZ/",
+    "timestamp": "2026-03-06T05:31:06.013092Z",
+    "data": null,
+    "error": "Профиль не найден или неактивен",
+    "note": "Для полной верификации требуется Apify токен"
+  }
+]
