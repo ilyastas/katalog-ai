@@ -113,7 +113,7 @@ jobs:
         POSTGRES_PASSWORD: test_password
         REDIS_HOST: localhost
         REDIS_PORT: 6379
-        OPENAI_API_KEY: sk-test-key
+        OPENAI_API_KEY: test-openai-key
         ENVIRONMENT: test
       run: |
         pytest backend/tests/ -v --cov=backend --cov-report=xml --cov-report=html
