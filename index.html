@@ -6,6 +6,37 @@
     <meta name="description" content="Верифицированный каталог казахстанских бизнесов для ИИ-ассистентов">
     <meta name="google-site-verification" content="fhg8DxkOV8G9JP7Ggl5DYNSiiSWDXK4LZrESP6FZ1MM" />
     <title>Katalog-AI</title>
+    
+    <!-- Schema.org LocalBusiness Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://ilyastas.github.io/katalog-ai/api/v1/recommend/recommend?query={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+    </script>
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Katalog-AI",
+      "description": "Верифицированный каталог казахстанских бизнесов для ИИ-ассистентов",
+      "url": "https://ilyastas.github.io/katalog-ai",
+      "sameAs": ["https://github.com/ilyastas/katalog-ai"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "email": "info@katalog-ai.kz"
+      }
+    }
+    </script>
+
     <style>
         * {
             margin: 0;
