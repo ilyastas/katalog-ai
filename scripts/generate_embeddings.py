@@ -9,8 +9,13 @@ Usage:
     python scripts/generate_embeddings.py --datafile data/companies.json --output data/embeddings.json
 
 Requirements:
-    - OPENAI_API_KEY environment variable set
-    - pip install openai
+    - OPENAI_API_KEY environment variable set (via .env.local or GitHub Secrets)
+    - pip install openai python-dotenv
+
+Security:
+    - .env.local is in .gitignore (never committed)
+    - GitHub Actions uses ${{ secrets.OPENAI_API_KEY }}
+    - Never paste API keys into code or public files
 """
 
 import json
@@ -18,6 +23,14 @@ import os
 import sys
 from datetime import datetime
 from pathlib import Path
+
+# Load environment variables from .env.local or .env
+try:
+    from dotenv import load_dotenv
+    load_dotenv('.env.local', override=True)  # Local dev secrets
+    load_dotenv('.env', override=False)        # Default values
+except ImportError:
+    print("Note: python-dotenv not installed. Skipping .env loading.")
 
 try:
     from openai import OpenAI
@@ -87,12 +100,29 @@ def generate_embeddings(datafile, output_file=None, batch_size=20):
     # Validate API key
     api_key = os.getenv('OPENAI_API_KEY')
     if not api_key:
-        print("ERROR: OPENAI_API_KEY environment variable not set")
-        print("Set it with: export OPENAI_API_KEY='sk-...'")
+        print("❌ ERROR: OPENAI_API_KEY not found!")
+        print("\n📝 Setup instructions:")
+        print("  1. Get API key from: https://platform.openai.com/api-keys")
+        print("  2. Local development:")
+        print("     - Create .env.local file (in .gitignore)")
+        print("     - Add: OPENAI_API_KEY=sk-proj-...")
+        print("  3. GitHub Actions (CI/CD):")
+        print("     - Go: https://github.com/ilyastas/katalog-ai/settings/secrets/actions")
+        print("     - Add secret: OPENAI_API_KEY")
+        print("  4. Terminal (temporary):")
+        print("     - export OPENAI_API_KEY='sk-...'")
         sys.exit(1)
 
+    # Mask key for logging (show only first/last 10 chars)
+    masked_key = api_key[:10] + "***" + api_key[-10:] if len(api_key) > 20 else "***"
+    print(f"🔑 Using API key: {masked_key}")
+
     # Initialize OpenAI client
-    client = OpenAI(api_key=api_key)
+    try:
+        client = OpenAI(api_key=api_key)
+    except Exception as e:
+        print(f"❌ Failed to initialize OpenAI client: {e}")
+        sys.exit(1)
 
     # Load companies
     companies = load_companies(datafile)
