@@ -5,8 +5,16 @@ on:
     branches: [main]
     paths:
       - 'data/**'
+      - 'schema/**'
       - 'website/**'
       - 'public/**'
+      - 'index.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'ai.txt'
+      - 'llms.txt'
+      - 'ai-dataset.json'
+      - 'ai-sitemap.json'
       - '.github/workflows/update.yml'
   workflow_dispatch:
 
@@ -89,9 +97,15 @@ jobs:
           cp -r website/* _site/ || true
           cp -r public/* _site/ || true
           cp -r data _site/data || true
+          cp -r schema _site/schema || true
           cp -r api _site/api || true
           cp index.html _site/index.html || true
+          cp sitemap.xml _site/sitemap.xml || true
+          cp robots.txt _site/robots.txt || true
+          cp ai.txt _site/ai.txt || true
           cp llms.txt _site/llms.txt || true
+          cp ai-dataset.json _site/ai-dataset.json || true
+          cp ai-sitemap.json _site/ai-sitemap.json || true
           echo "Pages artifact prepared with semantic search layers"
 
       - name: Upload pages artifact
