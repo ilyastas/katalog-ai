@@ -1,5 +1,5 @@
 ## Katalog-AI Verification Report
-Generated: Fri Mar  6 05:31:06 UTC 2026
+Generated: Sat Mar  7 00:44:35 UTC 2026
 
 ### 2GIS Verification
 [
@@ -8,7 +8,7 @@ Generated: Fri Mar  6 05:31:06 UTC 2026
     "source": "2gis",
     "business_name": "Beauty Prime Salon",
     "city": "Алматы",
-    "timestamp": "2026-03-06T05:31:02.316225Z",
+    "timestamp": "2026-03-07T00:44:28.984728Z",
     "data": null,
     "error": "Бизнес 'Beauty Prime Salon' не найден на 2ГИС"
   },
@@ -17,7 +17,7 @@ Generated: Fri Mar  6 05:31:06 UTC 2026
     "source": "2gis",
     "business_name": "Glow Up Clinic",
     "city": "Алматы",
-    "timestamp": "2026-03-06T05:31:02.713297Z",
+    "timestamp": "2026-03-07T00:44:29.508744Z",
     "data": null,
     "error": "Бизнес 'Glow Up Clinic' не найден на 2ГИС"
   },
@@ -26,7 +26,7 @@ Generated: Fri Mar  6 05:31:06 UTC 2026
     "source": "2gis",
     "business_name": "Barbershop Gentleman",
     "city": "Нур-Султан",
-    "timestamp": "2026-03-06T05:31:03.165588Z",
+    "timestamp": "2026-03-07T00:44:29.849583Z",
     "data": null,
     "error": "Бизнес 'Barbershop Gentleman' не найден на 2ГИС"
   }
@@ -37,7 +37,7 @@ Generated: Fri Mar  6 05:31:06 UTC 2026
     "verified": false,
     "source": "olx",
     "profile_url": "https://olx.kz/profile/TechHubKZ/",
-    "timestamp": "2026-03-06T05:31:03.479515Z",
+    "timestamp": "2026-03-07T00:44:30.322592Z",
     "data": null,
     "error": "Профиль не найден или неактивен",
     "note": "Для полной верификации требуется Apify токен"
@@ -46,7 +46,7 @@ Generated: Fri Mar  6 05:31:06 UTC 2026
     "verified": false,
     "source": "olx",
     "profile_url": "https://olx.kz/profile/FashionEliteKZ/",
-    "timestamp": "2026-03-06T05:31:05.143401Z",
+    "timestamp": "2026-03-07T00:44:32.450296Z",
     "data": null,
     "error": "Профиль не найден или неактивен",
     "note": "Для полной верификации требуется Apify токен"
@@ -55,7 +55,7 @@ Generated: Fri Mar  6 05:31:06 UTC 2026
     "verified": false,
     "source": "olx",
     "profile_url": "https://olx.kz/profile/HomeComfortKZ/",
-    "timestamp": "2026-03-06T05:31:06.013092Z",
+    "timestamp": "2026-03-07T00:44:33.644095Z",
     "data": null,
     "error": "Профиль не найден или неактивен",
     "note": "Для полной верификации требуется Apify токен"
@@ -69,7 +69,7 @@ Generated: Fri Mar  6 05:31:06 UTC 2026
     "business_name": "Beauty Prime Salon",
     "address": "ул. Жибек Жолы, 50",
     "city": "Алматы",
-    "timestamp": "2026-03-06T05:31:06.629767Z",
+    "timestamp": "2026-03-07T00:44:34.970428Z",
     "data": null,
     "error": "Место не найдено в Google Places"
   },
@@ -79,7 +79,7 @@ Generated: Fri Mar  6 05:31:06 UTC 2026
     "business_name": "Glow Up Clinic",
     "address": "ул. Аль-Фараби, 77",
     "city": "Алматы",
-    "timestamp": "2026-03-06T05:31:06.850573Z",
+    "timestamp": "2026-03-07T00:44:35.102167Z",
     "data": null,
     "error": "Место не найдено в Google Places"
   },
@@ -89,7 +89,7 @@ Generated: Fri Mar  6 05:31:06 UTC 2026
     "business_name": "National Museum",
     "address": "ул. Парк-культуры, 4",
     "city": "Нур-Султан",
-    "timestamp": "2026-03-06T05:31:06.885109Z",
+    "timestamp": "2026-03-07T00:44:35.171438Z",
     "data": null,
     "error": "Место не найдено в Google Places"
   }
