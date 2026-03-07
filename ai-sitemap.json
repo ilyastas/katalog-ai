@@ -1,0 +1,22 @@
+{
+  "datasets": [
+    "/data/kz_business.json",
+    "/data/ru_business.json",
+    "/data/seo_services.json"
+  ],
+  "schema": "/schema/business.schema.json",
+  "manifest": "ai-dataset.json",
+  "version": "1.0.0",
+  "description": "AI-friendly dataset map for katalog-ai project",
+  "total_files": 3,
+  "formats": {
+    "data": "JSON Array",
+    "schema": "JSON Schema"
+  },
+  "optimization": {
+    "for_llm": true,
+    "for_rag": true,
+    "for_search": true,
+    "chunking": "per file (≤ 100 items each)"
+  }
+}

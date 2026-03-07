@@ -55,6 +55,14 @@ Allow: /api/v1/analytics/*
 Allow: /docs
 Allow: /openapi.json
 Allow: /data.json
+Allow: /data/*
+Allow: /data/kz_business.json
+Allow: /data/ru_business.json
+Allow: /data/seo_services.json
+Allow: /schema/*
+Allow: /schema/business.schema.json
+Allow: /ai-dataset.json
+Allow: /ai-sitemap.json
 Allow: /sitemap.xml
 
 # Rate limits for AI crawlers
@@ -137,6 +145,38 @@ API-Endpoint: https://api.alie.kz/api/v1
 #   -d '{"user_query": "Найти строителя в Алматы", "location": "Almaty"}'
 
 # =============================================================================
+# AI DATASET STRUCTURE
+# =============================================================================
+
+# Dataset organization for optimal AI/LLM processing
+Dataset-Name: katalog-ai
+Dataset-Type: verified-business-directory
+Dataset-Format: JSON Array
+Dataset-Location: /data/
+Dataset-Schema: /schema/business.schema.json
+Dataset-Manifest: /ai-dataset.json
+Dataset-Sitemap: /ai-sitemap.json
+
+# Dataset organization
+# Each file contains ≤ 100 objects for optimal chunking in RAG systems
+# Files:
+#   /data/kz_business.json - Kazakhstan businesses (5+ items)
+#   /data/ru_business.json - Russia businesses (ready for expansion)
+#   /data/seo_services.json - SEO/Digital services (ready for expansion)
+
+# Schema:
+# /schema/business.schema.json - JSON Schema with all field definitions
+
+# Features:
+# ✅ Schema.org compatible
+# ✅ Semantic keywords for AI search
+# ✅ Verification status from multiple sources
+# ✅ Geolocation data (lat/long)
+# ✅ Multilingual support
+# ✅ RAG-optimized structure
+# ✅ AI agent friendly format
+
+# =============================================================================
 # DATA FORMATS
 # =============================================================================
 
@@ -144,10 +184,12 @@ API-Endpoint: https://api.alie.kz/api/v1
 Data-Format: JSON
 
 # Available structured data:
-# - Business catalog (250+ verified businesses)
+# - Business catalog (verified from external sources)
 # - Categories (50+ business types)
 # - Locations (Kazakhstan cities)
 # - Trust scores (0.0-1.0 scale)
+# - Verification status (Google Business, 2GIS, Yandex Maps)
+# - Semantic keywords (for NLP/LLM)
 # - Contact information (phone, website, social)
 
 # Schema documentation

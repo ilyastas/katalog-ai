@@ -1,0 +1,129 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the business"
+    },
+    "name": {
+      "type": "string",
+      "description": "Business name"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly identifier"
+    },
+    "service": {
+      "type": "string",
+      "description": "Primary service or business type"
+    },
+    "category": {
+      "type": "string",
+      "description": "Business category"
+    },
+    "city": {
+      "type": "string",
+      "description": "City location"
+    },
+    "country": {
+      "type": "string",
+      "description": "Country location"
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "Business website URL"
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Business phone number"
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "Business description"
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "const": "PostalAddress"
+        },
+        "streetAddress": {
+          "type": "string"
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "addressCountry": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of services offered"
+    },
+    "rating": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5
+    },
+    "reviews_count": {
+      "type": "integer"
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "Verification status"
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["verified", "unverified", "pending"]
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Verification sources (google_business, 2gis, etc.)"
+        }
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Languages spoken"
+    },
+    "semantic_keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "SEO and semantic keywords"
+    }
+  },
+  "required": ["id", "name", "country", "city", "service", "website", "contact"]
+}
