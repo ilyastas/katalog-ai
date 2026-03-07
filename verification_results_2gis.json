@@ -4,7 +4,7 @@
     "source": "2gis",
     "business_name": "Beauty Prime Salon",
     "city": "Алматы",
-    "timestamp": "2026-03-07T00:44:28.984728Z",
+    "timestamp": "2026-03-07T07:52:04.636082Z",
     "data": null,
     "error": "Бизнес 'Beauty Prime Salon' не найден на 2ГИС"
   },
@@ -13,7 +13,7 @@
     "source": "2gis",
     "business_name": "Glow Up Clinic",
     "city": "Алматы",
-    "timestamp": "2026-03-07T00:44:29.508744Z",
+    "timestamp": "2026-03-07T07:52:05.049000Z",
     "data": null,
     "error": "Бизнес 'Glow Up Clinic' не найден на 2ГИС"
   },
@@ -22,7 +22,7 @@
     "source": "2gis",
     "business_name": "Barbershop Gentleman",
     "city": "Нур-Султан",
-    "timestamp": "2026-03-07T00:44:29.849583Z",
+    "timestamp": "2026-03-07T07:52:05.458921Z",
     "data": null,
     "error": "Бизнес 'Barbershop Gentleman' не найден на 2ГИС"
   }
