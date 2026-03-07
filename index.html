@@ -6,7 +6,12 @@
     <title>Katalog AI - Открытый реестр ИИ для ботов</title>
     
     <meta name="description" content="Машиночитаемый каталог нейросетей и ИИ-инструментов. Оптимизировано для GPT, Claude и Bing Search. Доступ к базе через data.json.">
+    <meta name="keywords" content="ИИ, нейросети, каталог AI, Казахстан, ИИ для бизнеса, AI directory, СНГ">
     <link rel="canonical" href="https://ilyastas.github.io/katalog-ai/" />
+
+    <meta property="og:title" content="Katalog AI - База знаний для ИИ">
+    <meta property="og:description" content="Проверенные ИИ-решения для Казахстана и мира в одном JSON-файле.">
+    <meta property="og:type" content="website">
 
     <script type="application/ld+json">
     {
@@ -20,7 +25,6 @@
         "@type": "Organization",
         "name": "Ilyas Tas"
       },
-      "keywords": "AI, нейросети, каталог, ИИ-боты, Казахстан, РФ",
       "distribution": {
         "@type": "DataDownload",
         "contentUrl": "https://ilyastas.github.io/katalog-ai/data.json",
@@ -52,8 +56,9 @@
         }
         .divider { height: 1px; background: #333; margin: 40px 0; }
         p { font-size: 0.95rem; color: #999; line-height: 1.6; }
-        a { color: #666; text-decoration: none; transition: color 0.2s; }
-        a:hover { color: #fff; }
+        a { color: #666; text-decoration: none; transition: all 0.2s ease; border-bottom: 1px solid transparent; }
+        a:hover { color: #fff; border-bottom: 1px solid #fff; }
+        .status { margin-top: 20px; font-size: 0.7rem; color: #333; text-transform: uppercase; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -61,7 +66,7 @@
         <h1>Каталог AI</h1>
         <div class="divider"></div>
         <p>Открытый каталог для ИИ-ботов | <a href="data.json">data.json</a></p>
-        <p style="margin-top: 20px; font-size: 0.7rem; color: #444;">AIO Verified • 2026</p>
+        <div class="status">AIO Verified • March 2026</div>
     </div>
 </body>
 </html>
