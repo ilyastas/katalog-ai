@@ -292,7 +292,7 @@ Settings → Secrets and variables → Actions
 ```
 TWOGIS_API_KEY=xxx
 APIFY_TOKEN=xxx
-GOOGLE_PLACES_API_KEY=xxx
+GOOGLE_PLACES_KEY=xxx
 INDEXNOW_KEY=xxx
 ```
 

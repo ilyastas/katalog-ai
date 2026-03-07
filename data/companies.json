@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "timestamp": "2026-03-06T12:00:00Z",
-  "count": 50,
+  "count": 5,
   "companies": [
     {
       "id": "astana-legal-group",
@@ -53,6 +53,10 @@
       "city": "Almaty",
       "country": "Kazakhstan",
       "website": "https://beautypremium.kz",
+      "marketplaces": {
+        "kaspi": "https://kaspi.kz/shop/merchant/beautypremium",
+        "instagram": "https://instagram.com/beautypremium_almaty"
+      },
       "email": "info@beautypremium.kz",
       "phone": "+7-727-290-08-08",
       "description": "Premium beauty salon with complete range of hair, nail and spa services",

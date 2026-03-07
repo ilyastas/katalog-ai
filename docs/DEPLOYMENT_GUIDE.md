@@ -98,7 +98,7 @@ Value: <твой-токен-from-apify>
 #### Secret 3: Google Places API Key
 
 ```
-Name: GOOGLE_PLACES_API_KEY
+Name: GOOGLE_PLACES_KEY
 Value: <твой-ключ-from-google>
 ```
 
@@ -140,7 +140,7 @@ pip install requests python-dotenv
 # .env (НЕ коммитить!)
 TWOGIS_API_KEY=your-key-here
 APIFY_TOKEN=your-token-here
-GOOGLE_PLACES_API_KEY=your-key-here
+GOOGLE_PLACES_KEY=your-key-here
 INDEXNOW_KEY=your-key-here
 ```
 

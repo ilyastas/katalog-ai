@@ -40,14 +40,15 @@ jobs:
       - name: Generate vector embeddings (Semantic Search)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GOOGLE_AI_API_KEY: ${{ secrets.GOOGLE_AI_API_KEY }}
         run: |
-          if [ -z "$OPENAI_API_KEY" ]; then
-            echo "⚠️  OPENAI_API_KEY not set - skipping embedding generation"
-            echo "To enable: Add OPENAI_API_KEY to GitHub Secrets"
+          if [ -z "$OPENAI_API_KEY" ] && [ -z "$GOOGLE_AI_API_KEY" ]; then
+            echo "⚠️  No embedding API key set - skipping embedding generation"
+            echo "To enable: Add OPENAI_API_KEY or GOOGLE_AI_API_KEY to GitHub Secrets"
             exit 0
           fi
-          python -m pip install openai --quiet
-          python scripts/generate_embeddings.py --datafile data/companies.json --output data/embeddings.json
+          python -m pip install openai google-generativeai --quiet
+          python scripts/generate_embeddings.py --provider auto --datafile data/companies.json --output data/embeddings.json
         continue-on-error: true
 
       - name: Check website links

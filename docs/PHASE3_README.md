@@ -135,7 +135,7 @@ TWO_GIS_API_KEY=your_2gis_api_key
 APIFY_TOKEN=your_apify_token
 
 # Google Places
-GOOGLE_PLACES_API_KEY=your_google_api_key
+GOOGLE_PLACES_KEY=your_google_api_key
 
 # OpenAI Integration  
 OPENAI_API_KEY=your_openai_api_key

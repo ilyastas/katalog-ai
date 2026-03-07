@@ -128,7 +128,7 @@ Value: <твой-apify-token>
 ### Добавь в GitHub Secrets:
 
 ```bash
-Name: GOOGLE_PLACES_API_KEY
+Name: GOOGLE_PLACES_KEY
 Value: <твой-google-api-ключ>
 ```
 
@@ -192,7 +192,7 @@ c:\Users\Asus\Desktop\Repo\indexnow.txt
 ```
 ✅ TWOGIS_API_KEY
 ✅ APIFY_TOKEN
-✅ GOOGLE_PLACES_API_KEY
+✅ GOOGLE_PLACES_KEY
 ✅ INDEXNOW_KEY
 ```
 
@@ -212,7 +212,7 @@ pip install requests python-dotenv
 # .env (НЕ коммитить в Git!)
 TWOGIS_API_KEY=your-key-here
 APIFY_TOKEN=your-token-here
-GOOGLE_PLACES_API_KEY=your-key-here
+GOOGLE_PLACES_KEY=your-key-here
 INDEXNOW_KEY=your-key-here
 ```
 

@@ -19,6 +19,7 @@ redis==5.0.1
 
 # AI Integration
 openai==1.15.0  # Latest version with embeddings support
+google-generativeai>=0.8.0  # Google Gemini embeddings (cost-effective alternative)
 
 # External APIs
 requests==2.31.0

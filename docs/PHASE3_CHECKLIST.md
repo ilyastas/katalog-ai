@@ -91,7 +91,7 @@ Phase 3 Implementation Checklist - API Verifiers and OpenAI Integration
 - [ ] **Update .env.example** (Phase 4)
   - [ ] Add TWO_GIS_API_KEY
   - [ ] Add APIFY_TOKEN
-  - [ ] Add GOOGLE_PLACES_API_KEY
+  - [ ] Add GOOGLE_PLACES_KEY
   - [ ] Add OPENAI_API_KEY
   - [ ] Add OPENAI_ASSISTANT_ID
 

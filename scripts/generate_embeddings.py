@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
 """
-Generate embeddings for all companies using OpenAI API.
+Generate embeddings for all companies using OpenAI or Google AI.
 
 This script reads company data from companies.json and generates
-semantic embeddings using OpenAI's text-embedding-3-small model.
+semantic embeddings via one of the supported providers:
+    - OpenAI: text-embedding-3-small
+    - Google AI (Gemini): models/gemini-embedding-001
 
 Usage:
     python scripts/generate_embeddings.py --datafile data/companies.json --output data/embeddings.json
+    python scripts/generate_embeddings.py --provider google
 
 Requirements:
-    - OPENAI_API_KEY environment variable set (via .env.local or GitHub Secrets)
-    - pip install openai python-dotenv
+    - OPENAI_API_KEY (for OpenAI) or GOOGLE_AI_API_KEY (for Google AI)
+    - pip install python-dotenv
+    - pip install openai                # if provider=openai
+    - pip install google-generativeai   # if provider=google
 
 Security:
     - .env.local is in .gitignore (never committed)
-    - GitHub Actions uses ${{ secrets.OPENAI_API_KEY }}
+    - GitHub Actions uses repository secrets
     - Never paste API keys into code or public files
 """
 
@@ -32,11 +37,80 @@ try:
 except ImportError:
     print("Note: python-dotenv not installed. Skipping .env loading.")
 
-try:
-    from openai import OpenAI
-except ImportError:
-    print("ERROR: OpenAI package not installed. Install with: pip install openai")
-    sys.exit(1)
+def mask_key(api_key):
+    """Mask key for safe logging (first/last 6 chars only)."""
+    if not api_key:
+        return "***"
+    if len(api_key) <= 14:
+        return "***"
+    return f"{api_key[:6]}***{api_key[-6:]}"
+
+
+def get_google_ai_key():
+    """Return Google AI key from unified env name."""
+    return os.getenv('GOOGLE_AI_API_KEY')
+
+
+def resolve_provider(preferred_provider):
+    """Resolve provider based on flag and available keys."""
+    if preferred_provider in ("openai", "google"):
+        return preferred_provider
+
+    # Auto mode: prefer Google if available (cheaper fallback when OpenAI billing is unavailable).
+    if get_google_ai_key():
+        return "google"
+    if os.getenv('OPENAI_API_KEY'):
+        return "openai"
+    return None
+
+
+def init_embedding_client(provider):
+    """Initialize provider SDK client and return provider metadata."""
+    if provider == "openai":
+        api_key = os.getenv('OPENAI_API_KEY')
+        if not api_key:
+            raise RuntimeError("OPENAI_API_KEY not found")
+
+        try:
+            from openai import OpenAI
+        except ImportError as exc:
+            raise RuntimeError(
+                "OpenAI package not installed. Install with: pip install openai"
+            ) from exc
+
+        client = OpenAI(api_key=api_key)
+        return {
+            "provider": "openai",
+            "client": client,
+            "model": "text-embedding-3-small",
+            "generation_method": "OpenAI API",
+            "masked_key": mask_key(api_key)
+        }
+
+    if provider == "google":
+        api_key = get_google_ai_key()
+        if not api_key:
+            raise RuntimeError(
+                "GOOGLE_AI_API_KEY not found"
+            )
+
+        try:
+            import google.generativeai as genai
+        except ImportError as exc:
+            raise RuntimeError(
+                "google-generativeai package not installed. Install with: pip install google-generativeai"
+            ) from exc
+
+        genai.configure(api_key=api_key)
+        return {
+            "provider": "google",
+            "client": genai,
+            "model": "models/gemini-embedding-001",
+            "generation_method": "Google AI Gemini Embeddings API",
+            "masked_key": mask_key(api_key)
+        }
+
+    raise RuntimeError(f"Unsupported provider: {provider}")
 
 
 def load_companies(datafile):
@@ -65,64 +139,87 @@ def generate_text_for_embedding(company):
     return ' '.join(filter(None, parts))
 
 
-def get_embedding(client, text, model="text-embedding-3-small"):
+def get_embedding(client_ctx, text):
     """
-    Get embedding from OpenAI API.
+    Get embedding vector from the selected provider.
     
     Args:
-        client: OpenAI client instance
+        client_ctx: Provider context with initialized client/model
         text: Text to embed
-        model: Embedding model to use
     
     Returns:
         List of floats representing the embedding vector
     """
     try:
-        response = client.embeddings.create(
-            input=text,
-            model=model
-        )
-        return response.data[0].embedding
+        provider = client_ctx["provider"]
+
+        if provider == "openai":
+            response = client_ctx["client"].embeddings.create(
+                input=text,
+                model=client_ctx["model"]
+            )
+            return response.data[0].embedding
+
+        if provider == "google":
+            response = client_ctx["client"].embed_content(
+                model=client_ctx["model"],
+                content=text,
+                task_type="retrieval_document"
+            )
+            if isinstance(response, dict):
+                embedding = response.get("embedding")
+            else:
+                embedding = getattr(response, "embedding", None)
+
+            if embedding is None:
+                raise RuntimeError("Google AI response does not contain 'embedding'")
+
+            return embedding
+
+        raise RuntimeError(f"Unsupported provider: {provider}")
+
     except Exception as e:
         print(f"ERROR: Failed to generate embedding: {e}")
         raise
 
 
-def generate_embeddings(datafile, output_file=None, batch_size=20):
+def generate_embeddings(datafile, output_file=None, provider="auto"):
     """
     Generate embeddings for all companies.
     
     Args:
         datafile: Path to companies.json
         output_file: Path to save embeddings.json (default: public/embeddings.json)
-        batch_size: Number of companies per API batch
+        provider: Embedding provider (auto|openai|google)
     """
-    # Validate API key
-    api_key = os.getenv('OPENAI_API_KEY')
-    if not api_key:
-        print("❌ ERROR: OPENAI_API_KEY not found!")
+    resolved_provider = resolve_provider(provider)
+    if not resolved_provider:
+        print("❌ ERROR: No embedding API key found!")
         print("\n📝 Setup instructions:")
-        print("  1. Get API key from: https://platform.openai.com/api-keys")
+        print("  1. Choose provider:")
+        print("     - OpenAI key: OPENAI_API_KEY=sk-proj-...")
+        print("     - Google AI key: GOOGLE_AI_API_KEY=AIza...")
         print("  2. Local development:")
         print("     - Create .env.local file (in .gitignore)")
-        print("     - Add: OPENAI_API_KEY=sk-proj-...")
+        print("     - Add one of the keys above")
         print("  3. GitHub Actions (CI/CD):")
         print("     - Go: https://github.com/ilyastas/katalog-ai/settings/secrets/actions")
-        print("     - Add secret: OPENAI_API_KEY")
+        print("     - Add secret: OPENAI_API_KEY or GOOGLE_AI_API_KEY")
         print("  4. Terminal (temporary):")
-        print("     - export OPENAI_API_KEY='sk-...'")
+        print("     - export OPENAI_API_KEY='sk-...' OR")
+        print("     - export GOOGLE_AI_API_KEY='AIza...'")
         sys.exit(1)
 
-    # Mask key for logging (show only first/last 10 chars)
-    masked_key = api_key[:10] + "***" + api_key[-10:] if len(api_key) > 20 else "***"
-    print(f"🔑 Using API key: {masked_key}")
-
-    # Initialize OpenAI client
+    # Initialize selected provider client
     try:
-        client = OpenAI(api_key=api_key)
+        client_ctx = init_embedding_client(resolved_provider)
     except Exception as e:
-        print(f"❌ Failed to initialize OpenAI client: {e}")
+        print(f"❌ Failed to initialize embedding client: {e}")
         sys.exit(1)
+
+    print(f"🔌 Provider: {client_ctx['provider']}")
+    print(f"🧠 Model: {client_ctx['model']}")
+    print(f"🔑 Using API key: {client_ctx['masked_key']}")
 
     # Load companies
     companies = load_companies(datafile)
@@ -144,16 +241,17 @@ def generate_embeddings(datafile, output_file=None, batch_size=20):
         "description": "Pre-computed embeddings for all companies for semantic search",
         "metadata": {
             "created": datetime.utcnow().isoformat() + "Z",
-            "embedding_model": "text-embedding-3-small",
-            "vector_dimension": 1536,
+            "embedding_provider": client_ctx["provider"],
+            "embedding_model": client_ctx["model"],
+            "vector_dimension": None,
             "total_embeddings": len(companies),
             "update_frequency": "weekly",
-            "generation_method": "OpenAI API"
+            "generation_method": client_ctx["generation_method"]
         },
         "embeddings": []
     }
 
-    print(f"🔄 Generating embeddings with text-embedding-3-small...")
+    print(f"🔄 Generating embeddings with {client_ctx['model']}...")
     failed_companies = []
 
     for idx, company in enumerate(companies, 1):
@@ -161,8 +259,11 @@ def generate_embeddings(datafile, output_file=None, batch_size=20):
             # Generate text for embedding
             embed_text = generate_text_for_embedding(company)
             
-            # Get embedding from OpenAI API
-            embedding_vector = get_embedding(client, embed_text)
+            # Get embedding from selected provider
+            embedding_vector = get_embedding(client_ctx, embed_text)
+
+            if embeddings_data["metadata"]["vector_dimension"] is None:
+                embeddings_data["metadata"]["vector_dimension"] = len(embedding_vector)
 
             # Store embedding data
             embedding_record = {
@@ -228,11 +329,19 @@ def validate_embeddings(embeddings_file):
         assert 'embeddings' in data, "Missing 'embeddings' field"
         assert isinstance(data['embeddings'], list), "'embeddings' must be a list"
 
+        expected_dimension = data.get('metadata', {}).get('vector_dimension')
+
         # Validate each embedding
         for i, embedding in enumerate(data['embeddings']):
             assert 'company_id' in embedding, f"Embedding {i}: missing company_id"
             assert 'embedding' in embedding, f"Embedding {i}: missing embedding vector"
-            assert len(embedding['embedding']) == 1536, f"Embedding {i}: wrong vector dimension"
+            vector = embedding['embedding']
+            assert isinstance(vector, list), f"Embedding {i}: vector must be a list"
+            assert vector, f"Embedding {i}: vector is empty"
+
+            if expected_dimension is None:
+                expected_dimension = len(vector)
+            assert len(vector) == expected_dimension, f"Embedding {i}: wrong vector dimension"
 
         print(f"✅ Validation passed: {len(data['embeddings'])} valid embeddings")
         return True
@@ -247,7 +356,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description='Generate embeddings for companies using OpenAI API'
+        description='Generate embeddings for companies using OpenAI or Google AI'
     )
     parser.add_argument(
         '--datafile',
@@ -264,6 +373,12 @@ def main():
         action='store_true',
         help='Only validate existing embeddings file'
     )
+    parser.add_argument(
+        '--provider',
+        choices=['auto', 'openai', 'google'],
+        default='auto',
+        help='Embedding provider (default: auto)'
+    )
 
     args = parser.parse_args()
 
@@ -276,7 +391,7 @@ def main():
     print("=" * 50)
 
     # Generate embeddings
-    success = generate_embeddings(args.datafile, args.output)
+    success = generate_embeddings(args.datafile, args.output, provider=args.provider)
 
     if success:
         # Validate generated embeddings

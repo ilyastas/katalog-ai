@@ -195,11 +195,11 @@ class GooglePlacesVerifier:
 def main():
     """Основная функция для тестирования"""
     
-    # Получаем API ключ из переменной окружения
-    api_key = os.getenv("GOOGLE_PLACES_API_KEY", "demo-key")
+    # Unified env name.
+    api_key = os.getenv("GOOGLE_PLACES_KEY", "demo-key")
     
     if api_key == "demo-key":
-        print("⚠️ ВАЖНО: Установите переменную окружения GOOGLE_PLACES_API_KEY")
+        print("⚠️ ВАЖНО: Установите переменную окружения GOOGLE_PLACES_KEY")
         print("Получить ключ: https://developers.google.com/maps/documentation/places/")
         return
     
