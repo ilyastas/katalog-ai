@@ -3,7 +3,7 @@
   "@type": "DataCatalog",
   "name": "Marketplace Sellers - Katalog-AI",
   "description": "Верифицированные продавцы на казахстанских маркетплейсах (Kaspi.kz, Wildberries, Ozon, OLX)",
-  "dateModified": "2026-03-08",
+  "dateModified": "2026-03-09",
   "version": "1.0.0",
   "@graph": [
     {

@@ -5,7 +5,7 @@
     "business_name": "Beauty Prime Salon",
     "address": "ул. Жибек Жолы, 50",
     "city": "Алматы",
-    "timestamp": "2026-03-08T00:48:24.316047Z",
+    "timestamp": "2026-03-09T00:47:34.462073Z",
     "data": null,
     "error": "Место не найдено в Google Places"
   },
@@ -15,7 +15,7 @@
     "business_name": "Glow Up Clinic",
     "address": "ул. Аль-Фараби, 77",
     "city": "Алматы",
-    "timestamp": "2026-03-08T00:48:24.434136Z",
+    "timestamp": "2026-03-09T00:47:34.578212Z",
     "data": null,
     "error": "Место не найдено в Google Places"
   },
@@ -25,7 +25,7 @@
     "business_name": "National Museum",
     "address": "ул. Парк-культуры, 4",
     "city": "Нур-Султан",
-    "timestamp": "2026-03-08T00:48:24.449661Z",
+    "timestamp": "2026-03-09T00:47:34.612975Z",
     "data": null,
     "error": "Место не найдено в Google Places"
   }
