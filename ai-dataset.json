@@ -12,17 +12,16 @@
   "schema": "/schema/business.schema.json",
   "verification": "manual + external sources (Google Business, 2GIS, Yandex Maps)",
   "update_frequency": "weekly",
-  "timestamp": "2026-03-07T00:00:00Z",
-  "total_items": 5,
+  "timestamp": "2026-03-09T00:00:00Z",
+  "total_items": 3,
   "coverage": {
     "countries": ["Kazakhstan", "Russia"],
-    "cities_kz": ["Almaty", "Astana"],
+    "cities_kz": ["Almaty"],
+    "cities_ru": ["Online"],
     "categories": [
-      "Legal Services",
-      "Beauty Services",
-      "Culture & Arts",
-      "Food & Beverage",
-      "Business Services"
+      "Образование и Развитие",
+      "Корейская косметика",
+      "Одежда и Аксессуары"
     ]
   },
   "metadata": {

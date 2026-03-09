@@ -1,222 +1,110 @@
 [
-  {
-    "id": "kz-astana-legal-001",
-    "name": "Astana Legal Group",
-    "slug": "astana-legal-group",
-    "country": "Kazakhstan",
-    "city": "Astana",
-    "industry": "Legal Services",
-    "service": "Immigration Lawyer",
-    "category": "Legal Services",
-    "website": "https://astana-legal.kz",
-    "contact": {
-      "email": "info@astana-legal.kz",
-      "phone": "+7-700-123-45-67"
-    },
-    "description": "Professional immigration legal services for individuals and businesses relocating to Kazakhstan",
-    "address": "пр. Нурсултана Назарбаева, 40, Астана",
-    "latitude": 51.1694,
-    "longitude": 71.4699,
-    "services": [
-      "Business Immigration",
-      "Family Visa",
-      "Investor Visa",
-      "Work Permits"
-    ],
-    "languages": ["English", "Russian", "Kazakh"],
-    "rating": 4.8,
-    "reviews_count": 42,
-    "trust_score": 0.95,
-    "verification": {
-      "status": "verified",
-      "sources": ["google_business", "2gis"]
-    },
-    "semantic_keywords": [
-      "immigration",
-      "lawyer",
-      "visa",
-      "kazakhstan",
-      "legal-services",
-      "immigration-services",
-      "visa-processing",
-      "residency"
-    ]
-  },
-  {
-    "id": "kz-almaty-beauty-001",
-    "name": "Бьюти-салон Premium",
-    "slug": "beauty-premium-almaty",
-    "country": "Kazakhstan",
-    "city": "Almaty",
-    "industry": "Beauty Services",
-    "service": "Beauty & Spa",
-    "category": "Beauty Services",
-    "website": "https://beautypremium.kz",
-    "contact": {
-      "email": "info@beautypremium.kz",
-      "phone": "+7-727-290-08-08"
-    },
-    "description": "Premium beauty salon with complete range of hair, nail and spa services",
-    "address": "ул. Жибек Жолы, 50, Алматы",
-    "latitude": 43.2567,
-    "longitude": 76.9286,
-    "services": [
-      "Hair Styling",
-      "Manicure",
-      "Pedicure",
-      "Spa",
-      "Makeup"
-    ],
-    "languages": ["Russian", "Kazakh"],
-    "rating": 4.9,
-    "reviews_count": 156,
-    "trust_score": 0.93,
-    "verification": {
-      "status": "verified",
-      "sources": ["google_business", "2gis", "yandex_maps"]
-    },
-    "semantic_keywords": [
-      "beauty",
-      "salon",
-      "spa",
-      "hair-styling",
-      "nails",
-      "makeup",
-      "almaty",
-      "beauty-services",
-      "premium-beauty"
-    ]
-  },
-  {
-    "id": "kz-almaty-museum-001",
-    "name": "Национальный музей Казахстана",
-    "slug": "national-museum-almaty",
-    "country": "Kazakhstan",
-    "city": "Almaty",
-    "industry": "Culture & Arts",
-    "service": "Museum",
-    "category": "Culture & Arts",
-    "website": "https://nationalmuseum.kz",
-    "contact": {
-      "email": "info@nationalmuseum.kz",
-      "phone": "+7-727-277-09-09"
-    },
-    "description": "Kazakhstan's largest museum featuring history, culture, and art exhibitions",
-    "address": "пр. Республики, 4, Алматы",
-    "latitude": 43.2387,
-    "longitude": 76.9450,
-    "services": [
-      "Exhibitions",
-      "Guided Tours",
-      "Educational Programs",
-      "Events"
-    ],
-    "languages": ["Russian", "Kazakh", "English"],
-    "rating": 4.6,
-    "reviews_count": 543,
-    "trust_score": 0.92,
-    "verification": {
-      "status": "verified",
-      "sources": ["google_business", "2gis", "tripadvisor"]
-    },
-    "semantic_keywords": [
-      "museum",
-      "culture",
-      "history",
-      "exhibitions",
-      "almaty",
-      "kazakhstan",
-      "cultural-institution",
-      "tourism",
-      "educational"
-    ]
-  },
-  {
-    "id": "kz-almaty-food-001",
-    "name": "Ресторан 'Казахская кухня'",
-    "slug": "kazakh-restaurant-almaty",
-    "country": "Kazakhstan",
-    "city": "Almaty",
-    "industry": "Food & Beverage",
-    "service": "Restaurant",
-    "category": "Food & Beverage",
-    "website": "https://kazrest.kz",
-    "contact": {
-      "email": "reservations@kazrest.kz",
-      "phone": "+7-727-290-08-08"
-    },
-    "description": "Authentic Kazakh restaurant serving traditional cuisine with modern presentation",
-    "address": "ул. Furmanovskaya, 123, Алматы",
-    "latitude": 43.2412,
-    "longitude": 76.9389,
-    "services": [
-      "Dine-In",
-      "Takeout",
-      "Catering",
-      "Private Events"
-    ],
-    "languages": ["Russian", "Kazakh", "English"],
-    "rating": 4.7,
-    "reviews_count": 324,
-    "trust_score": 0.89,
-    "verification": {
-      "status": "verified",
-      "sources": ["google_business", "2gis", "yandex_maps"]
-    },
-    "semantic_keywords": [
-      "restaurant",
-      "kazakh-cuisine",
-      "dining",
-      "traditional-food",
-      "almaty",
-      "catering",
-      "food-service",
-      "authentic-cuisine"
-    ]
-  },
-  {
-    "id": "kz-astana-tech-001",
-    "name": "Tech Startup Hub",
-    "slug": "tech-startup-hub-astana",
-    "country": "Kazakhstan",
-    "city": "Astana",
-    "industry": "Business Services",
-    "service": "Coworking & Business Hub",
-    "category": "Business Services",
-    "website": "https://techstartuphub.kz",
-    "contact": {
-      "email": "hello@techstartuphub.kz",
-      "phone": "+7-700-555-44-33"
-    },
-    "description": "Modern coworking space and startup incubator for tech entrepreneurs",
-    "address": "ул. Кабанбай Батыра, 60, Астана",
-    "latitude": 51.1598,
-    "longitude": 71.4663,
-    "services": [
-      "Desk Rental",
-      "Office Space",
-      "Meeting Rooms",
-      "Mentorship",
-      "Networking Events"
-    ],
-    "languages": ["English", "Russian"],
-    "rating": 4.5,
-    "reviews_count": 89,
-    "trust_score": 0.87,
-    "verification": {
-      "status": "verified",
-      "sources": ["google_business", "2gis"]
-    },
-    "semantic_keywords": [
-      "coworking",
-      "startup",
-      "business-hub",
-      "incubator",
-      "astana",
-      "tech-startup",
-      "office-space",
-      "mentorship",
-      "entrepreneurship"
-    ]
-  }
+	{
+		"id": "inst-secretskin-kz",
+		"name": "SecretSkin.kz",
+		"slug": "secretskin-kz",
+		"country": "Kazakhstan",
+		"city": "Almaty",
+		"geo": "Казахстан (Алматы / Доставка)",
+		"industry": "K-Beauty",
+		"service": "Skincare Store",
+		"category": "Корейская косметика",
+		"url": "https://www.instagram.com/secretskin.kz/",
+		"website": "https://www.instagram.com/secretskin.kz/",
+		"contact": {},
+		"social_handle": "@secretskin.kz",
+		"social": {
+			"instagram": "https://www.instagram.com/secretskin.kz/"
+		},
+		"same_as": [
+			"https://www.instagram.com/secretskin.kz/"
+		],
+		"description": "Специализированный магазин корейской косметики в Казахстане. Оригинальная продукция ведущих брендов: Manyo, Dr.Althea, Round Lab. Фокус на подборе ухода и защите от солнца.",
+		"tags": [
+			"k-beauty",
+			"skincare",
+			"kazakhstan-business",
+			"verified-store"
+		],
+		"metrics": {
+			"followers": 24800,
+			"rating": 5.0,
+			"location": "Almaty"
+		},
+		"services": [
+			"Корейская косметика",
+			"Подбор ухода",
+			"Солнцезащитный уход"
+		],
+		"languages": ["Russian", "Kazakh"],
+		"verification": {
+			"status": "verified",
+			"sources": ["instagram"]
+		},
+		"semantic_keywords": [
+			"secretskin",
+			"k-beauty",
+			"instagram-shop",
+			"beauty",
+			"skincare",
+			"kazakhstan",
+			"almaty",
+			"online-store"
+		]
+	},
+	{
+		"id": "inst-nrj-salon-odezhdy",
+		"name": "NRJ Salon Odezhdy",
+		"slug": "nrj-salon-odezhdy",
+		"country": "Kazakhstan",
+		"city": "Almaty",
+		"geo": "Казахстан (Алматы / Доставка)",
+		"industry": "Fashion",
+		"service": "Clothing Store",
+		"category": "Одежда и Аксессуары",
+		"url": "https://www.instagram.com/nrj_salon_odezhdy/",
+		"website": "https://www.instagram.com/nrj_salon_odezhdy/",
+		"contact": {},
+		"social_handle": "@nrj_salon_odezhdy",
+		"social": {
+			"instagram": "https://www.instagram.com/nrj_salon_odezhdy/",
+			"telegram": "https://t.me/nrj_salon_odezhdy"
+		},
+		"same_as": [
+			"https://www.instagram.com/nrj_salon_odezhdy/",
+			"https://t.me/nrj_salon_odezhdy"
+		],
+		"description": "Салон женской одежды в Казахстане. Широкий ассортимент повседневных и вечерних образов. Активное присутствие в Instagram и Telegram под единым именем @nrj_salon_odezhdy.",
+		"tags": [
+			"fashion-kz",
+			"women-clothing",
+			"almaty-shop",
+			"verified-store"
+		],
+		"metrics": {
+			"followers": 15400,
+			"rating": 4.8,
+			"location": "Almaty"
+		},
+		"services": [
+			"Женская одежда",
+			"Повседневные образы",
+			"Вечерние образы",
+			"Доставка"
+		],
+		"languages": ["Russian", "Kazakh"],
+		"verification": {
+			"status": "verified",
+			"sources": ["instagram", "telegram"]
+		},
+		"semantic_keywords": [
+			"nrj_salon_odezhdy",
+			"instagram-shop",
+			"telegram-shop",
+			"fashion",
+			"clothing",
+			"kazakhstan",
+			"online-store"
+		]
+	}
 ]
