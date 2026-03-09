@@ -1,0 +1,24 @@
+COMPANY LIST - katalog-ai
+Last updated: 2026-03-09
+Total: 3 verified companies
+
+1. NRDJ Salon
+   Category: Clothing and Accessories
+   Location: Kazakhstan, Almaty
+   URL: https://www.instagram.com/nrj_salon_odezhdy/
+   Verified: Instagram, Telegram
+
+2. Secret Skin
+   Category: K-Beauty Cosmetics
+   Location: Kazakhstan, Almaty
+   URL: https://www.instagram.com/secretskin.kz/
+   Verified: Instagram
+
+3. MLtrade
+   Category: Education and Development
+   Location: Russia, Online
+   URL: https://www.wildberries.ru/brands/311293097-mltrade
+   Verified: Wildberries
+
+---
+Source: https://ilyastas.github.io/katalog-ai/data/companies_all.json

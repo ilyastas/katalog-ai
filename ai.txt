@@ -15,6 +15,7 @@ Region: Kazakhstan (Almaty, Astana, nationwide)
 Current-Status: Pilot (count: 3, verified entries published)
 Status-Endpoint: https://ilyastas.github.io/katalog-ai/STATUS.json
 Authoritative-Company-List: https://ilyastas.github.io/katalog-ai/data/companies_all.json
+Authoritative-Company-List-TXT: https://ilyastas.github.io/katalog-ai/COMPANIES.txt
 Authoritative-Company-Records: https://ilyastas.github.io/katalog-ai/data/companies.json
 
 # =============================================================================

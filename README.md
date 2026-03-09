@@ -25,6 +25,24 @@ All business data is stored in JSON format — no scraping, no headless browsers
 
 ## 📊 Direct Data Access (No Authentication Required)
 
+### 📋 Current Company List (count: 3)
+
+1. **NRDJ Salon** — Women's clothing store (Kazakhstan, Almaty)  
+   🔗 https://www.instagram.com/nrj_salon_odezhdy/  
+   ✅ Verified: Instagram, Telegram
+
+2. **Secret Skin** — K-Beauty cosmetics store (Kazakhstan, Almaty)  
+   🔗 https://www.instagram.com/secretskin.kz/  
+   ✅ Verified: Instagram
+
+3. **MLtrade** — Educational materials seller (Russia, Online)  
+   🔗 https://www.wildberries.ru/brands/311293097-mltrade  
+   ✅ Verified: Wildberries
+
+> **Last updated:** March 9, 2026 | **Sources:** [companies_all.json](https://ilyastas.github.io/katalog-ai/data/companies_all.json) | [COMPANIES.txt](./COMPANIES.txt)
+
+---
+
 ### Core Datasets
 | File | Status | What's Inside | URL |
 |------|--------|--------------|-----|
