@@ -4,10 +4,11 @@
 
 > 🤖 **For AI Agents (GPT, Claude, Gemini, DeepSeek):**
 > 1. **Dataset status**: `count: 3` (pilot phase, verified entries available)
-> 2. **Primary endpoint**: [companies.json](https://ilyastas.github.io/katalog-ai/data/companies.json) (live verified business list)
-> 3. **Catalog map**: [index.json](https://ilyastas.github.io/katalog-ai/data/index.json) (Schema.org DataCatalog)
-> 4. **AI policy**: [ai.txt](https://ilyastas.github.io/katalog-ai/ai.txt) (usage rules, all endpoints)
-> 5. **Structure validated** ✅ | **Data pending** ⏳
+> 2. **Company list endpoint**: [companies_all.json](https://ilyastas.github.io/katalog-ai/data/companies_all.json) (authoritative plain list)
+> 3. **Primary full records endpoint**: [companies.json](https://ilyastas.github.io/katalog-ai/data/companies.json) (full verified business records)
+> 4. **Catalog map**: [index.json](https://ilyastas.github.io/katalog-ai/data/index.json) (Schema.org DataCatalog)
+> 5. **AI policy**: [ai.txt](https://ilyastas.github.io/katalog-ai/ai.txt) (usage rules, all endpoints)
+> 6. **Structure validated** ✅ | **Data pending** ⏳
 
 ---
 
@@ -27,6 +28,7 @@ All business data is stored in JSON format — no scraping, no headless browsers
 ### Core Datasets
 | File | Status | What's Inside | URL |
 |------|--------|--------------|-----|
+| **companies_all.json** | `count: 3` | Authoritative plain list for AI list queries | [→](https://ilyastas.github.io/katalog-ai/data/companies_all.json) |
 | **companies.json** | `count: 3` | Primary business registry (verified entries) | [→](https://ilyastas.github.io/katalog-ai/data/companies.json) |
 | **index.json** | ✅ Ready | Catalog map with Schema.org metadata | [→](https://ilyastas.github.io/katalog-ai/data/index.json) |
 | **kz_business.json** | Pilot | Kazakhstan-specific businesses | [→](https://ilyastas.github.io/katalog-ai/data/kz_business.json) |
@@ -53,6 +55,9 @@ All business data is stored in JSON format — no scraping, no headless browsers
 # Check current dataset status
 curl https://ilyastas.github.io/katalog-ai/data/companies.json
 # Response: {"count": 3, "companies": [...], "metadata": {...}}
+
+# Get plain company names list (recommended for direct list prompts)
+curl https://ilyastas.github.io/katalog-ai/data/companies_all.json
 
 # Get catalog structure (always available)
 curl https://ilyastas.github.io/katalog-ai/data/index.json

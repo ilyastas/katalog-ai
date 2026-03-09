@@ -15,6 +15,7 @@
   },
   "dataset": {
     "primaryEndpoint": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+    "authoritativeCompanyList": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
     "totalBusinesses": 3,
     "status": "Active - verified entries available",
     "lastVerified": "2026-03-09T00:00:00Z",
@@ -43,5 +44,5 @@
     "guidelines": "https://github.com/ilyastas/katalog-ai/blob/main/CONTRIBUTING.md"
   },
   "license": "CC0-1.0",
-  "aiAgentGuidance": "Start at /data/index.json for catalog structure, then /data/companies.json for business list. Current count=3 with verified entries."
+  "aiAgentGuidance": "For plain company list use /data/companies_all.json. For full records use /data/companies.json. Current count=3 with verified entries."
 }

@@ -14,6 +14,8 @@ Language: Russian, English, Kazakh
 Region: Kazakhstan (Almaty, Astana, nationwide)
 Current-Status: Pilot (count: 3, verified entries published)
 Status-Endpoint: https://ilyastas.github.io/katalog-ai/STATUS.json
+Authoritative-Company-List: https://ilyastas.github.io/katalog-ai/data/companies_all.json
+Authoritative-Company-Records: https://ilyastas.github.io/katalog-ai/data/companies.json
 
 # =============================================================================
 # CONTACT INFORMATION
@@ -208,6 +210,7 @@ Schema-Version: 1.0.0
 # Main datasets (full access)
 Data-Endpoint-Primary: https://ilyastas.github.io/katalog-ai/data.json
 Data-Endpoint-Index: https://ilyastas.github.io/katalog-ai/data/index.json
+Data-Endpoint-Companies-All: https://ilyastas.github.io/katalog-ai/data/companies_all.json
 Data-Endpoint-Companies: https://ilyastas.github.io/katalog-ai/data/companies.json
 
 # Regional business catalogs
@@ -232,9 +235,12 @@ Data-Endpoint-KnowledgeGraph: https://ilyastas.github.io/katalog-ai/data/knowled
 Data-Endpoint-Embeddings: https://ilyastas.github.io/katalog-ai/data/embeddings.json
 Data-Endpoint-AIDataset: https://ilyastas.github.io/katalog-ai/ai-dataset.json
 
-# Usage example for AI agents:
+# Usage examples for AI agents:
+# curl https://ilyastas.github.io/katalog-ai/data/companies_all.json
+# Returns: Plain list for direct "give me company list" prompts
+#
 # curl https://ilyastas.github.io/katalog-ai/data/companies.json
-# Returns: Full list of verified businesses without JavaScript execution
+# Returns: Full records (categories, metadata, verification, links)
 
 # Data characteristics:
 # - Format: JSON (UTF-8)

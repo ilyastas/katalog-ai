@@ -4,7 +4,7 @@
   "name": "ALIE - AI Lead Intelligence Engine",
   "description": "Верифицированный каталог бизнесов Казахстана для ИИ-ассистентов",
   "url": "https://ilyastas.github.io/katalog-ai/",
-  "dateModified": "2026-03-05",
+  "dateModified": "2026-03-09",
   "version": "1.0.0",
   "license": "https://github.com/ilyastas/katalog-ai/blob/main/LICENSE",
   "creator": {
@@ -13,6 +13,17 @@
     "url": "https://github.com/ilyastas"
   },
   "hasPart": [
+    {
+      "@type": "Dataset",
+      "name": "Authoritative Company List",
+      "description": "Plain list endpoint for direct company list queries by AI agents",
+      "url": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
+        "encodingFormat": "application/json"
+      }
+    },
     {
       "@type": "Dataset",
       "name": "Beauty & Cosmetics",
