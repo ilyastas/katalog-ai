@@ -1,6 +1,6 @@
 # AI.txt - AI Agent Guidelines for ALIE Platform
 # https://alie.kz/ai.txt
-# Last updated: March 5, 2026
+# Last updated: March 9, 2026
 
 # =============================================================================
 # PROJECT INFORMATION
@@ -195,6 +195,52 @@ Data-Format: JSON
 # Schema documentation
 Schema-URL: https://api.alie.kz/openapi.json
 Schema-Version: 1.0.0
+
+# =============================================================================
+# DIRECT JSON DATA ENDPOINTS (AI-Friendly Access)
+# =============================================================================
+
+# BYPASS JS-WALL: Access structured data directly without rendering JavaScript
+# All endpoints return pure JSON - no need for browser or headless crawler
+
+# Main datasets (full access)
+Data-Endpoint-Primary: https://ilyastas.github.io/katalog-ai/data.json
+Data-Endpoint-Index: https://ilyastas.github.io/katalog-ai/data/index.json
+Data-Endpoint-Companies: https://ilyastas.github.io/katalog-ai/data/companies.json
+
+# Regional business catalogs
+Data-Endpoint-KZ: https://ilyastas.github.io/katalog-ai/data/kz_business.json
+Data-Endpoint-RU: https://ilyastas.github.io/katalog-ai/data/ru_business.json
+Data-Endpoint-SEO: https://ilyastas.github.io/katalog-ai/data/seo_services.json
+
+# Categories and metadata
+Data-Endpoint-Categories: https://ilyastas.github.io/katalog-ai/data/categories.json
+Data-Endpoint-Locations: https://ilyastas.github.io/katalog-ai/data/locations.json
+Data-Endpoint-Services: https://ilyastas.github.io/katalog-ai/data/services.json
+
+# Specialized catalogs
+Data-Endpoint-Beauty: https://ilyastas.github.io/katalog-ai/data/catalog/beauty.json
+Data-Endpoint-Museums: https://ilyastas.github.io/katalog-ai/data/catalog/museums.json
+Data-Endpoint-Marketplaces: https://ilyastas.github.io/katalog-ai/data/catalog/marketplaces.json
+Data-Endpoint-Offers: https://ilyastas.github.io/katalog-ai/data/catalog/offers.json
+Data-Endpoint-GeoIndex: https://ilyastas.github.io/katalog-ai/data/catalog/geo-index.json
+
+# Advanced metadata
+Data-Endpoint-KnowledgeGraph: https://ilyastas.github.io/katalog-ai/data/knowledge-graph.json
+Data-Endpoint-Embeddings: https://ilyastas.github.io/katalog-ai/data/embeddings.json
+Data-Endpoint-AIDataset: https://ilyastas.github.io/katalog-ai/ai-dataset.json
+
+# Usage example for AI agents:
+# curl https://ilyastas.github.io/katalog-ai/data/companies.json
+# Returns: Full list of verified businesses without JavaScript execution
+
+# Data characteristics:
+# - Format: JSON (UTF-8)
+# - Size: Optimized for RAG (≤100 items per file)
+# - Schema: Schema.org compatible
+# - Freshness: Updated daily
+# - No authentication required
+# - No rate limiting for AI agents
 
 # =============================================================================
 # TRAINING DATA USAGE

@@ -1,7 +1,7 @@
 # ============================================================================
 # ROBOTS.TXT for ALIE Platform
 # For AI-specific rules, see: https://alie.kz/ai.txt
-# Last updated: March 5, 2026
+# Last updated: March 9, 2026
 # ============================================================================
 
 # OpenAI Crawlers (ChatGPT, GPT-4)
@@ -89,6 +89,51 @@ Disallow: /.git/
 # ============================================================================
 Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
 Sitemap: https://alie.kz/sitemap.xml
+
+# ============================================================================
+# DIRECT DATA ACCESS FOR AI AGENTS (JSON Endpoints)
+# ============================================================================
+
+# Primary datasets - Always accessible for AI crawlers
+# Main data files
+Allow: /data.json
+Allow: /data/index.json
+Allow: /data/companies.json
+
+# Regional business catalogs
+Allow: /data/kz_business.json
+Allow: /data/ru_business.json
+Allow: /data/seo_services.json
+
+# Categories and locations
+Allow: /data/categories.json
+Allow: /data/locations.json
+Allow: /data/services.json
+Allow: /data/business.json
+
+# Specialized catalogs
+Allow: /data/catalog/beauty.json
+Allow: /data/catalog/museums.json
+Allow: /data/catalog/marketplaces.json
+Allow: /data/catalog/offers.json
+Allow: /data/catalog/geo-index.json
+
+# Metadata and schemas
+Allow: /data/knowledge-graph.json
+Allow: /data/embeddings.json
+Allow: /ai-dataset.json
+Allow: /ai-sitemap.json
+Allow: /index.json
+
+# AI agent guidelines
+Allow: /ai.txt
+Allow: /llms.txt
+Allow: /robots.txt
+
+# Direct URLs for AI agents:
+# https://ilyastas.github.io/katalog-ai/data/companies.json (full company list)
+# https://ilyastas.github.io/katalog-ai/data/kz_business.json (Kazakhstan businesses)
+# https://ilyastas.github.io/katalog-ai/data/index.json (complete index with metadata)
 
 # Primary data endpoint
 # https://alie.kz/data.json (updated daily)
