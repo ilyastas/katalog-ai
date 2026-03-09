@@ -139,6 +139,31 @@
       padding: 0 4px;
     }
 
+    .snapshot {
+      margin-top: 16px;
+      border-top: 1px dashed var(--line);
+      padding-top: 14px;
+    }
+
+    .snapshot h2 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .snapshot ul {
+      padding-left: 18px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
+    .snapshot a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
     @media (max-width: 700px) {
       .card { padding: 20px; }
       .grid { grid-template-columns: 1fr; }
@@ -158,6 +183,8 @@
     </section>
 
     <section class="grid" aria-label="direct endpoints">
+      <a class="endpoint" href="/katalog-ai/data.json">/data.json</a>
+      <a class="endpoint" href="/katalog-ai/index.json">/index.json</a>
       <a class="endpoint" href="/katalog-ai/data/companies.json">/data/companies.json</a>
       <a class="endpoint" href="/katalog-ai/data/index.json">/data/index.json</a>
       <a class="endpoint" href="/katalog-ai/ai.txt">/ai.txt</a>
@@ -170,6 +197,21 @@
       For crawlers and assistants: start at <code>/data/index.json</code>, then fetch
       <code>/data/companies.json</code> for complete records.
     </p>
+
+    <section class="snapshot" aria-label="static company snapshot">
+      <h2>Static company snapshot (HTML fallback)</h2>
+      <ul>
+        <li>Astana Legal Group - <a href="https://astana-legal.kz">https://astana-legal.kz</a></li>
+        <li>Beauty Premium - <a href="https://beautypremium.kz">https://beautypremium.kz</a></li>
+        <li>National Museum of Kazakhstan - <a href="https://nationalmuseum.kz">https://nationalmuseum.kz</a></li>
+        <li>Kazakh Restaurant - <a href="https://kazrest.kz">https://kazrest.kz</a></li>
+        <li>Tech Startup Hub - <a href="https://techstartuphub.kz">https://techstartuphub.kz</a></li>
+      </ul>
+    </section>
+
+    <noscript>
+      <p class="ai-note">JavaScript is disabled. Use <code>/data/companies.json</code> for the full machine-readable dataset.</p>
+    </noscript>
   </main>
 
   <script>
