@@ -1,14 +1,119 @@
 {
   "version": "1.0.0",
   "timestamp": "2026-03-09T00:00:00Z",
-  "count": 0,
-  "companies": [],
+  "count": 3,
+  "companies": [
+    {
+      "id": "inst-nrdjsalon",
+      "name": "NRDJ Salon",
+      "slug": "nrdjsalon",
+      "country": "Kazakhstan",
+      "city": "Almaty",
+      "geo": "Kazakhstan (Almaty / Delivery)",
+      "industry": "Fashion",
+      "service": "Clothing Store",
+      "category": "Clothing and Accessories",
+      "url": "https://www.instagram.com/nrj_salon_odezhdy/",
+      "website": "https://www.instagram.com/nrj_salon_odezhdy/",
+      "contact": {},
+      "social_handle": "@nrj_salon_odezhdy",
+      "social": {
+        "instagram": "https://www.instagram.com/nrj_salon_odezhdy/",
+        "telegram": "https://t.me/nrj_salon_odezhdy"
+      },
+      "same_as": [
+        "https://www.instagram.com/nrj_salon_odezhdy/",
+        "https://t.me/nrj_salon_odezhdy"
+      ],
+      "description": "Salon of women's clothing with active Instagram and Telegram channels.",
+      "tags": ["fashion-kz", "women-clothing", "almaty-shop", "verified-store"],
+      "metrics": {
+        "followers": 15400,
+        "rating": 4.8,
+        "location": "Almaty"
+      },
+      "services": ["Women's clothing", "Casual outfits", "Evening outfits", "Delivery"],
+      "languages": ["Russian", "Kazakh"],
+      "verification": {
+        "status": "verified",
+        "sources": ["instagram", "telegram"]
+      },
+      "semantic_keywords": ["nrdjsalon", "nrj_salon_odezhdy", "fashion", "clothing", "almaty", "kazakhstan"]
+    },
+    {
+      "id": "inst-secretskin-kz",
+      "name": "Secret Skin",
+      "slug": "secret-skin-kz",
+      "country": "Kazakhstan",
+      "city": "Almaty",
+      "geo": "Kazakhstan (Almaty / Delivery)",
+      "industry": "K-Beauty",
+      "service": "Skincare Store",
+      "category": "K-Beauty Cosmetics",
+      "url": "https://www.instagram.com/secretskin.kz/",
+      "website": "https://www.instagram.com/secretskin.kz/",
+      "contact": {},
+      "social_handle": "@secretskin.kz",
+      "social": {
+        "instagram": "https://www.instagram.com/secretskin.kz/"
+      },
+      "same_as": [
+        "https://www.instagram.com/secretskin.kz/"
+      ],
+      "description": "Specialized Korean skincare store with original products and care selection.",
+      "tags": ["k-beauty", "skincare", "kazakhstan-business", "verified-store"],
+      "metrics": {
+        "followers": 24800,
+        "rating": 5.0,
+        "location": "Almaty"
+      },
+      "services": ["K-Beauty cosmetics", "Skincare selection", "Sun care"],
+      "languages": ["Russian", "Kazakh"],
+      "verification": {
+        "status": "verified",
+        "sources": ["instagram"]
+      },
+      "semantic_keywords": ["secret skin", "secretskin", "k-beauty", "skincare", "almaty", "kazakhstan"]
+    },
+    {
+      "id": "brand-mltrade-311293097",
+      "name": "MLtrade",
+      "slug": "mltrade-wildberries",
+      "country": "Russia",
+      "city": "Online",
+      "geo": "CIS (Wildberries warehouses)",
+      "industry": "Marketplace",
+      "service": "Marketplace Seller",
+      "category": "Education and Development",
+      "url": "https://www.wildberries.ru/brands/311293097-mltrade",
+      "website": "https://www.wildberries.ru/brands/311293097-mltrade",
+      "contact": {},
+      "description": "Supplier of reusable educational materials and stationery for children.",
+      "tags": ["education", "kids-development", "verified", "best-seller"],
+      "metrics": {
+        "sales": 37266,
+        "rating": 4.9,
+        "years_on_market": 2
+      },
+      "marketplace": {
+        "platform": "Wildberries",
+        "brand_url": "https://www.wildberries.ru/brands/311293097-mltrade"
+      },
+      "services": ["Online retail", "Marketplace sales"],
+      "languages": ["Russian"],
+      "verification": {
+        "status": "verified",
+        "sources": ["wildberries"]
+      },
+      "semantic_keywords": ["wildberries", "mltrade", "marketplace", "e-commerce", "online-store"]
+    }
+  ],
   "metadata": {
     "source": "katalog-ai",
     "last_updated": "2026-03-09",
     "update_frequency": "as-verified",
     "license": "CC0 1.0 Universal",
     "ai_optimized": true,
-    "status": "MVP - awaiting real verified entries"
+    "status": "Active pilot - verified entries present"
   }
 }

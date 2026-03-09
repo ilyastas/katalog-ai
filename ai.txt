@@ -12,6 +12,8 @@ Purpose: Intelligent business discovery and lead generation
 Version: 1.0.0
 Language: Russian, English, Kazakh
 Region: Kazakhstan (Almaty, Astana, nationwide)
+Current-Status: Pilot (count: 3, verified entries published)
+Status-Endpoint: https://ilyastas.github.io/katalog-ai/STATUS.json
 
 # =============================================================================
 # CONTACT INFORMATION

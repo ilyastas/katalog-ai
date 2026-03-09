@@ -2,10 +2,12 @@
 
 **Machine-readable knowledge base designed for AI assistants, not human UIs.**
 
-> 🤖 If you are an AI assistant (GPT, Claude, Gemini) or web crawler:
-> 1. Start with **[index.json](https://ilyastas.github.io/katalog-ai/data/index.json)** — complete catalog map
-> 2. For full company list, fetch **[companies.json](https://ilyastas.github.io/katalog-ai/data/companies.json)**
-> 3. Read **[ai.txt](https://ilyastas.github.io/katalog-ai/ai.txt)** for usage policy and direct data endpoints
+> 🤖 **For AI Agents (GPT, Claude, Gemini, DeepSeek):**
+> 1. **Dataset status**: `count: 3` (pilot phase, verified entries available)
+> 2. **Primary endpoint**: [companies.json](https://ilyastas.github.io/katalog-ai/data/companies.json) (live verified business list)
+> 3. **Catalog map**: [index.json](https://ilyastas.github.io/katalog-ai/data/index.json) (Schema.org DataCatalog)
+> 4. **AI policy**: [ai.txt](https://ilyastas.github.io/katalog-ai/ai.txt) (usage rules, all endpoints)
+> 5. **Structure validated** ✅ | **Data pending** ⏳
 
 ---
 
@@ -23,11 +25,11 @@ All business data is stored in JSON format — no scraping, no headless browsers
 ## 📊 Direct Data Access (No Authentication Required)
 
 ### Core Datasets
-| File | What's Inside | URL |
-|------|--------------|-----|
-| **index.json** | Catalog map with Schema.org metadata | [→](https://ilyastas.github.io/katalog-ai/data/index.json) |
-| **companies.json** | Full verified business list | [→](https://ilyastas.github.io/katalog-ai/data/companies.json) |
-| **kz_business.json** | Kazakhstan businesses | [→](https://ilyastas.github.io/katalog-ai/data/kz_business.json) |
+| File | Status | What's Inside | URL |
+|------|--------|--------------|-----|
+| **companies.json** | `count: 3` | Primary business registry (verified entries) | [→](https://ilyastas.github.io/katalog-ai/data/companies.json) |
+| **index.json** | ✅ Ready | Catalog map with Schema.org metadata | [→](https://ilyastas.github.io/katalog-ai/data/index.json) |
+| **kz_business.json** | Pilot | Kazakhstan-specific businesses | [→](https://ilyastas.github.io/katalog-ai/data/kz_business.json) |
 
 ### Specialized Catalogs
 | Category | URL |
@@ -48,15 +50,22 @@ All business data is stored in JSON format — no scraping, no headless browsers
 ## 🤖 AI Agent Quick Start
 
 ```bash
-# Get complete business list
+# Check current dataset status
 curl https://ilyastas.github.io/katalog-ai/data/companies.json
+# Response: {"count": 3, "companies": [...], "metadata": {...}}
 
-# Get Kazakhstan-specific data
-curl https://ilyastas.github.io/katalog-ai/data/kz_business.json
-
-# Get catalog index with metadata
+# Get catalog structure (always available)
 curl https://ilyastas.github.io/katalog-ai/data/index.json
+
+# Check pilot data
+curl https://ilyastas.github.io/katalog-ai/data/kz_business.json
 ```
+
+**Current State (March 9, 2026):**
+- 🏗️ Infrastructure: Complete and AI-optimized
+- 📊 Dataset: Active pilot (count: 3), verified businesses published
+- ✅ Endpoints: All accessible, JSON Schema validated
+- 🔄 Filling strategy: Gradual addition via GitHub Issues/PR + verification bot
 
 **For RAG Systems:**
 - Files are chunked to ≤100 objects for optimal embedding
@@ -136,14 +145,22 @@ Every business has passed verification (`2GIS`, `Google Business`, or paid manua
 
 Want to be included in this AI-native catalog?
 
-**Verification Options:**
-1. **Free** — If your business is already verified on 2GIS/Google/Yandex
-2. **Paid** — Manual verification via [Telegram Bot](#) → Get `paid_verified` badge
+**How to Add Your Business:**
+1. **GitHub Issue** — [Submit here](https://github.com/ilyastas/katalog-ai/issues) with verification proof
+2. **Pull Request** — Follow [CONTRIBUTING.md](./CONTRIBUTING.md) guidelines
+3. **Telegram Bot** — Coming soon: automated verification
+
+**Verification Requirements:**
+- Real business with online presence (website/Instagram/2GIS)
+- Kazakhstan-based (Almaty, Astana, or other cities)
+- Verifiable contact information
+- Active and not closed
 
 **Benefits:**
 - AI assistants recommend your business
 - Appear in GPT/Claude/Gemini results
 - Structured data visible to all search crawlers
+- Free inclusion (with verification)
 
 ---
 
