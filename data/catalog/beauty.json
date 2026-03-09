@@ -3,7 +3,7 @@
   "@type": "ItemList",
   "name": "Beauty & Cosmetics Catalog",
   "description": "Верифицированные салоны красоты и косметические услуги",
-  "dateModified": "2026-03-05",
+  "dateModified": "2026-03-09",
   "itemListElement": [
     {
       "@type": "HealthAndBeautyBusiness",
@@ -183,6 +183,34 @@
         "verified_by_google": true,
         "last_verified": "2026-03-05",
         "trust_score": 0.92
+      }
+    },
+    {
+      "@type": "HealthAndBeautyBusiness",
+      "@id": "beauty-secretskin-kz",
+      "name": "Secret Skin",
+      "description": "Specialized Korean skincare store with verified Instagram presence in Kazakhstan.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Almaty",
+        "addressCountry": "KZ"
+      },
+      "url": "https://www.instagram.com/secretskin.kz/",
+      "sameAs": [
+        "https://www.instagram.com/secretskin.kz/"
+      ],
+      "category": "K-Beauty Cosmetics",
+      "rating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": "24800",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "trust_signals": {
+        "verified_by_instagram": true,
+        "last_verified": "2026-03-09",
+        "trust_score": 0.93
       }
     }
   ]

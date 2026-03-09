@@ -3,7 +3,7 @@
   "@type": "ItemList",
   "name": "Marketplaces & Online Sellers",
   "description": "Верифицированные продавцы на казахстанских маркетплейсах",
-  "dateModified": "2026-03-05",
+  "dateModified": "2026-03-09",
   "itemListElement": [
     {
       "@type": "Store",
@@ -142,6 +142,62 @@
         "verified_by_2gis": true,
         "last_verified": "2026-03-04",
         "trust_score": 0.82
+      }
+    },
+    {
+      "@type": "Store",
+      "@id": "marketplace-nrdjsalon",
+      "name": "NRDJ Salon",
+      "description": "Women's clothing store with active Instagram and Telegram channels.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Almaty",
+        "addressCountry": "KZ"
+      },
+      "url": "https://www.instagram.com/nrj_salon_odezhdy/",
+      "sameAs": [
+        "https://www.instagram.com/nrj_salon_odezhdy/",
+        "https://t.me/nrj_salon_odezhdy"
+      ],
+      "rating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "15400",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "trust_signals": {
+        "verified_by_instagram": true,
+        "verified_by_telegram": true,
+        "last_verified": "2026-03-09",
+        "trust_score": 0.9
+      }
+    },
+    {
+      "@type": "Store",
+      "@id": "marketplace-mltrade",
+      "name": "MLtrade",
+      "description": "Marketplace seller of educational materials and children's stationery.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Online",
+        "addressCountry": "RU"
+      },
+      "url": "https://www.wildberries.ru/brands/311293097-mltrade",
+      "sameAs": [
+        "https://www.wildberries.ru/brands/311293097-mltrade"
+      ],
+      "rating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "37266",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "trust_signals": {
+        "verified_by_wildberries": true,
+        "last_verified": "2026-03-09",
+        "trust_score": 0.91
       }
     }
   ]
