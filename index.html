@@ -1,72 +1,196 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog AI - Открытый реестр ИИ для ботов</title>
-    
-    <meta name="description" content="Машиночитаемый каталог нейросетей и ИИ-инструментов. Оптимизировано для GPT, Claude и Bing Search. Доступ к базе через data.json.">
-    <meta name="keywords" content="ИИ, нейросети, каталог AI, Казахстан, ИИ для бизнеса, AI directory, СНГ">
-    <link rel="canonical" href="https://ilyastas.github.io/katalog-ai/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>katalog-ai | data-first directory</title>
 
-    <meta property="og:title" content="Katalog AI - База знаний для ИИ">
-    <meta property="og:description" content="Проверенные ИИ-решения для Казахстана и мира в одном JSON-файле.">
-    <meta property="og:type" content="website">
+  <meta name="description" content="Machine-readable business catalog for AI assistants. Direct JSON endpoints: companies, index, ai.txt, robots.txt.">
+  <meta name="keywords" content="AI directory, machine-readable catalog, companies json, Kazakhstan business data">
+  <link rel="canonical" href="https://ilyastas.github.io/katalog-ai/">
 
-    <script type="application/ld+json">
+  <meta property="og:title" content="katalog-ai | data-first directory">
+  <meta property="og:description" content="Direct JSON endpoints for AI agents and crawlers.">
+  <meta property="og:type" content="website">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DataCatalog",
+    "name": "katalog-ai",
+    "description": "Machine-readable catalog of verified businesses with direct JSON endpoints.",
+    "url": "https://ilyastas.github.io/katalog-ai/",
+    "distribution": [
     {
-      "@context": "https://schema.org",
-      "@type": "DataCatalog",
-      "name": "Katalog AI",
-      "alternateName": "Каталог ИИ",
-      "description": "База данных проверенных ИИ-сервисов для автоматизации и бизнеса в КЗ и СНГ.",
-      "url": "https://ilyastas.github.io/katalog-ai/",
-      "creator": {
-        "@type": "Organization",
-        "name": "Ilyas Tas"
-      },
-      "distribution": {
-        "@type": "DataDownload",
-        "contentUrl": "https://ilyastas.github.io/katalog-ai/data.json",
-        "encodingFormat": "application/json"
-      }
+      "@type": "DataDownload",
+      "contentUrl": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+      "encodingFormat": "application/json"
+    },
+    {
+      "@type": "DataDownload",
+      "contentUrl": "https://ilyastas.github.io/katalog-ai/data/index.json",
+      "encodingFormat": "application/json"
     }
-    </script>
+    ]
+  }
+  </script>
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #0f0f0f;
-            color: #e0e0e0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container { max-width: 600px; text-align: center; }
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            line-height: 1.2;
-            margin-bottom: 40px;
-            color: #ffffff;
-        }
-        .divider { height: 1px; background: #333; margin: 40px 0; }
-        p { font-size: 0.95rem; color: #999; line-height: 1.6; }
-        a { color: #666; text-decoration: none; transition: all 0.2s ease; border-bottom: 1px solid transparent; }
-        a:hover { color: #fff; border-bottom: 1px solid #fff; }
-        .status { margin-top: 20px; font-size: 0.7rem; color: #333; text-transform: uppercase; letter-spacing: 1px; }
-    </style>
+  <style>
+    :root {
+      --bg: #f4f1e8;
+      --bg-accent: #e2d8c5;
+      --ink: #1f2320;
+      --ink-muted: #4c524d;
+      --line: #b8af9c;
+      --chip: #ece6d9;
+      --chip-hover: #ddd2bc;
+      --ok: #295f3a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(226, 216, 197, 0.7) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(184, 175, 156, 0.35) 0%, transparent 45%),
+        linear-gradient(135deg, var(--bg) 0%, #f8f5ee 100%);
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(880px, 100%);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 14px 40px rgba(31, 35, 32, 0.08);
+      padding: 28px;
+      animation: rise 420ms ease-out both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.05;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--ink-muted);
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      background: var(--chip);
+      padding: 7px 10px;
+      font-size: 0.88rem;
+      transition: background 160ms ease;
+    }
+
+    .chip strong { color: var(--ok); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    a.endpoint {
+      border: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--ink);
+      padding: 10px 12px;
+      background: #fff;
+      font-size: 0.92rem;
+    }
+
+    a.endpoint:hover { background: var(--chip-hover); }
+
+    .ai-note {
+      border-top: 1px dashed var(--line);
+      margin-top: 8px;
+      padding-top: 14px;
+      color: var(--ink-muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .ai-note code {
+      background: #efe8d8;
+      padding: 0 4px;
+    }
+
+    @media (max-width: 700px) {
+      .card { padding: 20px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Каталог AI</h1>
-        <div class="divider"></div>
-        <p>Открытый каталог для ИИ-ботов | <a href="data.json">data.json</a></p>
-        <div class="status">AIO Verified • March 2026</div>
-    </div>
+  <main class="card">
+    <h1>katalog-ai</h1>
+    <p class="subtitle">Data-first catalog for AI agents. Minimal UI, direct JSON access.</p>
+
+    <section class="status" aria-label="dataset status">
+      <div class="chip">Live businesses: <strong id="live-count">loading...</strong></div>
+      <div class="chip">Format: <strong>JSON</strong></div>
+      <div class="chip">Focus: <strong>Kazakhstan</strong></div>
+      <div class="chip">Updated: <strong id="last-updated">loading...</strong></div>
+    </section>
+
+    <section class="grid" aria-label="direct endpoints">
+      <a class="endpoint" href="/katalog-ai/data/companies.json">/data/companies.json</a>
+      <a class="endpoint" href="/katalog-ai/data/index.json">/data/index.json</a>
+      <a class="endpoint" href="/katalog-ai/ai.txt">/ai.txt</a>
+      <a class="endpoint" href="/katalog-ai/robots.txt">/robots.txt</a>
+      <a class="endpoint" href="/katalog-ai/llms.txt">/llms.txt</a>
+      <a class="endpoint" href="/katalog-ai/sitemap.xml">/sitemap.xml</a>
+    </section>
+
+    <p class="ai-note">
+      For crawlers and assistants: start at <code>/data/index.json</code>, then fetch
+      <code>/data/companies.json</code> for complete records.
+    </p>
+  </main>
+
+  <script>
+    async function loadDatasetStatus() {
+      try {
+        const response = await fetch('./data/companies.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Failed to load dataset');
+
+        const payload = await response.json();
+        const count = payload.count || (Array.isArray(payload.companies) ? payload.companies.length : 'n/a');
+        const updated = payload.metadata && payload.metadata.last_updated ? payload.metadata.last_updated : payload.timestamp || 'n/a';
+
+        document.getElementById('live-count').textContent = String(count);
+        document.getElementById('last-updated').textContent = String(updated);
+      } catch (error) {
+        document.getElementById('live-count').textContent = 'n/a';
+        document.getElementById('last-updated').textContent = 'n/a';
+      }
+    }
+
+    loadDatasetStatus();
+  </script>
 </body>
 </html>
