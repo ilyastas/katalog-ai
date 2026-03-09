@@ -2,6 +2,8 @@
 
 Thank you for your interest in contributing verified business data to katalog-ai!
 
+> 📋 **Maintainers:** See [CATALOG_MANAGEMENT.md](./CATALOG_MANAGEMENT.md) for full workflow, automation strategy, and scaling guidelines.
+
 ## 🎯 Our Mission
 
 Build a high-quality, AI-readable business directory with **verified entries only**. No fake data, no test entries.
