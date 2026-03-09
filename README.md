@@ -143,6 +143,7 @@ Every business has passed verification (`2GIS`, `Google Business`, or paid manua
 - 🤖 [robots.txt](https://ilyastas.github.io/katalog-ai/robots.txt) — Crawler rules with JSON endpoints
 - 🗺️ [sitemap.xml](https://ilyastas.github.io/katalog-ai/sitemap.xml) — Site structure
 - 📄 [llms.txt](https://ilyastas.github.io/katalog-ai/llms.txt) — LLM documentation
+- 🧩 [LLM_QUERY_TEMPLATES.md](./LLM_QUERY_TEMPLATES.md) — strict prompts for Gemini/GPT/Claude/DeepSeek/Perplexity
 
 ---
 
