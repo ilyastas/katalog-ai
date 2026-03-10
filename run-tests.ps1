@@ -1,5 +1,20 @@
 # Quick test script for Windows PowerShell
 
+param(
+    [switch]$InstallDeps,
+    [switch]$OpenCoverage
+)
+
+function Test-PythonModule {
+    param(
+        [string]$Python,
+        [string]$ModuleName
+    )
+
+    & $Python -c "import importlib.util, sys; sys.exit(0 if importlib.util.find_spec('$ModuleName') else 1)" *> $null
+    return ($LASTEXITCODE -eq 0)
+}
+
 Write-Host "KATALOG-AI TEST RUNNER" -ForegroundColor Cyan
 Write-Host ('=' * 50) -ForegroundColor Cyan
 Write-Host ""
@@ -28,19 +43,33 @@ if (Test-Path $venvPython) {
     Write-Host "Warning: .venv Python not found, using system python." -ForegroundColor Yellow
 }
 
-Write-Host ""
-Write-Host "Installing test dependencies..." -ForegroundColor Yellow
-& $pythonCmd -m pip install pytest pytest-cov pytest-asyncio httpx --quiet
+$requiredModules = @(
+    "pytest",
+    "fastapi",
+    "sqlalchemy",
+    "pydantic",
+    "pydantic_settings",
+    "httpx",
+    "redis",
+    "email_validator"
+)
 
-$backendRequirements = Join-Path $root "backend\requirements.txt"
-if (Test-Path $backendRequirements) {
-    Write-Host "Installing backend requirements..." -ForegroundColor Yellow
-    & $pythonCmd -m pip install -r $backendRequirements --quiet
+$missingModules = @($requiredModules | Where-Object { -not (Test-PythonModule -Python $pythonCmd -ModuleName $_) })
+
+if ($InstallDeps) {
+    Write-Host "Installing minimal test dependencies..." -ForegroundColor Yellow
+    & $pythonCmd -m pip install pytest pytest-cov pytest-asyncio httpx fastapi sqlalchemy pydantic pydantic-settings redis email-validator --quiet
 
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "Backend requirements install failed. Falling back to minimal test dependencies..." -ForegroundColor Yellow
-        & $pythonCmd -m pip install fastapi sqlalchemy pydantic pydantic-settings redis email-validator --quiet
+        Write-Host "Dependency installation failed." -ForegroundColor Red
+        exit $LASTEXITCODE
     }
+} elseif ($missingModules.Count -gt 0) {
+    Write-Host "Missing Python modules: $($missingModules -join ', ')" -ForegroundColor Yellow
+    Write-Host "Run .\run-tests.ps1 -InstallDeps to install the minimal test stack." -ForegroundColor Yellow
+    exit 1
+} else {
+    Write-Host "Dependency check: OK" -ForegroundColor Green
 }
 
 Write-Host ""
@@ -61,11 +90,10 @@ $coverageFile = Join-Path $root "htmlcov\index.html"
 Write-Host ""
 if (Test-Path $coverageFile) {
     Write-Host "Coverage report: $coverageFile" -ForegroundColor Cyan
-    Write-Host ""
-
-    $response = Read-Host "Open coverage report in browser? (y/n)"
-    if ($response -match '^[Yy]$') {
+    if ($OpenCoverage) {
         Start-Process $coverageFile
+    } else {
+        Write-Host "Use .\run-tests.ps1 -OpenCoverage to open it automatically." -ForegroundColor DarkGray
     }
 } else {
     Write-Host "Coverage report not found (tests may have failed before report generation)." -ForegroundColor Yellow
