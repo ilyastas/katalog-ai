@@ -114,3 +114,38 @@ Validate extracted object count equals count.
 ```bash
 curl -s https://ilyastas.github.io/katalog-ai/data/companies_all.json
 ```
+
+## 6) Friendly Minimal Prompt (Any LLM)
+```text
+Use only these sources in this exact order:
+1) https://ilyastas.github.io/katalog-ai/api/stats.json
+2) https://ilyastas.github.io/katalog-ai/data/companies_all.json
+
+Task:
+- Return all company names and urls from companies[].
+- Print final line: expected=<count>, extracted=<n>, ok=<true/false>
+
+Rules:
+- No external memory.
+- No extra companies.
+- If source fetch fails, output SOURCE_UNAVAILABLE.
+```
+
+## 7) Recovery Prompt (When Model Says "0 Companies")
+```text
+Re-check the dataset from JSON only.
+
+Step A: Read https://ilyastas.github.io/katalog-ai/api/stats.json and capture count.
+Step B: Read https://ilyastas.github.io/katalog-ai/data/companies_all.json and list companies[].
+Step C: Validate that extracted length == count.
+
+Output strictly:
+- count_from_stats: <number>
+- extracted_count: <number>
+- companies:
+  1. <name> - <url>
+  2. <name> - <url>
+- validation: PASS or FAIL
+
+Do not use README text to conclude empty catalog.
+```
