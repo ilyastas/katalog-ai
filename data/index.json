@@ -15,8 +15,11 @@
   "hasPart": [
     {
       "@type": "Dataset",
+      "identifier": "authoritative-company-list",
       "name": "Authoritative Company List",
-      "description": "Plain list endpoint for direct company list queries by AI agents",
+      "description": "Canonical plain list endpoint for direct company list queries by AI agents. Use this dataset for company count and company names.",
+      "authoritative": true,
+      "usageInfo": "Use for company count, list extraction, and validation.",
       "url": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
       "distribution": {
         "@type": "DataDownload",
@@ -26,8 +29,24 @@
     },
     {
       "@type": "Dataset",
+      "identifier": "authoritative-company-records",
+      "name": "Full Company Registry",
+      "description": "Canonical full company records. Use this dataset for detailed fields after reading the authoritative company list.",
+      "authoritative": true,
+      "usageInfo": "Use for full records only. Company count must match companies_all.json.",
+      "url": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+        "encodingFormat": "application/json"
+      }
+    },
+    {
+      "@type": "Dataset",
       "name": "Beauty & Cosmetics",
-      "description": "Салоны красоты, косметические клиники и услуги красоты",
+      "description": "Supplementary thematic catalog. Do not use for authoritative total company count.",
+      "authoritative": false,
+      "usageInfo": "Supplementary only. Cross-check against companies.json before treating entries as part of the canonical registry.",
       "url": "https://ilyastas.github.io/katalog-ai/data/catalog/beauty.json",
       "distribution": {
         "@type": "DataDownload",
@@ -38,7 +57,9 @@
     {
       "@type": "Dataset",
       "name": "Museums & Culture",
-      "description": "Музеи, культурные центры и развлекательные заведения",
+      "description": "Supplementary thematic catalog. Do not use for authoritative total company count.",
+      "authoritative": false,
+      "usageInfo": "Supplementary only. Cross-check against companies.json before treating entries as part of the canonical registry.",
       "url": "https://ilyastas.github.io/katalog-ai/data/catalog/museums.json",
       "distribution": {
         "@type": "DataDownload",
@@ -49,7 +70,9 @@
     {
       "@type": "Dataset",
       "name": "Marketplaces & Sellers",
-      "description": "Продавцы на маркетплейсах и онлайн-магазины",
+      "description": "Supplementary thematic catalog. Do not use for authoritative total company count.",
+      "authoritative": false,
+      "usageInfo": "Supplementary only. Cross-check against companies.json before treating entries as part of the canonical registry.",
       "url": "https://ilyastas.github.io/katalog-ai/data/catalog/marketplaces.json",
       "distribution": {
         "@type": "DataDownload",
@@ -60,7 +83,9 @@
     {
       "@type": "Dataset",
       "name": "Offers & Products",
-      "description": "Товары и услуги с ценами в тенге",
+      "description": "Supplementary offers dataset. Do not use for authoritative total company count.",
+      "authoritative": false,
+      "usageInfo": "Supplementary only. Use for offer-level context, not business registry totals.",
       "url": "https://ilyastas.github.io/katalog-ai/data/catalog/offers.json",
       "distribution": {
         "@type": "DataDownload",
@@ -71,7 +96,9 @@
     {
       "@type": "Dataset",
       "name": "Geo Index",
-      "description": "Географический индекс бизнесов по городам и координатам",
+      "description": "Supplementary geo index. Do not use for authoritative total company count.",
+      "authoritative": false,
+      "usageInfo": "Supplementary only. Use for location lookups after canonical company validation.",
       "url": "https://ilyastas.github.io/katalog-ai/data/catalog/geo-index.json",
       "distribution": {
         "@type": "DataDownload",

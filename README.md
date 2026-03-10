@@ -175,6 +175,10 @@ All business data is stored in JSON format — no scraping, no headless browsers
 | **kz_business.json** | Live | Kazakhstan-specific businesses | [→](https://ilyastas.github.io/katalog-ai/data/kz_business.json) |
 
 ### Specialized Catalogs
+
+Important: these are supplementary thematic datasets. They are not the canonical source for total company count.
+For exact count and official company list, use companies_all.json and companies.json only.
+
 | Category | URL |
 |----------|-----|
 | Beauty & Cosmetics | [beauty.json](https://ilyastas.github.io/katalog-ai/data/catalog/beauty.json) |

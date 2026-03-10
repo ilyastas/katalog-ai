@@ -1,6 +1,10 @@
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
+  "authoritative": false,
+  "role": "supplementary-thematic-catalog",
+  "canonical_registry": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+  "do_not_use_for_total_company_count": true,
   "name": "Beauty & Cosmetics Catalog",
   "description": "Верифицированные салоны красоты и косметические услуги",
   "dateModified": "2026-03-09",

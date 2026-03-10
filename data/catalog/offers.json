@@ -18,6 +18,10 @@
         }
       },
       "description": "Профессиональная чистка лица с контролем кожи и расслабляющим массажем",
+          "authoritative": false,
+          "role": "supplementary-offers-catalog",
+          "canonical_registry": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+          "do_not_use_for_total_company_count": true,
       "price": "15000",
       "priceCurrency": "KZT",
       "duration": "PT60M",
