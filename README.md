@@ -61,7 +61,33 @@ Output contract for agents:
 > 6. **AI policy**: [ai.txt](https://ilyastas.github.io/katalog-ai/ai.txt) (usage rules, all endpoints)
 > 7. **Structure validated** ✅ | **Live data updates** ✅
 
----
+### 🧠 For RAG Systems & Semantic Search:
+**Use `/data/ai-catalog.json` as the unified entry point to discover all datasets:**
+```json
+{
+  "primary_goal": "Single source of truth for RAG systems",
+  "key_datasets": {
+    "companies_full_registry": "data/companies.json (with keywords field for semantic matching)",
+    "companies_canonical_list": "data/companies_all.json (fast lookup)",
+    "json_schema": "data/schema.json (strict validation)"
+  }
+}
+```
+
+**Key optimizations for RAG:**
+- ✅ **Unified Index**: `/data/ai-catalog.json` lists all 6 datasets with descriptions and URLs
+- ✅ **Semantic Keywords**: Every company has `keywords` field for RAG embeddings
+- ✅ **Schema Validation**: `/data/schema.json` defines strict company object structure
+- ✅ **Update Tracking**: `/data/updates.json` for change detection and version control
+- ✅ **Metadata Rich**: Each company includes `description`, `keywords`, `category`, `services` for embedding generation
+
+**Reading order for RAG systems:**
+1. Fetch `/data/ai-catalog.json` to discover available datasets
+2. Fetch `/data/schema.json` to understand company object structure
+3. Fetch `/data/companies.json` to get all companies with keywords
+4. Build embeddings using `description` + `keywords` fields
+5. Monitor `/data/updates.json` for catalog changes (every 6 hours)
+
 
 ## 🎯 Invisible Web Principle
 

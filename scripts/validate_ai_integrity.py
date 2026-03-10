@@ -113,10 +113,42 @@ def check_ai_entrypoints() -> None:
     print("OK: AI entrypoints contain canonical anchor and anti-confusion rules")
 
 
+def check_rag_optimization() -> None:
+    """Validate RAG and semantic search optimizations."""
+    catalog = load_json("data/ai-catalog.json")
+    schema = load_json("data/schema.json")
+    updates = load_json("data/updates.json")
+    companies = load_json("data/companies.json")
+
+    if "$schema" not in companies:
+        fail("companies.json is missing $schema reference to schema.json")
+
+    if companies.get("$schema") != "./schema.json":
+        fail(f"companies.json $schema must be './schema.json', got '{companies.get('$schema')}'")
+
+    for i, company in enumerate(companies.get("companies", [])):
+        company_name = company.get("name", f"company[{i}]")
+
+        if "keywords" not in company:
+            fail(f"Company '{company_name}' is missing required 'keywords' field for RAG semantic search")
+
+        keywords = company.get("keywords", [])
+        if not isinstance(keywords, list) or len(keywords) == 0:
+            fail(f"Company '{company_name}' has empty or invalid 'keywords' field")
+
+    if catalog.get("title") != "KATALOG-AI: Unified Data Catalog Index":
+        fail("data/ai-catalog.json is missing or invalid title")
+
+    if schema.get("$id") != "https://ilyastas.github.io/katalog-ai/data/schema.json":
+        fail("data/schema.json is missing or invalid $id reference")
+
+    print("OK: RAG optimization - ai-catalog.json, schema.json, and keywords present")
+
 def main() -> None:
     check_canonical_counts()
     check_dataset_title_confusion()
     check_ai_entrypoints()
+    check_rag_optimization()
     print("PASS: AI integrity checks completed")
 
 
