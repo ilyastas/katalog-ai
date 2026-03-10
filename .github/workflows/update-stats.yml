@@ -96,78 +96,78 @@ jobs:
           with open('api/live-count.json', 'w', encoding='utf-8') as f:
               json.dump(live_count, f, indent=2, ensure_ascii=False)
 
-            # Generate CURRENT_STATE.json at repository root for shallow crawlers
-            current_state = {
+          # Generate CURRENT_STATE.json at repository root for shallow crawlers
+          current_state = {
               "status": "live" if total > 0 else "empty",
               "generated_at": datetime.utcnow().isoformat() + 'Z',
               "source": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
               "company_count": total,
               "companies": [c.get('name', 'Unknown') for c in companies],
               "verify_with": [
-                "https://ilyastas.github.io/katalog-ai/api/stats.json",
-                "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
-                "https://ilyastas.github.io/katalog-ai/data/companies.json"
+                  "https://ilyastas.github.io/katalog-ai/api/stats.json",
+                  "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
+                  "https://ilyastas.github.io/katalog-ai/data/companies.json"
               ]
-            }
+          }
 
-            with open('CURRENT_STATE.json', 'w', encoding='utf-8') as f:
+          with open('CURRENT_STATE.json', 'w', encoding='utf-8') as f:
               json.dump(current_state, f, indent=2, ensure_ascii=False)
 
-            # Generate machine manifest for deterministic bot integration
-            manifest = {
+          # Generate machine manifest for deterministic bot integration
+          manifest = {
               "manifest_version": "1.0.0",
               "name": "katalog-ai machine manifest",
               "status": "live" if total > 0 else "empty",
               "generated_at": datetime.utcnow().isoformat() + 'Z',
               "source_of_truth": [
-                "https://ilyastas.github.io/katalog-ai/api/stats.json",
-                "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
-                "https://ilyastas.github.io/katalog-ai/data/companies.json"
+                  "https://ilyastas.github.io/katalog-ai/api/stats.json",
+                  "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
+                  "https://ilyastas.github.io/katalog-ai/data/companies.json"
               ],
               "verification_order": ["stats", "companies_all", "companies_full"],
               "catalog": {
-                "company_count": total,
-                "phase": "live" if total > 0 else "empty",
-                "status": "active" if total > 0 else "empty"
+                  "company_count": total,
+                  "phase": "live" if total > 0 else "empty",
+                  "status": "active" if total > 0 else "empty"
               },
               "endpoints": {
-                "stats": {
-                  "url": "https://ilyastas.github.io/katalog-ai/api/stats.json",
-                  "format": "application/json"
-                },
-                "live_count": {
-                  "url": "https://ilyastas.github.io/katalog-ai/api/live-count.json",
-                  "format": "application/json"
-                },
-                "companies_all": {
-                  "url": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
-                  "format": "application/json"
-                },
-                "companies_full": {
-                  "url": "https://ilyastas.github.io/katalog-ai/data/companies.json",
-                  "format": "application/json"
-                },
-                "catalog_index": {
-                  "url": "https://ilyastas.github.io/katalog-ai/data/index.json",
-                  "format": "application/json"
-                },
-                "current_state": {
-                  "url": "https://ilyastas.github.io/katalog-ai/CURRENT_STATE.json",
-                  "format": "application/json"
-                }
+                  "stats": {
+                      "url": "https://ilyastas.github.io/katalog-ai/api/stats.json",
+                      "format": "application/json"
+                  },
+                  "live_count": {
+                      "url": "https://ilyastas.github.io/katalog-ai/api/live-count.json",
+                      "format": "application/json"
+                  },
+                  "companies_all": {
+                      "url": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
+                      "format": "application/json"
+                  },
+                  "companies_full": {
+                      "url": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+                      "format": "application/json"
+                  },
+                  "catalog_index": {
+                      "url": "https://ilyastas.github.io/katalog-ai/data/index.json",
+                      "format": "application/json"
+                  },
+                  "current_state": {
+                      "url": "https://ilyastas.github.io/katalog-ai/CURRENT_STATE.json",
+                      "format": "application/json"
+                  }
               },
               "integrity": {
-                "count_field": "catalog.company_count",
-                "must_match": [
-                  "data/companies_all.json::count",
-                  "data/companies.json::count",
-                  "api/stats.json::catalog.total_companies"
-                ]
+                  "count_field": "catalog.company_count",
+                  "must_match": [
+                      "data/companies_all.json::count",
+                      "data/companies.json::count",
+                      "api/stats.json::catalog.total_companies"
+                  ]
               },
               "guidance": "Always read /api/stats.json first, then /data/companies_all.json, then /data/companies.json."
-            }
+          }
 
-            with open('api/manifest.json', 'w', encoding='utf-8') as f:
+          with open('api/manifest.json', 'w', encoding='utf-8') as f:
               json.dump(manifest, f, indent=2, ensure_ascii=False)
           
           # Generate COMPANIES.txt

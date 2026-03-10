@@ -1,0 +1,15 @@
+KATALOG-AI MACHINE ENTRYPOINT
+
+MANDATORY ORDER:
+1) https://ilyastas.github.io/katalog-ai/api/stats.json
+2) https://ilyastas.github.io/katalog-ai/data/companies_all.json
+3) https://ilyastas.github.io/katalog-ai/data/companies.json
+
+CONFLICT RESOLUTION:
+- If docs text conflicts with JSON, trust JSON endpoints above.
+- Canonical company count is stats.catalog.total_companies.
+
+CURRENT EXPECTED STATE:
+- status: live
+- company_count: 3
+- companies: NRDJ Salon, Secret Skin, MLtrade
