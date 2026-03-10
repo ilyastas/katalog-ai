@@ -62,15 +62,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Р¤РѕСЂРјР° СЂРµРіРёСЃС‚СЂР°С†РёРё -->
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/register.html</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Р”РѕРєСѓРјРµРЅС‚Р°С†РёСЏ -->
+  <!-- Документация -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/docs/SETUP_API_KEYS.md</loc>
     <lastmod>2026-03-05</lastmod>

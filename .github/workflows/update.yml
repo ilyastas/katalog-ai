@@ -6,9 +6,8 @@ on:
     paths:
       - 'data/**'
       - 'schema/**'
-      - 'website/**'
       - 'public/**'
-      - 'index.html'
+      - 'catalog/**'
       - 'sitemap.xml'
       - 'robots.txt'
       - 'ai.txt'
@@ -62,51 +61,24 @@ jobs:
       - name: Check website links
         run: |
           python - << 'PY'
-          import pathlib
-          import re
-          import sys
-
-          root = pathlib.Path('.')
-          html_files = list(root.glob('website/**/*.html')) + [pathlib.Path('index.html')]
-          href_re = re.compile(r'href="([^"]+)"')
-          missing = []
-
-          for f in html_files:
-            if not f.exists():
-              continue
-            text = f.read_text(encoding='utf-8', errors='ignore')
-            for href in href_re.findall(text):
-              if href.startswith(('http://', 'https://', 'mailto:', '#', 'tel:')):
-                continue
-              target = (f.parent / href).resolve()
-              if not target.exists():
-                missing.append((str(f), href))
-
-          if missing:
-            print('Broken local links found:')
-            for src, href in missing:
-              print(f'- {src}: {href}')
-            sys.exit(1)
-
-          print('Link check passed')
+          print('No HTML files — data-only catalog')
           PY
 
       - name: Prepare Pages artifact
         run: |
           mkdir -p _site
-          cp -r website/* _site/ || true
           cp -r public/* _site/ || true
           cp -r data _site/data || true
           cp -r schema _site/schema || true
           cp -r api _site/api || true
-          cp index.html _site/index.html || true
+          cp -r catalog _site/catalog || true
           cp sitemap.xml _site/sitemap.xml || true
           cp robots.txt _site/robots.txt || true
           cp ai.txt _site/ai.txt || true
           cp llms.txt _site/llms.txt || true
           cp ai-dataset.json _site/ai-dataset.json || true
           cp ai-sitemap.json _site/ai-sitemap.json || true
-          echo "Pages artifact prepared with semantic search layers"
+          echo "Pages artifact prepared"
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
