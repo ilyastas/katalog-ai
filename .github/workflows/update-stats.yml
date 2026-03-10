@@ -169,6 +169,40 @@ jobs:
 
           with open('api/manifest.json', 'w', encoding='utf-8') as f:
               json.dump(manifest, f, indent=2, ensure_ascii=False)
+
+          # Generate REAL_BUSINESSES.json in root for direct bot consumption
+          real_businesses = {
+              "version": "1.0.0",
+              "generated_at": datetime.utcnow().isoformat() + 'Z',
+              "status": "live" if total > 0 else "empty",
+              "count": total,
+              "source": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+              "companies": [],
+              "note": "If email or phone is null, it is not provided in source data yet."
+          }
+
+          for c in companies:
+              social = c.get('social', {}) or {}
+              contact = c.get('contact', {}) or {}
+              marketplace = c.get('marketplace', {}) or {}
+              real_businesses["companies"].append({
+                  "id": c.get('id'),
+                  "name": c.get('name'),
+                  "country": c.get('country'),
+                  "city": c.get('city'),
+                  "website": c.get('website') or c.get('url'),
+                  "contacts": {
+                      "email": contact.get('email'),
+                      "phone": contact.get('phone'),
+                      "instagram": social.get('instagram'),
+                      "telegram": social.get('telegram'),
+                      "marketplace": marketplace.get('brand_url')
+                  },
+                  "verification_status": c.get('verification', {}).get('status', 'unknown')
+              })
+
+          with open('REAL_BUSINESSES.json', 'w', encoding='utf-8') as f:
+              json.dump(real_businesses, f, indent=2, ensure_ascii=False)
           
           # Generate COMPANIES.txt
           txt_content = f"""COMPANY LIST - katalog-ai
@@ -203,5 +237,5 @@ Source: https://ilyastas.github.io/katalog-ai/data/companies_all.json
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add api/stats.json api/live-count.json api/manifest.json CURRENT_STATE.json COMPANIES.txt
+          git add api/stats.json api/live-count.json api/manifest.json CURRENT_STATE.json REAL_BUSINESSES.json COMPANIES.txt
           git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update catalog stats: $(date -u +'%Y-%m-%d %H:%M UTC')" && git push)

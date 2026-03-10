@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-03-10T00:00:00Z",
+  "status": "live",
+  "count": 3,
+  "source": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+  "companies": [
+    {
+      "id": "inst-nrdjsalon",
+      "name": "NRDJ Salon",
+      "country": "Kazakhstan",
+      "city": "Almaty",
+      "website": "https://www.instagram.com/nrj_salon_odezhdy/",
+      "contacts": {
+        "email": null,
+        "phone": null,
+        "instagram": "https://www.instagram.com/nrj_salon_odezhdy/",
+        "telegram": "https://t.me/nrj_salon_odezhdy"
+      },
+      "verification_status": "verified"
+    },
+    {
+      "id": "inst-secretskin-kz",
+      "name": "Secret Skin",
+      "country": "Kazakhstan",
+      "city": "Almaty",
+      "website": "https://www.instagram.com/secretskin.kz/",
+      "contacts": {
+        "email": null,
+        "phone": null,
+        "instagram": "https://www.instagram.com/secretskin.kz/",
+        "telegram": null
+      },
+      "verification_status": "verified"
+    },
+    {
+      "id": "brand-mltrade-311293097",
+      "name": "MLtrade",
+      "country": "Russia",
+      "city": "Online",
+      "website": "https://www.wildberries.ru/brands/311293097-mltrade",
+      "contacts": {
+        "email": null,
+        "phone": null,
+        "instagram": null,
+        "telegram": null,
+        "marketplace": "https://www.wildberries.ru/brands/311293097-mltrade"
+      },
+      "verification_status": "verified"
+    }
+  ],
+  "note": "If email or phone is null, it is not provided in source data yet."
+}

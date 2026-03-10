@@ -12,6 +12,7 @@
 - Start here: `https://ilyastas.github.io/katalog-ai/api/stats.json`
 - Authoritative list: `https://ilyastas.github.io/katalog-ai/data/companies_all.json`
 - Full records: `https://ilyastas.github.io/katalog-ai/data/companies.json`
+- Root real business list: `https://ilyastas.github.io/katalog-ai/REAL_BUSINESSES.json`
 - Root current state: `https://ilyastas.github.io/katalog-ai/CURRENT_STATE.json`
 - Machine manifest: `https://ilyastas.github.io/katalog-ai/api/manifest.json`
 
