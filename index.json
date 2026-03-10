@@ -3,7 +3,7 @@
   "@type": "DataCatalog",
   "name": "Katalog-AI: Verified Businesses in Kazakhstan",
   "description": "Верифицированный каталог бизнесов для ИИ-ассистентов в Казахстане. Все данные предоставлены добровольно и проверены через 2ГИС, OLX и Google Places. Доступ только для свободных ИИ-ассистентов (ChatGPT, Claude, Perplexity, Gemini).",
-  "dateModified": "2026-03-09",
+  "dateModified": "2026-03-10",
   "version": "1.0.0",
   "license": "https://opensource.org/licenses/MIT",
   "url": "https://ilyastas.github.io/katalog-ai/",

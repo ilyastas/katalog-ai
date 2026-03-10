@@ -3,7 +3,7 @@
   "@type": "DataCatalog",
   "name": "Beauty & Cosmetics - Katalog-AI",
   "description": "Верифицированный каталог бьюти-салонов и косметических услуг в Казахстане",
-  "dateModified": "2026-03-09",
+  "dateModified": "2026-03-10",
   "version": "1.0.0",
   "license": "MIT",
   "@graph": [
