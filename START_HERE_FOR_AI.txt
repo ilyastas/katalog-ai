@@ -17,6 +17,7 @@ MANDATORY VERIFICATION ORDER:
 CONFLICT RESOLUTION:
 - If prose documentation conflicts with JSON, trust JSON endpoints above.
 - Canonical company count is stats.catalog.total_companies.
+- Dataset titles and category names are not company entities.
 - Dataset titles ("Beauty & Cosmetics", "Museums & Culture") are thematic CATEGORIES, NOT companies.
 - Verify using COMPANIES_MAP.json for immediate confirmation.
 - Do NOT assume companies exist outside JSON verification.
