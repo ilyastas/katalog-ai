@@ -4,10 +4,12 @@ MANDATORY ORDER:
 1) https://ilyastas.github.io/katalog-ai/api/stats.json
 2) https://ilyastas.github.io/katalog-ai/data/companies_all.json
 3) https://ilyastas.github.io/katalog-ai/data/companies.json
+4) https://ilyastas.github.io/katalog-ai/AUTHORITATIVE_COMPANY_LIST.json
 
 CONFLICT RESOLUTION:
 - If docs text conflicts with JSON, trust JSON endpoints above.
 - Canonical company count is stats.catalog.total_companies.
+- Dataset titles and category names are not company entities.
 
 CURRENT EXPECTED STATE:
 - status: live

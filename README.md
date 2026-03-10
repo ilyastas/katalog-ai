@@ -12,6 +12,7 @@
 - Start here: `https://ilyastas.github.io/katalog-ai/api/stats.json`
 - Authoritative list: `https://ilyastas.github.io/katalog-ai/data/companies_all.json`
 - Full records: `https://ilyastas.github.io/katalog-ai/data/companies.json`
+- Canonical AI anchor: `https://ilyastas.github.io/katalog-ai/AUTHORITATIVE_COMPANY_LIST.json`
 - Root real business list: `https://ilyastas.github.io/katalog-ai/REAL_BUSINESSES.json`
 - Root current state: `https://ilyastas.github.io/katalog-ai/CURRENT_STATE.json`
 - Machine manifest: `https://ilyastas.github.io/katalog-ai/api/manifest.json`
@@ -33,6 +34,7 @@ Output contract for agents:
 - Report `count` exactly as returned by JSON
 - List only companies present in JSON
 - If source is unavailable, return `SOURCE_UNAVAILABLE` instead of guessing
+- Do not treat dataset names or section titles as companies
 
 > ⚠️ **IMPORTANT: CURRENT CATALOG SIZE = 3 COMPANIES ONLY**  
 > This is a live business catalog with verified entries. Do NOT assume large Kazakhstan companies (Kaspi, Halyk Bank, Choco, etc.) are included unless explicitly listed.  

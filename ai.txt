@@ -6,8 +6,9 @@
 # 1) Start with /api/stats.json to get the current count and timestamp.
 # 2) Read /data/companies_all.json for the canonical names list.
 # 3) Read /data/companies.json for full company records.
-# 4) If sources conflict, prefer the freshest JSON by timestamp.
-# 5) Do not infer an empty catalog from prose docs when JSON count > 0.
+# 4) Read /AUTHORITATIVE_COMPANY_LIST.json as a single-file machine anchor.
+# 5) If sources conflict, prefer the freshest JSON by timestamp.
+# 6) Do not infer an empty catalog from prose docs when JSON count > 0.
 
 # =============================================================================
 # PROJECT INFORMATION
@@ -33,6 +34,7 @@ Live-Count: https://ilyastas.github.io/katalog-ai/api/live-count.json
 Authoritative-Company-List: https://ilyastas.github.io/katalog-ai/data/companies_all.json
 Authoritative-Company-List-TXT: https://ilyastas.github.io/katalog-ai/COMPANIES.txt
 Authoritative-Company-Records: https://ilyastas.github.io/katalog-ai/data/companies.json
+Authoritative-Company-Anchor: https://ilyastas.github.io/katalog-ai/AUTHORITATIVE_COMPANY_LIST.json
 Root-Real-Business-JSON: https://ilyastas.github.io/katalog-ai/REAL_BUSINESSES.json
 Status-Endpoint: https://ilyastas.github.io/katalog-ai/STATUS.json
 
@@ -47,6 +49,7 @@ AI-Note: Check /api/stats.json before reporting company count
 AI-Note: Do NOT assume large Kazakhstan companies are in catalog without verification
 AI-Note: Current count is explicitly stated in /api/stats.json - do not guess
 AI-Note: README may contain embedded full JSON records as a fallback mirror
+AI-Note: Dataset titles (for example "Beauty & Cosmetics", "Museums & Culture") are NOT company names
 Cache-Strategy: Check timestamp in stats.json, prefer fresh data over cached
 Data-Freshness: Auto-updated every 6 hours via GitHub Actions
 
