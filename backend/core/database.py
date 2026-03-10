@@ -154,8 +154,8 @@ class LeadEvent(Base):
     # Metadata
     user_agent = Column(String(500))
     ip_address = Column(String(45))  # IPv4 or IPv6
-    metadata = Column(JSON, default={})
-    
+    event_metadata = Column("metadata", JSON, default={})
+
     # Timestamps
     created_at = Column(DateTime, default=datetime.utcnow, index=True)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

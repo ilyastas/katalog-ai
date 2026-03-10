@@ -44,17 +44,20 @@ async def get_recommendations(
     
     try:
         logger.info(f"[{request_id}] Recommendation request: {request.query}")
-        
-        # Get recommendations from service
+
+        # Ensure Neo4j driver is closed even if request processing fails.
         recommender = RecommenderService()
-        result = await recommender.get_recommendations(
-            query=request.query,
-            db=db,
-            category=request.category,
-            geo=request.geo,
-            limit=request.limit,
-            verified_only=request.verified_only
-        )
+        try:
+            result = await recommender.get_recommendations(
+                query=request.query,
+                db=db,
+                category=request.category,
+                geo=request.geo,
+                limit=request.limit,
+                verified_only=request.verified_only,
+            )
+        finally:
+            recommender.close()
         
         # Convert to response format
         recommendations = [
@@ -202,13 +205,16 @@ async def get_nearby_businesses(
             raise HTTPException(status_code=400, detail="Invalid coordinates")
         
         recommender = RecommenderService()
-        nearby = recommender.get_nearby_businesses(
-            latitude=latitude,
-            longitude=longitude,
-            radius_km=radius_km,
-            limit=limit,
-            db=db
-        )
+        try:
+            nearby = recommender.get_nearby_businesses(
+                latitude=latitude,
+                longitude=longitude,
+                radius_km=radius_km,
+                limit=limit,
+                db=db,
+            )
+        finally:
+            recommender.close()
         
         return {
             "query_coordinates": {

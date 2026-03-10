@@ -6,6 +6,7 @@ import logging
 from typing import Dict, Optional
 from uuid import uuid4
 from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from backend.core.database import SessionLocal
