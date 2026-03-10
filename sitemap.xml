@@ -72,7 +72,7 @@
 
   <!-- Инструкции для ИИ -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/core/AI_INSTRUCTIONS.md</loc>
+    <loc>https://ilyastas.github.io/katalog-ai/docs/guides/AI_INSTRUCTIONS.md</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
