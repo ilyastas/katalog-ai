@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-03-10T00:00:00Z",
+  "catalog": {
+    "total_companies": 3,
+    "verified_companies": 3,
+    "status": "active",
+    "phase": "live"
+  },
+  "by_country": {
+    "Kazakhstan": 2,
+    "Russia": 1
+  },
+  "by_city": {
+    "Almaty": 2,
+    "Online": 1
+  },
+  "by_category": {
+    "Clothing and Accessories": 1,
+    "K-Beauty Cosmetics": 1,
+    "Education and Development": 1
+  },
+  "verification_sources": {
+    "instagram": 2,
+    "telegram": 1,
+    "wildberries": 1
+  },
+  "last_updated": "2026-03-09",
+  "next_update": "continuous",
+  "endpoints": {
+    "authoritative_list": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
+    "full_records": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+    "catalog_index": "https://ilyastas.github.io/katalog-ai/data/index.json"
+  },
+  "message_for_ai": "This catalog currently has 3 verified companies. Do not assume large Kazakhstan companies are included unless explicitly listed. Check /data/companies_all.json for authoritative list."
+}

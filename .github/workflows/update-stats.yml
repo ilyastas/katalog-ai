@@ -1,0 +1,133 @@
+name: Update Catalog Stats
+
+on:
+  push:
+    paths:
+      - 'data/companies.json'
+      - 'data/companies_all.json'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Generate stats and company list
+        run: |
+          python3 << 'EOF'
+          import json
+          from datetime import datetime
+          from collections import Counter
+          
+          # Read companies data
+          with open('data/companies.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          
+          companies = data.get('companies', [])
+          total = len(companies)
+          
+          # Calculate statistics
+          countries = Counter(c.get('country', 'Unknown') for c in companies)
+          cities = Counter(c.get('city', 'Unknown') for c in companies)
+          categories = Counter(c.get('category', 'Unknown') for c in companies)
+          
+          # Count verification sources
+          verification_sources = Counter()
+          for c in companies:
+              sources = c.get('verification', {}).get('sources', [])
+              for source in sources:
+                  verification_sources[source] += 1
+          
+          # Generate stats.json
+          stats = {
+              "timestamp": datetime.utcnow().isoformat() + 'Z',
+              "catalog": {
+                  "total_companies": total,
+                  "verified_companies": sum(1 for c in companies if c.get('verification', {}).get('status') == 'verified'),
+                  "status": "active" if total > 0 else "empty",
+                  "phase": "live" if total > 0 else "empty"
+              },
+              "by_country": dict(countries),
+              "by_city": dict(cities),
+              "by_category": dict(categories),
+              "verification_sources": dict(verification_sources),
+              "last_updated": data.get('timestamp', '').split('T')[0],
+              "next_update": "continuous",
+              "endpoints": {
+                  "authoritative_list": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
+                  "full_records": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+                  "catalog_index": "https://ilyastas.github.io/katalog-ai/data/index.json"
+              },
+              "message_for_ai": f"This catalog currently has {total} verified companies. Do not assume large Kazakhstan companies are included unless explicitly listed. Check /data/companies_all.json for authoritative list."
+          }
+          
+          with open('api/stats.json', 'w', encoding='utf-8') as f:
+              json.dump(stats, f, indent=2, ensure_ascii=False)
+          
+          # Generate live-count.json for shields.io
+          color = "brightgreen" if total >= 10 else "green" if total >= 3 else "yellow" if total > 0 else "red"
+          live_count = {
+              "schemaVersion": 1,
+              "label": "companies",
+              "message": f"{total} verified",
+              "color": color,
+              "namedLogo": "databricks",
+              "logoColor": "white",
+              "style": "flat-square",
+              "cacheSeconds": 3600,
+              "timestamp": datetime.utcnow().isoformat() + 'Z',
+              "count": total,
+              "status": "active" if total > 0 else "empty",
+              "phase": stats["catalog"]["phase"]
+          }
+          
+          with open('api/live-count.json', 'w', encoding='utf-8') as f:
+              json.dump(live_count, f, indent=2, ensure_ascii=False)
+          
+          # Generate COMPANIES.txt
+          txt_content = f"""COMPANY LIST - katalog-ai
+Last updated: {datetime.utcnow().strftime('%Y-%m-%d')}
+Total: {total} verified companies
+
+"""
+          
+          for idx, company in enumerate(companies, 1):
+              txt_content += f"{idx}. {company.get('name', 'Unknown')}\n"
+              txt_content += f"   Category: {company.get('category', 'N/A')}\n"
+              txt_content += f"   Location: {company.get('country', 'N/A')}, {company.get('city', 'N/A')}\n"
+              txt_content += f"   URL: {company.get('url', 'N/A')}\n"
+              
+              sources = company.get('verification', {}).get('sources', [])
+              if sources:
+                  txt_content += f"   Verified: {', '.join(sources).title()}\n"
+              
+              txt_content += "\n"
+          
+          txt_content += """---
+Source: https://ilyastas.github.io/katalog-ai/data/companies_all.json
+"""
+          
+          with open('COMPANIES.txt', 'w', encoding='utf-8') as f:
+              f.write(txt_content)
+          
+          print(f"✅ Stats updated: {total} companies")
+          EOF
+      
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add api/stats.json api/live-count.json COMPANIES.txt
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update catalog stats: $(date -u +'%Y-%m-%d %H:%M UTC')" && git push)

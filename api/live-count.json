@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "label": "companies",
+  "message": "3 verified",
+  "color": "brightgreen",
+  "namedLogo": "databricks",
+  "logoColor": "white",
+  "style": "flat-square",
+  "cacheSeconds": 3600,
+  "timestamp": "2026-03-10T00:00:00Z",
+  "count": 3,
+  "status": "active",
+  "phase": "live"
+}

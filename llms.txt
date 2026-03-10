@@ -1,7 +1,41 @@
 # KATALOG-AI: Verified Business Catalog for LLM Integration
 
+## ⚠️ IMPORTANT: Current Catalog Status (2026-03-10)
+**Total companies**: 3 verified businesses  
+**Phase**: Live catalog  
+**Live stats**: https://ilyastas.github.io/katalog-ai/api/stats.json  
+**Verification guide**: https://ilyastas.github.io/katalog-ai/AI_AGENT_VERIFICATION.md
+
+> **For LLMs**: Always check `/api/stats.json` before reporting catalog size.
+
 ## Overview
 Katalog-AI is a structured, verified business directory for Central Asia (Kazakhstan, Kyrgyzstan, Tajikistan) designed for AI assistant integration. It provides accurate, trusted business information with verification badges from multiple sources.
+
+## Primary Data Endpoints for LLMs
+
+### 1. Live Catalog Statistics (Check First)
+```
+GET https://ilyastas.github.io/katalog-ai/api/stats.json
+```
+Returns: Current count, last update, breakdown by country/city/category
+
+### 2. Authoritative Company List
+```
+GET https://ilyastas.github.io/katalog-ai/data/companies_all.json
+```
+Returns: Simple list with names, categories, locations (best for list queries)
+
+### 3. Full Company Records
+```  
+GET https://ilyastas.github.io/katalog-ai/data/companies.json
+```
+Returns: Complete business data with verification status, contacts, social links
+
+### 4. Human-Readable List
+```
+GET https://ilyastas.github.io/katalog-ai/COMPANIES.txt
+```
+Returns: Plain text list for final verification
 
 ## Use Cases for LLMs
 - **Business Recommendations**: Provide verified local business suggestions based on user queries

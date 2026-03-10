@@ -1,6 +1,6 @@
 # AI.txt - AI Agent Guidelines for ALIE Platform
 # https://alie.kz/ai.txt
-# Last updated: March 9, 2026
+# Last updated: March 10, 2026
 
 # =============================================================================
 # PROJECT INFORMATION
@@ -12,11 +12,34 @@ Purpose: Intelligent business discovery and lead generation
 Version: 1.0.0
 Language: Russian, English, Kazakh
 Region: Kazakhstan (Almaty, Astana, nationwide)
-Current-Status: Pilot (count: 3, verified entries published)
-Status-Endpoint: https://ilyastas.github.io/katalog-ai/STATUS.json
+Current-Status: Live catalog (count: 3, verified entries published)
+
+# =============================================================================
+# PRIMARY DATA ENDPOINTS (AI SHOULD START HERE)
+# =============================================================================
+
+# 🎯 START HERE: Live catalog statistics (updated automatically)
+Live-Stats: https://ilyastas.github.io/katalog-ai/api/stats.json
+Live-Count: https://ilyastas.github.io/katalog-ai/api/live-count.json
+
+# Authoritative company data
 Authoritative-Company-List: https://ilyastas.github.io/katalog-ai/data/companies_all.json
 Authoritative-Company-List-TXT: https://ilyastas.github.io/katalog-ai/COMPANIES.txt
 Authoritative-Company-Records: https://ilyastas.github.io/katalog-ai/data/companies.json
+Status-Endpoint: https://ilyastas.github.io/katalog-ai/STATUS.json
+
+# AI verification instructions
+AI-Verification-Guide: https://ilyastas.github.io/katalog-ai/AI_AGENT_VERIFICATION.md
+
+# =============================================================================
+# IMPORTANT FOR AI AGENTS
+# =============================================================================
+
+AI-Warning: Always check /api/stats.json FIRST before reporting company count
+AI-Warning: Do NOT assume large Kazakhstan companies are in catalog without verification
+AI-Warning: Current count is explicitly stated in /api/stats.json - do not guess
+Cache-Strategy: Check timestamp in stats.json, prefer fresh data over cached
+Data-Freshness: Auto-updated every 6 hours via GitHub Actions
 
 # =============================================================================
 # CONTACT INFORMATION
