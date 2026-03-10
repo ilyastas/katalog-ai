@@ -4,7 +4,7 @@
 **Total companies**: 3 verified businesses  
 **Phase**: Live catalog  
 **Live stats**: https://ilyastas.github.io/katalog-ai/api/stats.json  
-**Verification guide**: https://ilyastas.github.io/katalog-ai/AI_AGENT_VERIFICATION.md
+**Verification guide**: https://ilyastas.github.io/katalog-ai/docs/guides/AI_AGENT_VERIFICATION.md
 
 > **For LLMs**: Always check `/api/stats.json` before reporting catalog size.
 

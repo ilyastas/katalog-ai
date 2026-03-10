@@ -39,7 +39,7 @@ Root-Real-Business-JSON: https://ilyastas.github.io/katalog-ai/REAL_BUSINESSES.j
 Status-Endpoint: https://ilyastas.github.io/katalog-ai/STATUS.json
 
 # AI verification instructions
-AI-Verification-Guide: https://ilyastas.github.io/katalog-ai/AI_AGENT_VERIFICATION.md
+AI-Verification-Guide: https://ilyastas.github.io/katalog-ai/docs/guides/AI_AGENT_VERIFICATION.md
 
 # =============================================================================
 # IMPORTANT FOR AI AGENTS

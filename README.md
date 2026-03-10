@@ -328,7 +328,7 @@ Want to be included in this AI-native catalog?
 3. **Telegram Bot** — Coming soon: automated verification
 
 **For Maintainers:**
-- 📋 [Catalog Management Strategy](./CATALOG_MANAGEMENT.md) — adding/removing companies, scaling, automation
+- 📋 [Catalog Management Strategy](./docs/guides/CATALOG_MANAGEMENT.md) — adding/removing companies, scaling, automation
 
 **Verification Requirements:**
 - Real business with online presence (website/Instagram/2GIS)

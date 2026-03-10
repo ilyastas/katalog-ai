@@ -222,7 +222,7 @@ python scripts/sync_catalogs.py
 
 ## 📚 Связанная документация
 
-- [CATALOG_MANAGEMENT.md](../CATALOG_MANAGEMENT.md) — полная стратегия управления каталогом
+- [CATALOG_MANAGEMENT.md](../docs/guides/CATALOG_MANAGEMENT.md) — полная стратегия управления каталогом
 - [CONTRIBUTING.md](../CONTRIBUTING.md) — гайд для контрибьюторов
 - [README.md](../README.md) — основная документация проекта
 

@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing verified business data to katalog-ai!
 
-> 📋 **Maintainers:** See [CATALOG_MANAGEMENT.md](./CATALOG_MANAGEMENT.md) for full workflow, automation strategy, and scaling guidelines.
+> 📋 **Maintainers:** See [CATALOG_MANAGEMENT.md](./docs/guides/CATALOG_MANAGEMENT.md) for full workflow, automation strategy, and scaling guidelines.
 
 ## 🎯 Our Mission
 
