@@ -1,11 +1,11 @@
 {
   "@context": "https://schema.org",
   "@type": "DataCatalog",
-  "name": "ALIE - AI Lead Intelligence Engine",
-  "description": "Верифицированный каталог бизнесов Казахстана для ИИ-ассистентов",
+  "name": "ALIE - Verified Company Catalog",
+  "description": "Machine-readable catalog exposing only 3 verified company datasets and canonical company registries.",
   "url": "https://ilyastas.github.io/katalog-ai/",
-  "dateModified": "2026-03-09",
-  "version": "1.0.0",
+  "dateModified": "2026-03-10",
+  "version": "1.1.0",
   "license": "https://github.com/ilyastas/katalog-ai/blob/main/LICENSE",
   "creator": {
     "@type": "Person",
@@ -17,9 +17,9 @@
       "@type": "Dataset",
       "identifier": "authoritative-company-list",
       "name": "Authoritative Company List",
-      "description": "Canonical plain list endpoint for direct company list queries by AI agents. Use this dataset for company count and company names.",
+      "description": "Canonical plain list endpoint for direct company list queries by AI agents.",
       "authoritative": true,
-      "usageInfo": "Use for company count, list extraction, and validation.",
+      "usageInfo": "Use for company count and company names.",
       "url": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
       "distribution": {
         "@type": "DataDownload",
@@ -31,9 +31,9 @@
       "@type": "Dataset",
       "identifier": "authoritative-company-records",
       "name": "Full Company Registry",
-      "description": "Canonical full company records. Use this dataset for detailed fields after reading the authoritative company list.",
+      "description": "Canonical full company records for the 3 verified businesses.",
       "authoritative": true,
-      "usageInfo": "Use for full records only. Company count must match companies_all.json.",
+      "usageInfo": "Use for full company details only.",
       "url": "https://ilyastas.github.io/katalog-ai/data/companies.json",
       "distribution": {
         "@type": "DataDownload",
@@ -43,75 +43,44 @@
     },
     {
       "@type": "Dataset",
-      "name": "Beauty & Cosmetics",
-      "description": "Supplementary thematic catalog. Do not use for authoritative total company count.",
+      "name": "Company Profile: NRDJ Salon",
+      "description": "Direct company JSON profile for NRDJ Salon.",
       "authoritative": false,
-      "usageInfo": "Supplementary only. Cross-check against companies.json before treating entries as part of the canonical registry.",
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/beauty.json",
+      "usageInfo": "Derived profile. Cross-check against companies.json if needed.",
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/beauty.json",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json",
         "encodingFormat": "application/json"
       }
     },
     {
       "@type": "Dataset",
-      "name": "Museums & Culture",
-      "description": "Supplementary thematic catalog. Do not use for authoritative total company count.",
+      "name": "Company Profile: Secret Skin",
+      "description": "Direct company JSON profile for Secret Skin.",
       "authoritative": false,
-      "usageInfo": "Supplementary only. Cross-check against companies.json before treating entries as part of the canonical registry.",
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/museums.json",
+      "usageInfo": "Derived profile. Cross-check against companies.json if needed.",
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/museums.json",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json",
         "encodingFormat": "application/json"
       }
     },
     {
       "@type": "Dataset",
-      "name": "Marketplaces & Sellers",
-      "description": "Supplementary thematic catalog. Do not use for authoritative total company count.",
+      "name": "Company Profile: MLtrade",
+      "description": "Direct company JSON profile for MLtrade.",
       "authoritative": false,
-      "usageInfo": "Supplementary only. Cross-check against companies.json before treating entries as part of the canonical registry.",
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/marketplaces.json",
+      "usageInfo": "Derived profile. Cross-check against companies.json if needed.",
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/marketplaces.json",
-        "encodingFormat": "application/json"
-      }
-    },
-    {
-      "@type": "Dataset",
-      "name": "Offers & Products",
-      "description": "Supplementary offers dataset. Do not use for authoritative total company count.",
-      "authoritative": false,
-      "usageInfo": "Supplementary only. Use for offer-level context, not business registry totals.",
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/offers.json",
-      "distribution": {
-        "@type": "DataDownload",
-        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/offers.json",
-        "encodingFormat": "application/json"
-      }
-    },
-    {
-      "@type": "Dataset",
-      "name": "Geo Index",
-      "description": "Supplementary geo index. Do not use for authoritative total company count.",
-      "authoritative": false,
-      "usageInfo": "Supplementary only. Use for location lookups after canonical company validation.",
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/geo-index.json",
-      "distribution": {
-        "@type": "DataDownload",
-        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/geo-index.json",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json",
         "encodingFormat": "application/json"
       }
     }
   ],
-  "keywords": ["AI", "бизнес", "Казахстан", "рекомендации", "каталог"],
-  "spatialCoverage": {
-    "@type": "Place",
-    "name": "Казахстан",
-    "areaServed": ["Алматы", "Астана", "Шымкент"]
-  },
+  "keywords": ["AI", "verified businesses", "Kazakhstan", "company registry", "JSON"],
   "inLanguage": "ru"
 }

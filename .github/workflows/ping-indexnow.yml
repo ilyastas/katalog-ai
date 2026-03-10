@@ -1,5 +1,5 @@
 name: Ping IndexNow - Mutable Content Update
-# Уведомление Search Engines об обновлениях в каталоге
+# РЈРІРµРґРѕРјР»РµРЅРёРµ Search Engines РѕР± РѕР±РЅРѕРІР»РµРЅРёСЏС… РІ РєР°С‚Р°Р»РѕРіРµ
 
 on:
   push:
@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: 📥 Checkout repository
+      - name: рџ“Ґ Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🚀 Ping IndexNow (Bing)
+      - name: рџљЂ Ping IndexNow (Bing)
         run: |
           curl -X POST https://www.bing.com/indexnow \
             -H "Content-Type: application/json" \
@@ -28,33 +28,31 @@ jobs:
               "urlList": [
                 "https://ilyastas.github.io/katalog-ai/",
                 "https://ilyastas.github.io/katalog-ai/index.json",
-                "https://ilyastas.github.io/katalog-ai/catalog/beauty.json",
-                "https://ilyastas.github.io/katalog-ai/catalog/museums.json",
-                "https://ilyastas.github.io/katalog-ai/catalog/marketplaces.json",
-                "https://ilyastas.github.io/katalog-ai/catalog/offers.json",
-                "https://ilyastas.github.io/katalog-ai/catalog/geo-index.json",
+                "https://ilyastas.github.io/katalog-ai/catalog/nrdj-salon.json",
+                "https://ilyastas.github.io/katalog-ai/catalog/secret-skin.json",
+                "https://ilyastas.github.io/katalog-ai/catalog/mltrade.json",
                 "https://ilyastas.github.io/katalog-ai/sitemap.xml"
               ]
             }'
         continue-on-error: true
 
-      - name: 🔔 Ping Google Search Console (via Sitemap)
+      - name: рџ”” Ping Google Search Console (via Sitemap)
         run: |
           curl -X POST "https://www.google.com/ping?sitemap=https://ilyastas.github.io/katalog-ai/sitemap.xml"
         continue-on-error: true
 
-      - name: 🔔 Ping Yandex (for Russian indexing)
+      - name: рџ”” Ping Yandex (for Russian indexing)
         run: |
           curl -X POST "https://webmaster.yandex.ru/ping?sitemap=https://ilyastas.github.io/katalog-ai/sitemap.xml"
         continue-on-error: true
 
-      - name: 📊 Notify in Slack (optional)
+      - name: рџ“Љ Notify in Slack (optional)
         if: vars.SLACK_WEBHOOK_URL != ''
         run: |
           curl -X POST ${{ secrets.SLACK_WEBHOOK_URL }} \
             -H 'Content-Type: application/json' \
             -d '{
-              "text": "🚀 Katalog-AI catalog updated",
+              "text": "рџљЂ Katalog-AI catalog updated",
               "blocks": [
                 {
                   "type": "section",
@@ -67,7 +65,7 @@ jobs:
             }'
         continue-on-error: true
 
-      - name: ✅ IndexNow ping completed
+      - name: вњ… IndexNow ping completed
         run: |
-          echo "✅ IndexNow pings sent successfully!"
-          echo "🔍 Catalog will be indexed within 24-48 hours"
+          echo "вњ… IndexNow pings sent successfully!"
+          echo "рџ”Ќ Catalog will be indexed within 24-48 hours"

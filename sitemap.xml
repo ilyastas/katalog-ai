@@ -6,7 +6,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
-  <!-- Главная страница -->
+  <!-- Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/</loc>
     <lastmod>2026-03-05</lastmod>
@@ -14,7 +14,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Главный индекс -->
+  <!-- Р“Р»Р°РІРЅС‹Р№ РёРЅРґРµРєСЃ -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/index.json</loc>
     <lastmod>2026-03-05</lastmod>
@@ -22,47 +22,31 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Бьюти каталог -->
+  <!-- Direct company profile: NRDJ Salon -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/catalog/beauty.json</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://ilyastas.github.io/katalog-ai/catalog/nrdj-salon.json</loc>
+    <lastmod>2026-03-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Музеи каталог -->
+  <!-- Direct company profile: Secret Skin -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/catalog/museums.json</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://ilyastas.github.io/katalog-ai/catalog/secret-skin.json</loc>
+    <lastmod>2026-03-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Маркетплейсы каталог -->
+  <!-- Direct company profile: MLtrade -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/catalog/marketplaces.json</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://ilyastas.github.io/katalog-ai/catalog/mltrade.json</loc>
+    <lastmod>2026-03-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Товары и услуги -->
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/catalog/offers.json</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Геоиндекс -->
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/catalog/geo-index.json</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- OpenAPI спецификация -->
+  <!-- OpenAPI СЃРїРµС†РёС„РёРєР°С†РёСЏ -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/core/openapi.yaml</loc>
     <lastmod>2026-03-05</lastmod>
@@ -70,7 +54,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Инструкции для ИИ -->
+  <!-- РРЅСЃС‚СЂСѓРєС†РёРё РґР»СЏ РР -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/docs/guides/AI_INSTRUCTIONS.md</loc>
     <lastmod>2026-03-05</lastmod>
@@ -78,7 +62,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Форма регистрации -->
+  <!-- Р¤РѕСЂРјР° СЂРµРіРёСЃС‚СЂР°С†РёРё -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/register.html</loc>
     <lastmod>2026-03-05</lastmod>
@@ -86,7 +70,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Документация -->
+  <!-- Р”РѕРєСѓРјРµРЅС‚Р°С†РёСЏ -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/docs/SETUP_API_KEYS.md</loc>
     <lastmod>2026-03-05</lastmod>
@@ -115,7 +99,7 @@
     <priority>0.6</priority>
   </url>
 
-  <!-- README файлы -->
+  <!-- README С„Р°Р№Р»С‹ -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/README.md</loc>
     <lastmod>2026-03-05</lastmod>
@@ -130,7 +114,7 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Лицензия -->
+  <!-- Р›РёС†РµРЅР·РёСЏ -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/LICENSE</loc>
     <lastmod>2026-03-05</lastmod>

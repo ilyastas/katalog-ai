@@ -1,161 +1,101 @@
 {
   "$schema": "./schema.json",
   "title": "KATALOG-AI: Unified Data Catalog Index",
-  "description": "Single entry point for RAG systems and AI agents to discover all available datasets",
-  "version": "1.0.0",
+  "description": "Single entry point for AI agents. This catalog exposes only the 3 verified companies as direct company JSON files.",
+  "version": "1.1.0",
   "last_updated": "2026-03-10T00:00:00Z",
-  "last_commit_hash": "dcaf7f5",
-  
+  "last_commit_hash": "pending",
   "catalog_metadata": {
     "total_authoritative_companies": 3,
-    "total_thematic_datasets": 4,
-    "total_datasets": 6,
+    "total_direct_company_profiles": 3,
+    "total_machine_entrypoints": 5,
     "availability": "live",
     "update_frequency": "6 hours",
     "availability_status_url": "https://ilyastas.github.io/katalog-ai/api/stats.json"
   },
-
   "primary_authoritative_datasets": {
     "companies_canonical_list": {
       "id": "authoritative-company-list",
-      "name": "Authoritative Company List (Plain)",
-      "description": "Canonical plain list of verified companies. Minimal fields for fast parsing.",
+      "name": "Authoritative Company List",
+      "description": "Canonical plain list of verified companies. Use this for names and count.",
       "file": "companies_all.json",
-      "type": "array",
-      "item_count": 3,
       "authoritative": true,
-      "fields": ["id", "name", "slug", "category", "country", "city", "url", "verification_status"],
+      "item_count": 3,
       "url": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
-      "usage_priority": 1,
-      "usage_notes": "Start with this for company count and name verification. Fastest dataset."
+      "usage_priority": 1
     },
-
     "companies_full_registry": {
       "id": "authoritative-company-records",
-      "name": "Full Company Registry (Complete)",
-      "description": "Complete company records with all metadata, keywords, and validation info.",
+      "name": "Full Company Registry",
+      "description": "Canonical full registry of the 3 verified companies.",
       "file": "companies.json",
-      "type": "object",
-      "item_count": 3,
       "authoritative": true,
-      "fields": ["id", "name", "slug", "category", "country", "city", "url", "description", "keywords", "tags", "services", "metrics", "verification", "social"],
+      "item_count": 3,
       "url": "https://ilyastas.github.io/katalog-ai/data/companies.json",
       "usage_priority": 2,
-      "usage_notes": "Use for detailed company information, RAG embeddings, and semantic search.",
       "schema_reference": {
         "company_object": "./schema.json#/definitions/Company"
       }
     }
   },
-
-  "thematic_datasets": {
-    "beauty_cosmetics": {
-      "name": "Beauty & Cosmetics",
-      "description": "Supplementary thematic catalog for beauty, skincare, and cosmetics businesses",
-      "file": "catalog/beauty.json",
+  "direct_company_profiles": {
+    "nrdj_salon": {
+      "name": "NRDJ Salon",
+      "description": "Direct company JSON profile derived from the canonical registry.",
+      "file": "catalog/nrdj-salon.json",
       "authoritative": false,
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/beauty.json",
-      "note": "DO NOT use for authoritative company count. Verify against companies.json first."
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json",
+      "source_company_id": "inst-nrdjsalon",
+      "usage_priority": 3
     },
-
-    "museums_culture": {
-      "name": "Museums & Culture",
-      "description": "Supplementary thematic catalog for cultural institutions and museums",
-      "file": "catalog/museums.json",
+    "secret_skin": {
+      "name": "Secret Skin",
+      "description": "Direct company JSON profile derived from the canonical registry.",
+      "file": "catalog/secret-skin.json",
       "authoritative": false,
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/museums.json",
-      "note": "DO NOT use for authoritative company count. Verify against companies.json first."
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json",
+      "source_company_id": "inst-secretskin-kz",
+      "usage_priority": 4
     },
-
-    "marketplaces_sellers": {
-      "name": "Marketplaces & Sellers",
-      "description": "Supplementary thematic catalog for marketplace vendors and sellers",
-      "file": "catalog/marketplaces.json",
+    "mltrade": {
+      "name": "MLtrade",
+      "description": "Direct company JSON profile derived from the canonical registry.",
+      "file": "catalog/mltrade.json",
       "authoritative": false,
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/marketplaces.json",
-      "note": "DO NOT use for authoritative company count. Verify against companies.json first."
-    },
-
-    "geo_index": {
-      "name": "Geographical Index",
-      "description": "Geographical indexing for location-based queries",
-      "file": "catalog/geo-index.json",
-      "authoritative": false,
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/geo-index.json",
-      "note": "Use for proximity search and location filtering."
+      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json",
+      "source_company_id": "brand-mltrade-311293097",
+      "usage_priority": 5
     }
   },
-
   "metadata_files": {
     "index_schema_org": {
       "name": "Schema.org DataCatalog",
       "file": "index.json",
-      "description": "Full Schema.org metadata catalog with dataset descriptions",
-      "url": "https://ilyastas.github.io/katalog-ai/data/index.json",
-      "format": "Schema.org DataCatalog"
+      "url": "https://ilyastas.github.io/katalog-ai/data/index.json"
     },
-
     "json_schema_definition": {
       "name": "JSON Schema for Companies",
       "file": "schema.json",
-      "description": "Strict JSON Schema defining company object structure and validation rules",
-      "url": "https://ilyastas.github.io/katalog-ai/data/schema.json",
-      "format": "JSON Schema Draft 2020-12"
+      "url": "https://ilyastas.github.io/katalog-ai/data/schema.json"
     },
-
     "update_tracker": {
       "name": "Update Tracker",
       "file": "updates.json",
-      "description": "Lightweight tracker for catalog changes and version history",
-      "url": "https://ilyastas.github.io/katalog-ai/data/updates.json",
-      "format": "JSON"
+      "url": "https://ilyastas.github.io/katalog-ai/data/updates.json"
     }
   },
-
-  "api_endpoints": {
-    "stats": {
-      "name": "Live Catalog Statistics",
-      "url": "https://ilyastas.github.io/katalog-ai/api/stats.json",
-      "description": "Real-time catalog statistics including company count and last update"
-    },
-
-    "live_count": {
-      "name": "Live Company Count",
-      "url": "https://ilyastas.github.io/katalog-ai/api/live-count.json",
-      "description": "Badge endpoint showing current company count"
-    },
-
-    "recommend": {
-      "name": "Recommendation API",
-      "url": "https://ilyastas.github.io/katalog-ai/api/recommend",
-      "description": "RAG-ready endpoint for semantic company recommendations",
-      "methods": ["POST"],
-      "parameters": ["query", "category", "limit", "verified_only"]
-    }
-  },
-
-  "rag_integration_guide": {
-    "step_1_verify_count": "Query api/stats.json for canonical company count",
-    "step_2_fetch_metadata": "Fetch companies.json for all company details including keywords",
-    "step_3_build_embeddings": "Use 'description' and 'keywords' fields for RAG embeddings",
-    "step_4_semantic_search": "Enable semantic search using keywords and descriptions",
-    "step_5_validate_schema": "Validate using schema.json to ensure data integrity",
-    "step_6_monitor_updates": "Track updates.json file for change detection"
-  },
-
   "reading_order_for_ai": [
-    "1. api/stats.json (verify count)",
-    "2. data/ai-catalog.json (this file - discover datasets)",
-    "3. data/schema.json (understand structure)",
-    "4. data/companies.json (fetch full company data)",
-    "5. data/updates.json (monitor changes)"
+    "1. api/stats.json",
+    "2. data/companies_all.json",
+    "3. data/companies.json",
+    "4. data/catalog/nrdj-salon.json",
+    "5. data/catalog/secret-skin.json",
+    "6. data/catalog/mltrade.json"
   ],
-
   "important_notes": {
-    "note_1": "ALWAYS verify count using api/stats.json or companies_all.json",
-    "note_2": "Dataset titles (Beauty, Museums) are NOT company names - they are thematic CATEGORIES",
-    "note_3": "Use 'keywords' field in company objects for semantic matching",
-    "note_4": "Validate company objects against schema.json before processing",
-    "note_5": "For live updates, poll updates.json every 6 hours"
+    "note_1": "data/catalog contains direct company JSON files only",
+    "note_2": "There are exactly 3 verified companies: NRDJ Salon, Secret Skin, MLtrade",
+    "note_3": "Do not infer company names from category or dataset titles",
+    "note_4": "If any prose conflicts with JSON, trust companies_all.json and companies.json"
   }
 }

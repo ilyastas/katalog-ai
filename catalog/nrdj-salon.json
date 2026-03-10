@@ -1,0 +1,66 @@
+{
+  "$schema": "../data/schema.json",
+  "profile_type": "direct-company-json",
+  "canonical_source": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+  "authoritative": false,
+  "id": "inst-nrdjsalon",
+  "name": "NRDJ Salon",
+  "slug": "nrdjsalon",
+  "country": "Kazakhstan",
+  "city": "Almaty",
+  "geo": "Kazakhstan (Almaty / Delivery)",
+  "industry": "Fashion",
+  "service": "Clothing Store",
+  "category": "Clothing and Accessories",
+  "url": "https://www.instagram.com/nrj_salon_odezhdy/",
+  "website": "https://www.instagram.com/nrj_salon_odezhdy/",
+  "contact": {},
+  "social_handle": "@nrj_salon_odezhdy",
+  "social": {
+    "instagram": "https://www.instagram.com/nrj_salon_odezhdy/",
+    "telegram": "https://t.me/nrj_salon_odezhdy"
+  },
+  "same_as": [
+    "https://www.instagram.com/nrj_salon_odezhdy/",
+    "https://t.me/nrj_salon_odezhdy"
+  ],
+  "description": "Salon of women's clothing with active Instagram and Telegram channels.",
+  "tags": [
+    "fashion-kz",
+    "women-clothing",
+    "almaty-shop",
+    "verified-store"
+  ],
+  "metrics": {
+    "followers": 15400,
+    "rating": 4.8,
+    "location": "Almaty"
+  },
+  "services": [
+    "Women's clothing",
+    "Casual outfits",
+    "Evening outfits",
+    "Delivery"
+  ],
+  "languages": [
+    "Russian",
+    "Kazakh"
+  ],
+  "verification": {
+    "status": "verified",
+    "sources": [
+      "instagram",
+      "telegram"
+    ]
+  },
+  "keywords": [
+    "NRDJ Salon",
+    "women's clothing",
+    "fashion store",
+    "almaty",
+    "kazakhstan",
+    "salon",
+    "instagram",
+    "telegram"
+  ]
+}

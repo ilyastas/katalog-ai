@@ -1,141 +1,44 @@
 {
   "title": "KATALOG-AI Update Tracker",
   "description": "Lightweight tracker for catalog changes and version history",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "last_sync": "2026-03-10T00:00:00Z",
-  
   "latest_update": {
-    "commit_hash": "dcaf7f5",
+    "commit_hash": "pending",
     "timestamp": "2026-03-10T00:00:00Z",
-    "message": "Feat: Optimize repository for AI agents with structured data catalogs",
+    "message": "Replace thematic category catalogs with direct company JSON profiles",
     "changed_files": [
-      "data/ai-catalog.json (created)",
-      "data/schema.json (created)",
-      "data/companies.json (updated: added keywords field and $schema reference)",
-      "data/updates.json (created)",
-      "README.md (updated: added RAG documentation)"
+      "data/catalog/nrdj-salon.json (created)",
+      "data/catalog/secret-skin.json (created)",
+      "data/catalog/mltrade.json (created)",
+      "catalog/nrdj-salon.json (created)",
+      "catalog/secret-skin.json (created)",
+      "catalog/mltrade.json (created)",
+      "data/index.json (updated)",
+      "index.json (updated)",
+      "data/ai-catalog.json (updated)"
     ],
-    "changes_summary": "Added unified catalog index, JSON schema validation, and keywords for semantic search"
+    "changes_summary": "Removed category JSON routing from primary machine paths and replaced it with direct company JSON files"
   },
-
-  "previous_updates": [
-    {
-      "commit_hash": "48af7c7",
-      "timestamp": "2026-03-10T00:00:00Z",
-      "message": "Feat: explicit visibility of 3 verified businesses in catalog",
-      "changed_files": [
-        "data/ (no changes)",
-        "ai.txt (updated)",
-        "START_HERE_FOR_AI.txt (updated)",
-        "README.md (updated)",
-        "COMPANIES_MAP.json (created)"
-      ]
-    },
-    {
-      "commit_hash": "6924cc7",
-      "timestamp": "2026-03-09T00:00:00Z",
-      "message": "Cleanup: restore baseline schema after noise removal",
-      "changed_files": [
-        "data/ (restored to baseline)",
-        "scripts/validate_ai_integrity.py (reverted)"
-      ]
-    }
-  ],
-
-  "catalog_evolution": {
-    "v1.0.0_initial_launch": {
-      "date": "2026-03-01",
-      "companies": 3,
-      "datasets": 6,
-      "features": ["canonical company list", "thematic catalogs", "verification tracking"]
-    },
-    "v1.1.0_rag_optimization": {
-      "date": "2026-03-10",
-      "companies": 3,
-      "datasets": 6,
-      "features": ["unified catalog index (ai-catalog.json)", "JSON schema validation", "keywords for semantic search", "update tracker"]
-    }
+  "catalog_metrics": {
+    "authoritative_companies": 3,
+    "direct_company_profiles": 3,
+    "deprecated_category_catalogs_removed": 10,
+    "schema_version": "1.0.0",
+    "ai_catalog_version": "1.1.0"
   },
-
   "data_integrity_checkpoints": [
     {
       "timestamp": "2026-03-10T00:00:00Z",
       "checkpoint": "companies_count_verified",
       "status": "ok",
-      "count": 3,
-      "verified_in": ["companies.json", "companies_all.json", "AUTHORITATIVE_COMPANY_LIST.json", "REAL_BUSINESSES.json", "COMPANIES_MAP.json"]
+      "count": 3
     },
     {
       "timestamp": "2026-03-10T00:00:00Z",
-      "checkpoint": "schema_validation",
+      "checkpoint": "direct_company_profiles_only",
       "status": "ok",
-      "validated_against": "data/schema.json",
-      "all_companies_pass": true
-    },
-    {
-      "timestamp": "2026-03-10T00:00:00Z",
-      "checkpoint": "keywords_present",
-      "status": "ok",
-      "all_companies_have_keywords": true,
-      "keyword_count_stats": {
-        "nrdjsalon": 12,
-        "secretskin": 10,
-        "mltrade": 10
-      }
+      "profiles": ["nrdj-salon", "secret-skin", "mltrade"]
     }
-  ],
-
-  "monitoring_and_updates": {
-    "update_frequency": "Every 6 hours via GitHub Actions",
-    "automated_checks": [
-      "companies.json count validation",
-      "Schema.org DataCatalog (index.json) consistency",
-      "Keywords presence verification",
-      "Verify all canonical sources agree on company count",
-      "Check for data drift between files"
-    ],
-    "next_update_check": "2026-03-10T06:00:00Z",
-    "monitoring_script": "scripts/validate_ai_integrity.py",
-    "ci_workflow": ".github/workflows/update-stats.yml"
-  },
-
-  "catalog_metrics": {
-    "authoritative_companies": 3,
-    "verified_status": "All verified",
-    "thematic_datasets": 4,
-    "total_available_endpoints": 6,
-    "schema_version": "1.0.0",
-    "ai_catalog_version": "1.0.0"
-  },
-
-  "access_log": {
-    "note": "Track when external systems (Gemini, ChatGPT, etc.) last accessed the catalog",
-    "tracked_endpoints": [
-      "api/stats.json",
-      "data/companies.json",
-      "data/ai-catalog.json",
-      "data/schema.json"
-    ],
-    "access_instructions": "Monitor GitHub Pages access logs and API endpoint hits"
-  },
-
-  "future_roadmap": {
-    "v1.2.0": {
-      "planned": "2026-04-01",
-      "features": [
-        "Real-time API usage analytics",
-        "Semantic search test results",
-        "Performance benchmarks for RAG systems"
-      ]
-    },
-    "v2.0.0": {
-      "planned": "2026-06-01",
-      "features": [
-        "Multi-language support (RU, KZ, EN)",
-        "Advanced geographic filtering",
-        "Machine learning-based company matching",
-        "Integration with external APIs (Google Maps, OSM)"
-      ]
-    }
-  }
+  ]
 }

@@ -1,12 +1,12 @@
 name: Update Catalog - 2GIS, OLX, Google Verification
-# Автоматическое обновление каталога и верификация данных через 2ГИС, OLX и Google Places
+# Р С’Р Р†РЎвЂљР С•Р СР В°РЎвЂљР С‘РЎвЂЎР ВµРЎРѓР С”Р С•Р Вµ Р С•Р В±Р Р…Р С•Р Р†Р В»Р ВµР Р…Р С‘Р Вµ Р С”Р В°РЎвЂљР В°Р В»Р С•Р С–Р В° Р С‘ Р Р†Р ВµРЎР‚Р С‘РЎвЂћР С‘Р С”Р В°РЎвЂ Р С‘РЎРЏ Р Т‘Р В°Р Р…Р Р…РЎвЂ№РЎвЂ¦ РЎвЂЎР ВµРЎР‚Р ВµР В· 2Р вЂњР ВР РЋ, OLX Р С‘ Google Places
 
 on:
   schedule:
-    # Запуск каждый день в 00:00 UTC (04:00 UTC+4 Казахстан)
+    # Р вЂ”Р В°Р С—РЎС“РЎРѓР С” Р С”Р В°Р В¶Р Т‘РЎвЂ№Р в„– Р Т‘Р ВµР Р…РЎРЉ Р Р† 00:00 UTC (04:00 UTC+4 Р С™Р В°Р В·Р В°РЎвЂ¦РЎРѓРЎвЂљР В°Р Р…)
     - cron: '0 0 * * *'
   
-  workflow_dispatch:  # Ручной запуск из GitHub Actions вкладки
+  workflow_dispatch:  # Р В РЎС“РЎвЂЎР Р…Р С•Р в„– Р В·Р В°Р С—РЎС“РЎРѓР С” Р С‘Р В· GitHub Actions Р Р†Р С”Р В»Р В°Р Т‘Р С”Р С‘
   
   push:
     branches: [ main ]
@@ -23,40 +23,40 @@ jobs:
       pull-requests: write
     
     steps:
-      - name: 📥 Checkout repository
+      - name: СЂСџвЂњТђ Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: 🐍 Setup Python
+      - name: СЂСџС’РЊ Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: 📦 Install dependencies
+      - name: СЂСџвЂњВ¦ Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests python-dotenv
 
-      - name: 🔍 Run 2GIS verifier
+      - name: СЂСџвЂќРЊ Run 2GIS verifier
         run: python verifiers/2gis_verifier.py
         env:
           TWOGIS_API_KEY: ${{ secrets.TWOGIS_API_KEY }}
         continue-on-error: true
 
-      - name: 🔍 Run OLX verifier
+      - name: СЂСџвЂќРЊ Run OLX verifier
         run: python verifiers/olx_verifier.py
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         continue-on-error: true
 
-      - name: 🔍 Run Google Places verifier
+      - name: СЂСџвЂќРЊ Run Google Places verifier
         run: python verifiers/google_verifier.py
         env:
           GOOGLE_PLACES_KEY: ${{ secrets.GOOGLE_PLACES_KEY }}
         continue-on-error: true
 
-      - name: 📊 Generate verification report
+      - name: СЂСџвЂњР‰ Generate verification report
         run: |
           echo "## Katalog-AI Verification Report" > verification_report.md
           echo "Generated: $(date -u)" >> verification_report.md
@@ -79,14 +79,13 @@ jobs:
             cat verification_results_google.json >> verification_report.md
           fi
 
-      - name: 🔄 Update dateModified in catalog files
+      - name: СЂСџвЂќвЂћ Update dateModified in catalog files
         run: |
           python -c "
           import json
           from datetime import datetime
           
-          files = ['index.json', 'catalog/beauty.json', 'catalog/museums.json', 
-                   'catalog/marketplaces.json', 'catalog/offers.json', 'catalog/geo-index.json']
+          files = ['index.json', 'catalog/nrdj-salon.json', 'catalog/secret-skin.json', 'catalog/mltrade.json']
           
           for file in files:
               try:
@@ -95,35 +94,35 @@ jobs:
                   data['dateModified'] = datetime.utcnow().strftime('%Y-%m-%d')
                   with open(file, 'w', encoding='utf-8') as f:
                       json.dump(data, f, ensure_ascii=False, indent=2)
-                  print(f'✅ Updated {file}')
+                  print(f'РІСљвЂ¦ Updated {file}')
               except Exception as e:
-                  print(f'⚠️ Could not update {file}: {e}')
+                  print(f'РІС™В РїС‘РЏ Could not update {file}: {e}')
           "
 
-      - name: 🔐 Configure Git
+      - name: СЂСџвЂќС’ Configure Git
         run: |
           git config --local user.name 'GitHub Action Bot'
           git config --local user.email 'action@github.com'
 
-      - name: 📝 Commit verification results
+      - name: СЂСџвЂњСњ Commit verification results
         run: |
           git add -A
           git diff --quiet && git diff --staged --quiet || (
-            git commit -m "🤖 Auto-update catalog and verification results $(date -u +'%Y-%m-%d %H:%M:%S UTC')" && echo "COMMIT_CREATED=true" >> $GITHUB_ENV
+            git commit -m "СЂСџВ¤вЂ“ Auto-update catalog and verification results $(date -u +'%Y-%m-%d %H:%M:%S UTC')" && echo "COMMIT_CREATED=true" >> $GITHUB_ENV
           )
         continue-on-error: true
 
-      - name: 🚀 Push changes
+      - name: СЂСџС™Р‚ Push changes
         if: env.COMMIT_CREATED == 'true'
         run: git push
         continue-on-error: true
 
-      - name: 📧 Create pull request if verification failed
+      - name: СЂСџвЂњВ§ Create pull request if verification failed
         if: failure()
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: '⚠️ Verification issues detected - manual review required'
-          title: '⚠️ Catalog Verification Issues'
+          commit-message: 'РІС™В РїС‘РЏ Verification issues detected - manual review required'
+          title: 'РІС™В РїС‘РЏ Catalog Verification Issues'
           body: |
             # Verification Issues Detected
             
@@ -136,7 +135,7 @@ jobs:
           branch: 'verification-issues'
         continue-on-error: true
 
-      - name: ✅ Workflow completed
+      - name: РІСљвЂ¦ Workflow completed
         run: |
-          echo "✅ Catalog verification and update completed!"
-          echo "📊 Check 'verification_report.md' for details"
+          echo "РІСљвЂ¦ Catalog verification and update completed!"
+          echo "СЂСџвЂњР‰ Check 'verification_report.md' for details"

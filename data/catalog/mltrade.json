@@ -1,0 +1,56 @@
+{
+  "$schema": "../schema.json",
+  "profile_type": "direct-company-json",
+  "canonical_source": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+  "authoritative": false,
+  "id": "brand-mltrade-311293097",
+  "name": "MLtrade",
+  "slug": "mltrade-wildberries",
+  "country": "Russia",
+  "city": "Online",
+  "geo": "CIS (Wildberries warehouses)",
+  "industry": "Marketplace",
+  "service": "Marketplace Seller",
+  "category": "Education and Development",
+  "url": "https://www.wildberries.ru/brands/311293097-mltrade",
+  "website": "https://www.wildberries.ru/brands/311293097-mltrade",
+  "contact": {},
+  "description": "Supplier of reusable educational materials and stationery for children.",
+  "tags": [
+    "education",
+    "kids-development",
+    "verified",
+    "best-seller"
+  ],
+  "metrics": {
+    "sales": 37266,
+    "rating": 4.9,
+    "years_on_market": 2
+  },
+  "marketplace": {
+    "platform": "Wildberries",
+    "brand_url": "https://www.wildberries.ru/brands/311293097-mltrade"
+  },
+  "services": [
+    "Online retail",
+    "Marketplace sales"
+  ],
+  "languages": [
+    "Russian"
+  ],
+  "verification": {
+    "status": "verified",
+    "sources": [
+      "wildberries"
+    ]
+  },
+  "keywords": [
+    "MLtrade",
+    "wildberries",
+    "marketplace",
+    "e-commerce",
+    "education",
+    "online retail",
+    "stationery"
+  ]
+}

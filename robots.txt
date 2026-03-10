@@ -111,12 +111,13 @@ Allow: /data/locations.json
 Allow: /data/services.json
 Allow: /data/business.json
 
-# Specialized catalogs
-Allow: /data/catalog/beauty.json
-Allow: /data/catalog/museums.json
-Allow: /data/catalog/marketplaces.json
-Allow: /data/catalog/offers.json
-Allow: /data/catalog/geo-index.json
+# Direct company JSON profiles
+Allow: /data/catalog/nrdj-salon.json
+Allow: /data/catalog/secret-skin.json
+Allow: /data/catalog/mltrade.json
+Allow: /catalog/nrdj-salon.json
+Allow: /catalog/secret-skin.json
+Allow: /catalog/mltrade.json
 
 # Metadata and schemas
 Allow: /data/knowledge-graph.json
