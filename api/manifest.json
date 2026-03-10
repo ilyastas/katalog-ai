@@ -1,0 +1,56 @@
+{
+  "manifest_version": "1.0.0",
+  "name": "katalog-ai machine manifest",
+  "status": "live",
+  "generated_at": "2026-03-10T00:00:00Z",
+  "source_of_truth": [
+    "https://ilyastas.github.io/katalog-ai/api/stats.json",
+    "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
+    "https://ilyastas.github.io/katalog-ai/data/companies.json"
+  ],
+  "verification_order": [
+    "stats",
+    "companies_all",
+    "companies_full"
+  ],
+  "catalog": {
+    "company_count": 3,
+    "phase": "live",
+    "status": "active"
+  },
+  "endpoints": {
+    "stats": {
+      "url": "https://ilyastas.github.io/katalog-ai/api/stats.json",
+      "format": "application/json"
+    },
+    "live_count": {
+      "url": "https://ilyastas.github.io/katalog-ai/api/live-count.json",
+      "format": "application/json"
+    },
+    "companies_all": {
+      "url": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
+      "format": "application/json"
+    },
+    "companies_full": {
+      "url": "https://ilyastas.github.io/katalog-ai/data/companies.json",
+      "format": "application/json"
+    },
+    "catalog_index": {
+      "url": "https://ilyastas.github.io/katalog-ai/data/index.json",
+      "format": "application/json"
+    },
+    "current_state": {
+      "url": "https://ilyastas.github.io/katalog-ai/CURRENT_STATE.json",
+      "format": "application/json"
+    }
+  },
+  "integrity": {
+    "count_field": "catalog.company_count",
+    "must_match": [
+      "data/companies_all.json::count",
+      "data/companies.json::count",
+      "api/stats.json::catalog.total_companies"
+    ]
+  },
+  "guidance": "Always read /api/stats.json first, then /data/companies_all.json, then /data/companies.json."
+}

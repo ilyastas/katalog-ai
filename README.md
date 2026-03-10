@@ -7,6 +7,16 @@
 
 **Machine-readable knowledge base designed for AI assistants, not human UIs.**
 
+## SOURCE OF TRUTH (FOR AI/BOTS)
+
+- Start here: `https://ilyastas.github.io/katalog-ai/api/stats.json`
+- Authoritative list: `https://ilyastas.github.io/katalog-ai/data/companies_all.json`
+- Full records: `https://ilyastas.github.io/katalog-ai/data/companies.json`
+- Root current state: `https://ilyastas.github.io/katalog-ai/CURRENT_STATE.json`
+- Machine manifest: `https://ilyastas.github.io/katalog-ai/api/manifest.json`
+
+Reading order for bots: `stats.json` -> `companies_all.json` -> `companies.json`.
+
 📊 **Live Stats**: [/api/stats.json](https://ilyastas.github.io/katalog-ai/api/stats.json) • **Company Count**: [/api/live-count.json](https://ilyastas.github.io/katalog-ai/api/live-count.json)
 
 > ⚠️ **IMPORTANT: CURRENT CATALOG SIZE = 3 COMPANIES ONLY**  
