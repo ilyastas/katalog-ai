@@ -81,7 +81,7 @@ Returns: Plain text list for final verification
 Get AI-powered business recommendations
 ```json
 {
-  "query": "салон красоты в Алматы",
+  "query": "салон касоты  Алматы",
   "category": "beauty",
   "geo": "Алматы",
   "limit": 5,

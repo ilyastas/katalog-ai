@@ -1,10 +1,10 @@
 KATALOG-AI MACHINE ENTRYPOINT
 
 ==============================================================================
-рџЋЇ CATALOG CONTAINS EXACTLY 3 VERIFIED BUSINESSES:
-1пёЏвѓЈ  NRDJ Salon (Kazakhstan, Almaty, Fashion/Clothing)
-2пёЏвѓЈ  Secret Skin (Kazakhstan, Almaty, K-Beauty/Cosmetics)
-3пёЏвѓЈ  MLtrade (Russia, Online, Education/Development)
+🎯 CATALOG CONTAINS EXACTLY 3 VERIFIED BUSINESSES:
+1️⃣  NRDJ Salon (Kazakhstan, Almaty, Fashion/Clothing)
+2️⃣  Secret Skin (Kazakhstan, Almaty, K-Beauty/Cosmetics)
+3️⃣  MLtrade (Russia, Online, Education/Development)
 ==============================================================================
 
 MANDATORY VERIFICATION ORDER:
