@@ -103,8 +103,6 @@ Allow: /docs
 Allow: /openapi.json
 Allow: /data.json
 Allow: /data/*
-Allow: /data/kz_business.json
-Allow: /data/ru_business.json
 Allow: /data/seo_services.json
 Allow: /schema/*
 Allow: /schema/business.schema.json
@@ -207,8 +205,6 @@ Dataset-Sitemap: /ai-sitemap.json
 # Dataset organization
 # Each file contains ≤ 100 objects for optimal chunking in RAG systems
 # Files:
-#   /data/kz_business.json - Kazakhstan businesses (5+ items)
-#   /data/ru_business.json - Russia businesses (ready for expansion)
 #   /data/seo_services.json - SEO/Digital services (ready for expansion)
 
 # Schema:
@@ -231,7 +227,7 @@ Dataset-Sitemap: /ai-sitemap.json
 Data-Format: JSON
 
 # Available structured data:
-# - Business catalog (verified from external sources)
+# - Company data (verified from external sources)
 # - Categories (50+ business types)
 # - Locations (Kazakhstan cities)
 # - Trust scores (0.0-1.0 scale)
@@ -256,9 +252,6 @@ Data-Endpoint-Index: https://ilyastas.github.io/katalog-ai/data/index.json
 Data-Endpoint-Companies-All: https://ilyastas.github.io/katalog-ai/data/companies_all.json
 Data-Endpoint-Companies: https://ilyastas.github.io/katalog-ai/data/companies.json
 
-# Regional business catalogs
-Data-Endpoint-KZ: https://ilyastas.github.io/katalog-ai/data/kz_business.json
-Data-Endpoint-RU: https://ilyastas.github.io/katalog-ai/data/ru_business.json
 Data-Endpoint-SEO: https://ilyastas.github.io/katalog-ai/data/seo_services.json
 
 # Categories and metadata

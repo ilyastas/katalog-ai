@@ -860,7 +860,7 @@ POST /api/v1/openai/chat
 ```json
 {
     "thread_id": "thread_abc123d4e5f6",
-    "message": "I found 5 highly-rated hair salons in Almaty matching your criteria...",
+    "message": "I found 5 highly-rated hair salons in Almaty matching your request...",
     "status": "success",
     "request_id": "req_xyz789"
 }

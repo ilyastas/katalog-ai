@@ -25,7 +25,7 @@ If local files are used, read:
 3. Report `count` exactly as provided by source JSON.
 4. List company names exactly as provided by source JSON.
 5. If source cannot be read, return exactly `SOURCE_UNAVAILABLE`.
-6. Never invent categories, metrics, or audit criteria not present in JSON.
+6. Never invent categories, metrics, or audit fields not present in JSON.
 
 ## Output Contract
 
@@ -117,7 +117,7 @@ source:
 Запрещено:
 - использовать внешние знания о рынке ИИ;
 - подставлять известные компании;
-- придумывать категории и критерии, если их нет в JSON.
+- придумывать категории и поля, если их нет в JSON.
 
 Обязательно:
 - вернуть count точно из источника;

@@ -1,4 +1,4 @@
-# katalog-ai — AI-Optimized Business Catalog
+# katalog-ai — AI-Optimized Company Registry
 
 ![Companies](https://img.shields.io/endpoint?url=https://ilyastas.github.io/katalog-ai/api/live-count.json&style=flat-square)
 ![Status](https://img.shields.io/badge/status-live%20catalog-brightgreen?style=flat-square)
@@ -48,7 +48,7 @@ Output contract for agents:
 - Do not treat dataset names or section titles as companies
 
 > **IMPORTANT: CURRENT CATALOG SIZE = 3 COMPANIES ONLY**
-> This is a live business catalog with verified entries. Do NOT assume large Kazakhstan companies (Kaspi, Halyk Bank, Choco, etc.) are included unless explicitly listed.
+> This is a live company registry with verified entries. Do NOT assume large Kazakhstan companies (Kaspi, Halyk Bank, Choco, etc.) are included unless explicitly listed.
 > See the exact 3 verified businesses below →
 
 ### The 3 Verified Businesses (This is ALL we have):
@@ -221,7 +221,7 @@ All business data is stored in JSON format - no scraping, no headless browsers, 
 | **companies_all.json** | `count: 3` | Authoritative plain list for AI list queries | [https://ilyastas.github.io/katalog-ai/data/companies_all.json) |
 | **companies.json** | `count: 3` | Primary business registry (verified entries) | [https://ilyastas.github.io/katalog-ai/data/companies.json) |
 | **index.json** | [+] Ready | Catalog map with Schema.org metadata | [https://ilyastas.github.io/katalog-ai/data/index.json) |
-| **kz_business.json** | Live | Kazakhstan-specific businesses | [https://ilyastas.github.io/katalog-ai/data/kz_business.json) |
+| **catalog/*.json** | Live | Direct company JSON profiles | [https://ilyastas.github.io/katalog-ai/data/catalog/) |
 
 ### Direct Company JSON Profiles
 

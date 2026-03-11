@@ -1,14 +1,16 @@
 {
   "datasets": [
-    "/data/kz_business.json",
-    "/data/ru_business.json",
-    "/data/seo_services.json"
+    "/data/companies_all.json",
+    "/data/companies.json",
+    "/data/catalog/nrdj-salon.json",
+    "/data/catalog/secret-skin.json",
+    "/data/catalog/mltrade.json"
   ],
   "schema": "/schema/business.schema.json",
   "manifest": "ai-dataset.json",
   "version": "1.0.0",
   "description": "AI-friendly dataset map for katalog-ai project",
-  "total_files": 3,
+  "total_files": 5,
   "formats": {
     "data": "JSON Array",
     "schema": "JSON Schema"

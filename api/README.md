@@ -40,7 +40,7 @@ fetch('https://ilyastas.github.io/katalog-ai/api/data.json')
     "updated": "2026-03-03T17:00:00Z",
     "updateFrequency": "weekly",
     "license": "https://opensource.org/licenses/MIT",
-    "description": "Open AI-friendly business catalog"
+    "description": "Open AI-friendly company data"
   },
   "@graph": [...]
 }

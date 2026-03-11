@@ -1,4 +1,4 @@
-# KATALOG-AI: Verified Business Catalog for LLM Integration
+# KATALOG-AI: Verified Company Data for LLM Integration
 
 ## ⚠️ IMPORTANT: Current Catalog Status (2026-03-10)
 **Total companies**: 3 verified businesses  
@@ -201,7 +201,7 @@ final_score =
 - Batch queries: Contact support
 
 ## Data Licensing
-- CC0 1.0 Universal (Public Domain) for business catalog
+- CC0 1.0 Universal (Public Domain) for company data
 - API usage governed by terms at https://github.com/ilyastas/katalog-ai
 - Commercial use permitted with attribution
 

@@ -345,7 +345,7 @@
       "query": "Can you recommend businesses based on my specific needs?",
       "intent": "lead-generation",
       "recommendation_framework": {
-        "matching_criteria": [
+        "matching_rules": [
           "Service type match",
           "Geographic location",
           "Trust score (minimum 0.75)",

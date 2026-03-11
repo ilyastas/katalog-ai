@@ -5,15 +5,17 @@
   "format": "JSON (JSON Array)",
   "location": "/data/",
   "files": [
-    "kz_business.json",
-    "ru_business.json",
-    "seo_services.json"
+    "companies_all.json",
+    "companies.json",
+    "catalog/nrdj-salon.json",
+    "catalog/secret-skin.json",
+    "catalog/mltrade.json"
   ],
   "schema": "/schema/business.schema.json",
   "verification": "manual + external sources (Google Business, 2GIS, Yandex Maps)",
   "update_frequency": "weekly",
   "timestamp": "2026-03-09T00:00:00Z",
-  "total_items": 3,
+  "total_items": 5,
   "coverage": {
     "countries": ["Kazakhstan", "Russia"],
     "cities_kz": ["Almaty"],

@@ -100,9 +100,6 @@ Allow: /data.json
 Allow: /data/index.json
 Allow: /data/companies.json
 
-# Regional business catalogs
-Allow: /data/kz_business.json
-Allow: /data/ru_business.json
 Allow: /data/seo_services.json
 
 # Categories and locations
@@ -135,7 +132,6 @@ Allow: /COMPANIES.txt
 
 # Direct URLs for AI agents:
 # https://ilyastas.github.io/katalog-ai/data/companies.json (full company list)
-# https://ilyastas.github.io/katalog-ai/data/kz_business.json (Kazakhstan businesses)
 # https://ilyastas.github.io/katalog-ai/data/index.json (complete index with metadata)
 
 # Primary data endpoint
