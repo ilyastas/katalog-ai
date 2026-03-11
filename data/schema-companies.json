@@ -1,0 +1,69 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-03-11",
+  "count": 3,
+  "description": "Schema.org-focused company export for fast AI parsing. Derived from root company profiles.",
+  "companies": [
+    {
+      "id": "inst-nrdjsalon",
+      "profile_url": "https://ilyastas.github.io/katalog-ai/nrdj-salon.json",
+      "verification_status": "verified",
+      "semantic_data": {
+        "@context": "https://schema.org",
+        "@type": "ClothingStore",
+        "name": "NRDJ Salon",
+        "url": "https://www.instagram.com/nrj_salon_odezhdy/",
+        "description": "Salon of women's clothing with active Instagram and Telegram channels.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Almaty",
+          "addressCountry": "KZ"
+        },
+        "sameAs": [
+          "https://www.instagram.com/nrj_salon_odezhdy/",
+          "https://t.me/nrj_salon_odezhdy"
+        ]
+      }
+    },
+    {
+      "id": "inst-secretskin-kz",
+      "profile_url": "https://ilyastas.github.io/katalog-ai/secret-skin.json",
+      "verification_status": "verified",
+      "semantic_data": {
+        "@context": "https://schema.org",
+        "@type": "BeautySalon",
+        "name": "Secret Skin",
+        "url": "https://www.instagram.com/secretskin.kz/",
+        "description": "Specialized Korean skincare store with original products and care selection.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Almaty",
+          "addressCountry": "KZ"
+        },
+        "sameAs": [
+          "https://www.instagram.com/secretskin.kz/"
+        ]
+      }
+    },
+    {
+      "id": "brand-mltrade-311293097",
+      "profile_url": "https://ilyastas.github.io/katalog-ai/mltrade.json",
+      "verification_status": "verified",
+      "semantic_data": {
+        "@context": "https://schema.org",
+        "@type": "OnlineStore",
+        "name": "MLtrade",
+        "url": "https://www.wildberries.ru/brands/311293097-mltrade",
+        "description": "Supplier of reusable educational materials and stationery for children.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Online",
+          "addressCountry": "RU"
+        },
+        "sameAs": [
+          "https://www.wildberries.ru/brands/311293097-mltrade"
+        ]
+      }
+    }
+  ]
+}

@@ -116,6 +116,7 @@ Allow: /mltrade.json
 # Metadata and schemas
 Allow: /data/knowledge-graph.json
 Allow: /data/embeddings.json
+Allow: /data/schema-companies.json
 Allow: /ai-dataset.json
 Allow: /ai-sitemap.json
 Allow: /index.json
