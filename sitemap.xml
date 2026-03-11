@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
@@ -6,172 +6,94 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 
-  <!-- Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Р“Р»Р°РІРЅС‹Р№ РёРЅРґРµРєСЃ -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/index.json</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Direct company profile: NRDJ Salon -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/catalog/nrdj-salon.json</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://ilyastas.github.io/katalog-ai/nrdj-salon.json</loc>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Direct company profile: Secret Skin -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/catalog/secret-skin.json</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://ilyastas.github.io/katalog-ai/secret-skin.json</loc>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Direct company profile: MLtrade -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/catalog/mltrade.json</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://ilyastas.github.io/katalog-ai/mltrade.json</loc>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- OpenAPI СЃРїРµС†РёС„РёРєР°С†РёСЏ -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/core/openapi.yaml</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://ilyastas.github.io/katalog-ai/data/companies_all.json</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://ilyastas.github.io/katalog-ai/data/companies.json</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://ilyastas.github.io/katalog-ai/data/schema-companies.json</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- РРЅСЃС‚СЂСѓРєС†РёРё РґР»СЏ РР -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/docs/guides/AI_INSTRUCTIONS.md</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Документация -->
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/docs/SETUP_API_KEYS.md</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://ilyastas.github.io/katalog-ai/data/ai-catalog.json</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/docs/MONITORING_STRATEGY.md</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://ilyastas.github.io/katalog-ai/global-index.json</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/docs/DEPLOYMENT_GUIDE.md</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/docs/SCALING_GUIDE.md</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>quarterly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- README С„Р°Р№Р»С‹ -->
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/README.md</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/README.en.md</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Р›РёС†РµРЅР·РёСЏ -->
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/LICENSE</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <!-- AI.txt - Guidelines for AI agents -->
   <url>
     <loc>https://ilyastas.github.io/katalog-ai/ai.txt</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- AI dataset manifest and sitemap -->
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/ai-dataset.json</loc>
-    <lastmod>2026-03-07</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/ai-sitemap.json</loc>
-    <lastmod>2026-03-07</lastmod>
+    <loc>https://ilyastas.github.io/katalog-ai/llms.txt</loc>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
 
-  <!-- Dataset and schema files for LLM/RAG ingestion -->
   <url>
-    <loc>https://ilyastas.github.io/katalog-ai/schema/business.schema.json</loc>
-    <lastmod>2026-03-07</lastmod>
+    <loc>https://ilyastas.github.io/katalog-ai/README.md</loc>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
-
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/data/kz_business.json</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/data/ru_business.json</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/data/seo_services.json</loc>
-    <lastmod>2026-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Robots.txt - Crawler guidelines -->
-  <url>
-    <loc>https://ilyastas.github.io/katalog-ai/robots.txt</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
 </urlset>

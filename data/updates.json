@@ -1,42 +1,37 @@
 {
   "title": "KATALOG-AI Update Tracker",
   "description": "Lightweight tracker for catalog changes and version history",
-  "version": "1.1.0",
-  "last_sync": "2026-03-10T00:00:00Z",
+  "version": "1.2.0",
+  "last_sync": "2026-03-11T00:00:00Z",
   "latest_update": {
     "commit_hash": "pending",
-    "timestamp": "2026-03-10T00:00:00Z",
-    "message": "Replace thematic category catalogs with direct company JSON profiles",
+    "timestamp": "2026-03-11T00:00:00Z",
+    "message": "Zero-noise cleanup: remove legacy catalog references from sitemap and public LLM datasets",
     "changed_files": [
-      "data/catalog/nrdj-salon.json (created)",
-      "data/catalog/secret-skin.json (created)",
-      "data/catalog/mltrade.json (created)",
-      "catalog/nrdj-salon.json (created)",
-      "catalog/secret-skin.json (created)",
-      "catalog/mltrade.json (created)",
-      "data/index.json (updated)",
-      "index.json (updated)",
-      "data/ai-catalog.json (updated)"
+      "sitemap.xml (updated to root company profiles)",
+      "public/llm/examples.json (updated to canonical 3-company registry)",
+      "public/llm/contexts.json (updated to canonical 3-company registry)",
+      "data/updates.json (updated)"
     ],
-    "changes_summary": "Removed category JSON routing from primary machine paths and replaced it with direct company JSON files"
+    "changes_summary": "Removed legacy/fantom references and aligned public LLM artifacts with canonical root company JSON files"
   },
   "catalog_metrics": {
     "authoritative_companies": 3,
     "direct_company_profiles": 3,
-    "deprecated_category_catalogs_removed": 10,
+    "legacy_public_references_removed": 1,
     "schema_version": "1.0.0",
-    "ai_catalog_version": "1.1.0"
+    "ai_catalog_version": "2.0.0"
   },
   "data_integrity_checkpoints": [
     {
-      "timestamp": "2026-03-10T00:00:00Z",
+      "timestamp": "2026-03-11T00:00:00Z",
       "checkpoint": "companies_count_verified",
       "status": "ok",
       "count": 3
     },
     {
-      "timestamp": "2026-03-10T00:00:00Z",
-      "checkpoint": "direct_company_profiles_only",
+      "timestamp": "2026-03-11T00:00:00Z",
+      "checkpoint": "public_llm_noise_cleanup",
       "status": "ok",
       "profiles": ["nrdj-salon", "secret-skin", "mltrade"]
     }
