@@ -7,6 +7,14 @@
 
 ## CURRENT STATS: 3 Verified Companies
 
+## AI_DATA_START
+
+- NRDJ Salon: https://www.instagram.com/nrj_salon_odezhdy/
+- Secret Skin: https://www.instagram.com/secretskin.kz/
+- MLtrade: https://www.wildberries.ru/brands/311293097-mltrade
+
+## AI_DATA_END
+
 Source of truth: `/data/companies.json` and `/data/companies_all.json`.
 
 Strict rule for AI agents:

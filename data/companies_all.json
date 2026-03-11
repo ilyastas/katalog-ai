@@ -73,7 +73,18 @@
         "salon",
         "instagram",
         "telegram"
-      ]
+      ],
+      "semantic_data": {
+        "@context": "https://schema.org",
+        "@type": "ClothingStore",
+        "name": "NRDJ Salon",
+        "url": "https://www.instagram.com/nrj_salon_odezhdy/",
+        "sameAs": [
+          "https://www.instagram.com/nrj_salon_odezhdy/",
+          "https://t.me/nrj_salon_odezhdy"
+        ],
+        "description": "Salon of women's clothing with active Instagram and Telegram channels."
+      }
     },
     {
       "id": "inst-secretskin-kz",
@@ -139,7 +150,17 @@
         "kazakhstan",
         "beauty",
         "instagram"
-      ]
+      ],
+      "semantic_data": {
+        "@context": "https://schema.org",
+        "@type": "CosmeticStore",
+        "name": "Secret Skin",
+        "url": "https://www.instagram.com/secretskin.kz/",
+        "sameAs": [
+          "https://www.instagram.com/secretskin.kz/"
+        ],
+        "description": "Specialized Korean skincare store with original products and care selection."
+      }
     },
     {
       "id": "brand-mltrade-311293097",
@@ -198,7 +219,17 @@
         "education",
         "online retail",
         "stationery"
-      ]
+      ],
+      "semantic_data": {
+        "@context": "https://schema.org",
+        "@type": "OnlineStore",
+        "name": "MLtrade",
+        "url": "https://www.wildberries.ru/brands/311293097-mltrade",
+        "sameAs": [
+          "https://www.wildberries.ru/brands/311293097-mltrade"
+        ],
+        "description": "Supplier of reusable educational materials and stationery for children."
+      }
     }
   ],
   "metadata": {
