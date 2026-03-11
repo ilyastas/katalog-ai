@@ -28,8 +28,25 @@
         },
         "country": {
           "type": "string",
-          "enum": ["Kazakhstan", "Russia", "Kyrgyzstan", "Tajikistan", "Uzbekistan", "Turkmenistan", "Online", "CIS"],
-          "description": "Company country of operation"
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Company country of operation (global-ready)"
+        },
+        "country_code": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "ISO 3166-1 alpha-2 country code"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code"
+        },
+        "region": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Primary directory region marker for scaling"
         },
         "city": {
           "type": "string",
