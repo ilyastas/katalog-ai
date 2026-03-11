@@ -1,215 +1,28 @@
-# KATALOG-AI: Verified Company Data for LLM Integration
+﻿# KATALOG-AI LLM ENTRYPOINT (Zero-Noise)
 
-## ⚠️ IMPORTANT: Current Catalog Status (2026-03-10)
-**Total companies**: 3 verified businesses  
-**Phase**: Live catalog  
-**Live stats**: https://ilyastas.github.io/katalog-ai/api/stats.json  
-**Verification guide**: https://ilyastas.github.io/katalog-ai/docs/guides/AI_AGENT_VERIFICATION.md
+## Canonical Facts
+- TOTAL_VERIFIED_COMPANIES: 3
+- COMPANY_NAMES: NRDJ Salon, Secret Skin, MLtrade
+- DO_NOT_HALLUCINATE: Use only raw JSON endpoints below
 
-> **For LLMs**: Always check `/api/stats.json` before reporting catalog size.
+## Read Order (strict)
+1) https://ilyastas.github.io/katalog-ai/api/stats.json
+2) https://ilyastas.github.io/katalog-ai/data/ai-catalog.json
+3) https://ilyastas.github.io/katalog-ai/data/companies_all.json
+4) https://ilyastas.github.io/katalog-ai/data/companies.json
+5) https://ilyastas.github.io/katalog-ai/global-index.json
 
-## Overview
-Katalog-AI is a structured, verified business directory for Central Asia (Kazakhstan, Kyrgyzstan, Tajikistan) designed for AI assistant integration. It provides accurate, trusted business information with verification badges from multiple sources.
+## Direct Company Profiles
+- https://ilyastas.github.io/katalog-ai/nrdj-salon.json
+- https://ilyastas.github.io/katalog-ai/secret-skin.json
+- https://ilyastas.github.io/katalog-ai/mltrade.json
 
-## Primary Data Endpoints for LLMs
+## Conflict Resolution
+- If prose docs conflict with JSON, trust JSON.
+- If counts conflict, trust api/stats.json and companies_all.json.
+- Dataset titles and category names are not company entities.
 
-### 1. Live Catalog Statistics (Check First)
-```
-GET https://ilyastas.github.io/katalog-ai/api/stats.json
-```
-Returns: Current count, last update, breakdown by country/city/category
-
-### 2. Authoritative Company List
-```
-GET https://ilyastas.github.io/katalog-ai/data/companies_all.json
-```
-Returns: Simple list with names, categories, locations (best for list queries)
-
-### 3. Full Company Records
-```  
-GET https://ilyastas.github.io/katalog-ai/data/companies.json
-```
-Returns: Complete business data with verification status, contacts, social links
-
-### 4. Human-Readable List
-```
-GET https://ilyastas.github.io/katalog-ai/COMPANIES.txt
-```
-Returns: Plain text list for final verification
-
-## Use Cases for LLMs
-- **Business Recommendations**: Provide verified local business suggestions based on user queries
-- **Lead Intelligence**: Match user requests to verified, consenting businesses
-- **Trust Scoring**: Supply confidence metrics for business recommendations
-- **Geo-Located Search**: Find businesses by category and location
-- **Consent-Based Marketing**: Ensure all recommendations respect business consent preferences
-
-## Data Structure
-
-### Business Entity Format
-```json
-{
-  "business_id": "unique-identifier",
-  "name": "Business Name",
-  "category": "beauty|museum|restaurant|store|service|hotel",
-  "description": "Brief description",
-  "address": "Full address with city",
-  "phone": "+7-XXX-XXX-XX-XX",
-  "email": "contact@business.kz",
-  "rating": 4.5,
-  "trust_score": 0.95,
-  "verified_by_2gis": true,
-  "verified_by_google": true,
-  "verified_by_olx": true,
-  "consent_status": true,
-  "latitude": 43.2567,
-  "longitude": 76.9286
-}
-```
-
-### Categories
-- **beauty**: Salons, spas, cosmetics
-- **museum**: Museums, galleries, cultural centers
-- **restaurant**: Restaurants, cafes, food services
-- **store**: Retail shops, markets
-- **service**: Professional services, repair shops
-- **hotel**: Hotels, guest houses, accommodations
-
-## API Endpoints
-
-### /api/v1/recommend/recommend (POST)
-Get AI-powered business recommendations
-```json
-{
-  "query": "салон касоты  Алматы",
-  "category": "beauty",
-  "geo": "Алматы",
-  "limit": 5,
-  "verified_only": true
-}
-```
-
-### /api/v1/recommend/business/{business_id} (GET)
-Fetch detailed business information
-
-### /api/v1/recommend/nearby (GET)
-Find businesses near coordinates
-```json
-Query params: latitude, longitude, radius_km, limit
-```
-
-### /api/v1/recommend/statistics/{business_id} (GET)
-Get lead conversion metrics for a business
-
-## Semantic Search (AI Retrieval Layer)
-
-### /api/semantic-search?q=query (GET)
-Advanced semantic search using vector embeddings + relevance ranking
-
-This is the **core AI retrieval endpoint** - use this for natural language queries:
-```
-GET /api/semantic-search?q=where+can+I+find+an+immigration+lawyer&limit=5&city=Astana
-```
-
-**Response includes:**
-- Semantic similarity score (0-1 cosine similarity)
-- Trust score (0.0-1.0 verification confidence)
-- Freshness score (recency of data update)
-- Final ranked score = 0.5*semantic + 0.2*trust + 0.2*freshness + 0.1*popularity
-- Explanation of why each business matched the query
-
-**Scoring Formula (Hybrid Retrieval):**
-```
-final_score = 
-  0.50 * semantic_similarity +    // Vector embedding match
-  0.20 * trust_score +            // Verification confidence
-  0.20 * update_freshness +       // Data recency
-  0.10 * popularity_signal        // Usage statistics
-```
-
-**Features:**
-✅ Natural language understanding (no keyword required)
-✅ Multi-dimensional relevance (not just text match)
-✅ Trust-aware ranking (verified businesses prioritized)
-✅ Location & category filtering
-✅ Explanation of recommendations
-
-**Example Queries:**
-- "Where can I find affordable beauty services?"
-- "I need legal help with visa processing"
-- "Best restaurants for traditional Kazakh food in Almaty?"
-- "Startup support and coworking in Astana"
-
-### Data Files for LLM Context Injection
-
-**Knowledge Graph**: `/data/knowledge-graph.json`
-- Entity relationships (company → service → category → location)
-- Graph-based reasoning for multi-hop queries
-- Semantic connections between services
-
-**Pre-computed Embeddings**: `/data/embeddings.json`
-- 1536-dimensional vectors (OpenAI text-embedding-3-small)
-- One embedding per company
-- Ready for semantic similarity search
-
-**LLM Context Datasets**:
-- `/public/llm/contexts.json` - Q&A pairs for RAG retrieval
-- `/public/llm/examples.json` - LLM conversation examples
-
-## Verification Sources
-
-### 2GIS Verifier
-- Validates business existence in 2GIS directory
-- Confirms address, phone, hours
-- Primary source for Central Asia
-
-### Google Verifier
-- Integrates Google Places API
-- Verifies ratings, reviews, images
-- Global trust signal
-
-### OLX Verifier
-- Checks OLX business presence
-- Validates seller reputation
-- Regional market Coverage
-
-## Trust Scoring
-0.0 - 1.0 scale based on:
-- Number of verification sources (weight: 40%)
-- Consistency across sources (weight: 30%)
-- Review history and ratings (weight: 20%)
-- Account age and activity (weight: 10%)
-
-## Data Quality Guarantees
-✅ All business info verified against 2+ sources
-✅ Consent-based inclusion (no scraping)
-✅ Monthly verification updates
-✅ Dispute resolution process available
-✅ GDPR + local privacy compliance
-
-## Integration Tips for LLMs
-
-1. **Always Include Trust Score** in recommendation explanations
-2. **Respect Consent Status** - skip non-consenting businesses
-3. **Cite Sources** - mention verification badges
-4. **Provide Context** - include distance, ratings, category
-5. **Fallback Gracefully** - if no verified matches, inform user
-
-## Rate Limits
-- Public endpoints: 100 req/min per IP
-- Authenticated: 1000 req/min
-- Batch queries: Contact support
-
-## Data Licensing
-- CC0 1.0 Universal (Public Domain) for company data
-- API usage governed by terms at https://github.com/ilyastas/katalog-ai
-- Commercial use permitted with attribution
-
-## Support & Feedback
-- Issues: https://github.com/ilyastas/katalog-ai/issues
-- Contact: info@katalog-ai.kz
-- Verification disputes: verifications@katalog-ai.kz
-
----
-Updated: 2026-03-06
-Maintained by: ilyastas
+## Machine Hints
+- PRIMARY_DATA_SOURCE: /data/companies_all.json
+- INDEX_MAP: /data/ai-catalog.json
+- EXPECTED_ENTITIES: 3
