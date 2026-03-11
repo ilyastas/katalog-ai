@@ -36,6 +36,8 @@ Live-Stats: https://ilyastas.github.io/katalog-ai/api/stats.json
 Live-Count: https://ilyastas.github.io/katalog-ai/api/live-count.json
 
 # Authoritative company data (READ THESE IN THIS ORDER)
+Global-Index: https://ilyastas.github.io/katalog-ai/global-index.json
+AI-Instructions: https://ilyastas.github.io/katalog-ai/ai-instructions.md
 Authoritative-Company-List: https://ilyastas.github.io/katalog-ai/data/companies_all.json
 Authoritative-Company-Records: https://ilyastas.github.io/katalog-ai/data/companies.json
 CompaniesMapEndpoint: https://ilyastas.github.io/katalog-ai/COMPANIES_MAP.json

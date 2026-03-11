@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "updated_at": "2026-03-11",
+  "description": "Normalized category list for Katalog-AI. Use ONLY these exact values in the company 'category' field. Do not invent new categories.",
+  "categories": [
+    {
+      "id": "clothing-accessories",
+      "name": "Clothing and Accessories",
+      "description": "Fashion retailers, clothing stores, accessory and jewelry shops"
+    },
+    {
+      "id": "kbeauty-cosmetics",
+      "name": "K-Beauty Cosmetics",
+      "description": "Korean beauty products, skincare, cosmetics, beauty stores"
+    },
+    {
+      "id": "education-development",
+      "name": "Education and Development",
+      "description": "Educational materials, learning tools, child development products, stationery"
+    },
+    {
+      "id": "marketplace-ecommerce",
+      "name": "Marketplace E-Commerce",
+      "description": "Online marketplace sellers, e-commerce platforms, digital retail"
+    },
+    {
+      "id": "food-beverage",
+      "name": "Food and Beverage",
+      "description": "Restaurants, cafes, food delivery services, beverages, catering"
+    },
+    {
+      "id": "health-wellness",
+      "name": "Health and Wellness",
+      "description": "Healthcare services, fitness, sports, wellness products, pharmacies"
+    },
+    {
+      "id": "technology-software",
+      "name": "Technology and Software",
+      "description": "Software products, SaaS, tech services, digital platforms, IT consulting"
+    },
+    {
+      "id": "services-consulting",
+      "name": "Services and Consulting",
+      "description": "Professional services, business consulting, legal, financial advisory"
+    },
+    {
+      "id": "real-estate",
+      "name": "Real Estate",
+      "description": "Property sales, rentals, real estate agencies, construction"
+    },
+    {
+      "id": "logistics-transport",
+      "name": "Logistics and Transport",
+      "description": "Courier, freight, delivery services, transportation"
+    }
+  ]
+}

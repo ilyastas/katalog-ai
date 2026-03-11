@@ -1,5 +1,5 @@
 {
-  "$schema": "./schema.json",
+  "$schema": "./data/schema.json",
   "id": "inst-nrdjsalon",
   "name": "NRDJ Salon",
   "slug": "nrdjsalon",
@@ -67,5 +67,21 @@
     "salon",
     "instagram",
     "telegram"
-  ]
+    ],
+    "semantic_data": {
+      "@context": "https://schema.org",
+      "@type": "ClothingStore",
+      "name": "NRDJ Salon",
+      "url": "https://www.instagram.com/nrj_salon_odezhdy/",
+      "description": "Salon of women's clothing with active Instagram and Telegram channels.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Almaty",
+        "addressCountry": "KZ"
+      },
+      "sameAs": [
+        "https://www.instagram.com/nrj_salon_odezhdy/",
+        "https://t.me/nrj_salon_odezhdy"
+      ]
+    }
 }

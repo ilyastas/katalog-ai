@@ -126,6 +126,8 @@ Allow: /llms.txt
 Allow: /robots.txt
 Allow: /STATUS.json
 Allow: /COMPANIES.txt
+Allow: /global-index.json
+Allow: /ai-instructions.md
 
 # Direct URLs for AI agents:
 # https://ilyastas.github.io/katalog-ai/data/companies.json (full company list)

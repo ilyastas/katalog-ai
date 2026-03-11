@@ -1,5 +1,5 @@
 {
-  "$schema": "./schema.json",
+  "$schema": "./data/schema.json",
   "id": "brand-mltrade-311293097",
   "name": "MLtrade",
   "slug": "mltrade-wildberries",
@@ -56,5 +56,20 @@
     "education",
     "online retail",
     "stationery"
-  ]
+    ],
+    "semantic_data": {
+      "@context": "https://schema.org",
+      "@type": "OnlineStore",
+      "name": "MLtrade",
+      "url": "https://www.wildberries.ru/brands/311293097-mltrade",
+      "description": "Supplier of reusable educational materials and stationery for children.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Online",
+        "addressCountry": "RU"
+      },
+      "sameAs": [
+        "https://www.wildberries.ru/brands/311293097-mltrade"
+      ]
+    }
 }
