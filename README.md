@@ -23,6 +23,7 @@ LLM anti-hallucination contract: see [LLM_GUARDRAILS.md](./LLM_GUARDRAILS.md).
 - Start here: `https://ilyastas.github.io/katalog-ai/api/stats.json`
 - Authoritative list: `https://ilyastas.github.io/katalog-ai/data/companies_all.json`
 - Full records: `https://ilyastas.github.io/katalog-ai/data/companies.json`
+- Schema.org export: `https://ilyastas.github.io/katalog-ai/data/schema-companies.json`
 - Canonical AI anchor: `https://ilyastas.github.io/katalog-ai/AUTHORITATIVE_COMPANY_LIST.json`
 - Root real business list: `https://ilyastas.github.io/katalog-ai/REAL_BUSINESSES.json`
 - Root current state: `https://ilyastas.github.io/katalog-ai/CURRENT_STATE.json`
@@ -80,6 +81,7 @@ Output contract for agents:
   "key_datasets": {
     "companies_full_registry": "data/companies.json (with keywords field for semantic matching)",
     "companies_canonical_list": "data/companies_all.json (fast lookup)",
+    "companies_schema_export": "data/schema-companies.json (schema.org-focused fast parsing)",
     "json_schema": "data/schema.json (strict validation)"
   }
 }
@@ -220,6 +222,7 @@ All business data is stored in JSON format - no scraping, no headless browsers, 
 |------|--------|--------------|-----|
 | **companies_all.json** | `count: 3` | Authoritative plain list for AI list queries | [https://ilyastas.github.io/katalog-ai/data/companies_all.json) |
 | **companies.json** | `count: 3` | Primary business registry (verified entries) | [https://ilyastas.github.io/katalog-ai/data/companies.json) |
+| **schema-companies.json** | `count: 3` | Schema.org-focused export for fast AI parsing | [https://ilyastas.github.io/katalog-ai/data/schema-companies.json) |
 | **index.json** | [+] Ready | Catalog map with Schema.org metadata | [https://ilyastas.github.io/katalog-ai/data/index.json) |
 | **root company json** | Live | Direct company JSON profiles | [https://ilyastas.github.io/katalog-ai/) |
 
