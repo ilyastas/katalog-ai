@@ -109,12 +109,9 @@ Allow: /data/services.json
 Allow: /data/business.json
 
 # Direct company JSON profiles
-Allow: /data/catalog/nrdj-salon.json
-Allow: /data/catalog/secret-skin.json
-Allow: /data/catalog/mltrade.json
-Allow: /catalog/nrdj-salon.json
-Allow: /catalog/secret-skin.json
-Allow: /catalog/mltrade.json
+Allow: /nrdj-salon.json
+Allow: /secret-skin.json
+Allow: /mltrade.json
 
 # Metadata and schemas
 Allow: /data/knowledge-graph.json

@@ -2,9 +2,9 @@
   "datasets": [
     "/data/companies_all.json",
     "/data/companies.json",
-    "/data/catalog/nrdj-salon.json",
-    "/data/catalog/secret-skin.json",
-    "/data/catalog/mltrade.json"
+    "/nrdj-salon.json",
+    "/secret-skin.json",
+    "/mltrade.json"
   ],
   "schema": "/schema/business.schema.json",
   "manifest": "ai-dataset.json",

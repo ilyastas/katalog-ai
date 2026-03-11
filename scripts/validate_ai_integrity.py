@@ -70,8 +70,8 @@ def check_dataset_catalogs() -> None:
     for dataset in index_data.get("hasPart", []):
         name = dataset.get("name", "")
         url = dataset.get("url", "")
-        if any(token in url for token in ["beauty.json", "museums.json", "marketplaces.json", "offers.json", "geo-index.json"]):
-            fail(f"Deprecated thematic dataset still exposed in data/index.json: {url}")
+        if "/catalog/" in url:
+            fail(f"Deprecated auxiliary catalog still exposed in data/index.json: {url}")
         if name in {"Authoritative Company List", "Full Company Registry"} and dataset.get("authoritative") is not True:
             fail(f"Dataset '{name}' must have authoritative=true")
         if name.startswith("Company Profile:") and dataset.get("authoritative") is not False:
@@ -79,8 +79,8 @@ def check_dataset_catalogs() -> None:
 
     for dataset in root_index.get("hasPart", []):
         url = dataset.get("url", "")
-        if any(token in url for token in ["beauty.json", "museums.json", "marketplaces.json", "offers.json", "geo-index.json"]):
-            fail(f"Deprecated thematic dataset still exposed in index.json: {url}")
+        if "/catalog/" in url:
+            fail(f"Deprecated auxiliary catalog still exposed in index.json: {url}")
 
     print("OK: public catalogs expose only canonical registries and direct company profiles")
 
@@ -90,30 +90,20 @@ def check_direct_company_profiles() -> None:
     canonical_names = {item.get("name") for item in companies.get("companies", [])}
 
     for slug, expected_name in DIRECT_COMPANY_FILES.items():
-        data_profile = load_json(f"data/catalog/{slug}.json")
-        root_profile = load_json(f"catalog/{slug}.json")
+        root_profile = load_json(f"{slug}.json")
 
-        if data_profile.get("name") != expected_name:
-            fail(f"data/catalog/{slug}.json must expose company name '{expected_name}'")
         if root_profile.get("name") != expected_name:
-            fail(f"catalog/{slug}.json must expose company name '{expected_name}'")
+            fail(f"{slug}.json must expose company name '{expected_name}'")
         if expected_name not in canonical_names:
             fail(f"Direct profile '{expected_name}' is missing from canonical registry")
 
-    for deprecated in [
-        "data/catalog/beauty.json",
-        "data/catalog/museums.json",
-        "data/catalog/marketplaces.json",
-        "data/catalog/offers.json",
-        "data/catalog/geo-index.json",
-        "catalog/beauty.json",
-        "catalog/museums.json",
-        "catalog/marketplaces.json",
-        "catalog/offers.json",
-        "catalog/geo-index.json",
-    ]:
-        if (ROOT / deprecated).exists():
-            fail(f"Deprecated catalog file still exists: {deprecated}")
+    deprecated_dirs = [
+        "data/catalog",
+        "catalog",
+    ]
+    for deprecated_dir in deprecated_dirs:
+        if (ROOT / deprecated_dir).exists():
+            fail(f"Deprecated auxiliary catalog directory still exists: {deprecated_dir}")
 
     print("OK: direct company profile files exist and deprecated category catalogs are removed")
 
@@ -144,9 +134,9 @@ def check_ai_entrypoints() -> None:
         fail("data/ai-catalog.json company names must match canonical set")
 
     required_urls = {
-        "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json",
-        "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json",
-        "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json",
+        "https://ilyastas.github.io/katalog-ai/nrdj-salon.json",
+        "https://ilyastas.github.io/katalog-ai/secret-skin.json",
+        "https://ilyastas.github.io/katalog-ai/mltrade.json",
     }
     actual_urls = {
         item.get("profile_url")

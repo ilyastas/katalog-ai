@@ -221,18 +221,18 @@ All business data is stored in JSON format - no scraping, no headless browsers, 
 | **companies_all.json** | `count: 3` | Authoritative plain list for AI list queries | [https://ilyastas.github.io/katalog-ai/data/companies_all.json) |
 | **companies.json** | `count: 3` | Primary business registry (verified entries) | [https://ilyastas.github.io/katalog-ai/data/companies.json) |
 | **index.json** | [+] Ready | Catalog map with Schema.org metadata | [https://ilyastas.github.io/katalog-ai/data/index.json) |
-| **catalog/*.json** | Live | Direct company JSON profiles | [https://ilyastas.github.io/katalog-ai/data/catalog/) |
+| **root company json** | Live | Direct company JSON profiles | [https://ilyastas.github.io/katalog-ai/) |
 
 ### Direct Company JSON Profiles
 
-Important: data/catalog now contains only direct company JSON files. There are no category JSON files in this path anymore.
+Important: direct company JSON files are now located in the repository root.
 For exact count and official company list, use companies_all.json and companies.json first.
 
 | Company | URL |
 |---------|-----|
-| NRDJ Salon | [nrdj-salon.json](https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json) |
-| Secret Skin | [secret-skin.json](https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json) |
-| MLtrade | [mltrade.json](https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json) |
+| NRDJ Salon | [nrdj-salon.json](https://ilyastas.github.io/katalog-ai/nrdj-salon.json) |
+| Secret Skin | [secret-skin.json](https://ilyastas.github.io/katalog-ai/secret-skin.json) |
+| MLtrade | [mltrade.json](https://ilyastas.github.io/katalog-ai/mltrade.json) |
 
 ### Categories & Metadata
 - [categories.json](https://ilyastas.github.io/katalog-ai/data/categories.json) "” 50+ business types

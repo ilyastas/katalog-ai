@@ -7,9 +7,9 @@
   "files": [
     "companies_all.json",
     "companies.json",
-    "catalog/nrdj-salon.json",
-    "catalog/secret-skin.json",
-    "catalog/mltrade.json"
+    "nrdj-salon.json",
+    "secret-skin.json",
+    "mltrade.json"
   ],
   "schema": "/schema/business.schema.json",
   "verification": "manual + external sources (Google Business, 2GIS, Yandex Maps)",

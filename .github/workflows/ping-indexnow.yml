@@ -28,9 +28,9 @@ jobs:
               "urlList": [
                 "https://ilyastas.github.io/katalog-ai/",
                 "https://ilyastas.github.io/katalog-ai/index.json",
-                "https://ilyastas.github.io/katalog-ai/catalog/nrdj-salon.json",
-                "https://ilyastas.github.io/katalog-ai/catalog/secret-skin.json",
-                "https://ilyastas.github.io/katalog-ai/catalog/mltrade.json",
+                "https://ilyastas.github.io/katalog-ai/nrdj-salon.json",
+                "https://ilyastas.github.io/katalog-ai/secret-skin.json",
+                "https://ilyastas.github.io/katalog-ai/mltrade.json",
                 "https://ilyastas.github.io/katalog-ai/sitemap.xml"
               ]
             }'

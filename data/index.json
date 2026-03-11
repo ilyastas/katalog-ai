@@ -47,10 +47,10 @@
       "description": "Direct company JSON profile for NRDJ Salon.",
       "authoritative": false,
       "usageInfo": "Derived profile. Cross-check against companies.json if needed.",
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json",
+      "url": "https://ilyastas.github.io/katalog-ai/nrdj-salon.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/nrdj-salon.json",
         "encodingFormat": "application/json"
       }
     },
@@ -60,10 +60,10 @@
       "description": "Direct company JSON profile for Secret Skin.",
       "authoritative": false,
       "usageInfo": "Derived profile. Cross-check against companies.json if needed.",
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json",
+      "url": "https://ilyastas.github.io/katalog-ai/secret-skin.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/secret-skin.json",
         "encodingFormat": "application/json"
       }
     },
@@ -73,10 +73,10 @@
       "description": "Direct company JSON profile for MLtrade.",
       "authoritative": false,
       "usageInfo": "Derived profile. Cross-check against companies.json if needed.",
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json",
+      "url": "https://ilyastas.github.io/katalog-ai/mltrade.json",
       "distribution": {
         "@type": "DataDownload",
-        "contentUrl": "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json",
+        "contentUrl": "https://ilyastas.github.io/katalog-ai/mltrade.json",
         "encodingFormat": "application/json"
       }
     }

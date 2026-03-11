@@ -6,17 +6,17 @@
     {
       "id": "inst-nrdjsalon",
       "name": "NRDJ Salon",
-      "profile_url": "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json"
+      "profile_url": "https://ilyastas.github.io/katalog-ai/nrdj-salon.json"
     },
     {
       "id": "inst-secretskin-kz",
       "name": "Secret Skin",
-      "profile_url": "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json"
+      "profile_url": "https://ilyastas.github.io/katalog-ai/secret-skin.json"
     },
     {
       "id": "brand-mltrade-311293097",
       "name": "MLtrade",
-      "profile_url": "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json"
+      "profile_url": "https://ilyastas.github.io/katalog-ai/mltrade.json"
     }
   ]
 }

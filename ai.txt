@@ -260,9 +260,9 @@ Data-Endpoint-Locations: https://ilyastas.github.io/katalog-ai/data/locations.js
 Data-Endpoint-Services: https://ilyastas.github.io/katalog-ai/data/services.json
 
 # Direct company profile endpoints
-Data-Endpoint-NRDJ-Salon: https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json
-Data-Endpoint-Secret-Skin: https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json
-Data-Endpoint-MLtrade: https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json
+Data-Endpoint-NRDJ-Salon: https://ilyastas.github.io/katalog-ai/nrdj-salon.json
+Data-Endpoint-Secret-Skin: https://ilyastas.github.io/katalog-ai/secret-skin.json
+Data-Endpoint-MLtrade: https://ilyastas.github.io/katalog-ai/mltrade.json
 
 # Advanced metadata
 Data-Endpoint-KnowledgeGraph: https://ilyastas.github.io/katalog-ai/data/knowledge-graph.json
