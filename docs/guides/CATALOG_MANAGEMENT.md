@@ -1,4 +1,4 @@
-# Catalog Management Strategy
+﻿# Catalog Management Strategy
 
 ## 🎯 Цель
 Обеспечить:
@@ -70,7 +70,7 @@
 2. `data/companies_all.json` — краткий список
 3. `COMPANIES.txt` — текстовый список
 4. `README.md` — видимый список (секция "Current Company List")
-5. `data/catalog/<category>.json` — тематический каталог
+5. `/{slug}.json` — индивидуальный профиль компании
 
 **Автоматизация (рекомендуется):**
 Создать скрипт `scripts/add_company.py`:
@@ -103,7 +103,7 @@ python scripts/check_consistency.py
 2. Удалить запись из всех файлов:
    - `data/companies.json`
    - `data/companies_all.json`
-   - `data/catalog/<category>.json`
+   - `/{slug}.json`
    - `COMPANIES.txt`
    - `README.md`
 3. Обновить `count` во всех файлах
@@ -148,9 +148,9 @@ data/companies_chunk_2.json — записи 101-200
 
 #### 4. Категорийные срезы (оптимизация для AI)
 ```
-data/catalog/beauty.json — только косметика/салоны (≤50 записей)
-data/catalog/marketplaces.json — только маркетплейсы (≤50 записей)
-data/catalog/tech.json — только IT/Tech (≤50 записей)
+/secret-skin.json — индивидуальный профиль (K-Beauty)
+/mltrade.json — индивидуальный профиль (Marketplace)
+/nrdj-salon.json — индивидуальный профиль (Fashion)
 ```
 
 **Правило:** 1 категорийный файл = максимум 50 записей
@@ -242,7 +242,7 @@ N. Company Name
 # - data/companies_all.json
 # - COMPANIES.txt
 # - обновляет README.md секцию
-# - обновляет data/catalog/*.json
+# - обновляет global-index.json
 # - проверяет count везде одинаковый
 ```
 
@@ -268,7 +268,7 @@ git add data/companies_all.json COMPANIES.txt README.md
 - [ ] `data/companies_all.json` синхронизирован
 - [ ] `COMPANIES.txt` содержит тот же список
 - [ ] `README.md` секция "Current Company List" обновлена
-- [ ] Тематический каталог `data/catalog/<category>.json` обновлён
+- [ ] Индивидуальный профиль `/{slug}.json` обновлён
 - [ ] Все `count` совпадают
 - [ ] JSON валидны (проверено через `jq` или скрипт)
 - [ ] Коммит сообщение информативное

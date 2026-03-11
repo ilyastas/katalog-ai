@@ -28,6 +28,7 @@ apify-client==1.4.3
 # Validation & Serialization
 python-dotenv==1.0.0
 email-validator==2.1.0
+jsonschema==4.23.0
 
 # Logging & Monitoring
 python-json-logger==2.0.7

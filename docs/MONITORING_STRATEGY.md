@@ -1,4 +1,4 @@
-# 📊 Стратегия мониторинга Katalog-AI
+﻿# 📊 Стратегия мониторинга Katalog-AI
 
 Документ описывает, как отслеживать появление ссылок на Katalog-AI в ответах ИИ-ассистентов и мониторить эффективность каталога.
 
@@ -198,7 +198,7 @@ jobs:
       - name: Verify API Availability
         run: |
           curl -f https://ilyastas.github.io/katalog-ai/index.json
-          curl -f https://ilyastas.github.io/katalog-ai/catalog/beauty.json
+          curl -f https://ilyastas.github.io/katalog-ai/secret-skin.json
           
       - name: Check Indexing Status
         uses: actions/github-script@v6

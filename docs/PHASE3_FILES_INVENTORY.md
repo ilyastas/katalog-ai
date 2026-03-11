@@ -1,4 +1,4 @@
-"""
+﻿"""
 PHASE 3 FILES & STRUCTURE - Complete Inventory
 """
 
@@ -287,8 +287,8 @@ ALIE_PROJECT/
 │
 ├── data/
 │   ├── catalog/
-│   │   ├── beauty.json                  (Phase 1)
-│   │   ├── museums.json                 (Phase 1)
+│   │   ├── secret-skin.json                  (Phase 1)
+│   │   ├── nrdj-salon.json                 (Phase 1)
 │   │   ├── marketplaces.json            (Phase 1)
 │   │   ├── offers.json                  (Phase 1)
 │   │   └── geo-index.json               (Phase 1)

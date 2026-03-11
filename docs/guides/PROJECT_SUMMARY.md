@@ -1,4 +1,4 @@
-# 🤖 Katalog-AI: Верифицированный каталог бизнесов для ИИ
+﻿# 🤖 Katalog-AI: Верифицированный каталог бизнесов для ИИ
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![GitHub Pages](https://img.shields.io/badge/Hosting-GitHub%20Pages-green.svg)](https://ilyastas.github.io/katalog-ai/)
@@ -51,8 +51,8 @@ katalog-ai/
 ├── 📄 indexnow.txt                  # Ключ IndexNow для Bing
 │
 ├── 📁 catalog/                      # Все каталоги
-│   ├── beauty.json                  # 3 салона красоты (Алматы, Нур-Султан)
-│   ├── museums.json                 # 3 музея (включая премиум в горах)
+│   ├── secret-skin.json                  # 3 салона красоты (Алматы, Нур-Султан)
+│   ├── nrdj-salon.json                 # 3 музея (включая премиум в горах)
 │   ├── marketplaces.json            # 3 продавца на маркетплейсах
 │   ├── offers.json                  # 6+ товаров и услуг с ценами
 │   └── geo-index.json               # Координаты GPS для локальных поисков
@@ -83,8 +83,8 @@ katalog-ai/
 
 | Категория | Файл | Примеры |
 |-----------|------|---------|
-| **💅 Бьюти-услуги** | `beauty.json` | Салоны красоты, стрижка, маникюр, косметология |
-| **🏛️ Культура** | `museums.json` | Музеи, галереи, премиум-опыт в горах Алматы |
+| **💅 Бьюти-услуги** | `secret-skin.json` | Салоны красоты, стрижка, маникюр, косметология |
+| **🏛️ Культура** | `nrdj-salon.json` | Музеи, галереи, премиум-опыт в горах Алматы |
 | **🛒 Маркетплейсы** | `marketplaces.json` | Продавцы на Kaspi.kz, Wildberries, OLX |
 | **💰 Товары/услуги** | `offers.json` | Актуальные цены, доступность в реальном времени |
 | **🗺️ Геоданные** | `geo-index.json` | Координаты GPS для локальных запросов ИИ |
@@ -103,11 +103,11 @@ https://ilyastas.github.io/katalog-ai
 | Метод | Эндпоинт | Описание |
 |-------|----------|---------|
 | `GET` | `/index.json` | Главный манифест всех каталогов |
-| `GET` | `/catalog/beauty.json` | Бьюти-услуги |
-| `GET` | `/catalog/museums.json` | Музеи и культура |
-| `GET` | `/catalog/marketplaces.json` | Продавцы маркетплейсов |
-| `GET` | `/catalog/offers.json` | Товары и услуги с ценами |
-| `GET` | `/catalog/geo-index.json` | Геоиндекс для локальных запросов |
+| `GET` | `/secret-skin.json` | Бьюти-услуги |
+| `GET` | `/nrdj-salon.json` | Музеи и культура |
+| `GET` | `/mltrade.json` | Продавцы маркетплейсов |
+| `GET` | `/data/companies.json` | Товары и услуги с ценами |
+| `GET` | `/global-index.json` | Геоиндекс для локальных запросов |
 | `GET` | `/api/search?q=маникюр&city=Алматы` | Поиск по каталогам |
 | `GET` | `/api/nearby?lat=43.23&lon=76.94&radius=5` | Поиск рядом по GPS |
 

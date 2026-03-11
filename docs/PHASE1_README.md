@@ -1,4 +1,4 @@
-# ALIE: Phase 1 - Foundation Ready! 🚀
+﻿# ALIE: Phase 1 - Foundation Ready! 🚀
 
 This is the **Phase 1** completion for the **ALIE (AI Lead Intelligence Engine)** project - the backend platform that enables AI assistants to recommend verified local businesses in Kazakhstan.
 
@@ -19,8 +19,8 @@ ALIE/
 ├── data/
 │   ├── index.json              ← Main manifest
 │   └── catalog/
-│       ├── beauty.json         (3 businesses)
-│       ├── museums.json        (3 businesses)
+│       ├── secret-skin.json         (3 businesses)
+│       ├── nrdj-salon.json        (3 businesses)
 │       ├── marketplaces.json   (3 businesses)
 │       ├── offers.json         (6 services)
 │       └── geo-index.json      (Geographic index)

@@ -6,6 +6,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+try:
+    import jsonschema
+except ImportError:  # pragma: no cover - handled at runtime with explicit fail message
+    jsonschema = None
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECT_COMPANY_FILES = {
@@ -108,6 +113,26 @@ def check_direct_company_profiles() -> None:
     print("OK: direct company profile files exist and deprecated category catalogs are removed")
 
 
+def check_schema_validation() -> None:
+    if jsonschema is None:
+        fail("Missing dependency 'jsonschema'. Install with: pip install jsonschema")
+
+    schema = load_json("data/schema.json")
+    company_schema = schema.get("definitions", {}).get("Company")
+    if not isinstance(company_schema, dict):
+        fail("data/schema.json is missing definitions.Company")
+
+    for slug in DIRECT_COMPANY_FILES:
+        profile = load_json(f"{slug}.json")
+        profile_for_validation = {k: v for k, v in profile.items() if k != "$schema"}
+        try:
+            jsonschema.validate(instance=profile_for_validation, schema=company_schema)
+        except jsonschema.ValidationError as exc:
+            fail(f"{slug}.json does not match data/schema.json: {exc.message}")
+
+    print("OK: root company profiles match JSON Schema definitions.Company")
+
+
 def check_ai_entrypoints() -> None:
     readme = load_text("README.md")
     ai_txt = load_text("ai.txt")
@@ -175,6 +200,7 @@ def main() -> None:
     check_canonical_counts()
     check_dataset_catalogs()
     check_direct_company_profiles()
+    check_schema_validation()
     check_ai_entrypoints()
     check_rag_optimization()
     print("PASS: AI integrity checks completed")

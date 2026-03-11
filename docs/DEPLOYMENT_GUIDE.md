@@ -1,4 +1,4 @@
-# 🚀 Deployment Guide для Katalog-AI
+﻿# 🚀 Deployment Guide для Katalog-AI
 
 Полная инструкция по развёртыванию Katalog-AI на GitHub Pages с автоматизацией через GitHub Actions.
 
@@ -37,8 +37,8 @@ katalog-ai/
 │   ├── openapi.yaml             ✅
 │   └── AI_INSTRUCTIONS.md       ✅
 ├── catalog/
-│   ├── beauty.json              ✅
-│   ├── museums.json             ✅
+│   ├── secret-skin.json              ✅
+│   ├── nrdj-salon.json             ✅
 │   ├── marketplaces.json        ✅
 │   ├── offers.json              ✅
 │   └── geo-index.json           ✅
@@ -229,11 +229,11 @@ content-type: application/json
 curl https://ilyastas.github.io/katalog-ai/index.json |  jq '..|.name' | head -10
 
 # Бьюти каталог
-curl https://ilyastas.github.io/katalog-ai/catalog/beauty.json | jq '.."@graph"[0].name'
+curl https://ilyastas.github.io/katalog-ai/secret-skin.json | jq '.."@graph"[0].name'
 # Output: "Beauty Prime Salon"
 
 # Проверь geo-index
-curl https://ilyastas.github.io/katalog-ai/catalog/geo-index.json | jq '.locations[0]'
+curl https://ilyastas.github.io/katalog-ai/global-index.json | jq '.locations[0]'
 ```
 
 ---

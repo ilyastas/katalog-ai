@@ -1,9 +1,9 @@
-# ALIE Phase 1 Completion Checklist
+﻿# ALIE Phase 1 Completion Checklist
 
 ## ✅ ФАЗА 1: РАСШИРЕНИЕ ФУНДАМЕНТА (Завершена)
 
 ### 📁 Directory Structure
-- [x] Created `data/catalog/` directory with JSON files
+- [x] Created root-level company JSON structure (`/{slug}.json`)
 - [x] Created `backend/` with full subdirectories:
   - [x] `backend/api/endpoints/` for routing
   - [x] `backend/core/` for configuration
@@ -20,11 +20,11 @@
 
 #### JSON Catalog Files
 - [x] `data/index.json` - Main manifest with DataCatalog schema
-- [x] `data/catalog/beauty.json` - 3 beauty businesses with consent fields
-- [x] `data/catalog/museums.json` - 3 cultural venues with ratings
-- [x] `data/catalog/marketplaces.json` - 3 online sellers
-- [x] `data/catalog/offers.json` - 6 products/services with prices
-- [x] `data/catalog/geo-index.json` - Geographic index by city
+- [x] `secret-skin.json` - Direct company profile
+- [x] `nrdj-salon.json` - Direct company profile
+- [x] `mltrade.json` - Direct company profile
+- [x] `data/companies.json` - Canonical company registry
+- [x] `global-index.json` - Lightweight entity map
 
 #### Configuration Files
 - [x] `docker-compose.yml` - Services: Neo4j, PostgreSQL, Redis, FastAPI, Celery
@@ -93,14 +93,14 @@
 #### JSON Validation
 ```bash
 # To verify JSON files are valid, use jsonlint.com or:
-# python -m json.tool data/catalog/beauty.json > /dev/null && echo "Valid"
+# python -m json.tool secret-skin.json > /dev/null && echo "Valid"
 ```
 - [x] data/index.json - ✓ Valid Schema.org DataCatalog
-- [x] data/catalog/beauty.json - ✓ Valid ItemList with HealthAndBeautyBusiness
-- [x] data/catalog/museums.json - ✓ Valid with Museum and Theater types
-- [x] data/catalog/marketplaces.json - ✓ Valid Store type with marketplace links
-- [x] data/catalog/offers.json - ✓ Valid with Offer items
-- [x] data/catalog/geo-index.json - ✓ Valid with geographic index
+- [x] secret-skin.json - ✓ Valid direct company profile
+- [x] nrdj-salon.json - ✓ Valid direct company profile
+- [x] mltrade.json - ✓ Valid direct company profile
+- [x] data/companies.json - ✓ Valid canonical registry
+- [x] global-index.json - ✓ Valid lightweight index
 
 #### Docker Compose Syntax
 - [x] docker-compose.yml - All services properly configured
@@ -146,8 +146,8 @@ ls -R backend/ ai/ data/ tests/
 
 ### 2. Validate JSON files
 ```bash
-python -m json.tool data/catalog/beauty.json
-python -m json.tool data/catalog/museums.json
+python -m json.tool secret-skin.json
+python -m json.tool nrdj-salon.json
 # ... repeat for all JSON files
 ```
 

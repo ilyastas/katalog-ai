@@ -131,6 +131,10 @@
             }
           }
         },
+        "social_handle": {
+          "type": "string",
+          "description": "Primary social account handle"
+        },
         "contact": {
           "type": "object",
           "description": "Contact information",
@@ -185,7 +189,7 @@
               "type": "array",
               "items": {
                 "type": "string",
-                "enum": ["instagram", "telegram", "email", "phone", "website", "marketplace", "government"]
+                "enum": ["instagram", "telegram", "email", "phone", "website", "marketplace", "government", "wildberries"]
               },
               "description": "Verification sources"
             },
@@ -226,6 +230,64 @@
               "type": "string"
             }
           }
+        },
+        "semantic_data": {
+          "type": "object",
+          "description": "Schema.org JSON-LD semantic mirror for LLM and crawler interoperability",
+          "required": ["@context", "@type", "name", "description", "address"],
+          "properties": {
+            "@context": {
+              "type": "string",
+              "const": "https://schema.org"
+            },
+            "@type": {
+              "type": "string",
+              "minLength": 2
+            },
+            "name": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 200
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 10,
+              "maxLength": 1000
+            },
+            "address": {
+              "type": "object",
+              "required": ["@type", "addressLocality", "addressCountry"],
+              "properties": {
+                "@type": {
+                  "type": "string",
+                  "const": "PostalAddress"
+                },
+                "addressLocality": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 100
+                },
+                "addressCountry": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 3
+                }
+              },
+              "additionalProperties": true
+            },
+            "sameAs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          },
+          "additionalProperties": true
         }
       },
       "additionalProperties": false

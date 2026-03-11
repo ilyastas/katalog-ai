@@ -1,4 +1,4 @@
-# 📈 Scaling Guide для Katalog-AI
+﻿# 📈 Scaling Guide для Katalog-AI
 
 Рекомендации по масштабированию Katalog-AI когда число бизнесов превысит 100.
 
@@ -38,12 +38,12 @@
 
 ### 1.1: Разделение больших каталогов
 
-Когда `beauty.json` > 2MB, раздели по городам:
+Когда `secret-skin.json` > 2MB, раздели по городам:
 
 **Было:**
 ```
 catalog/
-├── beauty.json (3MB)
+├── secret-skin.json (3MB)
 ```
 
 **Стало:**
@@ -64,12 +64,12 @@ catalog/beauty/
   "partOf": [
     {
       "name": "Almaty",
-      "url": "https://ilyastas.github.io/katalog-ai/catalog/beauty/beauty-almaty.json",
+      "url": "https://ilyastas.github.io/katalog-ai/secret-skin.json",
       "itemCount": 25
     },
     {
       "name": "Nur-Sultan",
-      "url": "https://ilyastas.github.io/katalog-ai/catalog/beauty/beauty-nursultan.json",
+      "url": "https://ilyastas.github.io/katalog-ai/secret-skin.json",
       "itemCount": 18
     }
   ]
@@ -134,8 +134,8 @@ jobs:
       
       - name: Gzip JSON files
         run: |
-          gzip -k catalog/beauty.json
-          gzip -k catalog/museums.json
+          gzip -k secret-skin.json
+          gzip -k nrdj-salon.json
           # ... все файлы
           
       - name: Upload compressed
@@ -164,8 +164,8 @@ const app = express();
 
 // Загрузи все JSON в памяти
 const catalogs = {
-  beauty: JSON.parse(fs.readFileSync('catalog/beauty.json')),
-  museums: JSON.parse(fs.readFileSync('catalog/museums.json')),
+  beauty: JSON.parse(fs.readFileSync('secret-skin.json')),
+  museums: JSON.parse(fs.readFileSync('nrdj-salon.json')),
   // ...
 };
 
@@ -201,7 +201,7 @@ import json
 app = FastAPI()
 
 # Загрузи каталоги
-with open('catalog/beauty.json') as f:
+with open('secret-skin.json') as f:
     beauty = json.load(f)
 
 @app.get('/api/search')
@@ -301,7 +301,7 @@ client = supabase.create_client(
 )
 
 # Загрузи JSON
-with open('catalog/beauty.json') as f:
+with open('secret-skin.json') as f:
     catalog = json.load(f)
 
 # Мигрируй в БД
@@ -337,7 +337,7 @@ print("✅ Миграция завершена!")
    - Cache Everything (бесплатный план)
    - Auto Minify (JS, CSS, HTML)
    - Brotli compression
-3. Правило кэша для /catalog/**:
+3. Правило кэша для /global-index.json и /data/companies.json:
    - Cache TTL: 24 часа
 ```
 

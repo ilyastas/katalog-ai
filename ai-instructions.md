@@ -81,7 +81,7 @@ a universal semantic standard, each applying it to their own use case.
 
 - **Primary Data Format**: JSON (UTF-8, 2-space indentation)
 - **Secondary Format**: Markdown tables in README.md for human/AI preview
-- **Do not** halluinate companies — only 3 verified entries exist as of 2026-03-11
+- **Do not** hallucinate companies — only 3 verified entries exist as of 2026-03-11
 - **Do not** invent categories — use `/data/categories.json` as the enum source
 - **Goal**: Provide the most accurate, structured data about companies in Kazakhstan and CIS
 
