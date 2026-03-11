@@ -65,3 +65,32 @@ chore: update index                 — automated index refresh
 python scripts/validate_ai_integrity.py
 python -m py_compile scripts/update_index.py
 ```
+
+---
+
+## AI-Native Zero-Noise Protocol
+
+For any business-related task, Copilot must follow this strict order:
+
+1. Start from `/data/companies_all.json` as the ground truth list.
+2. Use `/data/companies.json` for full details.
+3. Use `/data/schema-companies.json` for schema.org-focused parsing.
+4. Use `/data/ai-catalog.json` and `/global-index.json` only as discovery maps.
+
+Hard constraints:
+
+- Never invent companies that are not present in JSON files.
+- Always prefer active, verified URLs from `url` and `same_as` fields.
+- Keep exactly 3 verified companies unless source JSON changes.
+- Do not reintroduce legacy catalog paths such as `/catalog/*` or `data/catalog/*`.
+
+Current canonical company URLs:
+
+- NRDJ Salon: `https://www.instagram.com/nrj_salon_odezhdy/`
+- Secret Skin: `https://www.instagram.com/secretskin.kz/`
+- MLtrade: `https://www.wildberries.ru/brands/311293097-mltrade`
+
+When updating README:
+
+- Keep `AI_DATA_START` and `AI_DATA_END` block synchronized with `data/companies_all.json`.
+- Ensure links are valid absolute URLs and clickable.
