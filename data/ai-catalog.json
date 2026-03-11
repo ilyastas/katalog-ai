@@ -1,66 +1,22 @@
 {
-  "$schema": "./schema.json",
-  "title": "KATALOG-AI: Unified Data Catalog Index",
-  "description": "Business-only catalog of verified companies and their canonical records.",
-  "version": "1.2.0",
-  "last_updated": "2026-03-11T00:00:00Z",
-  "last_commit_hash": "pending",
-  "catalog_metadata": {
-    "total_authoritative_companies": 3,
-    "total_direct_company_profiles": 3
-  },
-  "primary_authoritative_datasets": {
-    "companies_canonical_list": {
-      "id": "authoritative-company-list",
-      "name": "Authoritative Company List",
-      "description": "Canonical plain list of verified companies. Use this for names and count.",
-      "file": "companies_all.json",
-      "authoritative": true,
-      "item_count": 3,
-      "url": "https://ilyastas.github.io/katalog-ai/data/companies_all.json",
-      "usage_priority": 1
-    },
-    "companies_full_registry": {
-      "id": "authoritative-company-records",
-      "name": "Full Company Registry",
-      "description": "Canonical full registry of the 3 verified companies.",
-      "file": "companies.json",
-      "authoritative": true,
-      "item_count": 3,
-      "url": "https://ilyastas.github.io/katalog-ai/data/companies.json",
-      "usage_priority": 2,
-      "schema_reference": {
-        "company_object": "./schema.json#/definitions/Company"
-      }
-    }
-  },
-  "direct_company_profiles": {
-    "nrdj_salon": {
+  "version": "2.0.0",
+  "updated_at": "2026-03-11T00:00:00Z",
+  "count": 3,
+  "companies": [
+    {
+      "id": "inst-nrdjsalon",
       "name": "NRDJ Salon",
-      "description": "Direct company JSON profile derived from the canonical registry.",
-      "file": "catalog/nrdj-salon.json",
-      "authoritative": false,
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json",
-      "source_company_id": "inst-nrdjsalon",
-      "usage_priority": 3
+      "profile_url": "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json"
     },
-    "secret_skin": {
+    {
+      "id": "inst-secretskin-kz",
       "name": "Secret Skin",
-      "description": "Direct company JSON profile derived from the canonical registry.",
-      "file": "catalog/secret-skin.json",
-      "authoritative": false,
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json",
-      "source_company_id": "inst-secretskin-kz",
-      "usage_priority": 4
+      "profile_url": "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json"
     },
-    "mltrade": {
+    {
+      "id": "brand-mltrade-311293097",
       "name": "MLtrade",
-      "description": "Direct company JSON profile derived from the canonical registry.",
-      "file": "catalog/mltrade.json",
-      "authoritative": false,
-      "url": "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json",
-      "source_company_id": "brand-mltrade-311293097",
-      "usage_priority": 5
+      "profile_url": "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json"
     }
-  }
+  ]
 }

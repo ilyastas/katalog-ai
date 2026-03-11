@@ -135,11 +135,28 @@ def check_ai_entrypoints() -> None:
     if "Dataset titles and category names are not company entities." not in start_here:
         fail("START_HERE_FOR_AI.txt is missing anti-confusion rule")
 
-    direct_profiles = ai_catalog.get("direct_company_profiles", {})
-    if sorted(direct_profiles.keys()) != ["mltrade", "nrdj_salon", "secret_skin"]:
-        fail("data/ai-catalog.json must list exactly 3 direct company profiles")
+    companies = ai_catalog.get("companies", [])
+    if not isinstance(companies, list) or len(companies) != 3:
+        fail("data/ai-catalog.json must contain exactly 3 companies")
 
-    print("OK: AI entrypoints and ai-catalog point to direct company profiles")
+    company_names = sorted(item.get("name") for item in companies if isinstance(item, dict))
+    if company_names != ["MLtrade", "NRDJ Salon", "Secret Skin"]:
+        fail("data/ai-catalog.json company names must match canonical set")
+
+    required_urls = {
+        "https://ilyastas.github.io/katalog-ai/data/catalog/nrdj-salon.json",
+        "https://ilyastas.github.io/katalog-ai/data/catalog/secret-skin.json",
+        "https://ilyastas.github.io/katalog-ai/data/catalog/mltrade.json",
+    }
+    actual_urls = {
+        item.get("profile_url")
+        for item in companies
+        if isinstance(item, dict)
+    }
+    if actual_urls != required_urls:
+        fail("data/ai-catalog.json must expose direct profile_url links for all 3 companies")
+
+    print("OK: AI entrypoints and ai-catalog expose only direct company profiles")
 
 
 def check_rag_optimization() -> None:
@@ -156,8 +173,8 @@ def check_rag_optimization() -> None:
         if not isinstance(keywords, list) or not keywords:
             fail(f"Company '{company_name}' has empty or invalid keywords field")
 
-    if catalog.get("title") != "KATALOG-AI: Unified Data Catalog Index":
-        fail("data/ai-catalog.json is missing or invalid title")
+    if catalog.get("count") != 3:
+        fail("data/ai-catalog.json must keep count=3")
     if schema.get("$id") != "https://ilyastas.github.io/katalog-ai/data/schema.json":
         fail("data/schema.json is missing or invalid $id reference")
 
