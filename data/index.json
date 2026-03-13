@@ -1,6 +1,12 @@
 {
   "@context": "https://schema.org",
   "@type": "DataCatalog",
+  "dataset_version": "2026-03-13",
+  "company_file_paths": [
+    "/nrdj-salon.json",
+    "/secret-skin.json",
+    "/mltrade.json"
+  ],
   "name": "ALIE - Verified Company Catalog",
   "description": "Machine-readable catalog exposing only 3 verified company datasets and canonical company registries.",
   "url": "https://ilyastas.github.io/katalog-ai/",

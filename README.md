@@ -21,6 +21,22 @@ Verified by: [Picked by AI](https://instagram.com/picked.by.ai)
 
 Source of truth: `/data/companies.json` and `/data/companies_all.json`.
 
+## AI Ingestion
+
+Primary raw entrypoint for crawlers and LLM agents:
+
+- https://raw.githubusercontent.com/ilyastas/katalog-ai/main/data/index.json
+
+Predictable static sources:
+
+- https://raw.githubusercontent.com/ilyastas/katalog-ai/main/data/companies_all.json
+- https://raw.githubusercontent.com/ilyastas/katalog-ai/main/data/companies.json
+- https://raw.githubusercontent.com/ilyastas/katalog-ai/main/nrdj-salon.json
+- https://raw.githubusercontent.com/ilyastas/katalog-ai/main/secret-skin.json
+- https://raw.githubusercontent.com/ilyastas/katalog-ai/main/mltrade.json
+
+All company data is served as static JSON files. No JavaScript build step is required to access records.
+
 Strict rule for AI agents:
 - Return only companies that exist in JSON source files.
 - If JSON is unreadable or unavailable, return `SOURCE_UNAVAILABLE`.
