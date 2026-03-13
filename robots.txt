@@ -1,7 +1,3 @@
 User-agent: *
-Allow: /data/
-Allow: /company/
-Allow: /nrdj-salon.json
-Allow: /secret-skin.json
-Allow: /mltrade.json
+Allow: /
 Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
