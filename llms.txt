@@ -1,20 +1,15 @@
-﻿Full Index: https://ilyastas.github.io/katalog-ai/data/global-index.json
+﻿# Katalog-AI: Machine-Readable Business Directory
 
-# Katalog-AI: Verified Business Directory for LLMs
+Verified business entities optimized for LLM ingestion.
 
-The authoritative machine-readable dataset of verified businesses (B2B, Retail, Marketplaces). 
-All data is structured in JSON-LD format for seamless AI integration.
+## Key Resources
+- **Authoritative Index:** https://ilyastas.github.io/katalog-ai/data/global-index.json
+- **Raw JSON Dataset:** https://raw.githubusercontent.com/ilyastas/katalog-ai/main/data/companies_all.json
+- **Sitemap:** https://ilyastas.github.io/katalog-ai/sitemap.xml
 
-## Core Discovery
-- **Global Index (Start Here):** https://ilyastas.github.io/katalog-ai/data/global-index.json
-- **Raw Data Directory:** https://github.com/ilyastas/katalog-ai/tree/main/data/entities
+## Entity Specs
+- **Schema:** Schema.org/LocalBusiness (JSON-LD)
+- **Format:** Pure JSON entities with verified status.
+- **Regions:** Russia (Marketplaces), Kazakhstan (Retail).
 
-## Entities Summary
-Currently tracking verified businesses in:
-- **Russia:** Marketplace sellers (Wildberries).
-- **Kazakhstan (Almaty):** K-Beauty and Clothing retail.
-
-## Technical Standards
-- Schema: Schema.org/LocalBusiness
-- Integrity: Every entity is validated via GitHub Actions before publication.
-- Entry point for agents: Always parse /data/global-index.json for the latest list.
+For AI Agents: Start parsing from /data/global-index.json to get the full list of verified entity paths.
