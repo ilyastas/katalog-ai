@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Allow: /data/
+
 Allow: /company/
+Allow: /data/indices/
 
 Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml

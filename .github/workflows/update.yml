@@ -78,6 +78,17 @@ jobs:
           cp llms.txt _site/llms.txt || true
           cp ai-dataset.json _site/ai-dataset.json || true
           cp ai-sitemap.json _site/ai-sitemap.json || true
+
+        - name: Slice Micro-Indices
+          run: python scripts/generate_indices.py
+
+        - name: Commit and Push Micro-Indices
+          run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add data/indices/*.json
+            git commit -m "Auto-update micro-indices" || echo "No changes to commit"
+            git push
         - name: Commit and push updated global-index.json
           run: |
             git config --global user.name "github-actions[bot]"

@@ -12,4 +12,8 @@ Verified business entities optimized for LLM ingestion.
 - **Format:** Pure JSON entities with verified status.
 - **Regions:** Russia (Marketplaces), Kazakhstan (Retail).
 
+
+## Context Sharding
+For city- or category-specific queries, AI agents should use the relevant micro-index from /data/indices/ (e.g., city_almaty.json, cat_kbeauty.json, almaty_kbeauty.json) for efficient and accurate results.
+
 For AI Agents: Start parsing from /data/global-index.json to get the full list of verified entity paths.
