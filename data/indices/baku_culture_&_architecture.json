@@ -1,0 +1,27 @@
+{
+  "index_info": {
+    "description": "Filtered index for baku culture & architecture",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 1,
+  "entities": [
+    {
+      "id": "gold-az-002",
+      "name": "Heydar Aliyev Center",
+      "category": "Culture & Architecture",
+      "city": "Baku",
+      "contacts": {
+        "website": "https://heydaraliyevcenter.az"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "museum",
+          "modern"
+        ]
+      }
+    }
+  ]
+}

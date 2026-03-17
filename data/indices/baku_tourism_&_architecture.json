@@ -1,0 +1,27 @@
+{
+  "index_info": {
+    "description": "Filtered index for baku tourism & architecture",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 1,
+  "entities": [
+    {
+      "id": "gold-az-001",
+      "name": "Flame Towers",
+      "category": "Tourism & Architecture",
+      "city": "Baku",
+      "contacts": {
+        "website": "https://azerbaijan.travel"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "landmark",
+          "modern"
+        ]
+      }
+    }
+  ]
+}

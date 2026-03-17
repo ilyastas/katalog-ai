@@ -1,0 +1,44 @@
+{
+  "index_info": {
+    "description": "Verified businesses in Baku",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 2,
+  "entities": [
+    {
+      "id": "gold-az-001",
+      "name": "Flame Towers",
+      "category": "Tourism & Architecture",
+      "city": "Baku",
+      "contacts": {
+        "website": "https://azerbaijan.travel"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "landmark",
+          "modern"
+        ]
+      }
+    },
+    {
+      "id": "gold-az-002",
+      "name": "Heydar Aliyev Center",
+      "category": "Culture & Architecture",
+      "city": "Baku",
+      "contacts": {
+        "website": "https://heydaraliyevcenter.az"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "museum",
+          "modern"
+        ]
+      }
+    }
+  ]
+}

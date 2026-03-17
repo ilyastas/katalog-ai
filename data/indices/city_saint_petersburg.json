@@ -4,7 +4,7 @@
     "updated_at": "2026-03-17",
     "source": "https://github.com/ilyastas/katalog-ai"
   },
-  "total": 2,
+  "total": 3,
   "entities": [
     {
       "id": "gold-ru-003",
@@ -37,6 +37,23 @@
           "gold_fund",
           "theatre",
           "opera"
+        ]
+      }
+    },
+    {
+      "id": "gold-ru-010",
+      "name": "Gazprom Arena",
+      "category": "Sports & Events",
+      "city": "Saint Petersburg",
+      "contacts": {
+        "website": "https://gazprom-arena.com"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "stadium",
+          "football"
         ]
       }
     }

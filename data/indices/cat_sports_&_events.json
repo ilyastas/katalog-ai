@@ -4,7 +4,7 @@
     "updated_at": "2026-03-17",
     "source": "https://github.com/ilyastas/katalog-ai"
   },
-  "total": 6,
+  "total": 8,
   "entities": [
     {
       "id": "gold-kz-015",
@@ -105,6 +105,40 @@
           "gold_fund",
           "stadium",
           "sports"
+        ]
+      }
+    },
+    {
+      "id": "gold-ru-010",
+      "name": "Gazprom Arena",
+      "category": "Sports & Events",
+      "city": "Saint Petersburg",
+      "contacts": {
+        "website": "https://gazprom-arena.com"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "stadium",
+          "football"
+        ]
+      }
+    },
+    {
+      "id": "gold-ru-011",
+      "name": "Fisht Stadium",
+      "category": "Sports & Events",
+      "city": "Sochi",
+      "contacts": {
+        "website": "https://sochi.ru"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "stadium",
+          "olympic"
         ]
       }
     }

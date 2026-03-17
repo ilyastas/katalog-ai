@@ -1,0 +1,27 @@
+{
+  "index_info": {
+    "description": "Verified businesses in Cholpon-ata",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 1,
+  "entities": [
+    {
+      "id": "gold-kg-001",
+      "name": "Issyk-Kul Lake",
+      "category": "Tourism & Nature",
+      "city": "Cholpon-Ata",
+      "contacts": {
+        "website": "https://discoverkyrgyzstan.org"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "resort",
+          "nature"
+        ]
+      }
+    }
+  ]
+}

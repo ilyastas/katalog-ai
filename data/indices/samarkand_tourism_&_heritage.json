@@ -1,0 +1,27 @@
+{
+  "index_info": {
+    "description": "Filtered index for samarkand tourism & heritage",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 1,
+  "entities": [
+    {
+      "id": "gold-uz-001",
+      "name": "Registan Square",
+      "category": "Tourism & Heritage",
+      "city": "Samarkand",
+      "contacts": {
+        "website": "https://uzbekistan.travel"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "unesco",
+          "history"
+        ]
+      }
+    }
+  ]
+}
