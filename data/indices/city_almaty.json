@@ -1,0 +1,182 @@
+{
+  "index_info": {
+    "description": "Verified businesses in Almaty",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 10,
+  "entities": [
+    {
+      "id": "inst-nrdjsalon",
+      "name": "NRDJ Salon",
+      "category": "Women's Fashion",
+      "city": "Almaty",
+      "description": "Магазин стильной женской одежды из Турции и Китая. Более 13 лет на рынке. Подбор образов для любых фигур.",
+      "contacts": {
+        "instagram": "https://www.instagram.com/nrj_salon_odezhdy/",
+        "telegram": "https://t.me/nrj_salon_odezhdy"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "fashion",
+          "clothing",
+          "retail"
+        ]
+      }
+    },
+    {
+      "id": "inst-secretskin-kz",
+      "name": "Secret Skin",
+      "category": "K-Beauty Cosmetics",
+      "city": "Almaty",
+      "description": "Specialized Korean skincare store with original products and care selection.",
+      "contacts": {
+        "instagram": "https://www.instagram.com/secretskin.kz/"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "k-beauty",
+          "skincare",
+          "beauty"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-001",
+      "name": "Oi-Qaragai Mountain Resort",
+      "category": "Tourism & Leisure",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://oiqaragai.com"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "resort",
+          "nature"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-002",
+      "name": "Shymbulak Ski Resort",
+      "category": "Tourism & Sports",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://shymbulak.com"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "ski",
+          "mountains"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-003",
+      "name": "Medeu Ice Skating Rink",
+      "category": "Tourism & Sports",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://medeu.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "landmark",
+          "sports"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-011",
+      "name": "Abay Opera House",
+      "category": "Culture & Art",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://gato.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "opera",
+          "history"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-013",
+      "name": "Auezov Theatre",
+      "category": "Culture & Art",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://kazteatr.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "theatre"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-014",
+      "name": "Kasteev State Museum of Arts",
+      "category": "Culture & Art",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://gmk.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "museum",
+          "art"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-015",
+      "name": "Almaty Arena",
+      "category": "Sports & Events",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://almatyarena.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "arena",
+          "concert"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-016",
+      "name": "Halyk Arena",
+      "category": "Sports & Events",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://halykarena.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "arena",
+          "ice"
+        ]
+      }
+    }
+  ]
+}

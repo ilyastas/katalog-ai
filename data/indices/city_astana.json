@@ -1,0 +1,129 @@
+{
+  "index_info": {
+    "description": "Verified businesses in Astana",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 7,
+  "entities": [
+    {
+      "id": "gold-kz-008",
+      "name": "Bayterek Tower",
+      "category": "Tourism & Culture",
+      "city": "Astana",
+      "contacts": {
+        "website": "https://astana.gov.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "symbol",
+          "landmark"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-009",
+      "name": "Khan Shatyr",
+      "category": "Tourism & Retail",
+      "city": "Astana",
+      "contacts": {
+        "website": "https://khanshatyr.com"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "architecture",
+          "mall"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-010",
+      "name": "Astana Opera",
+      "category": "Culture & Art",
+      "city": "Astana",
+      "contacts": {
+        "website": "https://astanaopera.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "opera",
+          "theatre"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-012",
+      "name": "National Museum of Kazakhstan",
+      "category": "Culture & Art",
+      "city": "Astana",
+      "contacts": {
+        "website": "https://nationalmuseum.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "museum",
+          "history"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-017",
+      "name": "Barys Arena",
+      "category": "Sports & Events",
+      "city": "Astana",
+      "contacts": {
+        "website": "https://barysarena.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "arena",
+          "hockey"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-018",
+      "name": "Astana Arena",
+      "category": "Sports & Events",
+      "city": "Astana",
+      "contacts": {
+        "website": "https://astana-arena.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "stadium",
+          "football"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-019",
+      "name": "Saryarka Velodrome",
+      "category": "Sports & Events",
+      "city": "Astana",
+      "contacts": {
+        "website": "https://saryarkavelodrome.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "sports",
+          "cycling"
+        ]
+      }
+    }
+  ]
+}

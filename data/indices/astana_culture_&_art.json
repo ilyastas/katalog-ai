@@ -1,0 +1,44 @@
+{
+  "index_info": {
+    "description": "Filtered index for astana culture & art",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 2,
+  "entities": [
+    {
+      "id": "gold-kz-010",
+      "name": "Astana Opera",
+      "category": "Culture & Art",
+      "city": "Astana",
+      "contacts": {
+        "website": "https://astanaopera.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "opera",
+          "theatre"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-012",
+      "name": "National Museum of Kazakhstan",
+      "category": "Culture & Art",
+      "city": "Astana",
+      "contacts": {
+        "website": "https://nationalmuseum.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "museum",
+          "history"
+        ]
+      }
+    }
+  ]
+}

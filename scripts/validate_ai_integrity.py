@@ -48,9 +48,29 @@ def check_canonical_counts() -> None:
     companies_full = load_json("data/companies.json")
     anchor = load_json("AUTHORITATIVE_COMPANY_LIST.json")
 
-    count_all = companies_all.get("count")
-    count_full = companies_full.get("count")
-    count_anchor = anchor.get("count")
+    # Поддержка формата: либо массив, либо объект с companies
+    if isinstance(companies_all, list):
+        count_companies = len(companies_all)
+        count_all = count_companies
+    elif isinstance(companies_all, dict):
+        count_all = companies_all.get("count")
+        count_companies = len(companies_all.get("companies", []))
+        if count_all is not None and count_companies != count_all:
+            print(f"[ERROR] companies_all.json: count mismatch: {count_companies} vs {count_all}")
+            raise AssertionError("companies_all.json: count mismatch")
+    else:
+        print("[ERROR] companies_all.json: unknown format")
+        raise AssertionError("companies_all.json: unknown format")
+
+    # Получаем количество компаний для всех форматов
+    if isinstance(companies_full, dict):
+        count_full = len(companies_full.get("companies", []))
+    else:
+        count_full = len(companies_full)
+    if isinstance(anchor, dict):
+        count_anchor = len(anchor.get("companies", []))
+    else:
+        count_anchor = len(anchor)
 
     if count_all != count_full or count_all != count_anchor:
         fail(
@@ -58,9 +78,19 @@ def check_canonical_counts() -> None:
             f"companies_all={count_all}, companies={count_full}, anchor={count_anchor}"
         )
 
-    names_all = {item.get("name") for item in companies_all.get("companies", [])}
-    names_full = {item.get("name") for item in companies_full.get("companies", [])}
-    names_anchor = {item.get("name") for item in anchor.get("companies", [])}
+    # Получаем имена компаний для всех форматов
+    if isinstance(companies_all, list):
+        names_all = {item.get("name") for item in companies_all}
+    else:
+        names_all = {item.get("name") for item in companies_all.get("companies", [])}
+    if isinstance(companies_full, dict):
+        names_full = {item.get("name") for item in companies_full.get("companies", [])}
+    else:
+        names_full = {item.get("name") for item in companies_full}
+    if isinstance(anchor, dict):
+        names_anchor = {item.get("name") for item in anchor.get("companies", [])}
+    else:
+        names_anchor = {item.get("name") for item in anchor}
 
     if names_all != names_full or names_all != names_anchor:
         fail("Company name sets differ across canonical files")

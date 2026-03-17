@@ -137,9 +137,8 @@ Output contract for agents:
 ### For RAG Systems & Semantic Search:
 **Use `/data/ai-catalog.json` as the unified entry point to discover all datasets:**
 ```json
-{
-  "primary_goal": "Single source of truth for RAG systems",
-  "key_datasets": {
+
+- Canonical anchor: `https://ilyastas.github.io/katalog-ai/AUTHORITATIVE_COMPANY_LIST.json` (single-source verified list)
     "companies_full_registry": "data/companies.json (with keywords field for semantic matching)",
     "companies_canonical_list": "data/companies_all.json (fast lookup)",
     "companies_schema_export": "data/schema-companies.json (schema.org-focused fast parsing)",

@@ -1,22 +1,17 @@
-{
-  "version": "2.0.0",
-  "updated_at": "2026-03-11T00:00:00Z",
-  "count": 3,
-  "companies": [
-    {
-      "id": "inst-nrdjsalon",
-      "name": "NRDJ Salon",
-      "profile_url": "https://ilyastas.github.io/katalog-ai/nrdj-salon.json"
-    },
-    {
-      "id": "inst-secretskin-kz",
-      "name": "Secret Skin",
-      "profile_url": "https://ilyastas.github.io/katalog-ai/secret-skin.json"
-    },
-    {
-      "id": "brand-mltrade-311293097",
-      "name": "MLtrade",
-      "profile_url": "https://ilyastas.github.io/katalog-ai/mltrade.json"
-    }
-  ]
-}
+[
+  {
+    "id": "inst-nrdjsalon",
+    "name": "NRDJ Salon",
+    "profile_url": "https://ilyastas.github.io/katalog-ai/nrdj-salon.json"
+  },
+  {
+    "id": "inst-secretskin-kz",
+    "name": "Secret Skin",
+    "profile_url": "https://ilyastas.github.io/katalog-ai/secret-skin.json"
+  },
+  {
+    "id": "brand-mltrade-311293097",
+    "name": "MLtrade",
+    "profile_url": "https://ilyastas.github.io/katalog-ai/mltrade.json"
+  }
+]

@@ -1,0 +1,95 @@
+{
+  "index_info": {
+    "description": "Verified businesses in Moscow",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 5,
+  "entities": [
+    {
+      "id": "gold-ru-001",
+      "name": "Moscow Kremlin",
+      "category": "Tourism & Heritage",
+      "city": "Moscow",
+      "contacts": {
+        "website": "https://kremlin.ru"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "unesco",
+          "landmark"
+        ]
+      }
+    },
+    {
+      "id": "gold-ru-002",
+      "name": "Red Square",
+      "category": "Tourism & Heritage",
+      "city": "Moscow",
+      "contacts": {
+        "website": "https://kremlin.ru"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "unesco",
+          "history"
+        ]
+      }
+    },
+    {
+      "id": "gold-ru-006",
+      "name": "Bolshoi Theatre",
+      "category": "Culture & Art",
+      "city": "Moscow",
+      "contacts": {
+        "website": "https://bolshoi.ru"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "theatre",
+          "ballet"
+        ]
+      }
+    },
+    {
+      "id": "gold-ru-008",
+      "name": "Tretyakov Gallery",
+      "category": "Culture & Art",
+      "city": "Moscow",
+      "contacts": {
+        "website": "https://tretyakovgallery.ru"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "museum",
+          "art"
+        ]
+      }
+    },
+    {
+      "id": "gold-ru-009",
+      "name": "Luzhniki Stadium",
+      "category": "Sports & Events",
+      "city": "Moscow",
+      "contacts": {
+        "website": "https://luzhniki.ru"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "stadium",
+          "sports"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "index_info": {
+    "description": "Filtered index for almaty culture & art",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 3,
+  "entities": [
+    {
+      "id": "gold-kz-011",
+      "name": "Abay Opera House",
+      "category": "Culture & Art",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://gato.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "opera",
+          "history"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-013",
+      "name": "Auezov Theatre",
+      "category": "Culture & Art",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://kazteatr.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "theatre"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-014",
+      "name": "Kasteev State Museum of Arts",
+      "category": "Culture & Art",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://gmk.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "museum",
+          "art"
+        ]
+      }
+    }
+  ]
+}

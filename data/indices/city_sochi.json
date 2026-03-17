@@ -1,0 +1,27 @@
+{
+  "index_info": {
+    "description": "Verified businesses in Sochi",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 1,
+  "entities": [
+    {
+      "id": "gold-ru-005",
+      "name": "Sochi Olympic Park",
+      "category": "Tourism & Sports",
+      "city": "Sochi",
+      "contacts": {
+        "website": "https://sochi.ru"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "olympic",
+          "resort"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "index_info": {
+    "description": "Filtered index for almaty tourism & sports",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 2,
+  "entities": [
+    {
+      "id": "gold-kz-002",
+      "name": "Shymbulak Ski Resort",
+      "category": "Tourism & Sports",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://shymbulak.com"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "ski",
+          "mountains"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-003",
+      "name": "Medeu Ice Skating Rink",
+      "category": "Tourism & Sports",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://medeu.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "landmark",
+          "sports"
+        ]
+      }
+    }
+  ]
+}

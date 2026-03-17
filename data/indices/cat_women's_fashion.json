@@ -1,0 +1,29 @@
+{
+  "index_info": {
+    "description": "Business category: Women's fashion",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 1,
+  "entities": [
+    {
+      "id": "inst-nrdjsalon",
+      "name": "NRDJ Salon",
+      "category": "Women's Fashion",
+      "city": "Almaty",
+      "description": "Магазин стильной женской одежды из Турции и Китая. Более 13 лет на рынке. Подбор образов для любых фигур.",
+      "contacts": {
+        "instagram": "https://www.instagram.com/nrj_salon_odezhdy/",
+        "telegram": "https://t.me/nrj_salon_odezhdy"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "fashion",
+          "clothing",
+          "retail"
+        ]
+      }
+    }
+  ]
+}

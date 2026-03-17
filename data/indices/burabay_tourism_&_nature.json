@@ -1,0 +1,27 @@
+{
+  "index_info": {
+    "description": "Filtered index for burabay tourism & nature",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 1,
+  "entities": [
+    {
+      "id": "gold-kz-007",
+      "name": "Burabay National Park",
+      "category": "Tourism & Nature",
+      "city": "Burabay",
+      "contacts": {
+        "website": "https://burabaypark.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "resort",
+          "nature"
+        ]
+      }
+    }
+  ]
+}

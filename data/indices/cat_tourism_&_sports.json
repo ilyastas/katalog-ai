@@ -1,0 +1,78 @@
+{
+  "index_info": {
+    "description": "Business category: Tourism & sports",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 4,
+  "entities": [
+    {
+      "id": "gold-kz-002",
+      "name": "Shymbulak Ski Resort",
+      "category": "Tourism & Sports",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://shymbulak.com"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "ski",
+          "mountains"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-003",
+      "name": "Medeu Ice Skating Rink",
+      "category": "Tourism & Sports",
+      "city": "Almaty",
+      "contacts": {
+        "website": "https://medeu.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "landmark",
+          "sports"
+        ]
+      }
+    },
+    {
+      "id": "gold-ru-005",
+      "name": "Sochi Olympic Park",
+      "category": "Tourism & Sports",
+      "city": "Sochi",
+      "contacts": {
+        "website": "https://sochi.ru"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "olympic",
+          "resort"
+        ]
+      }
+    },
+    {
+      "id": "gold-ge-002",
+      "name": "Gudauri Ski Resort",
+      "category": "Tourism & Sports",
+      "city": "Gudauri",
+      "contacts": {
+        "website": "https://gudauri.ge"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "ski",
+          "mountains"
+        ]
+      }
+    }
+  ]
+}

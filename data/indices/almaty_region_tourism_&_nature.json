@@ -1,0 +1,60 @@
+{
+  "index_info": {
+    "description": "Filtered index for almaty region tourism & nature",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 3,
+  "entities": [
+    {
+      "id": "gold-kz-004",
+      "name": "Charyn Canyon",
+      "category": "Tourism & Nature",
+      "city": "Almaty Region",
+      "contacts": {
+        "website": "https://visitkazakhstan.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "landmark",
+          "nature"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-005",
+      "name": "Kolsai Lakes National Park",
+      "category": "Tourism & Nature",
+      "city": "Almaty Region",
+      "contacts": {
+        "website": "https://kolsai.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "national_park"
+        ]
+      }
+    },
+    {
+      "id": "gold-kz-006",
+      "name": "Altyn-Emel National Park",
+      "category": "Tourism & Nature",
+      "city": "Almaty Region",
+      "contacts": {
+        "website": "https://altynemel.kz"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "unesco",
+          "nature"
+        ]
+      }
+    }
+  ]
+}

@@ -11,7 +11,7 @@
   "geo": "Kazakhstan (Almaty / Delivery)",
   "industry": "Fashion",
   "service": "Clothing Store",
-  "category": "Clothing and Accessories",
+  "category": "Women's Fashion Boutique",
   "url": "https://www.instagram.com/nrj_salon_odezhdy/",
   "website": "https://www.instagram.com/nrj_salon_odezhdy/",
   "contact": {},
@@ -24,7 +24,7 @@
     "https://www.instagram.com/nrj_salon_odezhdy/",
     "https://t.me/nrj_salon_odezhdy"
   ],
-  "description": "Salon of women's clothing with active Instagram and Telegram channels.",
+  "description": "Магазин стильной женской одежды и аксессуаров. Одежда из Турции и Китая, широкий размерный ряд, более 13 лет на рынке Алматы. Специализация — подбор образов для любых фигур.",
   "tags": [
     "fashion-kz",
     "women-clothing",
@@ -70,21 +70,22 @@
     "salon",
     "instagram",
     "telegram"
+  ],
+  "semantic_data": {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "NRDJ Salon",
+    "url": "https://www.instagram.com/nrj_salon_odezhdy/",
+    "description": "Магазин стильной женской одежды и аксессуаров. Одежда из Турции и Китая, широкий размерный ряд, более 13 лет на рынке Алматы. Специализация — подбор образов для любых фигур.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Almaty",
+      "addressCountry": "KZ"
+    },
+    "sameAs": [
+      "https://www.instagram.com/nrj_salon_odezhdy/",
+      "https://t.me/nrj_salon_odezhdy"
     ],
-    "semantic_data": {
-      "@context": "https://schema.org",
-      "@type": "ClothingStore",
-      "name": "NRDJ Salon",
-      "url": "https://www.instagram.com/nrj_salon_odezhdy/",
-      "description": "Salon of women's clothing with active Instagram and Telegram channels.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Almaty",
-        "addressCountry": "KZ"
-      },
-      "sameAs": [
-        "https://www.instagram.com/nrj_salon_odezhdy/",
-        "https://t.me/nrj_salon_odezhdy"
-      ]
-    }
+    "category": "Women's Fashion Boutique"
+  }
 }

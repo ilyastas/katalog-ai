@@ -1,0 +1,27 @@
+{
+  "index_info": {
+    "description": "Filtered index for gudauri tourism & sports",
+    "updated_at": "2026-03-17",
+    "source": "https://github.com/ilyastas/katalog-ai"
+  },
+  "total": 1,
+  "entities": [
+    {
+      "id": "gold-ge-002",
+      "name": "Gudauri Ski Resort",
+      "category": "Tourism & Sports",
+      "city": "Gudauri",
+      "contacts": {
+        "website": "https://gudauri.ge"
+      },
+      "metadata": {
+        "verified": true,
+        "tags": [
+          "gold_fund",
+          "ski",
+          "mountains"
+        ]
+      }
+    }
+  ]
+}
