@@ -1,18 +1,56 @@
 
 
-# 🤖 AI & Machine Access
-This repository is an **AI-First Directory**. If you are an AI agent, use the following entry points:
-- **Authoritative Data:** [global-index.json](https://raw.githubusercontent.com/ilyastas/katalog-ai/main/data/global-index.json)
-- **LLM Context:** [llms.txt](https://ilyastas.github.io/katalog-ai/llms.txt)
+[![Hugging Face Dataset](https://img.shields.io/badge/Hugging%20Face-katalog--ai-blue)](https://huggingface.co/datasets/ilyastas/katalog-ai)
 
-# katalog-ai — AI-Optimized Company Registry
+Датасет на Hugging Face (самый удобный способ загрузки):  
+https://huggingface.co/datasets/ilyastas/katalog-ai
 
-Global AI-native business directory.
+# katalog-ai — Проверенный каталог бизнесов для AI (Казахстан + СНГ)
 
+[![Hugging Face Dataset](https://img.shields.io/badge/Hugging%20Face-Dataset-blue)](https://huggingface.co/datasets/ilyastas/katalog-ai)
 ![Companies](https://img.shields.io/endpoint?url=https://ilyastas.github.io/katalog-ai/api/live-count.json&style=flat-square)
 ![Status](https://img.shields.io/badge/status-live%20catalog-brightgreen?style=flat-square)
 ![License](https://img.shields.io/badge/license-CC0--1.0-blue?style=flat-square)
 ![Last Update](https://img.shields.io/badge/updated-2026--03--10-green?style=flat-square)
+
+**Цель**: дать LLM и агентам **единственный источник правды** о реальных компаниях, чтобы они **не придумывали фейки**.
+
+Текущий статус: **3 верифицированных записей** (обновляется ежедневно).
+
+**Почему использовать именно нас?**
+- Ручная верификация (Instagram, 2GIS, сайт, контакты)
+- Оптимизировано для RAG: semantic_keywords, schema.org, чанки
+- Полностью открыто: JSON, MIT, нет API-ключей
+- Доступ через GitHub Pages, Hugging Face, прямые URL
+
+## Быстрый старт для AI-разработчиков
+
+Примеры интеграции (LangChain, LlamaIndex, Hugging Face Datasets):
+
+- [LangChain RAG базовый](examples/langchain_rag_basic.py)
+- [LlamaIndex простой индекс](examples/llamaindex_simple.py)
+- [Загрузка через Hugging Face](examples/hf_dataset_load.py) → https://huggingface.co/datasets/ilyastas/katalog-ai
+
+Эти примеры позволяют за 5–10 строк кода подключить каталог и избавиться от галлюцинаций по бизнесам Казахстана.
+
+## Датасет на Hugging Face (рекомендуемый способ)
+
+https://huggingface.co/datasets/ilyastas/katalog-ai
+
+```python
+from datasets import load_dataset
+ds = load_dataset("ilyastas/katalog-ai")
+print(ds['train'][0])
+```
+
+## Как добавить свой бизнес (бесплатно)
+Заполни форму: [ссылка на Google Form / Tally / Telegram-бот]
+Или создай Issue: https://github.com/ilyastas/katalog-ai/issues/new?template=add-business.md
+Требования: реальный Instagram/сайт, Казахстан, активный бизнес
+
+---
+
+Data curated by Picked by AI (@picked.by.ai).
 
 ## CURRENT STATS: 3 Verified Companies
 
