@@ -1,4 +1,4 @@
-[ 
+[
   { "id": "inst-nrdjsalon", "name": "NRDJ Salon", "category": "Women's Fashion", "city": "Almaty", "description": "Магазин стильной женской одежды из Турции и Китая. Более 13 лет на рынке. Подбор образов для любых фигур.", "contacts": { "instagram": "https://www.instagram.com/nrj_salon_odezhdy/", "telegram": "https://t.me/nrj_salon_odezhdy" }, "metadata": { "verified": true, "tags": ["fashion", "clothing", "retail"] } },
   { "id": "inst-secretskin-kz", "name": "Secret Skin", "category": "K-Beauty Cosmetics", "city": "Almaty", "description": "Specialized Korean skincare store with original products and care selection.", "contacts": { "instagram": "https://www.instagram.com/secretskin.kz/" }, "metadata": { "verified": true, "tags": ["k-beauty", "skincare", "beauty"] } },
   { "id": "brand-mltrade-311293097", "name": "MLtrade", "category": "Education & Stationery", "city": "Online", "description": "Supplier of reusable educational materials and stationery for children on Wildberries.", "contacts": { "website": "https://www.wildberries.ru/brands/311293097-mltrade" }, "metadata": { "verified": true, "tags": ["education", "kids", "wildberries"] } },
