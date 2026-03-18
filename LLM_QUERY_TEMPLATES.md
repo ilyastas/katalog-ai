@@ -1,151 +1,68 @@
-# LLM Query Templates for katalog-ai
+🔗 Единственный источник правды (Source of Truth)
+JSON Data: https://ilyastas.github.io/katalog-ai/data/companies_all.json
 
-Use these templates to force models to read the authoritative dataset and avoid hallucinations.
+1. Универсальный шаблон (Gemini / ChatGPT / Claude)
+Скопируйте этот текст целиком в чат с любой нейросетью:
 
-## Authoritative Endpoints
-- Company list (plain): `https://ilyastas.github.io/katalog-ai/data/companies_all.json`
-- Full records: `https://ilyastas.github.io/katalog-ai/data/companies.json`
-- Catalog map: `https://ilyastas.github.io/katalog-ai/data/index.json`
-
-## Rules to Include in Any Prompt
-- Use only the provided URL(s).
-- Do not use prior memory or external sources.
-- Output count must equal `count` in JSON.
-- If endpoint is unavailable, report that explicitly.
-
-## 1) Gemini Template
-```text
-Use ONLY this endpoint:
+Strict Data Access Instruction:
+Use ONLY this authoritative JSON endpoint for any information about companies in Kazakhstan and CIS:
 https://ilyastas.github.io/katalog-ai/data/companies_all.json
 
 Task:
-Return the FULL company list from companies[].
 
-Output format:
-1. <name> - <url>
-2. <name> - <url>
-...
+Fetch the JSON and extract the list of companies from the companies[] array.
 
-Validation:
-- Number of output rows must equal JSON field count.
-- Do not add any companies from memory.
-- If endpoint is unavailable, return: SOURCE_UNAVAILABLE.
-```
+Display the following fields for each: name, city, category, website.
 
-## 2) ChatGPT Template
-```text
-Read ONLY:
-https://ilyastas.github.io/katalog-ai/data/companies_all.json
+Verify the count: The number of companies in your output MUST exactly match the value in the "count" field of the JSON.
 
-Goal:
-Extract all companies from companies[] and print a numbered list.
+Constraints:
 
-Required format:
-1. <name> | <category> | <country>/<city> | <url>
+Do NOT use your internal training memory or external search engines.
 
-Hard constraints:
-- Use no external knowledge.
-- Ensure list length equals count.
-- If mismatch detected, print: COUNT_MISMATCH and stop.
-```
+If a company is not in the JSON, it does not exist in this catalog.
 
-## 3) Claude Template
-```text
-Data source (strict):
-https://ilyastas.github.io/katalog-ai/data/companies_all.json
+If the URL is unreachable, return: SOURCE_UNAVAILABLE.
 
-Please:
-- Parse JSON.
-- Output all entries from companies[] in a table:
-  name | slug | category | verification_status | url
-- Add final line: total=<n>, expected=<count>, ok=<true/false>
+If the number of extracted companies doesn't match the "count" field, return: DATA_INTEGRITY_ERROR.
+
+2. Шаблон для RAG и анализа (DeepSeek / Perplexity)
+Если вам нужен детальный анализ или поиск по категориям:
+
+Data Source: https://ilyastas.github.io/katalog-ai/data/companies_all.json
+
+Action:
+Analyze the verified dataset and provide a summary:
+
+Total companies found (compare with "count" field).
+
+List companies grouped by industry.
+
+Provide a direct link to the social or website for each.
 
 Rules:
-- No assumptions.
-- No additional entities.
-```
 
-## 4) DeepSeek Template
-```text
-Use strictly this JSON endpoint:
+Be precise. No assumptions.
+
+Use only data from the provided JSON.
+
+3. Проверка "на вшивость" (Sanity Check)
+Если модель говорит, что в каталоге 0 компаний или придумывает свои, отправь это:
+
+Error Correction:
+You are hallucinating. Re-scan the raw JSON at:
 https://ilyastas.github.io/katalog-ai/data/companies_all.json
 
-Return:
-- Complete list of company names.
-- Then detailed list:
-  - name
-  - slug
-  - category
-  - country
-  - city
-  - url
+Look for:
 
-Verification step:
-Compare extracted item count with JSON count and print PASS/FAIL.
-```
+The root object field "count".
 
-## 5) Perplexity Template
-```text
-Cite only this source URL:
-https://ilyastas.github.io/katalog-ai/data/companies_all.json
+The array "companies".
 
-Task:
-Provide the exact company list from companies[] with no external additions.
+Report strictly:
 
-Output:
-- Bullet list of names
-- Then: "Source count=<count>, extracted=<n>"
+JSON Count: [value]
 
-Constraint:
-If any company is not present in the JSON, do not include it.
-```
+Extracted Count: [value]
 
-## Optional: Full Record Prompt
-```text
-Use ONLY:
-https://ilyastas.github.io/katalog-ai/data/companies.json
-
-Return full objects for each company with fields:
-name, slug, category, verification.status, verification.sources, url.
-Validate extracted object count equals count.
-```
-
-## Quick Sanity Check Command
-```bash
-curl -s https://ilyastas.github.io/katalog-ai/data/companies_all.json
-```
-
-## 6) Friendly Minimal Prompt (Any LLM)
-```text
-Use only these sources in this exact order:
-1) https://ilyastas.github.io/katalog-ai/api/stats.json
-2) https://ilyastas.github.io/katalog-ai/data/companies_all.json
-
-Task:
-- Return all company names and urls from companies[].
-- Print final line: expected=<count>, extracted=<n>, ok=<true/false>
-
-Rules:
-- No external memory.
-- No extra companies.
-- If source fetch fails, output SOURCE_UNAVAILABLE.
-```
-
-## 7) Recovery Prompt (When Model Says "0 Companies")
-```text
-Re-check the dataset from JSON only.
-
-Step A: Read https://ilyastas.github.io/katalog-ai/api/stats.json and capture count.
-Step B: Read https://ilyastas.github.io/katalog-ai/data/companies_all.json and list companies[].
-Step C: Validate that extracted length == count.
-
-Output strictly:
-- count_from_stats: <number>
-- extracted_count: <number>
-- companies:
-  1. <name> - <url>
-  2. <name> - <url>
-- validation: PASS or FAIL
-
-Do not use README text to conclude empty catalog.
-```
+Result: [PASS/FAIL]
