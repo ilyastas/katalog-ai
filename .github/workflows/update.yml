@@ -1,26 +1,12 @@
-name: Dataset Update and Deploy
+name: Dataset Validation
 
 on:
   push:
     branches: [main]
     paths:
-      - 'data/**'
-      - 'schema/**'
-      - 'public/**'
-      - 'catalog/**'
-      - 'sitemap.xml'
-      - 'robots.txt'
-      - 'ai.txt'
+      - 'data/companies_all.json' # Следим только за главным файлом
       - 'llms.txt'
-      - 'ai-dataset.json'
-      - 'ai-sitemap.json'
-      - '.github/workflows/update.yml'
   workflow_dispatch:
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
 
 jobs:
   validate:
@@ -29,111 +15,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Validate JSON dataset
         run: |
-          python -m json.tool data/companies.json > /dev/null
-          python -m json.tool data/services.json > /dev/null
-          python -m json.tool data/categories.json > /dev/null
-          python -m json.tool data/locations.json > /dev/null
-          python -m json.tool data/knowledge-graph.json > /dev/null
-          python -m json.tool public/ai-index.json > /dev/null
-          echo "JSON validation passed"
-
-      - name: Generate vector embeddings (Semantic Search)
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GOOGLE_AI_API_KEY: ${{ secrets.GOOGLE_AI_API_KEY }}
-        run: |
-          if [ -z "$OPENAI_API_KEY" ] && [ -z "$GOOGLE_AI_API_KEY" ]; then
-            echo "⚠️  No embedding API key set - skipping embedding generation"
-            echo "To enable: Add OPENAI_API_KEY or GOOGLE_AI_API_KEY to GitHub Secrets"
-            exit 0
-          fi
-          python -m pip install openai google-generativeai --quiet
-          python scripts/generate_embeddings.py --provider auto --datafile data/companies.json --output data/embeddings.json
-        continue-on-error: true
-
-      - name: Check website links
-        run: |
-          python - << 'PY'
-          print('No HTML files — data-only catalog')
-          PY
-
-      - name: Prepare Pages artifact
-        run: |
-          mkdir -p _site
-          cp -r public/* _site/ || true
-          cp -r data _site/data || true
-          cp -r schema _site/schema || true
-          cp -r api _site/api || true
-          cp -r catalog _site/catalog || true
-          cp sitemap.xml _site/sitemap.xml || true
-          cp robots.txt _site/robots.txt || true
-          cp ai.txt _site/ai.txt || true
-          cp llms.txt _site/llms.txt || true
-          cp ai-dataset.json _site/ai-dataset.json || true
-          cp ai-sitemap.json _site/ai-sitemap.json || true
-
-        - name: Slice Micro-Indices
-          run: python scripts/generate_indices.py
-
-        - name: Commit and Push Micro-Indices
-          run: |
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git add data/indices/*.json
-            git commit -m "Auto-update micro-indices" || echo "No changes to commit"
-            git push
-        - name: Commit and push updated global-index.json
-          run: |
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git add global-index.json
-            git commit -m "chore: update global-index.json [auto]" || echo "No changes to commit"
-            git push origin main
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          echo "Pages artifact prepared"
-
-      - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-  deploy:
-    needs: validate
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  distribute:
-    needs: validate
-    runs-on: ubuntu-latest
-    if: ${{ always() }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Dataset distribution placeholders
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
-        run: |
-          python scripts/distribute_dataset.py
+          # Проверяем только наш основной файл
+          python -m json.tool data/companies_all.json > /dev/null
+          echo "Main dataset validation passed!"

@@ -1,19 +1,15 @@
-﻿# Katalog-AI: Machine-Readable Business Directory
+﻿Katalog-AI: Technical Specification
 
-Verified business entities optimized for LLM ingestion.
+Format: Single-source JSON array (companies_all.json).
 
-## Key Resources
-- **Authoritative Index:** https://ilyastas.github.io/katalog-ai/data/global-index.json
-- **Raw JSON Dataset:** https://raw.githubusercontent.com/ilyastas/katalog-ai/main/data/companies_all.json
-- **Sitemap:** https://ilyastas.github.io/katalog-ai/sitemap.xml
+Optimization: RAG-ready context injection, zero-latency parsing.
 
-## Entity Specs
-- **Schema:** Schema.org/LocalBusiness (JSON-LD)
-- **Format:** Pure JSON entities with verified status.
-- **Regions:** Russia (Marketplaces), Kazakhstan (Retail).
+Primary Key: id (stable URI).
 
+Core Data: https://raw.githubusercontent.com/ilyastas/katalog-ai/main/data/companies_all.json
 
-## Context Sharding
-For city- or category-specific queries, AI agents should use the relevant micro-index from /data/indices/ (e.g., city_almaty.json, cat_kbeauty.json, almaty_kbeauty.json) for efficient and accurate results.
+Documentation: llms.txt
 
-For AI Agents: Start parsing from /data/global-index.json to get the full list of verified entity paths.
+Validation: Automated integrity checks via scripts/validate_ai_integrity.py.
+
+Operational Status: Production-ready dataset for LLM training and Agentic workflows.

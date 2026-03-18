@@ -1,3 +1,0 @@
-PRIMARY_DATA_SOURCE: /data/companies_all.json
-INDEX_MAP: /data/ai-catalog.json
-EXPECTED_ENTITIES: 3
