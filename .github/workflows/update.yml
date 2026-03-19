@@ -1,0 +1,22 @@
+name: Dataset Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/companies_all.json' # Следим только за главным файлом
+      - 'llms.txt'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate JSON dataset
+        run: |
+          # Проверяем только наш основной файл
+          python -m json.tool data/companies_all.json > /dev/null
+          echo "Main dataset validation passed!"
