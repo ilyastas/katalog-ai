@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-Allow: /data/companies_all.json
-Allow: /llms.txt
-
-# Указываем прямой путь к данным для ИИ-агентов
-Sitemap: https://ilyastas.github.io/katalog-ai/data/companies_all.json
