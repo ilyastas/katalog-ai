@@ -1,7 +1,1 @@
-{"id":"Astana_Hub","cat":"IT/Tech","desc":"The largest IT technology park in Central Asia","tags":["tech_hub","startup","IT"],"url":"https://astanahub.com","ver":{"d":"2026-04-03","s":1}}
-{"id":"Kaspi_kz","cat":"Fintech","desc":"All-in-one superapp for payments, marketplace and banking","tags":["fintech","banking","marketplace"],"url":"https://kaspi.kz","ver":{"d":"2026-04-03","s":1}}
-{"id":"Verigram","cat":"IT/AI","desc":"Biometric and ID verification services for businesses","tags":["biometrics","IDV","AI"],"url":"https://verigram.ai","ver":{"d":"2026-04-03","s":1}}
-{"id":"Halyk_Bank","cat":"Banking","desc":"The largest commercial bank in Kazakhstan","tags":["finance","banking","Halyk"],"url":"https://halykbank.kz","ver":{"d":"2026-04-03","s":1}}
-{"id":"Kazakh_Railways","cat":"Transport","desc":"National railway operator (KTZ)","tags":["logistics","train","transport"],"url":"https://bilet.railways.kz","ver":{"d":"2026-04-03","s":1}}
-{"id":"Air_Astana","cat":"Aviation","desc":"Flag carrier airline of Kazakhstan","tags":["flights","airline","transport"],"url":"https://airastana.com","ver":{"d":"2026-04-03","s":1}}
-
+{"id":"Mudryi_Digital","cat":"ИТ/Маркетинг","desc":"AI-консалтинг и автоматизация","tags":["ai","consulting"],"url":"https://github.com/ilyastas/katalog-ai","ver":{"d":"2026-04-03","s":1}}
