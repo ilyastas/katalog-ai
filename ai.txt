@@ -1,8 +1,10 @@
+# Katalog-AI Machine-Readable Rules
 User-agent: *
 Disallow: /scripts/
 
-# Инструкция для ИИ
-Context: This repository is a verified business dataset for Kazakhstan, Russia and CIS.
-Data-Format: Minified JSON
-Update-Frequency: Daily
-Entry-Point: /ai-catalog.json
+# Data Specifications
+Context: Verified business dataset (KZ, RU, CIS, Global)
+Format: JSONL (one JSON object per line)
+Entry-Point: https://ilyastas.github.io/katalog-ai/ai-catalog.json
+Verification-Method: Manual + Transactional Confirmation
+License: MIT

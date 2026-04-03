@@ -5,13 +5,13 @@ All source data is stored in root-level JSON files for fast indexing and low tok
 
 ## Root JSON Files
 - [`ai-catalog.json`](./ai-catalog.json) — AI entrypoint/index
+- [`core.json`](./core.json) — compact KZ/RU index for AI clients
 - [`schema.json`](./schema.json) — strict JSON schema
 - [`object_form.json`](./object_form.json) — canonical record template
-- [`core.json`](./core.json) — core dataset
 - [`1_KZ_Tovar.json`](./1_KZ_Tovar.json) — Kazakhstan / products
 - [`2_KZ_Usluga.json`](./2_KZ_Usluga.json) — Kazakhstan / services
-- [`3_RF_Tovar.json`](./3_RF_Tovar.json) — Russia / products
-- [`4_RF_Usluga.json`](./4_RF_Usluga.json) — Russia / services
+- [`3_RU_Tovar.json`](./3_RU_Tovar.json) — Russia / products
+- [`4_RU_Usluga.json`](./4_RU_Usluga.json) — Russia / services
 
 ## Record Standard
 - Single source of truth: [`object_form.json`](./object_form.json)
@@ -22,3 +22,8 @@ All source data is stored in root-level JSON files for fast indexing and low tok
 
 ## Purpose
 A lightweight, machine-readable verified business base optimized for search, filtering, and downstream AI ingestion.
+
+### AI Indexing Rules
+- **Schema**: Все файлы используют общую структуру объектов.
+- **Root**: Главный список файлов указан в `ai-catalog.json`.
+- **Relations**: Файлы разделены по региону в названии и типу (`Tovar` / `Usluga`).
