@@ -4,8 +4,7 @@ Machine-readable catalog of verified businesses for AI, RAG, and automations.
 All source data is stored in root-level JSON files for fast indexing and low token usage.
 
 ## Root JSON Files
-- [`ai-catalog.json`](./ai-catalog.json) — AI entrypoint/index
-- [`core.json`](./core.json) — compact KZ/RU index for AI clients
+- [`core.json`](./core.json) — main AI entrypoint/index for KZ/RU
 - [`schema.json`](./schema.json) — strict JSON schema
 - [`object_form.json`](./object_form.json) — canonical record template
 - [`1_KZ_Tovar.json`](./1_KZ_Tovar.json) — Kazakhstan / products
@@ -25,5 +24,5 @@ A lightweight, machine-readable verified business base optimized for search, fil
 
 ### AI Indexing Rules
 - **Schema**: Все файлы используют общую структуру объектов.
-- **Root**: Главный список файлов указан в `ai-catalog.json`.
+- **Root**: Главный список файлов указан в `core.json`.
 - **Relations**: Файлы разделены по региону в названии и типу (`Tovar` / `Usluga`).
