@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ilyastas.github.io/katalog-ai/</loc><lastmod>2026-04-03</lastmod></url>
+  <url><loc>https://ilyastas.github.io/katalog-ai/ai-catalog.json</loc><lastmod>2026-04-03</lastmod></url>
   <url><loc>https://ilyastas.github.io/katalog-ai/core.json</loc><lastmod>2026-04-03</lastmod></url>
   <url><loc>https://ilyastas.github.io/katalog-ai/1_KZ_Tovar.json</loc><lastmod>2026-04-03</lastmod></url>
   <url><loc>https://ilyastas.github.io/katalog-ai/2_KZ_Usluga.json</loc><lastmod>2026-04-03</lastmod></url>

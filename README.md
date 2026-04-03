@@ -1,5 +1,14 @@
 # Katalog-AI
 
+## 🤖 AI Entry Points
+- **Main Index:** [`core.json`](https://ilyastas.github.io/katalog-ai/core.json)
+- **Legacy Alias:** [`ai-catalog.json`](https://ilyastas.github.io/katalog-ai/ai-catalog.json)
+- **Dataset Schema:** [`schema.json`](https://ilyastas.github.io/katalog-ai/schema.json)
+- **KZ Goods:** [`1_KZ_Tovar.json`](https://ilyastas.github.io/katalog-ai/1_KZ_Tovar.json)
+- **KZ Services:** [`2_KZ_Usluga.json`](https://ilyastas.github.io/katalog-ai/2_KZ_Usluga.json)
+- **RU Goods:** [`3_RU_Tovar.json`](https://ilyastas.github.io/katalog-ai/3_RU_Tovar.json)
+- **RU Services:** [`4_RU_Usluga.json`](https://ilyastas.github.io/katalog-ai/4_RU_Usluga.json)
+
 Machine-readable catalog of verified businesses for AI, RAG, and automations.
 All source data is stored in root-level JSON files for fast indexing and low token usage.
 
