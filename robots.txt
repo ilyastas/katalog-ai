@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /README.md
+Allow: /ai-catalog.json
+Allow: /core.json
+Disallow: /scripts/
+Disallow: /venv/
+Disallow: /object_form.json
+
+# Специально открываем доступ для AI-краулеров
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /

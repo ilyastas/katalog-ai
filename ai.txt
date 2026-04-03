@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /scripts/
+
+# Инструкция для ИИ
+Context: This repository is a verified business dataset for Kazakhstan, Russia and CIS.
+Data-Format: Minified JSON
+Update-Frequency: Daily
+Entry-Point: /ai-catalog.json
