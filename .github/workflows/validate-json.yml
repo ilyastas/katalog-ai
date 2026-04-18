@@ -13,10 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Validate JSON files in root
-        shell: bash
+      - name: Validate JSON files
         run: |
-          find . -maxdepth 1 -name "*.json" | while read -r file; do
+          for file in $(find . -maxdepth 1 -name "*.json"); do
             echo "Checking $file..."
             python -m json.tool "$file" > /dev/null
           done
