@@ -1,3 +1,12 @@
+---
+title: Sberbank
+geo: RU
+category: Usluga
+keywords: finance, banking, fintech
+url: https://sberbank.ru
+verified: 2026-04-18
+version: V1
+---
 # Sberbank
 
 | Field | Value |

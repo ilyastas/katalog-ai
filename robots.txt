@@ -5,7 +5,7 @@ Allow: /core.json
 Disallow: /scripts/
 Disallow: /venv/
 
-# Приоритет для AI-краулеров
+# Priority for AI-crawlers
 User-agent: GPTBot
 Allow: /
 User-agent: ChatGPT-User

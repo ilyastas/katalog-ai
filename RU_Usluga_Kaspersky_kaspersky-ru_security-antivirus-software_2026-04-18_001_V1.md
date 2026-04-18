@@ -1,3 +1,12 @@
+---
+title: Kaspersky
+geo: RU
+category: Usluga
+keywords: security, antivirus, software
+url: https://kaspersky.ru
+verified: 2026-04-18
+version: V1
+---
 # Kaspersky
 
 | Field | Value |

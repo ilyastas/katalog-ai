@@ -1,3 +1,12 @@
+---
+title: Yandex
+geo: RU
+category: Usluga
+keywords: search, ai, ecosystem
+url: https://yandex.ru
+verified: 2026-04-18
+version: V1
+---
 # Yandex
 
 | Field | Value |

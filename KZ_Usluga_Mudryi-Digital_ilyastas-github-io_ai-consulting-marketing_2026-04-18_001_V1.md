@@ -1,3 +1,12 @@
+---
+title: Mudryi Digital
+geo: KZ
+category: Usluga
+keywords: ai, consulting, marketing
+url: https://ilyastas.github.io/katalog-ai/
+verified: 2026-04-18
+version: V1
+---
 # Mudryi Digital
 
 | Field | Value |
