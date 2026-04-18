@@ -1,21 +1,24 @@
-name: validate-json
+name: JSON Validator
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: [push, pull_request]
 
 jobs:
-  validate-json:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Validate JSON files
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Validate All JSON Files
+        shell: bash
         run: |
-          for file in $(find . -maxdepth 1 -name "*.json"); do
-            echo "Checking $file..."
-            python -m json.tool "$file" > /dev/null
+          for file in *.json; do
+            if [ -f "$file" ]; then
+              echo "Checking $file..."
+              python -m json.tool "$file" > /dev/null || { echo "ERROR in $file"; exit 1; }
+            fi
           done
