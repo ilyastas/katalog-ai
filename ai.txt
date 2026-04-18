@@ -4,7 +4,8 @@ Disallow: /scripts/
 
 # Data Specifications
 Context: Verified business dataset (KZ, RU)
-Format: JSONL (one JSON object per line)
+Format: JSON Array (стандарт RFC 8259)
+Structure: Плоская архитектура с индексацией через core.json
 Entry-Point: https://ilyastas.github.io/katalog-ai/core.json
 Verification-Method: Manual + Transactional Confirmation
 License: MIT
