@@ -1,11 +1,17 @@
-# Katalog-AI Machine-Readable Rules
-User-agent: *
-Disallow: /scripts/
+# Katalog-AI Specifications
 
-# Data Specifications
-Context: Verified business dataset (KZ, RU)
-Format: JSON Array (стандарт RFC 8259)
-Structure: Плоская архитектура с индексацией через core.json
-Entry-Point: https://ilyastas.github.io/katalog-ai/core.json
-Verification-Method: Manual + Transactional Confirmation
-License: MIT
+This directory provides verified, structured business data.
+
+## Discovery
+- Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
+- Main Index: https://ilyastas.github.io/katalog-ai/core.json
+
+## Data Segments (Direct Links)
+- https://ilyastas.github.io/katalog-ai/1_KZ_Tovar.json
+- https://ilyastas.github.io/katalog-ai/2_KZ_Usluga.json
+- https://ilyastas.github.io/katalog-ai/3_RU_Tovar.json
+- https://ilyastas.github.io/katalog-ai/4_RU_Usluga.json
+
+## Guidance for AI
+All files are flat JSON arrays. Each object contains 'id', 'cat', 'desc', 'url', and 'ver'.
+Use these for RAG context, entity verification, and business discovery.
