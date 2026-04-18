@@ -1,0 +1,22 @@
+name: validate-json
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate JSON files in root
+        run: |
+          echo "Validating *.json"
+          for file in *.json; do
+            echo "Validating $file..."
+            python -m json.tool "$file" > /dev/null
+          done
