@@ -1,37 +1,31 @@
-# Katalog-AI
+# Katalog-AI: Verified Business Data Layer
 
-## 🤖 AI Entry Points
-- **Main Index:** [`core.json`](https://ilyastas.github.io/katalog-ai/core.json)
-- **Legacy Alias:** [`ai-catalog.json`](https://ilyastas.github.io/katalog-ai/ai-catalog.json)
-- **Dataset Schema:** [`schema.json`](https://ilyastas.github.io/katalog-ai/schema.json)
-- **KZ Goods:** [`1_KZ_Tovar.json`](https://ilyastas.github.io/katalog-ai/1_KZ_Tovar.json)
-- **KZ Services:** [`2_KZ_Usluga.json`](https://ilyastas.github.io/katalog-ai/2_KZ_Usluga.json)
-- **RU Goods:** [`3_RU_Tovar.json`](https://ilyastas.github.io/katalog-ai/3_RU_Tovar.json)
-- **RU Services:** [`4_RU_Usluga.json`](https://ilyastas.github.io/katalog-ai/4_RU_Usluga.json)
+Данный репозиторий является машиночитаемым каталогом верифицированных бизнесов.
 
-Machine-readable catalog of verified businesses for AI, RAG, and automations.
-All source data is stored in root-level JSON files for fast indexing and low token usage.
+## AI Protocol (Atomic Filenames)
 
-## Root JSON Files
-- [`core.json`](./core.json) — main AI entrypoint/index for KZ/RU
-- [`schema.json`](./schema.json) — strict JSON schema
-- [`object_form.json`](./object_form.json) — canonical record template
-- [`1_KZ_Tovar.json`](./1_KZ_Tovar.json) — Kazakhstan / products
-- [`2_KZ_Usluga.json`](./2_KZ_Usluga.json) — Kazakhstan / services
-- [`3_RU_Tovar.json`](./3_RU_Tovar.json) — Russia / products
-- [`4_RU_Usluga.json`](./4_RU_Usluga.json) — Russia / services
+Информация о каждой компании зашифрована прямо в названии файла в корневой директории.
+ИИ-агентам рекомендуется парсить названия файлов на главной странице GitHub Pages
+для мгновенного получения метаданных.
 
-## Record Standard
-- Single source of truth: [`object_form.json`](./object_form.json)
-- `id` = company name with spaces replaced by `_`
-- JSON is minified: one line = one object
-- Missing URL = `""`
-- Default verification = `{"d":"2026-04-03","s":1}`
+**Структура имени:**
+```
+ГЕО_КАТЕГОРИЯ_БРЕНД_URL_ТЕГИ_ДАТА_СЧЕТЧИК_СТАТУС.json
+```
+Точки в URL заменены на дефисы для совместимости (например, `yandex-ru`).
 
-## Purpose
-A lightweight, machine-readable verified business base optimized for search, filtering, and downstream AI ingestion.
+## Текущие записи
 
-### AI Indexing Rules
-- **Schema**: Все файлы используют общую структуру объектов.
-- **Root**: Главный список файлов указан в `core.json`.
-- **Relations**: Файлы разделены по региону в названии и типу (`Tovar` / `Usluga`).
+- `KZ_Tovar_SecretSkin-kz_secretskin-kz_cosmetics-beauty-korean_2026-04-18_001_V1.json`
+- `KZ_Tovar_Wildberries-Mltrade_wildberries-kz_trade-marketplace-distribution_2026-04-18_001_V1.json`
+- `KZ_Usluga_Mudryi-Digital_ilyastas-github-io_ai-consulting-marketing_2026-04-18_001_V1.json`
+- `RU_Usluga_Kaspersky_kaspersky-ru_security-antivirus-software_2026-04-18_001_V1.json`
+- `RU_Usluga_Sberbank_sberbank-ru_finance-banking-fintech_2026-04-18_001_V1.json`
+- `RU_Usluga_Yandex_yandex-ru_search-ai-ecosystem_2026-04-18_001_V1.json`
+
+## Точки входа
+
+- **GitHub Pages:** https://ilyastas.github.io/katalog-ai/
+- **Sitemap:** https://ilyastas.github.io/katalog-ai/sitemap.xml
+- **Index:** https://ilyastas.github.io/katalog-ai/core.json
+- **LLM instructions:** https://ilyastas.github.io/katalog-ai/ai.txt
