@@ -9,9 +9,11 @@
 для мгновенного получения метаданных.
 
 **Структура имени:**
-```
+
+```text
 ГЕО_КАТЕГОРИЯ_БРЕНД_URL_ТЕГИ_ДАТА_СЧЕТЧИК_СТАТУС.md
 ```
+
 Точки в URL заменены на дефисы (например, `yandex-ru`).
 
 ## Текущие записи
@@ -25,8 +27,8 @@
 
 ## Точки входа
 
-- **GitHub Pages:** https://ilyastas.github.io/katalog-ai/
-- **Sitemap:** https://ilyastas.github.io/katalog-ai/sitemap.xml
-- **Core Index:** https://ilyastas.github.io/katalog-ai/core.json
-- **LLM instructions:** https://ilyastas.github.io/katalog-ai/ai.txt
-- **Hugging Face Dataset:** https://huggingface.co/datasets/ilyastas/katalog-ai
+- **GitHub Pages:** <https://ilyastas.github.io/katalog-ai/>
+- **Sitemap:** <https://ilyastas.github.io/katalog-ai/sitemap.xml>
+- **Core Index:** <https://ilyastas.github.io/katalog-ai/core.json>
+- **LLM instructions:** <https://ilyastas.github.io/katalog-ai/ai.txt>
+- **Hugging Face Dataset:** <https://huggingface.co/datasets/ilyastas/katalog-ai>

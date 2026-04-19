@@ -14,7 +14,7 @@ last_update: 2026-04-19
 |-------|-------|
 | Category | IT/Marketing |
 | Region | KZ |
-| URL | https://ilyastas.github.io/katalog-ai/ |
+| URL | <https://ilyastas.github.io/katalog-ai/> |
 | Keywords | ai, consulting, marketing |
 | Verified | 2026-04-19 (V1) |
 | Update | 002 |

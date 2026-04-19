@@ -14,7 +14,7 @@ last_update: 2026-04-19
 |-------|-------|
 | Category | IT/Security |
 | Region | RU |
-| URL | https://www.kaspersky.ru |
+| URL | <https://www.kaspersky.ru> |
 | Keywords | security, antivirus, software |
 | Verified | 2026-04-19 (V1) |
 | Update | 002 |

@@ -14,7 +14,7 @@ last_update: 2026-04-19
 |-------|-------|
 | Category | Trade |
 | Region | KZ |
-| URL | https://wildberries.kz |
+| URL | <https://wildberries.kz> |
 | Keywords | trade, marketplace, distribution |
 | Verified | 2026-04-19 (V1) |
 | Update | 002 |

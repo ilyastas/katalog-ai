@@ -14,7 +14,7 @@ last_update: 2026-04-19
 |-------|-------|
 | Category | IT/Tech |
 | Region | RU |
-| URL | https://yandex.ru |
+| URL | <https://yandex.ru> |
 | Keywords | search, ai, ecosystem |
 | Verified | 2026-04-19 (V1) |
 | Update | 002 |

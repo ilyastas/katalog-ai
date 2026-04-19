@@ -14,7 +14,7 @@ last_update: 2026-04-19
 |-------|-------|
 | Category | Beauty |
 | Region | KZ |
-| URL | https://secretskin.kz |
+| URL | <https://secretskin.kz> |
 | Keywords | cosmetics, beauty, korean |
 | Verified | 2026-04-19 (V1) |
 | Update | 002 |
