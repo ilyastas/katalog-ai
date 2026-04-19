@@ -18,12 +18,14 @@
 
 ## Текущие записи
 
-- [KZ_Tovar_SecretSkin-kz_secretskin-kz_cosmetics-beauty-korean_2026-04-19_002_V1.md](https://ilyastas.github.io/katalog-ai/KZ_Tovar_SecretSkin-kz_secretskin-kz_cosmetics-beauty-korean_2026-04-19_002_V1.md)
-- [KZ_Tovar_Wildberries-Mltrade_wildberries-kz_trade-marketplace-distribution_2026-04-19_002_V1.md](https://ilyastas.github.io/katalog-ai/KZ_Tovar_Wildberries-Mltrade_wildberries-kz_trade-marketplace-distribution_2026-04-19_002_V1.md)
-- [KZ_Usluga_Mudryi-Digital_ilyastas-github-io_ai-consulting-marketing_2026-04-19_002_V1.md](https://ilyastas.github.io/katalog-ai/KZ_Usluga_Mudryi-Digital_ilyastas-github-io_ai-consulting-marketing_2026-04-19_002_V1.md)
-- [RU_Usluga_Kaspersky_kaspersky-ru_security-antivirus-software_2026-04-19_002_V1.md](https://ilyastas.github.io/katalog-ai/RU_Usluga_Kaspersky_kaspersky-ru_security-antivirus-software_2026-04-19_002_V1.md)
-- [RU_Usluga_Sberbank_sberbank-ru_finance-banking-fintech_2026-04-19_002_V1.md](https://ilyastas.github.io/katalog-ai/RU_Usluga_Sberbank_sberbank-ru_finance-banking-fintech_2026-04-19_002_V1.md)
-- [RU_Usluga_Yandex_yandex-ru_search-ai-ecosystem_2026-04-19_002_V1.md](https://ilyastas.github.io/katalog-ai/RU_Usluga_Yandex_yandex-ru_search-ai-ecosystem_2026-04-19_002_V1.md)
+| ГЕО | Категория | Карточка компании (MD файл | Прямая ссылка для ИИ) |
+| --- | --- | --- |
+| KZ | Tovar | [SecretSkin.kz](https://ilyastas.github.io/katalog-ai/KZ_Tovar_SecretSkin-kz_secretskin-kz_cosmetics-beauty-korean_2026-04-19_002_V1.md) |
+| KZ | Tovar | [Wildberries-Mltrade](https://ilyastas.github.io/katalog-ai/KZ_Tovar_Wildberries-Mltrade_wildberries-kz_trade-marketplace-distribution_2026-04-19_002_V1.md) |
+| KZ | Usluga | [Mudryi-Digital](https://ilyastas.github.io/katalog-ai/KZ_Usluga_Mudryi-Digital_ilyastas-github-io_ai-consulting-marketing_2026-04-19_002_V1.md) |
+| RU | Usluga | [Kaspersky](https://ilyastas.github.io/katalog-ai/RU_Usluga_Kaspersky_kaspersky-ru_security-antivirus-software_2026-04-19_002_V1.md) |
+| RU | Usluga | [Sberbank](https://ilyastas.github.io/katalog-ai/RU_Usluga_Sberbank_sberbank-ru_finance-banking-fintech_2026-04-19_002_V1.md) |
+| RU | Usluga | [Yandex](https://ilyastas.github.io/katalog-ai/RU_Usluga_Yandex_yandex-ru_search-ai-ecosystem_2026-04-19_002_V1.md) |
 
 ## Точки входа
 
