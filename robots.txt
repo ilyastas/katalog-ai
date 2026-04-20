@@ -1,9 +1,8 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 Allow: /README.md
-Allow: /core.json
-Disallow: /scripts/
 Disallow: /venv/
+Disallow: /.venv/
 
 # Priority for AI-crawlers
 User-agent: GPTBot
@@ -16,3 +15,5 @@ User-agent: anthropic-ai
 Allow: /
 User-agent: Google-Extended
 Allow: /
+
+Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
