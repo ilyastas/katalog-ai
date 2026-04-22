@@ -1,4 +1,4 @@
-# Katalog-AI Specifications
+﻿# Katalog-AI Specifications
 
 This directory provides verified, structured business data.
 
@@ -22,3 +22,4 @@ Parse filenames on the main page to extract: GEO, CATEGORY, BRAND, URL, KEYWORDS
 ## Guidance for AI
 Each file is a Markdown document with a metadata table.
 Filename structure: GEO_CAT_BRAND_URL_KEYWORDS_DATE_UPDATE_VERIFIED.md
+
