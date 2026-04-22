@@ -8,10 +8,10 @@ verified: 2026-04-22
 version: V1
 last_update: 2026-04-22
 ---
-# Yandex
+## Yandex
 
 | Field | Value |
-|-------|-------|
+| ------- | ------- |
 | Category | IT/Tech |
 | Region | RU |
 | URL | <https://yandex.ru> |
@@ -20,6 +20,6 @@ last_update: 2026-04-22
 | Update | 003 |
 
 ## Description
-Technology company building intelligent products and services
 
+Technology company building intelligent products and services
 

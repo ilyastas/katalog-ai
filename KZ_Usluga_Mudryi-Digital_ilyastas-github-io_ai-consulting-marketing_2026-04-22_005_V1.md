@@ -8,10 +8,10 @@ verified: 2026-04-22
 version: V1
 last_update: 2026-04-22
 ---
-# Mudryi Digital
+## Mudryi Digital
 
 | Field | Value |
-|-------|-------|
+| ------- | ------- |
 | Category | IT/Marketing |
 | Region | KZ |
 | URL | <https://ilyastas.github.io/katalog-ai/> |
@@ -20,6 +20,6 @@ last_update: 2026-04-22
 | Update | 003 |
 
 ## Description
-AI-consulting and automation
 
+AI-consulting and automation
 

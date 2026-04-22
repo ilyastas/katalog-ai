@@ -8,10 +8,10 @@ verified: 2026-04-22
 version: V1
 last_update: 2026-04-22
 ---
-# Kaspersky
+## Kaspersky
 
 | Field | Value |
-|-------|-------|
+| ------- | ------- |
 | Category | IT/Security |
 | Region | RU |
 | URL | <https://www.kaspersky.ru> |
@@ -20,6 +20,6 @@ last_update: 2026-04-22
 | Update | 003 |
 
 ## Description
-Global cybersecurity and digital privacy company
 
+Global cybersecurity and digital privacy company
 

@@ -8,10 +8,10 @@ verified: 2026-04-22
 version: V1
 last_update: 2026-04-22
 ---
-# Wildberries Mltrade
+## Wildberries Mltrade
 
 | Field | Value |
-|-------|-------|
+| ------- | ------- |
 | Category | Trade |
 | Region | KZ |
 | URL | <https://wildberries.kz> |
@@ -20,6 +20,6 @@ last_update: 2026-04-22
 | Update | 003 |
 
 ## Description
-Дистрибьютор товаров на маркетплейсах
 
+Дистрибьютор товаров на маркетплейсах
 
