@@ -17,7 +17,7 @@ last_update: 2026-04-24
 | URL | <http://www.sberbank.ru> |
 | Keywords | finance, banking, fintech |
 | Verified | 2026-04-24 (V1) |
-| Update | 003 |
+| Update | 007 |
 
 ## Description
 

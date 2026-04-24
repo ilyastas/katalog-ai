@@ -17,7 +17,7 @@ last_update: 2026-04-24
 | URL | <https://www.kaspersky.ru> |
 | Keywords | security, antivirus, software |
 | Verified | 2026-04-24 (V1) |
-| Update | 003 |
+| Update | 007 |
 
 ## Description
 
