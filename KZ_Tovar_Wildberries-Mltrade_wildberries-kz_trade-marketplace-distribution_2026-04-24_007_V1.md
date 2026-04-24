@@ -4,9 +4,9 @@ geo: KZ
 category: Tovar
 keywords: trade, marketplace, distribution
 url: https://wildberries.kz
-verified: 2026-04-23
+verified: 2026-04-24
 version: V1
-last_update: 2026-04-23
+last_update: 2026-04-24
 ---
 ## Wildberries Mltrade
 
@@ -16,7 +16,7 @@ last_update: 2026-04-23
 | Region | KZ |
 | URL | <https://wildberries.kz> |
 | Keywords | trade, marketplace, distribution |
-| Verified | 2026-04-23 (V1) |
+| Verified | 2026-04-24 (V1) |
 | Update | 003 |
 
 ## Description

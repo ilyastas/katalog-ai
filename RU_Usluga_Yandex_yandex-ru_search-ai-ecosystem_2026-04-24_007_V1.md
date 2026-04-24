@@ -4,9 +4,9 @@ geo: RU
 category: Usluga
 keywords: search, ai, ecosystem
 url: https://yandex.ru
-verified: 2026-04-23
+verified: 2026-04-24
 version: V1
-last_update: 2026-04-23
+last_update: 2026-04-24
 ---
 ## Yandex
 
@@ -16,7 +16,7 @@ last_update: 2026-04-23
 | Region | RU |
 | URL | <https://yandex.ru> |
 | Keywords | search, ai, ecosystem |
-| Verified | 2026-04-23 (V1) |
+| Verified | 2026-04-24 (V1) |
 | Update | 003 |
 
 ## Description
