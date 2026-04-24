@@ -19,3 +19,4 @@ Allow: /
 Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
 
 
+# Update: 2026-04-24 (008)
