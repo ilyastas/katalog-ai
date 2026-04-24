@@ -31,6 +31,5 @@
 
 - **GitHub Pages:** <https://ilyastas.github.io/katalog-ai/>
 - **Sitemap:** <https://ilyastas.github.io/katalog-ai/sitemap.xml>
-- **Core Index:** <https://ilyastas.github.io/katalog-ai/core.json>
 - **LLM instructions:** <https://ilyastas.github.io/katalog-ai/ai.txt>
 - **Hugging Face Dataset:** <https://huggingface.co/datasets/ilyastas/katalog-ai>
