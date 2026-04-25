@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 Allow: /README.md
 Disallow: /venv/
@@ -19,4 +19,4 @@ Allow: /
 Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
 
 
-# Update: 2026-04-24 (008)
+# Update: 2026-04-25 (009)
