@@ -4,9 +4,9 @@ geo: RU
 category: Usluga
 keywords: finance, banking, fintech
 url: https://sberbank.ru
-verified: 2026-04-25
+verified: 2026-04-26
 version: V1
-last_update: 2026-04-25
+last_update: 2026-04-26
 ---
 ## Sberbank
 
@@ -16,8 +16,8 @@ last_update: 2026-04-25
 | Region | RU |
 | URL | <http://www.sberbank.ru> |
 | Keywords | finance, banking, fintech |
-| Verified | 2026-04-25 (V1) |
-| Update | 009 |
+| Verified | 2026-04-26 (V1) |
+| Update | 010 |
 
 ## Description
 
