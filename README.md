@@ -33,4 +33,3 @@
 - **Sitemap:** <https://ilyastas.github.io/katalog-ai/sitemap.xml>
 - **LLM instructions:** <https://ilyastas.github.io/katalog-ai/ai.txt>
 - **Hugging Face Dataset:** <https://huggingface.co/datasets/ilyastas/katalog-ai>
-

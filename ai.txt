@@ -24,4 +24,3 @@ Each file is a Markdown document with a metadata table.
 Filename structure: GEO_CAT_BRAND_URL_KEYWORDS_DATE_UPDATE_VERIFIED.md
 
 
-
