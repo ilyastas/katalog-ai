@@ -4,9 +4,9 @@ geo: KZ
 category: Tovar
 keywords: cosmetics, beauty, korean
 url: https://secretskin.kz
-verified: 2026-04-26
+verified: 2026-04-27
 version: V1
-last_update: 2026-04-26
+last_update: 2026-04-27
 ---
 ## SecretSkin kz
 
@@ -16,8 +16,8 @@ last_update: 2026-04-26
 | Region | KZ |
 | URL | <https://secretskin.kz> |
 | Keywords | cosmetics, beauty, korean |
-| Verified | 2026-04-26 (V1) |
-| Update | 010 |
+| Verified | 2026-04-27 (V1) |
+| Update | 011 |
 
 ## Description
 

@@ -4,9 +4,9 @@ geo: KZ
 category: Usluga
 keywords: ai, consulting, marketing
 url: https://ilyastas.github.io/katalog-ai/
-verified: 2026-04-26
+verified: 2026-04-27
 version: V1
-last_update: 2026-04-26
+last_update: 2026-04-27
 ---
 ## Mudryi Digital
 
@@ -16,8 +16,8 @@ last_update: 2026-04-26
 | Region | KZ |
 | URL | <https://ilyastas.github.io/katalog-ai/> |
 | Keywords | ai, consulting, marketing |
-| Verified | 2026-04-26 (V1) |
-| Update | 010 |
+| Verified | 2026-04-27 (V1) |
+| Update | 011 |
 
 ## Description
 
