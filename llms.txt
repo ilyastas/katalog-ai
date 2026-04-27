@@ -13,3 +13,4 @@ List of entities:
 - [RU_Usluga_Yandex_yandex-ru_search-ai-ecosystem_2026-04-27_011_V1.md](https://ilyastas.github.io/katalog-ai/RU_Usluga_Yandex_yandex-ru_search-ai-ecosystem_2026-04-27_011_V1.md)
 
 
+
