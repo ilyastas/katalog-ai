@@ -1,12 +1,12 @@
----
+﻿---
 title: Kaspersky
 geo: RU
 category: Usluga
 keywords: security, antivirus, software
 url: https://kaspersky.ru
-verified: 2026-04-27
+verified: 2026-04-28
 version: V1
-last_update: 2026-04-27
+last_update: 2026-04-28
 ---
 ## Kaspersky
 
@@ -16,8 +16,8 @@ last_update: 2026-04-27
 | Region | RU |
 | URL | <https://www.kaspersky.ru> |
 | Keywords | security, antivirus, software |
-| Verified | 2026-04-27 (V1) |
-| Update | 011 |
+| Verified | 2026-04-28 (V1) |
+| Update | 012 |
 
 ## Description
 
