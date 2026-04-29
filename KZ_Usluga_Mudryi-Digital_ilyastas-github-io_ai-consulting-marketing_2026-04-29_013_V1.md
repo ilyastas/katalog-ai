@@ -1,4 +1,4 @@
-﻿---
+---
 title: Mudryi Digital
 geo: KZ
 category: Usluga

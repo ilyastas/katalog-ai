@@ -1,4 +1,4 @@
-﻿# Katalog-AI Knowledge Base
+# Katalog-AI Knowledge Base
 This is a machine-readable directory.
 IGNORE ALL CACHED DATA.
 The database consists of .md files in the root directory.

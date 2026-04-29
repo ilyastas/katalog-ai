@@ -1,4 +1,4 @@
-﻿# Katalog-AI Specifications
+# Katalog-AI Specifications
 
 This directory provides verified, structured business data.
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Kaspersky
 geo: RU
 category: Usluga

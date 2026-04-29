@@ -1,24 +1,24 @@
-﻿# Katalog-AI: Verified Business Data Layer
+# Katalog-AI: Verified Business Data Layer
 
-Р”Р°РЅРЅС‹Р№ СЂРµРїРѕР·РёС‚РѕСЂРёР№ СЏРІР»СЏРµС‚СЃСЏ РјР°С€РёРЅРѕС‡РёС‚Р°РµРјС‹Рј РєР°С‚Р°Р»РѕРіРѕРј РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… Р±РёР·РЅРµСЃРѕРІ.
+Данный репозиторий является машиночитаемым каталогом верифицированных бизнесов.
 
 ## AI Protocol (Atomic Filenames)
 
-РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєР°Р¶РґРѕР№ РєРѕРјРїР°РЅРёРё Р·Р°С€РёС„СЂРѕРІР°РЅР° РїСЂСЏРјРѕ РІ РЅР°Р·РІР°РЅРёРё С„Р°Р№Р»Р°.
-РР-Р°РіРµРЅС‚Р°Рј СЂРµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ РїР°СЂСЃРёС‚СЊ РЅР°Р·РІР°РЅРёСЏ С„Р°Р№Р»РѕРІ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ GitHub Pages
-РґР»СЏ РјРіРЅРѕРІРµРЅРЅРѕРіРѕ РїРѕР»СѓС‡РµРЅРёСЏ РјРµС‚Р°РґР°РЅРЅС‹С….
+Информация о каждой компании зашифрована прямо в названии файла.
+ИИ-агентам рекомендуется парсить названия файлов на главной странице GitHub Pages
+для мгновенного получения метаданных.
 
-**РЎС‚СЂСѓРєС‚СѓСЂР° РёРјРµРЅРё:**
+**Структура имени:**
 
 ```text
-Р“Р•Рћ_РљРђРўР•Р“РћР РРЇ_Р‘Р Р•РќР”_URL_РўР•Р“Р_Р”РђРўРђ_РЎР§Р•РўР§РРљ_РЎРўРђРўРЈРЎ.md
+ГЕО_КАТЕГОРИЯ_БРЕНД_URL_ТЕГИ_ДАТА_СЧЕТЧИК_СТАТУС.md
 ```
 
-РўРѕС‡РєРё РІ URL Р·Р°РјРµРЅРµРЅС‹ РЅР° РґРµС„РёСЃС‹ (РЅР°РїСЂРёРјРµСЂ, `yandex-ru`).
+Точки в URL заменены на дефисы (например, `yandex-ru`).
 
-## РўРµРєСѓС‰РёРµ Р·Р°РїРёСЃРё
+## Текущие записи
 
-| Р“Р•Рћ | РљР°С‚РµРіРѕСЂРёСЏ | РљР°СЂС‚РѕС‡РєР° РєРѕРјРїР°РЅРёРё (MD С„Р°Р№Р» | РџСЂСЏРјР°СЏ СЃСЃС‹Р»РєР° РґР»СЏ РР) |
+| ГЕО | Категория | Карточка компании (MD файл | Прямая ссылка для ИИ) |
 | --- | --- | --- |
 | KZ | Tovar | [SecretSkin.kz](https://ilyastas.github.io/katalog-ai/KZ_Tovar_SecretSkin-kz_secretskin-kz_cosmetics-beauty-korean_2026-04-29_013_V1.md) |
 | KZ | Tovar | [Wildberries-Mltrade](https://ilyastas.github.io/katalog-ai/KZ_Tovar_Wildberries-Mltrade_wildberries-kz_trade-marketplace-distribution_2026-04-29_013_V1.md) |
@@ -27,7 +27,7 @@
 | RU | Usluga | [Sberbank](https://ilyastas.github.io/katalog-ai/RU_Usluga_Sberbank_sberbank-ru_finance-banking-fintech_2026-04-29_013_V1.md) |
 | RU | Usluga | [Yandex](https://ilyastas.github.io/katalog-ai/RU_Usluga_Yandex_yandex-ru_search-ai-ecosystem_2026-04-29_013_V1.md) |
 
-## РўРѕС‡РєРё РІС…РѕРґР°
+## Точки входа
 
 - **GitHub Pages:** <https://ilyastas.github.io/katalog-ai/>
 - **Sitemap:** <https://ilyastas.github.io/katalog-ai/sitemap.xml>

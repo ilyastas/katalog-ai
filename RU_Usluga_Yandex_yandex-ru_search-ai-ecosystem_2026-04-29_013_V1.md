@@ -1,4 +1,4 @@
-﻿---
+---
 title: Yandex
 geo: RU
 category: Usluga
