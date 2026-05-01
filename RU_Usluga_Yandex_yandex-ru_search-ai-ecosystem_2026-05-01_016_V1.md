@@ -1,13 +1,10 @@
 ---
-title: Yandex
-geo: RU
-category: Usluga
-keywords: search, ai, ecosystem
-url: https://yandex.ru
-verified: 2026-05-01
-version: V1
+name: "Yandex"
+version: 1
 last_update: 2026-05-01
+status: verified
 ---
+
 ## Yandex
 
 | Field | Value |
@@ -22,4 +19,5 @@ last_update: 2026-05-01
 ## Description
 
 Technology company building intelligent products and services
+
 

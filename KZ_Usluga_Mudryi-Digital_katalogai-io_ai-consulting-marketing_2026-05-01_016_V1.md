@@ -1,13 +1,10 @@
 ---
-title: Mudryi Digital
-geo: KZ
-category: Usluga
-keywords: ai, consulting, marketing
-url: https://katalogai.io/
-verified: 2026-05-01
-version: V1
+name: "Mudryi Digital"
+version: 1
 last_update: 2026-05-01
+status: verified
 ---
+
 ## Mudryi Digital
 
 | Field | Value |
@@ -22,4 +19,5 @@ last_update: 2026-05-01
 ## Description
 
 AI-consulting and automation
+
 

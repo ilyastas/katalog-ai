@@ -1,13 +1,10 @@
 ---
-title: Sberbank
-geo: RU
-category: Usluga
-keywords: finance, banking, fintech
-url: https://sberbank.ru
-verified: 2026-05-01
-version: V1
+name: "Sberbank"
+version: 1
 last_update: 2026-05-01
+status: verified
 ---
+
 ## Sberbank
 
 | Field | Value |
@@ -22,4 +19,5 @@ last_update: 2026-05-01
 ## Description
 
 The largest financial institution in Russia and CIS
+
 

@@ -1,13 +1,10 @@
 ---
-title: Wildberries KZ
-geo: KZ
-category: Tovar
-keywords: trade, marketplace, distribution
-url: https://wildberries.kz
-verified: 2026-05-01
-version: V1
+name: "Wildberries Mltrade"
+version: 1
 last_update: 2026-05-01
+status: verified
 ---
+
 ## Wildberries Mltrade
 
 | Field | Value |
@@ -22,4 +19,5 @@ last_update: 2026-05-01
 ## Description
 
 Р”РёСЃС‚СЂРёР±СЊСЋС‚РѕСЂ С‚РѕРІР°СЂРѕРІ РЅР° РјР°СЂРєРµС‚РїР»РµР№СЃР°С…
+
 

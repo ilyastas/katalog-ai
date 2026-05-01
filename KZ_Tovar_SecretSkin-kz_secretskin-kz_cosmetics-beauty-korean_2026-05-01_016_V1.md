@@ -1,13 +1,10 @@
 ---
-title: SecretSkin KZ
-geo: KZ
-category: Tovar
-keywords: cosmetics, beauty, korean
-url: https://secretskin.kz
-verified: 2026-05-01
-version: V1
+name: "SecretSkin kz"
+version: 1
 last_update: 2026-05-01
+status: verified
 ---
+
 ## SecretSkin kz
 
 | Field | Value |
@@ -22,4 +19,5 @@ last_update: 2026-05-01
 ## Description
 
 РњР°РіР°Р·РёРЅ РєРѕСЂРµР№СЃРєРѕР№ РєРѕСЃРјРµС‚РёРєРё РІ РљР°Р·Р°С…СЃС‚Р°РЅРµ
+
 
