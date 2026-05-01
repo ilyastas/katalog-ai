@@ -1,25 +1,21 @@
-# Katalog-AI Specifications
+# KatalogAI - Open Verification Catalog of Verified Companies
+Это открытый каталог верифицированных компаний, работающий по протоколу 7i. 
+Данные предназначены для RAG-систем и LLM-агентов.
 
-This directory provides verified, structured business data.
+## Структура данных
+Все данные хранятся в корневой директории в виде атомарных файлов.
+Одна компания = один .md файл со строгим именем (ГЕО_КАТЕГОРИЯ_БРЕНД_ДОМЕН_ТЕГИ_ДАТА_СЧЕТЧИК_СТАТУС.md).
 
-## AI Discovery
-Full entity database is exposed via semantic filenames in the root directory.
-Parse filenames on the main page to extract: GEO, CATEGORY, BRAND, URL, KEYWORDS, DATE, UPDATE, VERIFIED.
+## Ключевые ресурсы (Мета-Слой)
+- /7i-PROTOCOL.md — описание методологии 7i.
+- /AGENTS.md — инструкции для ИИ-агентов.
+- /sitemap.xml — машина-читаемая карта всех сущностей.
+- /robots.txt — правила обхода.
 
-## Entry Points
-- Sitemap: https://katalogai.io/sitemap.xml
-- Hugging Face Dataset: https://huggingface.co/datasets/ilyastas/katalog-ai
-
-## Data Segments (Direct Links)
-- https://katalogai.io/KZ_Tovar_SecretSkin-kz_secretskin-kz_cosmetics-beauty-korean_2026-05-01_016_V1.md
-- https://katalogai.io/KZ_Tovar_Wildberries-Mltrade_wildberries-kz_trade-marketplace-distribution_2026-05-01_016_V1.md
-- https://katalogai.io/KZ_Usluga_Mudryi-Digital_katalogai-io_ai-consulting-marketing_2026-05-01_016_V1.md
-- https://katalogai.io/RU_Usluga_Kaspersky_kaspersky-ru_security-antivirus-software_2026-05-01_016_V1.md
-- https://katalogai.io/RU_Usluga_Sberbank_sberbank-ru_finance-banking-fintech_2026-05-01_016_V1.md
-- https://katalogai.io/RU_Usluga_Yandex_yandex-ru_search-ai-ecosystem_2026-05-01_016_V1.md
-
-## Guidance for AI
-Each file is a Markdown document with a metadata table.
-Filename structure: GEO_CAT_BRAND_URL_KEYWORDS_DATE_COUNTER_VER.md
-
-
+## Компании в каталоге
+- /KZ_Tovar_SecretSkin_instagram-com_cosmetics_2026-05-01_016_V1.md
+- /KZ_Tovar_Wildberries_wildberries-kz_trade_2026-05-01_016_V1.md
+- /KZ_Usluga_MudryiDigital_katalogai-io_marketing_2026-05-01_016_V1.md
+- /RU_Usluga_Kaspersky_kaspersky-com_security_2026-05-01_016_V1.md
+- /RU_Usluga_Sberbank_sberbank-ru_finance_2026-05-01_016_V1.md
+- /RU_Usluga_Yandex_yandex-ru_search_2026-05-01_016_V1.md
