@@ -16,6 +16,6 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://ilyastas.github.io/katalog-ai/sitemap.xml
+Sitemap: https://katalogai.io/sitemap.xml
 
 # Updated on 2026-05-01
