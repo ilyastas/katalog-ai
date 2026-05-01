@@ -1,8 +1,10 @@
 ---
-name: "SecretSkin kz"
-version: 1
-last_update: 2026-05-01
-status: verified
+name: "SecretSkin KZ"
+url: "https://www.instagram.com/secretskin.kz/"
+type: "Retail"
+category: "Korean Cosmetics"
+last_update: "2026-05-01"
+version: "V1"
 ---
 
 ## SecretSkin kz
@@ -19,5 +21,6 @@ status: verified
 ## Description
 
 РњР°РіР°Р·РёРЅ РєРѕСЂРµР№СЃРєРѕР№ РєРѕСЃРјРµС‚РёРєРё РІ РљР°Р·Р°С…СЃС‚Р°РЅРµ
+
 
 

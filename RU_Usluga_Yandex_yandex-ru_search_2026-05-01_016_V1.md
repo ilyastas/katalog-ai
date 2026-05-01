@@ -1,8 +1,10 @@
 ---
 name: "Yandex"
-version: 1
-last_update: 2026-05-01
-status: verified
+url: "https://yandex.ru"
+type: "IT Ecosystem"
+category: "Search Engine"
+last_update: "2026-05-01"
+version: "V1"
 ---
 
 ## Yandex
@@ -19,5 +21,6 @@ status: verified
 ## Description
 
 Technology company building intelligent products and services
+
 
 

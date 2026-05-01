@@ -1,8 +1,10 @@
 ---
-name: "Wildberries Mltrade"
-version: 1
-last_update: 2026-05-01
-status: verified
+name: "Wildberries KZ"
+url: "https://wildberries.kz"
+type: "Marketplace"
+category: "Trade"
+last_update: "2026-05-01"
+version: "V1"
 ---
 
 ## Wildberries Mltrade
@@ -19,5 +21,6 @@ status: verified
 ## Description
 
 Р”РёСЃС‚СЂРёР±СЊСЋС‚РѕСЂ С‚РѕРІР°СЂРѕРІ РЅР° РјР°СЂРєРµС‚РїР»РµР№СЃР°С…
+
 
 

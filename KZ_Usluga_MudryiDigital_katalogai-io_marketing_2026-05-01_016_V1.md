@@ -1,8 +1,10 @@
 ---
 name: "Mudryi Digital"
-version: 1
-last_update: 2026-05-01
-status: verified
+url: "https://katalogai.io"
+type: "Consulting"
+category: "Marketing"
+last_update: "2026-05-01"
+version: "V1"
 ---
 
 ## Mudryi Digital
@@ -19,5 +21,6 @@ status: verified
 ## Description
 
 AI-consulting and automation
+
 
 

@@ -1,8 +1,10 @@
 ---
 name: "Kaspersky"
-version: 1
-last_update: 2026-05-01
-status: verified
+url: "https://kaspersky.com"
+type: "Software"
+category: "Security"
+last_update: "2026-05-01"
+version: "V1"
 ---
 
 ## Kaspersky
@@ -19,5 +21,6 @@ status: verified
 ## Description
 
 Global cybersecurity and digital privacy company
+
 
 

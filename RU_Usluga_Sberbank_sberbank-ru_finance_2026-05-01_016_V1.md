@@ -1,8 +1,10 @@
 ---
 name: "Sberbank"
-version: 1
-last_update: 2026-05-01
-status: verified
+url: "https://sberbank.ru"
+type: "Banking"
+category: "Finance"
+last_update: "2026-05-01"
+version: "V1"
 ---
 
 ## Sberbank
@@ -19,5 +21,6 @@ status: verified
 ## Description
 
 The largest financial institution in Russia and CIS
+
 
 
