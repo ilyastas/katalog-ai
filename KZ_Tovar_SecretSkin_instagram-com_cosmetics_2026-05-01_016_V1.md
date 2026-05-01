@@ -1,26 +1,28 @@
 ---
 name: "SecretSkin KZ"
-url: "https://www.instagram.com/secretskin.kz/"
-type: "Retail"
+domain: "instagram-com"
 category: "Korean Cosmetics"
+country: "KZ"
+status: "verified"
 last_update: "2026-05-01"
 version: "V1"
 ---
+# SecretSkin KZ
 
-## SecretSkin kz
+## Данные
+- Сайт: https://www.instagram.com/secretskin.kz/
+- Верификация: Manual + Transactional Confirmation
 
-| Field | Value |
-| ------- | ------- |
-| Category | Beauty |
-| Region | KZ |
-| URL | <https://secretskin.kz> |
-| Keywords | cosmetics, beauty, korean |
-| Verified | 2026-05-01 (V1) |
-| Update | 016 |
+## Related
+- Категория: [[Korean Cosmetics]]
 
-## Description
-
-Магазин корейской косметики в Казахстане
-
-
-
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SecretSkin KZ",
+  "url": "https://www.instagram.com/secretskin.kz/",
+  "address": { "@type": "PostalAddress", "addressCountry": "KZ" }
+}
+</script>

@@ -1,26 +1,28 @@
 ---
 name: "Wildberries KZ"
-url: "https://wildberries.kz"
-type: "Marketplace"
+domain: "wildberries-kz"
 category: "Trade"
+country: "KZ"
+status: "verified"
 last_update: "2026-05-01"
 version: "V1"
 ---
+# Wildberries KZ
 
-## Wildberries Mltrade
+## Данные
+- Сайт: https://wildberries.kz
+- Верификация: Manual + Transactional Confirmation
 
-| Field | Value |
-| ------- | ------- |
-| Category | Trade |
-| Region | KZ |
-| URL | <https://wildberries.kz> |
-| Keywords | trade, marketplace, distribution |
-| Verified | 2026-05-01 (V1) |
-| Update | 016 |
+## Related
+- Категория: [[Trade]]
 
-## Description
-
-Дистрибьютор товаров на маркетплейсах
-
-
-
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Wildberries KZ",
+  "url": "https://wildberries.kz",
+  "address": { "@type": "PostalAddress", "addressCountry": "KZ" }
+}
+</script>

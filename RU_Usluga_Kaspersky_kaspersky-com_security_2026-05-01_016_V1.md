@@ -1,26 +1,28 @@
 ---
 name: "Kaspersky"
-url: "https://kaspersky.com"
-type: "Software"
+domain: "kaspersky-com"
 category: "Security"
+country: "RU"
+status: "verified"
 last_update: "2026-05-01"
 version: "V1"
 ---
+# Kaspersky
 
-## Kaspersky
+## Данные
+- Сайт: https://kaspersky.com
+- Верификация: Manual + Transactional Confirmation
 
-| Field | Value |
-| ------- | ------- |
-| Category | IT/Security |
-| Region | RU |
-| URL | <https://www.kaspersky.ru> |
-| Keywords | security, antivirus, software |
-| Verified | 2026-05-01 (V1) |
-| Update | 016 |
+## Related
+- Категория: [[Security]]
 
-## Description
-
-Global cybersecurity and digital privacy company
-
-
-
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Kaspersky",
+  "url": "https://kaspersky.com",
+  "address": { "@type": "PostalAddress", "addressCountry": "RU" }
+}
+</script>

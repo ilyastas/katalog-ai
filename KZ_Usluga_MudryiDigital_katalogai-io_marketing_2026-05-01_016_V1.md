@@ -1,26 +1,28 @@
 ---
 name: "Mudryi Digital"
-url: "https://katalogai.io"
-type: "Consulting"
+domain: "katalogai-io"
 category: "Marketing"
+country: "KZ"
+status: "verified"
 last_update: "2026-05-01"
 version: "V1"
 ---
+# Mudryi Digital
 
-## Mudryi Digital
+## Данные
+- Сайт: https://katalogai.io
+- Верификация: Manual + Transactional Confirmation
 
-| Field | Value |
-| ------- | ------- |
-| Category | IT/Marketing |
-| Region | KZ |
-| URL | <https://katalogai.io/> |
-| Keywords | ai, consulting, marketing |
-| Verified | 2026-05-01 (V1) |
-| Update | 016 |
+## Related
+- Категория: [[Marketing]]
 
-## Description
-
-AI-consulting and automation
-
-
-
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mudryi Digital",
+  "url": "https://katalogai.io",
+  "address": { "@type": "PostalAddress", "addressCountry": "KZ" }
+}
+</script>

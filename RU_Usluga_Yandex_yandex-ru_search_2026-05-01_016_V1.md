@@ -1,26 +1,28 @@
 ---
 name: "Yandex"
-url: "https://yandex.ru"
-type: "IT Ecosystem"
+domain: "yandex-ru"
 category: "Search Engine"
+country: "RU"
+status: "verified"
 last_update: "2026-05-01"
 version: "V1"
 ---
+# Yandex
 
-## Yandex
+## Данные
+- Сайт: https://yandex.ru
+- Верификация: Manual + Transactional Confirmation
 
-| Field | Value |
-| ------- | ------- |
-| Category | IT/Tech |
-| Region | RU |
-| URL | <https://yandex.ru> |
-| Keywords | search, ai, ecosystem |
-| Verified | 2026-05-01 (V1) |
-| Update | 016 |
+## Related
+- Категория: [[Search Engine]]
 
-## Description
-
-Technology company building intelligent products and services
-
-
-
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Yandex",
+  "url": "https://yandex.ru",
+  "address": { "@type": "PostalAddress", "addressCountry": "RU" }
+}
+</script>

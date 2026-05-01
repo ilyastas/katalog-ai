@@ -1,26 +1,28 @@
 ---
 name: "Sberbank"
-url: "https://sberbank.ru"
-type: "Banking"
+domain: "sberbank-ru"
 category: "Finance"
+country: "RU"
+status: "verified"
 last_update: "2026-05-01"
 version: "V1"
 ---
+# Sberbank
 
-## Sberbank
+## Данные
+- Сайт: https://sberbank.ru
+- Верификация: Manual + Transactional Confirmation
 
-| Field | Value |
-| ------- | ------- |
-| Category | Banking |
-| Region | RU |
-| URL | <http://www.sberbank.ru> |
-| Keywords | finance, banking, fintech |
-| Verified | 2026-05-01 (V1) |
-| Update | 016 |
+## Related
+- Категория: [[Finance]]
 
-## Description
-
-The largest financial institution in Russia and CIS
-
-
-
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Sberbank",
+  "url": "https://sberbank.ru",
+  "address": { "@type": "PostalAddress", "addressCountry": "RU" }
+}
+</script>
