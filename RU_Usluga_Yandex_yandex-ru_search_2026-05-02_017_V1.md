@@ -4,7 +4,7 @@ domain: "yandex-ru"
 category: "Search Engine"
 country: "RU"
 status: "verified"
-last_update: "2026-05-01"
+last_update: "2026-05-02"
 version: "V1"
 ---
 # Yandex

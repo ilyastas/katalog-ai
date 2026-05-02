@@ -4,7 +4,7 @@ domain: "sberbank-ru"
 category: "Finance"
 country: "RU"
 status: "verified"
-last_update: "2026-05-01"
+last_update: "2026-05-02"
 version: "V1"
 ---
 # Sberbank

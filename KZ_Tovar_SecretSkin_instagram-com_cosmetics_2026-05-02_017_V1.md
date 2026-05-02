@@ -4,7 +4,7 @@ domain: "instagram-com"
 category: "Korean Cosmetics"
 country: "KZ"
 status: "verified"
-last_update: "2026-05-01"
+last_update: "2026-05-02"
 version: "V1"
 ---
 # SecretSkin KZ
