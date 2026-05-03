@@ -1,7 +1,7 @@
-Katalog-AI Data Protocol: Every file follows [INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md. Content is strictly limited to the canonical link.
+Katalog-AI Data Protocol: All data is contained in the filename. Files are empty.
 
 Files:
-- https://katalogai.io/1_KZ_Tovar_instagram-com_cosmetics-shop_2026-05-03_018.md
+- https://katalogai.io/1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-03_018.md
 - https://katalogai.io/1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md
 - https://katalogai.io/1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md
 - https://katalogai.io/2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md

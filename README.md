@@ -21,7 +21,7 @@
 | ГЕО | Бренд | Прямая ссылка для ИИ (MD файл) |
 | --- | --- | --- |
 | KZ | MudryiDigital | [1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md](https://katalogai.io/1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md) |
-| KZ | SecretSkin | [1_KZ_Tovar_instagram-com_cosmetics-shop_2026-05-03_018.md](https://katalogai.io/1_KZ_Tovar_instagram-com_cosmetics-shop_2026-05-03_018.md) |
+| KZ | SecretSkin | [1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-03_018.md](https://katalogai.io/1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-03_018.md) |
 | KZ | Wildberries | [1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md](https://katalogai.io/1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md) |
 | RU | Kaspersky | [2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md) |
 | RU | Sberbank | [2_RU_Usluga_sberbank-ru_finance-banking_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_sberbank-ru_finance-banking_2026-05-03_018.md) |
