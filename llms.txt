@@ -1,24 +1,9 @@
-# KatalogAI - Open Verification Catalog of Verified Companies (7i Protocol)
+Katalog-AI Data Protocol: Every file follows [INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md. Content is strictly limited to the canonical link.
 
-Добро пожаловать в структурированную карту данных KatalogAI.
-Этот открытый каталог верифицированных компаний работает по инновационному протоколу 7i. 
-Данный файл (`llms.txt`) служит первичной точкой входа для LLM, чат-ботов, RAG-систем и поисковых краулеров (Bing, Google). Он помогает ИИ быстро проиндексировать и понять формат наших атомарных данных. 
-Каждая компания прошла ручную проверку, что гарантирует высокий уровень доверия (Digital Trust). Мы используем строгий формат названий файлов для мгновенного парсинга метаданных без необходимости глубокого парсинга HTML.
-
-## Структура данных
-Все данные хранятся в корневой директории в виде атомарных файлов.
-Одна компания = один .md файл со строгим именем ([INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md).
-
-## Ключевые ресурсы (Мета-Слой)
-- [/7i-PROTOCOL.md](https://katalogai.io/7i-PROTOCOL.md) — подробное описание методологии 7i.
-- [/AGENTS.md](https://katalogai.io/AGENTS.md) — инструкции и гайдлайны для ИИ-агентов.
-- [/sitemap.xml](https://katalogai.io/sitemap.xml) — машинно-читаемая карта всех сущностей.
-- [/robots.txt](https://katalogai.io/robots.txt) — правила обхода и доступы.
-
-## Компании в каталоге
-- [1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md](https://katalogai.io/1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md)
-- [1_KZ_Tovar_instagram-com_cosmetics-shop_2026-05-03_018.md](https://katalogai.io/1_KZ_Tovar_instagram-com_cosmetics-shop_2026-05-03_018.md)
-- [1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md](https://katalogai.io/1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md)
-- [2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md)
-- [2_RU_Usluga_sberbank-ru_finance-banking_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_sberbank-ru_finance-banking_2026-05-03_018.md)
-- [2_RU_Usluga_yandex-ru_it-search_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_yandex-ru_it-search_2026-05-03_018.md)
+Files:
+- https://katalogai.io/1_KZ_Tovar_instagram-com_cosmetics-shop_2026-05-03_018.md
+- https://katalogai.io/1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md
+- https://katalogai.io/1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md
+- https://katalogai.io/2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md
+- https://katalogai.io/2_RU_Usluga_sberbank-ru_finance-banking_2026-05-03_018.md
+- https://katalogai.io/2_RU_Usluga_yandex-ru_it-search_2026-05-03_018.md
