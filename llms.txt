@@ -7,7 +7,7 @@
 
 ## Структура данных
 Все данные хранятся в корневой директории в виде атомарных файлов.
-Одна компания = один .md файл со строгим именем ([INDEX]_[GEO]_[CAT]_[BRAND]_[URL]_[TAGS]_[DATE]_[COUNTER]_[VER].md).
+Одна компания = один .md файл со строгим именем ([INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md).
 
 ## Ключевые ресурсы (Мета-Слой)
 - [/7i-PROTOCOL.md](https://katalogai.io/7i-PROTOCOL.md) — подробное описание методологии 7i.
@@ -16,9 +16,9 @@
 - [/robots.txt](https://katalogai.io/robots.txt) — правила обхода и доступы.
 
 ## Компании в каталоге
-- [1_KZ_Usluga_MudryiDigital_katalogai-io_marketing_2026-05-03_018_V1.md](https://katalogai.io/1_KZ_Usluga_MudryiDigital_katalogai-io_marketing_2026-05-03_018_V1.md)
-- [1_KZ_Tovar_SecretSkin_instagram-com_cosmetics_2026-05-03_018_V1.md](https://katalogai.io/1_KZ_Tovar_SecretSkin_instagram-com_cosmetics_2026-05-03_018_V1.md)
-- [1_KZ_Tovar_Wildberries_wildberries-kz_trade_2026-05-03_018_V1.md](https://katalogai.io/1_KZ_Tovar_Wildberries_wildberries-kz_trade_2026-05-03_018_V1.md)
-- [2_RU_Usluga_Kaspersky_kaspersky-com_security_2026-05-03_018_V1.md](https://katalogai.io/2_RU_Usluga_Kaspersky_kaspersky-com_security_2026-05-03_018_V1.md)
-- [2_RU_Usluga_Sberbank_sberbank-ru_finance_2026-05-03_018_V1.md](https://katalogai.io/2_RU_Usluga_Sberbank_sberbank-ru_finance_2026-05-03_018_V1.md)
-- [2_RU_Usluga_Yandex_yandex-ru_search_2026-05-03_018_V1.md](https://katalogai.io/2_RU_Usluga_Yandex_yandex-ru_search_2026-05-03_018_V1.md)
+- [1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md](https://katalogai.io/1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md)
+- [1_KZ_Tovar_instagram-com_cosmetics-shop_2026-05-03_018.md](https://katalogai.io/1_KZ_Tovar_instagram-com_cosmetics-shop_2026-05-03_018.md)
+- [1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md](https://katalogai.io/1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md)
+- [2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md)
+- [2_RU_Usluga_sberbank-ru_finance-banking_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_sberbank-ru_finance-banking_2026-05-03_018.md)
+- [2_RU_Usluga_yandex-ru_it-search_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_yandex-ru_it-search_2026-05-03_018.md)
