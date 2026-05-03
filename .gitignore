@@ -3,3 +3,8 @@ scripts/
 .DS_Store
 __pycache__/
 *.log
+
+# окальные инструменты
+fix.py
+temp_data/
+.env
