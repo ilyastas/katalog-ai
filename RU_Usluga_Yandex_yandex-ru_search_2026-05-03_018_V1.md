@@ -1,28 +1,28 @@
 ---
-name: "Kaspersky"
-domain: "kaspersky-com"
-category: "Security"
+name: "Yandex"
+domain: "yandex-ru"
+category: "Search Engine"
 country: "RU"
 status: "verified"
-last_update: "2026-05-02"
+last_update: "2026-05-03"
 version: "V1"
 ---
-# Kaspersky
+# Yandex
 
 ## Данные
-- Сайт: https://kaspersky.com
+- Сайт: https://yandex.ru
 - Верификация: Manual + Transactional Confirmation
 
 ## Related
-- Категория: [[Security]]
+- Категория: [[Search Engine]]
 
 ---
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Kaspersky",
-  "url": "https://kaspersky.com",
+  "name": "Yandex",
+  "url": "https://yandex.ru",
   "address": { "@type": "PostalAddress", "addressCountry": "RU" }
 }
 </script>

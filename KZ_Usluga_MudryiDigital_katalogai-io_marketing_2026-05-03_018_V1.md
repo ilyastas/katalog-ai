@@ -1,28 +1,28 @@
 ---
-name: "SecretSkin KZ"
-domain: "instagram-com"
-category: "Korean Cosmetics"
+name: "Mudryi Digital"
+domain: "katalogai-io"
+category: "Marketing"
 country: "KZ"
 status: "verified"
-last_update: "2026-05-02"
+last_update: "2026-05-03"
 version: "V1"
 ---
-# SecretSkin KZ
+# Mudryi Digital
 
 ## Данные
-- Сайт: https://www.instagram.com/secretskin.kz/
+- Сайт: https://katalogai.io
 - Верификация: Manual + Transactional Confirmation
 
 ## Related
-- Категория: [[Korean Cosmetics]]
+- Категория: [[Marketing]]
 
 ---
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "SecretSkin KZ",
-  "url": "https://www.instagram.com/secretskin.kz/",
+  "name": "Mudryi Digital",
+  "url": "https://katalogai.io",
   "address": { "@type": "PostalAddress", "addressCountry": "KZ" }
 }
 </script>
