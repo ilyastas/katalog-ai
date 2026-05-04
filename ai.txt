@@ -1,29 +1,24 @@
 # KatalogAI - Open Verification Catalog of Verified Companies
-Это открытый каталог верифицированных компаний, работающий по протоколу 7i. 
-Данные предназначены для RAG-систем и LLM-агентов.
+то открытый каталог верифицированных компаний, работающий по протоколу Zero Payload. 
+анные предназначены для RAG-систем и LLM-агентов.
 
 ## Структура данных
-Все данные хранятся в корневой директории в виде атомарных файлов.
-Одна компания = один .md файл со строгим именем (ГЕО_КАТЕГОРИЯ_БРЕНД_ДОМЕН_ТЕГИ_ДАТА_СЧЕТЧИК_СТАТУС.md).
+се данные хранятся в корневой директории в виде атомарных файлов.
+дна компания = один .md файл со строгим именем ([INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md).
 
-## Ключевые ресурсы (Мета-Слой)
-- /7i-PROTOCOL.md — описание методологии 7i.
-- /AGENTS.md — инструкции для ИИ-агентов.
+## лючевые ресурсы (ета-Слой)
+- /SCHEMA.md — архитектурный манифест базы данных (AI-Native Database).
+- /7i-PROTOCOL.md — описание методологии.
+- /AGENTS.md — инструкции для -агентов.
+- /llms.txt — основной источник для RAG-индексации (RAW DATA SOURCE).
 - /sitemap.xml — машина-читаемая карта всех сущностей.
 - /robots.txt — правила обхода.
 
-## Компании в каталоге
+## омпании в каталоге
 
-- /KZ_Usluga_MudryiDigital_katalogai-io_marketing_2026-05-03_018_V1.md
-- /1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-04_019.md
 - /1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-04_019.md
 - /1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-04_019.md
-- /2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-04_019.md
-- /2_RU_Usluga_sberbank-ru_finance-banking_2026-05-04_019.md
-- /2_RU_Usluga_yandex-ru_it-search_2026-05-04_019.md
 - /1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-04_019.md
-- /1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-04_019.md
-- /1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-04_019.md
 - /2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-04_019.md
 - /2_RU_Usluga_sberbank-ru_finance-banking_2026-05-04_019.md
 - /2_RU_Usluga_yandex-ru_it-search_2026-05-04_019.md

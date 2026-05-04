@@ -25,12 +25,12 @@ DATABASE_STATE: "Optimized for LLM Indexing (Zero-Content Parsing)"
 
 | ГЕО | Бренд | Прямая ссылка для ИИ (MD файл) |
 | --- | --- | --- |
-| KZ | MudryiDigital | [1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-04_019.md](https://katalogai.io/1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-04_019.md) |
-| KZ | SecretSkin | [1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-04_019.md](https://katalogai.io/1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-04_019.md) |
-| KZ | Wildberries | [1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-04_019.md](https://katalogai.io/1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-04_019.md) |
-| RU | Kaspersky | [2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-04_019.md](https://katalogai.io/2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-04_019.md) |
-| RU | Sberbank | [2_RU_Usluga_sberbank-ru_finance-banking_2026-05-04_019.md](https://katalogai.io/2_RU_Usluga_sberbank-ru_finance-banking_2026-05-04_019.md) |
-| RU | Yandex | [2_RU_Usluga_yandex-ru_it-search_2026-05-04_019.md](https://katalogai.io/2_RU_Usluga_yandex-ru_it-search_2026-05-04_019.md) |
+| KZ | MudryiDigital | [KatalogAi: Маркетинг и SEO](1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-04_019.md) |
+| KZ | SecretSkin | [SecretSkin: Корейская косметика](1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-04_019.md) |
+| KZ | Wildberries | [Wildberries: Маркетплейс](1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-04_019.md) |
+| RU | Kaspersky | [Kaspersky: Кибербезопасность](2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-04_019.md) |
+| RU | Sberbank | [Сбербанк: Финансы и Банкинг](2_RU_Usluga_sberbank-ru_finance-banking_2026-05-04_019.md) |
+| RU | Yandex | [Яндекс: ИТ и Поиск](2_RU_Usluga_yandex-ru_it-search_2026-05-04_019.md) |
 
 ## Точки входа
 
