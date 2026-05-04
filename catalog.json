@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "project": "Katalog-AI",
+    "version": "0.19",
+    "last_updated": "2026-05-04",
+    "protocol": "7i-strategic-protocol"
+  },
+  "index": [
+    {
+      "id": "1_KZ_Tovar_secretskin",
+      "name": "SecretSkin",
+      "geo": "KZ",
+      "category": "Tovar",
+      "tags": ["Cosmetics", "Beauty"],
+      "file_path": "1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-04_019.md"
+    },
+    {
+      "id": "1_KZ_Tovar_wildberries",
+      "name": "Wildberries",
+      "geo": "KZ",
+      "category": "Tovar",
+      "tags": ["Marketplace", "Trade"],
+      "file_path": "1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-04_019.md"
+    },
+    {
+      "id": "1_KZ_Usluga_katalogai",
+      "name": "KatalogAi",
+      "geo": "KZ",
+      "category": "Usluga",
+      "tags": ["Marketing", "SEO"],
+      "file_path": "1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-04_019.md"
+    },
+    {
+      "id": "2_RU_Usluga_kaspersky",
+      "name": "Kaspersky",
+      "geo": "RU",
+      "category": "Usluga",
+      "tags": ["Cybersecurity", "IT"],
+      "file_path": "2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-04_019.md"
+    },
+    {
+      "id": "2_RU_Usluga_sberbank",
+      "name": "Сбербанк",
+      "geo": "RU",
+      "category": "Usluga",
+      "tags": ["Finance", "Banking"],
+      "file_path": "2_RU_Usluga_sberbank-ru_finance-banking_2026-05-04_019.md"
+    },
+    {
+      "id": "2_RU_Usluga_yandex",
+      "name": "Яндекс",
+      "geo": "RU",
+      "category": "Usluga",
+      "tags": ["IT", "Search"],
+      "file_path": "2_RU_Usluga_yandex-ru_it-search_2026-05-04_019.md"
+    }
+  ]
+}
