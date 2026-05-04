@@ -1,12 +1,14 @@
+# CATALOG-AI RAW DATA SOURCE: https://raw.githubusercontent.com/ilyastas/katalog-ai/refs/heads/main/llms.txt
 # Katalog-AI Data Protocol
+Schema: (INDEX, GEO, CAT, URL, TAGS, DATE)
 
 All data is contained in the filename. Files are empty.
 
 ## Files
 
-- [1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-03_018.md](https://katalogai.io/1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-03_018.md)
-- [1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md](https://katalogai.io/1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-03_018.md)
-- [1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md](https://katalogai.io/1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-03_018.md)
-- [2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-03_018.md)
-- [2_RU_Usluga_sberbank-ru_finance-banking_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_sberbank-ru_finance-banking_2026-05-03_018.md)
-- [2_RU_Usluga_yandex-ru_it-search_2026-05-03_018.md](https://katalogai.io/2_RU_Usluga_yandex-ru_it-search_2026-05-03_018.md)
+- [1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-04_019.md](1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-04_019.md)
+- [1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-04_019.md](1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-04_019.md)
+- [1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-04_019.md](1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-04_019.md)
+- [2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-04_019.md](2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-04_019.md)
+- [2_RU_Usluga_sberbank-ru_finance-banking_2026-05-04_019.md](2_RU_Usluga_sberbank-ru_finance-banking_2026-05-04_019.md)
+- [2_RU_Usluga_yandex-ru_it-search_2026-05-04_019.md](2_RU_Usluga_yandex-ru_it-search_2026-05-04_019.md)
