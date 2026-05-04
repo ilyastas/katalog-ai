@@ -35,6 +35,7 @@ DATABASE_STATE: "Optimized for LLM Indexing (Zero-Content Parsing)"
 ## Точки входа
 
 - **GitHub Pages:** <https://katalogai.io/>
+- **Главный реестр (JSON):** [catalog.json](catalog.json)
 - **Sitemap:** <https://katalogai.io/sitemap.xml>
 - **LLM instructions:** <https://katalogai.io/ai.txt>
 - **Hugging Face Dataset:** <https://huggingface.co/datasets/ilyastas/katalog-ai>

@@ -10,6 +10,9 @@
 - /SCHEMA.md — архитектурный манифест базы данных (AI-Native Database).
 - /7i-PROTOCOL.md — описание методологии.
 - /AGENTS.md — инструкции для ИИ-агентов.
+- /CONTRIBUTING.md — правила формирования данных и именования.
+- /SYNC_PROTOCOL.md — регламент синхронизации индексов.
+- /catalog.json — единый реестр-индекс (Single Source of Truth).
 - /llms.txt — основной источник для RAG-индексации (RAW DATA SOURCE).
 - /sitemap.xml — машина-читаемая карта всех сущностей.
 - /robots.txt — правила обхода.
