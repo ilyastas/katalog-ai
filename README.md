@@ -1,7 +1,7 @@
 ---
-AI_PROTOCOL: Semantic Atomic Filenames
-PATH_RULES: [INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md
-DATABASE_STATE: Optimized for LLM Indexing (Zero-Content Parsing)
+AI_PROTOCOL: "Semantic Atomic Filenames"
+PATH_RULES: "[INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md"
+DATABASE_STATE: "Optimized for LLM Indexing (Zero-Content Parsing)"
 ---
 # Katalog-AI: Verified Business Data Layer
 
