@@ -1,5 +1,6 @@
 venv/
-scripts/
+scripts/*
+!scripts/validate_sync.py
 .DS_Store
 __pycache__/
 *.log
