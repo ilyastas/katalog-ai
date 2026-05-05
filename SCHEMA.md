@@ -1,5 +1,7 @@
 # Katalog-AI Database Schema
 
+Last updated: 2026-05-05
+
 ## Entity Specification
 
 Каждая запись — это файл с именем:
