@@ -158,7 +158,21 @@ def build_readme(last_updated: str, generated_on: str) -> str:
     )
 
 
-def build_index_html(last_updated: str, generated_on: str) -> str:
+def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[str, str]]) -> str:
+    def esc(s: str) -> str:
+        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+    static_rows = ""
+    for r in all_rows:
+        region = (r["id"].split("_")[1]) if "_" in r["id"] else ""
+        site = r.get("site", "")
+        url_cell = f'<a href="{esc(site)}">{esc(site)}</a>' if site and site != "-" else ""
+        static_rows += (
+            f"      <tr><td>{esc(r.get('brand',''))}</td>"
+            f"<td>{esc(region)}</td>"
+            f"<td>{url_cell}</td>"
+            f"<td>{esc(r.get('tags',''))}</td></tr>\n"
+        )
     return (
         "<!DOCTYPE html>\n"
         "<html lang=\"ru\">\n"
@@ -230,6 +244,14 @@ def build_index_html(last_updated: str, generated_on: str) -> str:
         "  </div>\n"
         "  <div id=\"grid\" class=\"grid\"></div>\n"
         "  <p id=\"no-results\">Ничего не найдено</p>\n"
+        "  <noscript>\n"
+        "  <table style=\"border-collapse:collapse;width:100%;font-size:.9rem\">\n"
+        "    <thead><tr><th>Компания</th><th>Регион</th><th>Сайт</th><th>Теги</th></tr></thead>\n"
+        "    <tbody>\n"
+        f"{static_rows}"
+        "    </tbody>\n"
+        "  </table>\n"
+        "  </noscript>\n"
         "  <footer>\n"
         "    <a href=\"catalog.json\">catalog.json</a> &nbsp;&middot;&nbsp;\n"
         "    <a href=\"llms.txt\">llms.txt</a> &nbsp;&middot;&nbsp;\n"
@@ -388,7 +410,7 @@ def main() -> int:
     if write_text(ROOT / "README.md", build_readme(last_updated, generated_on)):
         changed.append("README.md")
 
-    if write_text(ROOT / "index.html", build_index_html(last_updated, generated_on)):
+    if write_text(ROOT / "index.html", build_index_html(last_updated, generated_on, all_rows)):
         changed.append("index.html")
 
     if write_text(ROOT / "llms.txt", build_llms(last_updated)):
