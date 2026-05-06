@@ -221,9 +221,12 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
         "    .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem}\n"
         "    .card h2{font-size:1rem;font-weight:600}\n"
         "    .card .country{font-size:.75rem;background:#f0f0f0;border-radius:4px;padding:.2rem .5rem;white-space:nowrap;flex-shrink:0;margin-left:.5rem}\n"
-        "    .card .url{font-size:.8rem;color:#555;margin-bottom:.75rem;word-break:break-all}\n"
+        "    .card .url{font-size:.8rem;color:#555;margin-bottom:.4rem;word-break:break-all}\n"
         "    .card .url a{color:#0066cc;text-decoration:none}\n"
         "    .card .url a:hover{text-decoration:underline}\n"
+        "    .card .inst{font-size:.8rem;margin-bottom:.75rem}\n"
+        "    .card .inst a{color:#c13584;text-decoration:none}\n"
+        "    .card .inst a:hover{text-decoration:underline}\n"
         "    .card .tags{display:flex;flex-wrap:wrap;gap:.3rem}\n"
         "    .card .tag{font-size:.72rem;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:12px;padding:.2rem .55rem;cursor:pointer}\n"
         "    .card .tag:hover{background:#e8e8e8}\n"
@@ -293,8 +296,10 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
         "        var div=document.createElement('div');div.className='card';\n"
         "        var urlHtml=c.site?'<a href=\"'+escA(c.site)+'\" target=\"_blank\" rel=\"noopener\">'+esc(c.site)+'</a>':'';\n"
         "        var tagsHtml=tags.map(function(t){return'<span class=\"tag\" data-tag=\"'+escA(t)+'\">'+esc(t)+'</span>';}).join('');\n"
+        "        var instHtml=c.inst&&c.inst!=='-'?'<div class=\"inst\"><a href=\"'+escA(c.inst)+'\" target=\"_blank\" rel=\"noopener\">Instagram</a></div>':'';\n"
         "        div.innerHTML='<div class=\"card-header\"><h2>'+esc(c.brand)+'</h2><span class=\"country\">'+esc(region(c.id))+'</span></div>'\n"
         "          +'<div class=\"url\">'+urlHtml+'</div>'\n"
+        "          +instHtml\n"
         "          +'<div class=\"tags\">'+tagsHtml+'</div>';\n"
         "        div.querySelectorAll('.tag').forEach(function(el){\n"
         "          el.onclick=function(){activeTag=activeTag===el.dataset.tag?null:el.dataset.tag;syncActive();render();};\n"
@@ -315,20 +320,41 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
     )
 
 
-def build_llms(last_updated: str) -> str:
-    return (
-        "# Katalog-AI LLM Index\n\n"
-        f"Last updated: {last_updated}\n\n"
-        "Single source of truth is stored in regional master tables.\n\n"
-        "Canonical machine-readable company index: https://katalogai.io/catalog.json\n"
-        "Do not assume thematic shards like kz-tourism.json, ru-hotels.json or similar files.\n"
-        "For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/Туризм and Almaty/Алматы.\n\n"
-        "## Files\n\n"
-        "- [Catalog JSON Index](https://katalogai.io/catalog.json)\n"
-        "- [Master KZ Companies](https://katalogai.io/MASTER_KZ.md)\n"
-        "- [Master RU Companies](https://katalogai.io/MASTER_RU.md)\n"
-        "- [README](https://katalogai.io/README.md)\n"
-    )
+def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
+    lines = [
+        "# Katalog-AI LLM Index\n",
+        f"Last updated: {last_updated}\n",
+        "\n",
+        "Single source of truth is stored in regional master tables.\n",
+        "\n",
+        "Canonical machine-readable company index: https://katalogai.io/catalog.json\n",
+        "Do not assume thematic shards like kz-tourism.json, ru-hotels.json or similar files.\n",
+        "For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/\u0422\u0443\u0440\u0438\u0437\u043c and Almaty/\u0410\u043b\u043c\u0430\u0442\u044b.\n",
+        "\n",
+        "## Files\n",
+        "\n",
+        "- [Catalog JSON Index](https://katalogai.io/catalog.json)\n",
+        "- [Master KZ Companies](https://katalogai.io/MASTER_KZ.md)\n",
+        "- [Master RU Companies](https://katalogai.io/MASTER_RU.md)\n",
+        "- [README](https://katalogai.io/README.md)\n",
+        "\n",
+        "## Companies\n",
+        "\n",
+    ]
+    for r in all_rows:
+        region = r["id"].split("_")[1] if "_" in r["id"] else ""
+        brand = r.get("brand", "")
+        site = r.get("site", "")
+        inst = r.get("inst", "")
+        tags = r.get("tags", "")
+        lines.append(f"### {brand} ({region})\n")
+        lines.append(f"Tags: {tags}\n")
+        if site and site != "-":
+            lines.append(f"Website: {site}\n")
+        if inst and inst != "-":
+            lines.append(f"Instagram: {inst}\n")
+        lines.append("\n")
+    return "".join(lines)
 
 
 def build_sitemap(last_updated: str) -> str:
@@ -413,7 +439,7 @@ def main() -> int:
     if write_text(ROOT / "index.html", build_index_html(last_updated, generated_on, all_rows)):
         changed.append("index.html")
 
-    if write_text(ROOT / "llms.txt", build_llms(last_updated)):
+    if write_text(ROOT / "llms.txt", build_llms(last_updated, all_rows)):
         changed.append("llms.txt")
 
     if write_text(ROOT / "sitemap.xml", build_sitemap(last_updated)):

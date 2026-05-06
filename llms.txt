@@ -1,5 +1,4 @@
 # Katalog-AI LLM Index
-
 Last updated: 2026-05-06
 
 Single source of truth is stored in regional master tables.
@@ -14,3 +13,35 @@ For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/Тур
 - [Master KZ Companies](https://katalogai.io/MASTER_KZ.md)
 - [Master RU Companies](https://katalogai.io/MASTER_RU.md)
 - [README](https://katalogai.io/README.md)
+
+## Companies
+
+### SecretSkin (KZ)
+Tags: Cosmetics, Beauty
+Website: https://secretskin.kz
+Instagram: https://instagram.com/secretskin.kz
+
+### Wildberries (KZ)
+Tags: Marketplace, Trade
+Website: https://wildberries.kz
+
+### KatalogAi (KZ)
+Tags: Marketing, SEO
+Website: https://katalogai.io
+
+### Oi-Qaragai (KZ)
+Tags: Leisure, Resort, Tourism, Туризм, Almaty, Алматы
+Website: https://oi-qaragai.kz/
+Instagram: https://www.instagram.com/oi_qaragai/
+
+### Kaspersky (RU)
+Tags: Cybersecurity, IT
+Website: https://kaspersky.com
+
+### Сбербанк (RU)
+Tags: Finance, Banking
+Website: https://sberbank.ru
+
+### Яндекс (RU)
+Tags: IT, Search
+Website: https://yandex.ru
