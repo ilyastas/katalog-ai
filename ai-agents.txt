@@ -1,2 +1,0 @@
-Katalog-AI Database. Format: [INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md. Parsing: Zero-content filename analysis only.
-DATA_SOURCE_RAW: https://raw.githubusercontent.com/ilyastas/katalog-ai/refs/heads/main/llms.txt

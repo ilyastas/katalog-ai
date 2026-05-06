@@ -1,49 +1,29 @@
----
-AI_PROTOCOL: "Semantic Atomic Filenames"
-PATH_RULES: "[INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md"
-DATABASE_STATE: "Optimized for LLM Indexing (Zero-Content Parsing)"
----
-# Katalog-AI: Verified Business Data Layer
+# Katalog-AI: Master-Table Architecture
 
-Last updated: 2026-05-05.
+Last updated: 2026-05-06.
 
-Данный репозиторий является машиночитаемым каталогом верифицированных бизнесов.
+Репозиторий переведен в формат единого организма:
 
-## AI Protocol (Atomic Filenames)
+- Источник истины для контента: таблицы в `MASTER_KZ.md` и `MASTER_RU.md`
+- Машиночитаемое зеркало: `catalog.json`
 
-Информация о каждой компании зашифрована прямо в названии файла.
-ИИ-агентам рекомендуется парсить названия файлов на главной странице GitHub Pages
-для мгновенного получения метаданных.
+## Master-файлы
 
-**Структура имени:**
+- [MASTER_KZ.md](MASTER_KZ.md)
+- [MASTER_RU.md](MASTER_RU.md)
 
-```text
-[INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md
-```
+## Синхронизация
 
-Точки в URL заменены на дефисы (например, `yandex-ru`).
+- Любые изменения в компаниях вносятся только в таблицы MASTER-файлов.
+- `catalog.json` должен быть зеркалом строк из таблиц MASTER-файлов.
+- Перед коммитом обязательно запускать `python validate_sync.py`.
 
-## Текущие записи
+## Инфраструктура
 
-| ГЕО | Бренд | Прямая ссылка для ИИ (MD файл) |
-| --- | --- | --- |
-| KZ | MudryiDigital | [KatalogAi: Маркетинг и SEO](1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-05_020.md) |
-| KZ | SecretSkin | [SecretSkin: Корейская косметика](1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-05_020.md) |
-| KZ | Wildberries | [Wildberries: Маркетплейс](1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-05_020.md) |
-| RU | Kaspersky | [Kaspersky: Кибербезопасность](2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-05_020.md) |
-| RU | Sberbank | [Сбербанк: Финансы и Банкинг](2_RU_Usluga_sberbank-ru_finance-banking_2026-05-05_020.md) |
-| RU | Yandex | [Яндекс: ИТ и Поиск](2_RU_Usluga_yandex-ru_it-search_2026-05-05_020.md) |
-
-## Точки входа
-
-- **GitHub Pages:** <https://katalogai.io/>
-- **Главный реестр (JSON):** [catalog.json](catalog.json)
-- **Sitemap:** <https://katalogai.io/sitemap.xml>
-- **LLM instructions:** <https://katalogai.io/ai.txt>
-- **Hugging Face Dataset:** <https://huggingface.co/datasets/ilyastas/katalog-ai>
-
-## AI/Bot Integration
-
-RAW_LLMS_INDEX: <https://raw.githubusercontent.com/ilyastas/katalog-ai/refs/heads/main/llms.txt>
-
-> **Примечание:** Указанный выше URL является основным источником для RAG-индексации инфраструктуры и работы агентов с raw-данными.
+- [catalog.json](catalog.json)
+- [llms.txt](llms.txt)
+- [SCHEMA.md](SCHEMA.md)
+- [SYNC_PROTOCOL.md](SYNC_PROTOCOL.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [robots.txt](robots.txt)
+- [sitemap.xml](sitemap.xml)

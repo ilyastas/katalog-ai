@@ -3,13 +3,9 @@ Allow: /
 Allow: /README.md
 Disallow: /venv/
 Disallow: /.venv/
-Disallow: /AGENTS.md
 Disallow: /CONTRIBUTING.md
 Disallow: /SYNC_PROTOCOL.md
 Disallow: /SCHEMA.md
-Disallow: /7i-PROTOCOL.md
-Disallow: /ai-agents.txt
-Disallow: /fix.py
 
 # Priority for AI-crawlers
 User-agent: GPTBot
@@ -25,4 +21,4 @@ Allow: /
 
 Sitemap: https://katalogai.io/sitemap.xml
 
-# Updated on 2026-05-05
+# Updated on 2026-05-06

@@ -1,43 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://katalogai.io/</loc>
-    <lastmod>2026-05-05</lastmod>
-  </url>
-  <url>
     <loc>https://katalogai.io/llms.txt</loc>
-    <lastmod>2026-05-05</lastmod>
-  </url>
-  <url>
-    <loc>https://katalogai.io/ai.txt</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://katalogai.io/catalog.json</loc>
-    <lastmod>2026-05-05</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
-    <loc>https://katalogai.io/1_KZ_Usluga_katalogai-io_marketing-seo_2026-05-05_020.md</loc>
-    <lastmod>2026-05-05</lastmod>
+    <loc>https://katalogai.io/MASTER_KZ.md</loc>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
-    <loc>https://katalogai.io/1_KZ_Tovar_instagram-com-secretskin-kz_chistka-lica-koreiskaya-kosmetika_2026-05-05_020.md</loc>
-    <lastmod>2026-05-05</lastmod>
-  </url>
-  <url>
-    <loc>https://katalogai.io/1_KZ_Tovar_wildberries-kz_marketplace-trade_2026-05-05_020.md</loc>
-    <lastmod>2026-05-05</lastmod>
-  </url>
-  <url>
-    <loc>https://katalogai.io/2_RU_Usluga_kaspersky-com_cybersecurity_2026-05-05_020.md</loc>
-    <lastmod>2026-05-05</lastmod>
-  </url>
-  <url>
-    <loc>https://katalogai.io/2_RU_Usluga_sberbank-ru_finance-banking_2026-05-05_020.md</loc>
-    <lastmod>2026-05-05</lastmod>
-  </url>
-  <url>
-    <loc>https://katalogai.io/2_RU_Usluga_yandex-ru_it-search_2026-05-05_020.md</loc>
-    <lastmod>2026-05-05</lastmod>
+    <loc>https://katalogai.io/MASTER_RU.md</loc>
+    <lastmod>2026-05-06</lastmod>
   </url>
 </urlset>

@@ -1,24 +1,34 @@
-# Katalog-AI Database Schema
+# Katalog-AI Master Schema
 
-Last updated: 2026-05-05
+Last updated: 2026-05-06
 
-## Entity Specification
+## Source of Truth
 
-Каждая запись — это файл с именем:
-`[INDEX]_[GEO]_[CAT]_[URL]_[TAGS]_[DATE]_[COUNTER].md`
+Единственным источником данных компаний являются таблицы в:
 
-## Field Definitions
+- `MASTER_KZ.md`
+- `MASTER_RU.md`
 
-- **INDEX**: Уникальный ID записи.
-- **GEO**: Региональный код (KZ, RF, EU).
-- **CAT**: Категория бизнеса (Tovar, Uslugi, Stroy).
-- **URL**: Полный slug источника (через дефис).
-- **TAGS**: Ключевые слова для семантического поиска.
-- **DATE**: Дата индексации (YYYY-MM-DD).
-- **COUNTER**: Счётчик версий/итераций.
+## Table Columns (strict)
+
+Каждая строка таблицы обязана иметь поля:
+
+| ID | Бренд | Теги | Сайт | Inst | Дата |
+| --- | --- | --- | --- | --- | --- |
+
+## JSON Mirror
+
+`catalog.json` должен быть массивом объектов, где каждый объект строго зеркалит одну строку из MASTER-таблиц по ключам:
+
+- `id`
+- `brand`
+- `tags`
+- `site`
+- `inst`
+- `date`
 
 ## Rules
 
-- Все файлы должны иметь 0 байт контента (Zero-Content).
-- Поиск осуществляется исключительно по имени файла.
-- Обновление индексов (`catalog.json`, `llms.txt`, `README.md`, `index.html`, `sitemap.xml`) происходит по регламенту `SYNC_PROTOCOL.md` при создании файла.
+- Любые правки данных компаний вносятся только в MASTER-таблицы.
+- Пустые файлы (0 байт) и карточки-заглушки запрещены.
+- Перед каждым коммитом обязательно запускать `python validate_sync.py`.
