@@ -44,7 +44,7 @@ results = [x for x in data if "Туризм" in x["tags"] and "Алматы" in 
 ## Files
 
 | File | Description |
-|---|---|
+| --- | --- |
 | `catalog.json` | Machine-readable company index (all regions) |
 | `MASTER_KZ.md` | KZ companies master table |
 | `MASTER_RU.md` | RU companies master table |
