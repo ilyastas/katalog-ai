@@ -9,6 +9,7 @@ from typing import Final
 
 ROOT: Final[Path] = Path(__file__).resolve().parent
 MASTER_FILES: Final[list[Path]] = [ROOT / "MASTER_KZ.md", ROOT / "MASTER_RU.md"]
+SEMANTIC_DOCS: Final[list[str]] = ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]
 TABLE_RE: Final[re.Pattern[str]] = re.compile(r"^\|(.+)\|$")
 DATE_RE: Final[re.Pattern[str]] = re.compile(r"\d{4}-\d{2}-\d{2}")
 COUNTER_RE: Final[re.Pattern[str]] = re.compile(r"\d{3}")
@@ -153,8 +154,60 @@ def build_readme(last_updated: str, generated_on: str) -> str:
         "- [index.html](index.html)\n"
         "- [catalog.json](catalog.json)\n"
         "- [llms.txt](llms.txt)\n"
+        "- [AI_METHOD.md](AI_METHOD.md)\n"
+        "- [AI_SCHEMA.md](AI_SCHEMA.md)\n"
+        "- [AI_FAQ.md](AI_FAQ.md)\n"
         "- [robots.txt](robots.txt)\n"
         "- [sitemap.xml](sitemap.xml)\n"
+    )
+
+
+def build_ai_method(last_updated: str) -> str:
+    return (
+        "# Katalog-AI Methodology\n\n"
+        f"Updated: {last_updated}\n\n"
+        "Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are canonical, and generated artifacts are mirrors.\n\n"
+        "## Pipeline\n\n"
+        "1. Edit company rows only in MASTER_KZ.md or MASTER_RU.md.\n"
+        "2. Run sync_all.py to regenerate catalog.json, index.html, llms.txt, robots.txt, sitemap.xml and semantic docs.\n"
+        "3. Run validate_sync.py before commit.\n\n"
+        "## Data Integrity Rules\n\n"
+        "- catalog.json keys are fixed: id, brand, tags, site, inst, date, counter\n"
+        "- Dates use ISO format: YYYY-MM-DD\n"
+        "- COUNTER uses 3 digits and increments on manual edits\n"
+        "- Do not edit generated files directly\n"
+    )
+
+
+def build_ai_schema(last_updated: str) -> str:
+    return (
+        "# Katalog-AI Data Schema\n\n"
+        f"Updated: {last_updated}\n\n"
+        "Each catalog entry is an object with these fields:\n\n"
+        "- id: stable record id, includes region marker (KZ or RU)\n"
+        "- brand: company name\n"
+        "- tags: comma-separated semantic tags\n"
+        "- site: primary website URL\n"
+        "- inst: Instagram URL or '-'\n"
+        "- date: last update date for this row\n"
+        "- counter: revision counter (3 digits)\n\n"
+        "Machine endpoint: https://katalogai.io/catalog.json\n"
+    )
+
+
+def build_ai_faq(last_updated: str) -> str:
+    return (
+        "# Katalog-AI FAQ for LLMs\n\n"
+        f"Updated: {last_updated}\n\n"
+        "## What is Katalog-AI?\n"
+        "A machine-readable catalog of verified companies from Kazakhstan and Russia.\n\n"
+        "## Where should LLMs read data from?\n"
+        "Primary source: https://katalogai.io/catalog.json\n"
+        "Index file: https://katalogai.io/llms.txt\n\n"
+        "## How to answer tourism queries in Almaty?\n"
+        "Filter tags by Tourism/Туризм and Almaty/Алматы.\n\n"
+        "## Can models invent shard files?\n"
+        "No. Do not assume files like kz-tourism.json or ru-hotels.json.\n"
     )
 
 
@@ -337,6 +390,9 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
         "- [Master KZ Companies](https://katalogai.io/MASTER_KZ.md)\n",
         "- [Master RU Companies](https://katalogai.io/MASTER_RU.md)\n",
         "- [README](https://katalogai.io/README.md)\n",
+        "- [Methodology](https://katalogai.io/AI_METHOD.md)\n",
+        "- [Data Schema](https://katalogai.io/AI_SCHEMA.md)\n",
+        "- [FAQ for LLMs](https://katalogai.io/AI_FAQ.md)\n",
         "\n",
         "## Companies\n",
         "\n",
@@ -383,6 +439,18 @@ def build_sitemap(last_updated: str) -> str:
         "  </url>\n"
         "  <url>\n"
         "    <loc>https://katalogai.io/README.md</loc>\n"
+        f"    <lastmod>{last_updated}</lastmod>\n"
+        "  </url>\n"
+        "  <url>\n"
+        "    <loc>https://katalogai.io/AI_METHOD.md</loc>\n"
+        f"    <lastmod>{last_updated}</lastmod>\n"
+        "  </url>\n"
+        "  <url>\n"
+        "    <loc>https://katalogai.io/AI_SCHEMA.md</loc>\n"
+        f"    <lastmod>{last_updated}</lastmod>\n"
+        "  </url>\n"
+        "  <url>\n"
+        "    <loc>https://katalogai.io/AI_FAQ.md</loc>\n"
         f"    <lastmod>{last_updated}</lastmod>\n"
         "  </url>\n"
         "</urlset>\n"
@@ -435,6 +503,15 @@ def main() -> int:
 
     if write_text(ROOT / "README.md", build_readme(last_updated, generated_on)):
         changed.append("README.md")
+
+    if write_text(ROOT / "AI_METHOD.md", build_ai_method(last_updated)):
+        changed.append("AI_METHOD.md")
+
+    if write_text(ROOT / "AI_SCHEMA.md", build_ai_schema(last_updated)):
+        changed.append("AI_SCHEMA.md")
+
+    if write_text(ROOT / "AI_FAQ.md", build_ai_faq(last_updated)):
+        changed.append("AI_FAQ.md")
 
     if write_text(ROOT / "index.html", build_index_html(last_updated, generated_on, all_rows)):
         changed.append("index.html")

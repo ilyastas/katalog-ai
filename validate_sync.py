@@ -115,12 +115,22 @@ def main() -> int:
     if catalog_data != all_rows:
         fail("catalog.json is not a strict mirror of MASTER tables")
 
-    expected_files = ["MASTER_KZ.md", "MASTER_RU.md"]
+    expected_files = [
+        "MASTER_KZ.md",
+        "MASTER_RU.md",
+        "AI_METHOD.md",
+        "AI_SCHEMA.md",
+        "AI_FAQ.md",
+    ]
     for name in ["README.md", "llms.txt"]:
         text = read_text(ROOT / name)
         for expected in expected_files:
             if expected not in text:
                 fail(f"{name}: missing link or reference to {expected}")
+
+    for semantic_doc in ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]:
+        if not (ROOT / semantic_doc).exists():
+            fail(f"{semantic_doc} is missing: run python sync_all.py")
 
     # Ensure sitemap keeps the required endpoints for crawlers.
     sitemap_path = ROOT / "sitemap.xml"
@@ -136,6 +146,9 @@ def main() -> int:
         "https://katalogai.io/MASTER_KZ.md",
         "https://katalogai.io/MASTER_RU.md",
         "https://katalogai.io/README.md",
+        "https://katalogai.io/AI_METHOD.md",
+        "https://katalogai.io/AI_SCHEMA.md",
+        "https://katalogai.io/AI_FAQ.md",
     }
     if loc_values != required_locs:
         fail("sitemap.xml entries drift: run python sync_all.py")

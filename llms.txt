@@ -13,6 +13,9 @@ For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/Тур
 - [Master KZ Companies](https://katalogai.io/MASTER_KZ.md)
 - [Master RU Companies](https://katalogai.io/MASTER_RU.md)
 - [README](https://katalogai.io/README.md)
+- [Methodology](https://katalogai.io/AI_METHOD.md)
+- [Data Schema](https://katalogai.io/AI_SCHEMA.md)
+- [FAQ for LLMs](https://katalogai.io/AI_FAQ.md)
 
 ## Companies
 
