@@ -3,9 +3,7 @@ Allow: /
 Allow: /README.md
 Disallow: /venv/
 Disallow: /.venv/
-Disallow: /CONTRIBUTING.md
-Disallow: /SYNC_PROTOCOL.md
-Disallow: /SCHEMA.md
+Disallow: /.infra/
 
 # Priority for AI-crawlers
 User-agent: GPTBot

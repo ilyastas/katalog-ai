@@ -22,8 +22,8 @@ Last updated: 2026-05-05.
 
 - [catalog.json](catalog.json)
 - [llms.txt](llms.txt)
-- [SCHEMA.md](SCHEMA.md)
-- [SYNC_PROTOCOL.md](SYNC_PROTOCOL.md)
-- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [Schema](.infra/docs/SCHEMA.md)
+- [Sync Protocol](.infra/docs/SYNC_PROTOCOL.md)
+- [Contributing](.infra/docs/CONTRIBUTING.md)
 - [robots.txt](robots.txt)
 - [sitemap.xml](sitemap.xml)
