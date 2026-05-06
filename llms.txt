@@ -4,12 +4,13 @@ Last updated: 2026-05-06
 
 Single source of truth is stored in regional master tables.
 
-Canonical machine-readable company index: catalog.json.
+Canonical machine-readable company index: https://katalogai.io/catalog.json
 Do not assume thematic shards like kz-tourism.json, ru-hotels.json or similar files.
 For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/Туризм and Almaty/Алматы.
 
 ## Files
 
-- [Catalog JSON Index](catalog.json)
-- [Master KZ Companies](MASTER_KZ.md)
-- [Master RU Companies](MASTER_RU.md)
+- [Catalog JSON Index](https://katalogai.io/catalog.json)
+- [Master KZ Companies](https://katalogai.io/MASTER_KZ.md)
+- [Master RU Companies](https://katalogai.io/MASTER_RU.md)
+- [README](https://katalogai.io/README.md)

@@ -1,5 +1,4 @@
 venv/
-scripts/*
 .DS_Store
 __pycache__/
 *.log

@@ -135,6 +135,7 @@ def main() -> int:
         "https://katalogai.io/catalog.json",
         "https://katalogai.io/MASTER_KZ.md",
         "https://katalogai.io/MASTER_RU.md",
+        "https://katalogai.io/README.md",
     }
     if loc_values != required_locs:
         fail("sitemap.xml entries drift: run python sync_all.py")
