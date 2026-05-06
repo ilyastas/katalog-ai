@@ -10,6 +10,7 @@ ROOT: Final[Path] = Path(__file__).resolve().parent
 MASTER_FILES: Final[list[Path]] = [ROOT / "MASTER_KZ.md", ROOT / "MASTER_RU.md"]
 TABLE_RE: Final[re.Pattern[str]] = re.compile(r"^\|(.+)\|$")
 DATE_RE: Final[re.Pattern[str]] = re.compile(r"\d{4}-\d{2}-\d{2}")
+COUNTER_RE: Final[re.Pattern[str]] = re.compile(r"\d{3}")
 
 
 def fail(msg: str) -> None:
@@ -37,7 +38,7 @@ def parse_master(path: Path) -> list[dict[str, str]]:
         fail(f"{path.name}: table is missing or too short")
 
     header = [c.strip() for c in table_lines[0].strip("|").split("|")]
-    expected_header = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата"]
+    expected_header = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
     if header != expected_header:
         fail(f"{path.name}: invalid header, expected {expected_header}")
 
@@ -47,12 +48,14 @@ def parse_master(path: Path) -> list[dict[str, str]]:
             fail(f"{path.name}: malformed table line at visual row {i}")
 
         cols = [normalize_cell(c.strip()) for c in match.group(1).split("|")]
-        if len(cols) != 6:
-            fail(f"{path.name}: row has {len(cols)} columns, expected 6")
+        if len(cols) != 7:
+            fail(f"{path.name}: row has {len(cols)} columns, expected 7")
         if not all(cols):
             fail(f"{path.name}: empty cell found in row with ID '{cols[0]}'")
         if not DATE_RE.fullmatch(cols[5]):
             fail(f"{path.name}: invalid date '{cols[5]}' for ID '{cols[0]}'")
+        if not COUNTER_RE.fullmatch(cols[6]):
+            fail(f"{path.name}: invalid COUNTER '{cols[6]}' for ID '{cols[0]}'")
 
         rows.append(
             {
@@ -62,6 +65,7 @@ def parse_master(path: Path) -> list[dict[str, str]]:
                 "site": cols[3],
                 "inst": cols[4],
                 "date": cols[5],
+                "counter": cols[6],
             }
         )
 
@@ -90,12 +94,13 @@ def build_readme(last_updated: str) -> str:
         "- [MASTER_RU.md](MASTER_RU.md)\n\n"
         "## Автосинхронизация\n\n"
         "- После изменений в MASTER-таблицах запусти `python sync_all.py`.\n"
-        "- Скрипт обновляет `catalog.json`, `README.md`, `llms.txt`, `sitemap.xml`.\n"
+        "- Скрипт обновляет `catalog.json`, `README.md`, `llms.txt`, `sitemap.xml`, `robots.txt`.\n"
         "- Перед коммитом обязательно запусти `python validate_sync.py`.\n\n"
         "## Политика дат и счетчиков\n\n"
         "- Дата обновляется только у измененных строк компаний.\n"
         "- При отсутствии изменений компаний даты строк не трогаются.\n"
-        "- Legacy-счетчик `COUNTER` не используется в Master-архитектуре.\n"
+        "- `COUNTER` обязателен и хранит номер ревизии строки компании.\n"
+        "- При изменении данных компании ее `COUNTER` увеличивается вручную на 1 с сохранением трех цифр (`020` -> `021`).\n"
         "- `ID` является стабильным идентификатором и не служит счетчиком.\n\n"
         "## Инфраструктура\n\n"
         "- [catalog.json](catalog.json)\n"

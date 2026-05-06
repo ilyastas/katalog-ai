@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parent
 MASTER_FILES = [ROOT / "MASTER_KZ.md", ROOT / "MASTER_RU.md"]
 TABLE_RE = re.compile(r"^\|(.+)\|$")
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+COUNTER_RE = re.compile(r"\d{3}")
 
 
 def fail(msg: str) -> None:
@@ -44,7 +45,7 @@ def parse_master(path: Path) -> list[dict[str, str]]:
         fail(f"{path.name}: table is missing or too short")
 
     header = [c.strip() for c in table_lines[0].strip("|").split("|")]
-    expected_header = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата"]
+    expected_header = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
     if header != expected_header:
         fail(f"{path.name}: invalid header, expected {expected_header}")
 
@@ -53,12 +54,14 @@ def parse_master(path: Path) -> list[dict[str, str]]:
         if not match:
             fail(f"{path.name}: malformed table line at visual row {i}")
         cols = [normalize_cell(c.strip()) for c in match.group(1).split("|")]
-        if len(cols) != 6:
-            fail(f"{path.name}: row has {len(cols)} columns, expected 6")
+        if len(cols) != 7:
+            fail(f"{path.name}: row has {len(cols)} columns, expected 7")
         if not all(cols):
             fail(f"{path.name}: empty cell found in row with ID '{cols[0]}'")
         if not DATE_RE.fullmatch(cols[5]):
             fail(f"{path.name}: invalid date '{cols[5]}' for ID '{cols[0]}'")
+        if not COUNTER_RE.fullmatch(cols[6]):
+            fail(f"{path.name}: invalid COUNTER '{cols[6]}' for ID '{cols[0]}'")
 
         rows.append(
             {
@@ -68,6 +71,7 @@ def parse_master(path: Path) -> list[dict[str, str]]:
                 "site": cols[3],
                 "inst": cols[4],
                 "date": cols[5],
+                "counter": cols[6],
             }
         )
 
@@ -92,7 +96,7 @@ def main() -> int:
     if not isinstance(catalog_data, list):
         fail("catalog.json must be a JSON array")
 
-    required_keys = ["id", "brand", "tags", "site", "inst", "date"]
+    required_keys = ["id", "brand", "tags", "site", "inst", "date", "counter"]
     for item in catalog_data:
         if not isinstance(item, dict):
             fail("catalog.json: each array item must be an object")
