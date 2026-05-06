@@ -36,6 +36,6 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md llms.txt sitemap.xml robots.txt index.html catalog.json
+          git add README.md llms.txt sitemap.xml robots.txt index.html catalog.json 7f559c9f7d60484fa802ab03c9328995.txt 9a1f3247e0e9496aa35d6b290e5862bb.txt
           git commit -m "[AUTO] Daily sync refresh"
           git push
