@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_model": "katalog_ai",
+    "name_for_human": "Katalog-AI — AI-каталог компаний",
+    "description_for_model": "AI-native catalog of verified companies from Kazakhstan and Russia. Use catalog.json for machine-readable data. Filter by the 'tags' field for category and geo search. Tags include both English and Russian variants plus city names. Example: tags containing 'Туризм' AND 'Алматы' returns tourism companies in Almaty.",
+    "description_for_human": "AI-native каталог верифицированных компаний KZ/RU. Поиск по тегам, гео, категориям.",
+    "auth": {
+        "type": "none"
+    },
+    "data_sources": {
+        "catalog": "https://katalogai.io/catalog.json",
+        "master_kz": "https://katalogai.io/MASTER_KZ.md",
+        "master_ru": "https://katalogai.io/MASTER_RU.md",
+        "llm_index": "https://katalogai.io/llms.txt"
+    },
+    "contact_email": "",
+    "legal_info_url": "https://katalogai.io/"
+}

@@ -152,6 +152,20 @@ def main() -> int:
     index_text = read_text(ROOT / "index.html")
     if f"Data updated: {expected_last_updated}" not in index_text:
         fail("index.html data date drift: run python sync_all.py")
+    if "og:title" not in index_text:
+        fail("index.html missing og:title meta tag")
+    if "ai-instructions" not in index_text:
+        fail("index.html missing ai-instructions link")
+    if "application/ld+json" not in index_text:
+        fail("index.html missing JSON-LD script")
+
+    ai_plugin_path = ROOT / ".well-known" / "ai-plugin.json"
+    if not ai_plugin_path.exists():
+        fail(".well-known/ai-plugin.json is missing")
+    try:
+        json.loads(ai_plugin_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        fail(f".well-known/ai-plugin.json is invalid JSON: {exc}")
 
     cname_path = ROOT / "CNAME"
     if not cname_path.exists():

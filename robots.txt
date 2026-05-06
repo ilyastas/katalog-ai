@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Allow: /README.md
+Allow: /.well-known/
 Disallow: /venv/
 Disallow: /.venv/
 Allow: /.infra/docs/

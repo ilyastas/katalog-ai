@@ -1,0 +1,62 @@
+name: Sync to HuggingFace
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "catalog.json"
+      - "MASTER_KZ.md"
+      - "MASTER_RU.md"
+      - "llms.txt"
+      - "hf_card.md"
+  workflow_dispatch:
+
+jobs:
+  sync-hf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Sync to HuggingFace Dataset
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          pip install -q huggingface_hub
+          python - <<'EOF'
+          import os, pathlib
+          from huggingface_hub import HfApi
+
+          api = HfApi()
+          token = os.environ["HF_TOKEN"]
+          repo_id = "ilyastas/katalog-ai"
+
+          api.create_repo(repo_id=repo_id, repo_type="dataset", exist_ok=True, token=token)
+
+          for fname in ["catalog.json", "MASTER_KZ.md", "MASTER_RU.md", "llms.txt"]:
+              if pathlib.Path(fname).exists():
+                  api.upload_file(
+                      path_or_fileobj=fname,
+                      path_in_repo=fname,
+                      repo_id=repo_id,
+                      repo_type="dataset",
+                      token=token,
+                  )
+                  print(f"[OK] Uploaded {fname}")
+
+          if pathlib.Path("hf_card.md").exists():
+              api.upload_file(
+                  path_or_fileobj="hf_card.md",
+                  path_in_repo="README.md",
+                  repo_id=repo_id,
+                  repo_type="dataset",
+                  token=token,
+              )
+              print("[OK] Uploaded dataset card as README.md")
+
+          print("[OK] HuggingFace sync complete")
+          EOF
