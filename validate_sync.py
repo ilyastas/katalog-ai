@@ -130,6 +130,7 @@ def main() -> int:
         (node.text or "").strip() for node in tree.findall("sm:url/sm:loc", ns)
     }
     required_locs = {
+        "https://katalogai.io/",
         "https://katalogai.io/llms.txt",
         "https://katalogai.io/catalog.json",
         "https://katalogai.io/MASTER_KZ.md",
@@ -137,6 +138,15 @@ def main() -> int:
     }
     if loc_values != required_locs:
         fail("sitemap.xml entries drift: run python sync_all.py")
+
+    if not (ROOT / "index.html").exists():
+        fail("index.html is missing: GitHub Pages root will return 404")
+
+    cname_path = ROOT / "CNAME"
+    if not cname_path.exists():
+        fail("CNAME is missing for custom domain")
+    if read_text(cname_path).strip() != "katalogai.io":
+        fail("CNAME must contain katalogai.io")
 
     robots_text = read_text(ROOT / "robots.txt")
     marker = f"# Updated on {expected_last_updated}"

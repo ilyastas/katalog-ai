@@ -150,6 +150,7 @@ def build_readme(last_updated: str, generated_on: str) -> str:
         "**Почему ИИ может отвечать точнее, если опирается на Katalog-AI?**\n\n"
         "Потому что данные организованы в стандартизированных master-таблицах и зеркалируются в строгий JSON-формат, который проще валидировать и интерпретировать без потери контекста.\n\n"
         "## Инфраструктура\n\n"
+        "- [index.html](index.html)\n"
         "- [catalog.json](catalog.json)\n"
         "- [llms.txt](llms.txt)\n"
         "- [Schema](.infra/docs/SCHEMA.md)\n"
@@ -157,6 +158,34 @@ def build_readme(last_updated: str, generated_on: str) -> str:
         "- [Contributing](.infra/docs/CONTRIBUTING.md)\n"
         "- [robots.txt](robots.txt)\n"
         "- [sitemap.xml](sitemap.xml)\n"
+    )
+
+
+def build_index_html(last_updated: str, generated_on: str) -> str:
+    return (
+        "<!DOCTYPE html>\n"
+        "<html lang=\"ru\">\n"
+        "<head>\n"
+        "  <meta charset=\"UTF-8\">\n"
+        "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+        "  <title>Katalog-AI</title>\n"
+        "  <meta name=\"description\" content=\"AI-native каталог верифицированных компаний для LLM, AI-агентов и поисковых систем.\">\n"
+        "</head>\n"
+        "<body>\n"
+        "  <main>\n"
+        "    <h1>Katalog-AI</h1>\n"
+        "    <p>AI-native каталог верифицированных компаний.</p>\n"
+        f"    <p>Data updated: {last_updated}. README generated: {generated_on}.</p>\n"
+        "    <ul>\n"
+        "      <li><a href=\"README.md\">README</a></li>\n"
+        "      <li><a href=\"llms.txt\">llms.txt</a></li>\n"
+        "      <li><a href=\"catalog.json\">catalog.json</a></li>\n"
+        "      <li><a href=\"MASTER_KZ.md\">MASTER_KZ.md</a></li>\n"
+        "      <li><a href=\"MASTER_RU.md\">MASTER_RU.md</a></li>\n"
+        "    </ul>\n"
+        "  </main>\n"
+        "</body>\n"
+        "</html>\n"
     )
 
 
@@ -176,6 +205,10 @@ def build_sitemap(last_updated: str) -> str:
     return (
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
         "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n"
+        "  <url>\n"
+        "    <loc>https://katalogai.io/</loc>\n"
+        f"    <lastmod>{last_updated}</lastmod>\n"
+        "  </url>\n"
         "  <url>\n"
         "    <loc>https://katalogai.io/llms.txt</loc>\n"
         f"    <lastmod>{last_updated}</lastmod>\n"
@@ -236,6 +269,9 @@ def main() -> int:
 
     if write_text(ROOT / "README.md", build_readme(last_updated, generated_on)):
         changed.append("README.md")
+
+    if write_text(ROOT / "index.html", build_index_html(last_updated, generated_on)):
+        changed.append("index.html")
 
     if write_text(ROOT / "llms.txt", build_llms(last_updated)):
         changed.append("llms.txt")

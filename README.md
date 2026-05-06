@@ -103,6 +103,7 @@ Katalog-AI — это машиночитаемый каталог верифиц
 
 ## Инфраструктура
 
+- [index.html](index.html)
 - [catalog.json](catalog.json)
 - [llms.txt](llms.txt)
 - [Schema](.infra/docs/SCHEMA.md)
