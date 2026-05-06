@@ -1,6 +1,6 @@
 # Katalog-AI: Master-Table Architecture
 
-Last updated: 2026-05-06.
+Last updated: 2026-05-05.
 
 Репозиторий переведен в формат единого организма:
 
@@ -12,11 +12,11 @@ Last updated: 2026-05-06.
 - [MASTER_KZ.md](MASTER_KZ.md)
 - [MASTER_RU.md](MASTER_RU.md)
 
-## Синхронизация
+## Автосинхронизация
 
-- Любые изменения в компаниях вносятся только в таблицы MASTER-файлов.
-- `catalog.json` должен быть зеркалом строк из таблиц MASTER-файлов.
-- Перед коммитом обязательно запускать `python validate_sync.py`.
+- После изменений в MASTER-таблицах запусти `python sync_all.py`.
+- Скрипт обновляет `catalog.json`, `README.md`, `llms.txt`, `sitemap.xml`.
+- Перед коммитом обязательно запусти `python validate_sync.py`.
 
 ## Инфраструктура
 

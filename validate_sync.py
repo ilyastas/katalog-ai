@@ -2,6 +2,7 @@
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -20,6 +21,12 @@ def read_text(path: Path) -> str:
     if not path.exists():
         fail(f"Missing file: {path.name}")
     return path.read_text(encoding="utf-8")
+
+
+def read_bytes(path: Path) -> bytes:
+    if not path.exists():
+        fail(f"Missing file: {path.name}")
+    return path.read_bytes()
 
 
 def normalize_cell(value: str) -> str:
@@ -75,9 +82,30 @@ def main() -> int:
         all_rows.extend(parse_master(master))
 
     catalog_path = ROOT / "catalog.json"
-    catalog_data = json.loads(read_text(catalog_path))
+    catalog_bytes = read_bytes(catalog_path)
+    if catalog_bytes.startswith(b"\xef\xbb\xbf"):
+        fail("catalog.json must be UTF-8 without BOM")
+
+    catalog_text = catalog_bytes.decode("utf-8")
+    catalog_data = json.loads(catalog_text)
     if not isinstance(catalog_data, list):
         fail("catalog.json must be a JSON array")
+
+    required_keys = ["id", "brand", "tags", "site", "inst", "date"]
+    for item in catalog_data:
+        if not isinstance(item, dict):
+            fail("catalog.json: each array item must be an object")
+        if list(item.keys()) != required_keys:
+            fail("catalog.json: keys must be exactly [id, brand, tags, site, inst, date]")
+        for key in required_keys:
+            value = item.get(key, "")
+            if not isinstance(value, str) or not value.strip():
+                fail(f"catalog.json: empty or invalid '{key}' field detected")
+
+    canonical_catalog = json.dumps(catalog_data, ensure_ascii=False, indent=2) + "\n"
+    normalized_catalog_text = catalog_text.replace("\r\n", "\n").replace("\r", "\n")
+    if normalized_catalog_text != canonical_catalog:
+        fail("catalog.json formatting drift: run python sync_all.py")
 
     if catalog_data != all_rows:
         fail("catalog.json is not a strict mirror of MASTER tables")
@@ -88,6 +116,22 @@ def main() -> int:
         for expected in expected_files:
             if expected not in text:
                 fail(f"{name}: missing link or reference to {expected}")
+
+    # Ensure sitemap keeps the required endpoints for crawlers.
+    sitemap_path = ROOT / "sitemap.xml"
+    tree = ET.fromstring(read_text(sitemap_path))
+    ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    loc_values = {
+        (node.text or "").strip() for node in tree.findall("sm:url/sm:loc", ns)
+    }
+    required_locs = {
+        "https://katalogai.io/llms.txt",
+        "https://katalogai.io/catalog.json",
+        "https://katalogai.io/MASTER_KZ.md",
+        "https://katalogai.io/MASTER_RU.md",
+    }
+    if loc_values != required_locs:
+        fail("sitemap.xml entries drift: run python sync_all.py")
 
     print("[OK] Master-table sync checks passed")
     return 0
