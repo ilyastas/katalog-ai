@@ -78,6 +78,7 @@
   <script>
     var allData=[];var activeTag=null;
     function parseTags(s){return(s||'').split(',').map(function(t){return t.trim();}).filter(Boolean);}
+    function region(id){var m=(id||'').match(/^\d+_([A-Z]+)_/);return m?m[1]:'';}
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
     function escA(s){return String(s).replace(/"/g,'&quot;');}
     function plural(n){return n+' компани'+(n===1?'я':n<5?'и':'й');}
@@ -97,7 +98,7 @@
       var grid=document.getElementById('grid');grid.innerHTML='';
       var filtered=allData.filter(function(c){
         var tags=parseTags(c.tags);
-        var mq=!q||c.name.toLowerCase().includes(q)||tags.some(function(t){return t.toLowerCase().includes(q);});
+        var mq=!q||c.brand.toLowerCase().includes(q)||tags.some(function(t){return t.toLowerCase().includes(q);});
         var mt=!activeTag||tags.indexOf(activeTag)>=0;
         return mq&&mt;
       });
@@ -106,9 +107,9 @@
       filtered.forEach(function(c){
         var tags=parseTags(c.tags);
         var div=document.createElement('div');div.className='card';
-        var urlHtml=c.url?'<a href="'+escA(c.url)+'" target="_blank" rel="noopener">'+esc(c.url)+'</a>':'';
+        var urlHtml=c.site?'<a href="'+escA(c.site)+'" target="_blank" rel="noopener">'+esc(c.site)+'</a>':'';
         var tagsHtml=tags.map(function(t){return'<span class="tag" data-tag="'+escA(t)+'">'+esc(t)+'</span>';}).join('');
-        div.innerHTML='<div class="card-header"><h2>'+esc(c.name)+'</h2><span class="country">'+esc(c.country||'')+'</span></div>'
+        div.innerHTML='<div class="card-header"><h2>'+esc(c.brand)+'</h2><span class="country">'+esc(region(c.id))+'</span></div>'
           +'<div class="url">'+urlHtml+'</div>'
           +'<div class="tags">'+tagsHtml+'</div>';
         div.querySelectorAll('.tag').forEach(function(el){
