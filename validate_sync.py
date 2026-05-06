@@ -80,6 +80,7 @@ def main() -> int:
     all_rows: list[dict[str, str]] = []
     for master in MASTER_FILES:
         all_rows.extend(parse_master(master))
+    expected_last_updated = max(row["date"] for row in all_rows)
 
     catalog_path = ROOT / "catalog.json"
     catalog_bytes = read_bytes(catalog_path)
@@ -132,6 +133,11 @@ def main() -> int:
     }
     if loc_values != required_locs:
         fail("sitemap.xml entries drift: run python sync_all.py")
+
+    robots_text = read_text(ROOT / "robots.txt")
+    marker = f"# Updated on {expected_last_updated}"
+    if marker not in robots_text:
+        fail("robots.txt date drift: run python sync_all.py")
 
     print("[OK] Master-table sync checks passed")
     return 0

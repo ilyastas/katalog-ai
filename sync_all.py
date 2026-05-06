@@ -139,6 +139,30 @@ def build_sitemap(last_updated: str) -> str:
     )
 
 
+def build_robots(last_updated: str) -> str:
+    return (
+        "User-agent: *\n"
+        "Allow: /\n"
+        "Allow: /README.md\n"
+        "Disallow: /venv/\n"
+        "Disallow: /.venv/\n"
+        "Disallow: /.infra/\n\n"
+        "# Priority for AI-crawlers\n"
+        "User-agent: GPTBot\n"
+        "Allow: /\n"
+        "User-agent: ChatGPT-User\n"
+        "Allow: /\n"
+        "User-agent: PerplexityBot\n"
+        "Allow: /\n"
+        "User-agent: anthropic-ai\n"
+        "Allow: /\n"
+        "User-agent: Google-Extended\n"
+        "Allow: /\n\n"
+        "Sitemap: https://katalogai.io/sitemap.xml\n\n"
+        f"# Updated on {last_updated}\n"
+    )
+
+
 def main() -> int:
     all_rows: list[dict[str, str]] = []
     for master in MASTER_FILES:
@@ -160,6 +184,9 @@ def main() -> int:
 
     if write_text(ROOT / "sitemap.xml", build_sitemap(last_updated)):
         changed.append("sitemap.xml")
+
+    if write_text(ROOT / "robots.txt", build_robots(last_updated)):
+        changed.append("robots.txt")
 
     if changed:
         print(f"[OK] Updated: {', '.join(changed)}")
