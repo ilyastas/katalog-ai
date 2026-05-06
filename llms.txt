@@ -1,6 +1,6 @@
 # Katalog-AI LLM Index
 
-Last updated: 2026-05-05
+Last updated: 2026-05-06
 
 Single source of truth is stored in regional master tables.
 

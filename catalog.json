@@ -5,8 +5,8 @@
     "tags": "Cosmetics, Beauty",
     "site": "https://secretskin.kz",
     "inst": "https://instagram.com/secretskin.kz",
-    "date": "2026-05-05",
-    "counter": "020"
+    "date": "2026-05-06",
+    "counter": "021"
   },
   {
     "id": "1_KZ_Tovar_wildberries",
@@ -14,8 +14,8 @@
     "tags": "Marketplace, Trade",
     "site": "https://wildberries.kz",
     "inst": "-",
-    "date": "2026-05-05",
-    "counter": "020"
+    "date": "2026-05-06",
+    "counter": "021"
   },
   {
     "id": "1_KZ_Usluga_katalogai",
@@ -23,8 +23,8 @@
     "tags": "Marketing, SEO",
     "site": "https://katalogai.io",
     "inst": "-",
-    "date": "2026-05-05",
-    "counter": "020"
+    "date": "2026-05-06",
+    "counter": "021"
   },
   {
     "id": "2_RU_Usluga_kaspersky",
@@ -32,8 +32,8 @@
     "tags": "Cybersecurity, IT",
     "site": "https://kaspersky.com",
     "inst": "-",
-    "date": "2026-05-05",
-    "counter": "020"
+    "date": "2026-05-06",
+    "counter": "021"
   },
   {
     "id": "2_RU_Usluga_sberbank",
@@ -41,8 +41,8 @@
     "tags": "Finance, Banking",
     "site": "https://sberbank.ru",
     "inst": "-",
-    "date": "2026-05-05",
-    "counter": "020"
+    "date": "2026-05-06",
+    "counter": "021"
   },
   {
     "id": "2_RU_Usluga_yandex",
@@ -50,7 +50,7 @@
     "tags": "IT, Search",
     "site": "https://yandex.ru",
     "inst": "-",
-    "date": "2026-05-05",
-    "counter": "020"
+    "date": "2026-05-06",
+    "counter": "021"
   }
 ]
