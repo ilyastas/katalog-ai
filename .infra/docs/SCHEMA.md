@@ -1,6 +1,6 @@
 # Katalog-AI Master Schema
 
-Last updated: 2026-05-06
+Last updated: 2026-05-05
 
 ## Source of Truth
 

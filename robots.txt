@@ -4,6 +4,7 @@ Allow: /README.md
 Disallow: /venv/
 Disallow: /.venv/
 Disallow: /.infra/
+Allow: /.infra/docs/
 
 # Priority for AI-crawlers
 User-agent: GPTBot

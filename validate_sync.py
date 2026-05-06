@@ -101,7 +101,7 @@ def main() -> int:
         if not isinstance(item, dict):
             fail("catalog.json: each array item must be an object")
         if list(item.keys()) != required_keys:
-            fail("catalog.json: keys must be exactly [id, brand, tags, site, inst, date]")
+            fail("catalog.json: keys must be exactly [id, brand, tags, site, inst, date, counter]")
         for key in required_keys:
             value = item.get(key, "")
             if not isinstance(value, str) or not value.strip():
@@ -139,8 +139,18 @@ def main() -> int:
     if loc_values != required_locs:
         fail("sitemap.xml entries drift: run python sync_all.py")
 
+    lastmod_values = {
+        (node.text or "").strip() for node in tree.findall("sm:url/sm:lastmod", ns)
+    }
+    if lastmod_values != {expected_last_updated}:
+        fail(f"sitemap.xml lastmod drift: expected {expected_last_updated}, run python sync_all.py")
+
     if not (ROOT / "index.html").exists():
         fail("index.html is missing: GitHub Pages root will return 404")
+
+    index_text = read_text(ROOT / "index.html")
+    if f"Data updated: {expected_last_updated}" not in index_text:
+        fail("index.html data date drift: run python sync_all.py")
 
     cname_path = ROOT / "CNAME"
     if not cname_path.exists():
