@@ -153,9 +153,6 @@ def build_readme(last_updated: str, generated_on: str) -> str:
         "- [index.html](index.html)\n"
         "- [catalog.json](catalog.json)\n"
         "- [llms.txt](llms.txt)\n"
-        "- [Schema](.infra/docs/SCHEMA.md)\n"
-        "- [Sync Protocol](.infra/docs/SYNC_PROTOCOL.md)\n"
-        "- [Contributing](.infra/docs/CONTRIBUTING.md)\n"
         "- [robots.txt](robots.txt)\n"
         "- [sitemap.xml](sitemap.xml)\n"
     )

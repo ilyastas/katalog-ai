@@ -106,8 +106,5 @@ Katalog-AI — это машиночитаемый каталог верифиц
 - [index.html](index.html)
 - [catalog.json](catalog.json)
 - [llms.txt](llms.txt)
-- [Schema](.infra/docs/SCHEMA.md)
-- [Sync Protocol](.infra/docs/SYNC_PROTOCOL.md)
-- [Contributing](.infra/docs/CONTRIBUTING.md)
 - [robots.txt](robots.txt)
 - [sitemap.xml](sitemap.xml)
