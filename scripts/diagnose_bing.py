@@ -73,7 +73,10 @@ checks = {
     "IndexNow активен в daily-sync.yml": True,  # мы добавляли
     "Sitemap отправлен в Bing Webmaster Tools": None,  # требует ручной проверки
     "Bing Webmaster Tools: сайт добавлен": None,  # требует ручной проверки
-    "robots.txt: Bingbot разрешён": "Bingbot" in robots and "Allow: /" in robots,
+    "robots.txt: Bingbot разрешён (wildcard или явно)": (
+        ("User-agent: *" in robots and "Allow: /" in robots)
+        or ("Bingbot" in robots and "Allow: /" in robots)
+    ),
     "sitemap.xml: catalog.json указан": "catalog.json" in sitemap,
     "canonical указывает на katalogai.io": m is not None if (m := re.search(r'rel=["\']canonical["\'][^>]+href=["\']([^"\'> ]+)', html)) else False,
 }
