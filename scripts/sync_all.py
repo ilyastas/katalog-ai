@@ -76,6 +76,52 @@ def parse_master(path: Path) -> list[dict[str, str]]:
     return rows
 
 
+def bump_master_daily(path: Path, today: str) -> bool:
+    lines = read_text(path).splitlines()
+    table_row_indices = [i for i, line in enumerate(lines) if line.strip().startswith("|")]
+    if len(table_row_indices) < 3:
+        fail(f"{path.name}: table is missing or too short")
+
+    header_idx = table_row_indices[0]
+    header_match = TABLE_RE.match(lines[header_idx].strip())
+    if not header_match:
+        fail(f"{path.name}: malformed header")
+    header = [c.strip() for c in header_match.group(1).split("|")]
+    expected_header = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
+    if header != expected_header:
+        fail(f"{path.name}: invalid header, expected {expected_header}")
+
+    changed = False
+    for idx in table_row_indices[2:]:
+        raw_line = lines[idx].strip()
+        match = TABLE_RE.match(raw_line)
+        if not match:
+            fail(f"{path.name}: malformed table line at line {idx + 1}")
+
+        cols = [c.strip() for c in match.group(1).split("|")]
+        if len(cols) != 7:
+            fail(f"{path.name}: row has {len(cols)} columns, expected 7")
+
+        current_counter = normalize_cell(cols[6])
+        if not COUNTER_RE.fullmatch(current_counter):
+            fail(f"{path.name}: invalid COUNTER '{current_counter}' at line {idx + 1}")
+        next_counter = int(current_counter) + 1
+        if next_counter > 999:
+            fail(f"{path.name}: COUNTER overflow at line {idx + 1}")
+
+        cols[5] = today
+        cols[6] = f"{next_counter:03d}"
+        new_line = "| " + " | ".join(cols) + " |"
+        if lines[idx] != new_line:
+            lines[idx] = new_line
+            changed = True
+
+    if not changed:
+        return False
+
+    return write_text(path, "\n".join(lines) + "\n")
+
+
 def write_text(path: Path, content: str) -> bool:
     current = path.read_text(encoding="utf-8") if path.exists() else None
     if current == content:
@@ -128,10 +174,9 @@ def build_readme(last_updated: str, generated_on: str) -> str:
         "- Скрипт обновляет `catalog.json`, `README.md`, `llms.txt`, `sitemap.xml`, `robots.txt`.\n"
         "- Перед коммитом обязательно запусти `python scripts/validate_sync.py`.\n\n"
         "## Политика дат и счетчиков\n\n"
-        "- Дата обновляется только у измененных строк компаний.\n"
-        "- При отсутствии изменений компаний даты строк не трогаются.\n"
-        "- `COUNTER` обязателен и хранит номер ревизии строки компании.\n"
-        "- При изменении данных компании ее `COUNTER` увеличивается вручную на 1 с сохранением трех цифр (`020` -> `021`).\n"
+        "- Каждый ежедневный запуск обновляет `Дата` во всех строках MASTER-таблиц на текущий день.\n"
+        "- Каждый ежедневный запуск увеличивает `COUNTER` на 1 во всех строках (трехзначный формат).\n"
+        "- `COUNTER` отражает общий ежедневный номер ревизии набора данных.\n"
         "- `ID` является стабильным идентификатором и не служит счетчиком.\n\n"
         "## Для Людей И Для ИИ\n\n"
         "README должен помогать сразу в двух режимах:\n\n"
@@ -174,7 +219,7 @@ def build_ai_method(last_updated: str) -> str:
         "## Data Integrity Rules\n\n"
         "- catalog.json keys are fixed: id, brand, tags, site, inst, date, counter\n"
         "- Dates use ISO format: YYYY-MM-DD\n"
-        "- COUNTER uses 3 digits and increments on manual edits\n"
+        "- COUNTER uses 3 digits and increments on every daily sync\n"
         "- Do not edit generated files directly\n"
     )
 
@@ -492,14 +537,18 @@ def build_robots(last_updated: str) -> str:
 
 
 def main() -> int:
+    generated_on = date.today().isoformat()
+    changed: list[str] = []
+
+    for master in MASTER_FILES:
+        if bump_master_daily(master, generated_on):
+            changed.append(master.name)
+
     all_rows: list[dict[str, str]] = []
     for master in MASTER_FILES:
         all_rows.extend(parse_master(master))
 
     last_updated = max(row["date"] for row in all_rows)
-    generated_on = date.today().isoformat()
-
-    changed: list[str] = []
 
     catalog_content = json.dumps(all_rows, ensure_ascii=False, indent=2) + "\n"
     if write_text(ROOT / "catalog.json", catalog_content):

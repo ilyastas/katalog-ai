@@ -14,5 +14,5 @@ Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are ca
 
 - catalog.json keys are fixed: id, brand, tags, site, inst, date, counter
 - Dates use ISO format: YYYY-MM-DD
-- COUNTER uses 3 digits and increments on manual edits
+- COUNTER uses 3 digits and increments on every daily sync
 - Do not edit generated files directly
