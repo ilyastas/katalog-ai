@@ -173,6 +173,8 @@ def main() -> int:
         fail("index.html missing ai-instructions link")
     if "application/ld+json" not in index_text:
         fail("index.html missing JSON-LD script")
+    if "datePublished" not in index_text:
+        fail("index.html missing datePublished in JSON-LD: run python scripts/sync_all.py")
 
     ai_plugin_path = ROOT / ".well-known" / "ai-plugin.json"
     if not ai_plugin_path.exists():

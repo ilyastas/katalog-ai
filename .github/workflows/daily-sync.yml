@@ -39,3 +39,21 @@ jobs:
           git add README.md llms.txt sitemap.xml robots.txt index.html catalog.json AI_METHOD.md AI_SCHEMA.md AI_FAQ.md 7f559c9f7d60484fa802ab03c9328995.txt 9a1f3247e0e9496aa35d6b290e5862bb.txt
           git commit -m "[AUTO] Daily sync refresh"
           git push
+
+      - name: Ping IndexNow (Bing)
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "katalogai.io",
+              "key": "7f559c9f7d60484fa802ab03c9328995",
+              "keyLocation": "https://katalogai.io/7f559c9f7d60484fa802ab03c9328995.txt",
+              "urlList": [
+                "https://katalogai.io/",
+                "https://katalogai.io/catalog.json",
+                "https://katalogai.io/llms.txt",
+                "https://katalogai.io/sitemap.xml",
+                "https://katalogai.io/README.md"
+              ]
+            }' || true
+          echo "IndexNow ping complete"
