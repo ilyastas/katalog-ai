@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Final
 
 
-ROOT: Final[Path] = Path(__file__).resolve().parent
+ROOT: Final[Path] = Path(__file__).resolve().parent.parent
 MASTER_FILES: Final[list[Path]] = [ROOT / "MASTER_KZ.md", ROOT / "MASTER_RU.md"]
 SEMANTIC_DOCS: Final[list[str]] = ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]
 TABLE_RE: Final[re.Pattern[str]] = re.compile(r"^\|(.+)\|$")
@@ -504,25 +504,25 @@ def main() -> int:
     if write_text(ROOT / "README.md", build_readme(last_updated, generated_on)):
         changed.append("README.md")
 
-    if write_text(ROOT / "AI_METHOD.md", build_ai_method(last_updated)):
+    if write_text(ROOT / "AI_METHOD.md", build_ai_method(generated_on)):
         changed.append("AI_METHOD.md")
 
-    if write_text(ROOT / "AI_SCHEMA.md", build_ai_schema(last_updated)):
+    if write_text(ROOT / "AI_SCHEMA.md", build_ai_schema(generated_on)):
         changed.append("AI_SCHEMA.md")
 
-    if write_text(ROOT / "AI_FAQ.md", build_ai_faq(last_updated)):
+    if write_text(ROOT / "AI_FAQ.md", build_ai_faq(generated_on)):
         changed.append("AI_FAQ.md")
 
     if write_text(ROOT / "index.html", build_index_html(last_updated, generated_on, all_rows)):
         changed.append("index.html")
 
-    if write_text(ROOT / "llms.txt", build_llms(last_updated, all_rows)):
+    if write_text(ROOT / "llms.txt", build_llms(generated_on, all_rows)):
         changed.append("llms.txt")
 
-    if write_text(ROOT / "sitemap.xml", build_sitemap(last_updated)):
+    if write_text(ROOT / "sitemap.xml", build_sitemap(generated_on)):
         changed.append("sitemap.xml")
 
-    if write_text(ROOT / "robots.txt", build_robots(last_updated)):
+    if write_text(ROOT / "robots.txt", build_robots(generated_on)):
         changed.append("robots.txt")
 
     if changed:

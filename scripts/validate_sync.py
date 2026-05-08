@@ -3,10 +3,11 @@ import json
 import re
 import sys
 import xml.etree.ElementTree as ET
+from datetime import date
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 MASTER_FILES = [ROOT / "MASTER_KZ.md", ROOT / "MASTER_RU.md"]
 TABLE_RE = re.compile(r"^\|(.+)\|$")
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
@@ -85,6 +86,7 @@ def main() -> int:
     for master in MASTER_FILES:
         all_rows.extend(parse_master(master))
     expected_last_updated = max(row["date"] for row in all_rows)
+    generated_on = date.today().isoformat()
 
     catalog_path = ROOT / "catalog.json"
     catalog_bytes = read_bytes(catalog_path)
@@ -156,8 +158,8 @@ def main() -> int:
     lastmod_values = {
         (node.text or "").strip() for node in tree.findall("sm:url/sm:lastmod", ns)
     }
-    if lastmod_values != {expected_last_updated}:
-        fail(f"sitemap.xml lastmod drift: expected {expected_last_updated}, run python sync_all.py")
+    if lastmod_values != {generated_on}:
+        fail(f"sitemap.xml lastmod drift: expected {generated_on}, run python sync_all.py")
 
     if not (ROOT / "index.html").exists():
         fail("index.html is missing: GitHub Pages root will return 404")
@@ -187,7 +189,7 @@ def main() -> int:
         fail("CNAME must contain katalogai.io")
 
     robots_text = read_text(ROOT / "robots.txt")
-    marker = f"# Updated on {expected_last_updated}"
+    marker = f"# Updated on {generated_on}"
     if marker not in robots_text:
         fail("robots.txt date drift: run python sync_all.py")
 

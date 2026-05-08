@@ -1,5 +1,5 @@
 # Katalog-AI LLM Index
-Last updated: 2026-05-07
+Last updated: 2026-05-08
 
 Single source of truth is stored in regional master tables.
 
@@ -48,4 +48,3 @@ Website: https://sberbank.ru
 ### Яндекс (RU)
 Tags: IT, Search
 Website: https://yandex.ru
-
