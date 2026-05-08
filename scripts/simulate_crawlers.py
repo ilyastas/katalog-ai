@@ -31,10 +31,10 @@ def warn(msg: str) -> None:
 print("\n── robots.txt ──")
 robots = fetch("https://katalogai.io/robots.txt")
 ok("fetched") if robots else fail("empty")
-if "GPTBot" in robots:             ok("GPTBot rule found")
-else:                              fail("GPTBot rule MISSING")
-if "anthropic-ai" in robots:       ok("anthropic-ai rule found")
-else:                              fail("anthropic-ai rule MISSING")
+if "User-agent: *" in robots and "Allow: /" in robots:
+    ok("open AI policy found via User-agent: * and Allow: /")
+else:
+    fail("open AI policy MISSING in robots.txt")
 if "llms.txt" in robots:           ok("llms.txt referenced")
 else:                              warn("llms.txt not referenced")
 if TODAY in robots:                ok(f"date {TODAY} found")

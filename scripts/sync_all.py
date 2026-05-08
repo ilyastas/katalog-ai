@@ -620,7 +620,7 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
         "\n",
         "Single source of truth is stored in regional master tables.\n",
         "\n",
-        "Crawler/LLM priority targets: GPT (OpenAI), Gemini (Google), Copilot (Microsoft/Bing).\n",
+        "AI access policy: open to any AI crawler or agent. No vendor restrictions.\n",
         "Preferred fetch order for agents: 1) catalog.json, 2) company pages in /company/, 3) MASTER_KZ.md and MASTER_RU.md, 4) semantic docs.\n",
         "If source documents conflict, trust catalog.json and company pages first.\n",
         "\n",
@@ -717,29 +717,7 @@ def build_robots(last_updated: str) -> str:
         "Disallow: /.pre-commit-config.yaml\n"
         "Allow: /.infra/docs/\n"
         "Disallow: /.infra/\n\n"
-        "# Priority for AI-crawlers\n"
-        "User-agent: GPTBot\n"
-        "Allow: /\n"
-        "User-agent: ChatGPT-User\n"
-        "Allow: /\n"
-        "User-agent: OAI-SearchBot\n"
-        "Allow: /\n"
-        "User-agent: PerplexityBot\n"
-        "Allow: /\n"
-        "User-agent: anthropic-ai\n"
-        "Allow: /\n"
-        "User-agent: ClaudeBot\n"
-        "Allow: /\n"
-        "User-agent: Googlebot\n"
-        "Allow: /\n"
-        "User-agent: Google-Extended\n"
-        "Allow: /\n"
-        "User-agent: GoogleOther\n"
-        "Allow: /\n"
-        "User-agent: Bingbot\n"
-        "Allow: /\n"
-        "User-agent: msnbot\n"
-        "Allow: /\n\n"
+        "# AI access policy: all crawlers are allowed via User-agent: *\n\n"
         "Sitemap: https://katalogai.io/sitemap.xml\n\n"
         f"# Updated on {last_updated}\n"
     )

@@ -150,8 +150,8 @@ def main() -> int:
                 fail(f"{name}: missing link or reference to {expected}")
 
     llms_text = read_text(ROOT / "llms.txt")
-    if "Crawler/LLM priority targets" not in llms_text:
-        fail("llms.txt missing crawler priority targets block")
+    if "AI access policy: open to any AI crawler or agent. No vendor restrictions." not in llms_text:
+        fail("llms.txt missing open AI access policy block")
     for row in all_rows:
         company_url = f"https://katalogai.io/company/{row['id']}.html"
         if company_url not in llms_text:
@@ -255,9 +255,8 @@ def main() -> int:
     marker = f"# Updated on {generated_on}"
     if marker not in robots_text:
         fail("robots.txt date drift: run python scripts/sync_all.py")
-    for ua in ["GPTBot", "ChatGPT-User", "OAI-SearchBot", "Googlebot", "Google-Extended", "Bingbot", "msnbot"]:
-        if f"User-agent: {ua}" not in robots_text:
-            fail(f"robots.txt missing AI crawler user-agent: {ua}")
+    if "User-agent: *" not in robots_text or "Allow: /" not in robots_text:
+        fail("robots.txt must allow all crawlers via User-agent: * and Allow: /")
 
     print("[OK] Master-table sync checks passed")
     return 0

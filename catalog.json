@@ -6,7 +6,7 @@
     "site": "https://secretskin.kz",
     "inst": "https://instagram.com/secretskin.kz",
     "date": "2026-05-08",
-    "counter": "030",
+    "counter": "031",
     "wikidata": "-"
   },
   {
@@ -16,7 +16,7 @@
     "site": "https://wildberries.kz",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "030",
+    "counter": "031",
     "wikidata": "-"
   },
   {
@@ -26,7 +26,7 @@
     "site": "https://katalogai.io",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "030",
+    "counter": "031",
     "wikidata": "Q139710659"
   },
   {
@@ -36,7 +36,7 @@
     "site": "https://oi-qaragai.kz/",
     "inst": "https://www.instagram.com/oi_qaragai/",
     "date": "2026-05-08",
-    "counter": "011",
+    "counter": "012",
     "wikidata": "-"
   },
   {
@@ -46,7 +46,7 @@
     "site": "https://kaspersky.com",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "030"
+    "counter": "031"
   },
   {
     "id": "2_RU_Usluga_sberbank",
@@ -55,7 +55,7 @@
     "site": "https://sberbank.ru",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "030"
+    "counter": "031"
   },
   {
     "id": "2_RU_Usluga_yandex",
@@ -64,6 +64,6 @@
     "site": "https://yandex.ru",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "030"
+    "counter": "031"
   }
 ]

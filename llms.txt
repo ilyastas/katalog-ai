@@ -3,7 +3,7 @@ Last updated: 2026-05-08
 
 Single source of truth is stored in regional master tables.
 
-Crawler/LLM priority targets: GPT (OpenAI), Gemini (Google), Copilot (Microsoft/Bing).
+AI access policy: open to any AI crawler or agent. No vendor restrictions.
 Preferred fetch order for agents: 1) catalog.json, 2) company pages in /company/, 3) MASTER_KZ.md and MASTER_RU.md, 4) semantic docs.
 If source documents conflict, trust catalog.json and company pages first.
 
