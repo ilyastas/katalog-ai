@@ -1,6 +1,6 @@
 # Katalog-AI: Master-Table Architecture
 
-Data updated: 2026-05-07.
+Data updated (content): 2026-05-07.
 README generated: 2026-05-08.
 
 Katalog-AI — это AI-native каталог верифицированных компаний, спроектированный так, чтобы его одинаково хорошо понимали люди, LLM и поисковые краулеры.

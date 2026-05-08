@@ -87,7 +87,7 @@ def write_text(path: Path, content: str) -> bool:
 def build_readme(last_updated: str, generated_on: str) -> str:
     return (
         "# Katalog-AI: Master-Table Architecture\n\n"
-        f"Data updated: {last_updated}.\n"
+        f"Data updated (content): {last_updated}.\n"
         f"README generated: {generated_on}.\n\n"
         "Katalog-AI — это AI-native каталог верифицированных компаний, спроектированный так, чтобы его одинаково хорошо понимали люди, LLM и поисковые краулеры.\n\n"
         "Проект отвечает на практический вопрос: как хранить и публиковать карточки компаний так, чтобы ИИ мог давать пользователю точные и профессиональные ответы без лишнего шума и без галлюцинаций.\n\n"
@@ -252,7 +252,7 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
         "    \"contentUrl\": \"https://katalogai.io/catalog.json\",\n"
         "    \"encodingFormat\": \"application/json\"\n"
         "  }],\n"
-        f"  \"dateModified\": \"{last_updated}\",\n"
+        f"  \"dateModified\": \"{generated_on}\",\n"
         f"  \"datePublished\": \"{generated_on}\"\n"
         "}\n"
         "  </script>\n"
@@ -292,7 +292,7 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
         "<body>\n"
         "  <header>\n"
         "    <h1>Katalog-AI</h1>\n"
-        f"    <p>AI-native каталог верифицированных компаний &nbsp;&middot;&nbsp; Data updated: {last_updated}</p>\n"
+        f"    <p>AI-native каталог верифицированных компаний &nbsp;&middot;&nbsp; Data updated: {last_updated} &nbsp;&middot;&nbsp; Page generated: {generated_on}</p>\n"
         "  </header>\n"
         "  <div class=\"toolbar\">\n"
         "    <input id=\"search\" type=\"search\" placeholder=\"Поиск по названию или тегу...\" autocomplete=\"off\">\n"

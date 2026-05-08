@@ -164,9 +164,15 @@ def main() -> int:
     if not (ROOT / "index.html").exists():
         fail("index.html is missing: GitHub Pages root will return 404")
 
+    readme_text = read_text(ROOT / "README.md")
+    if f"README generated: {generated_on}." not in readme_text:
+        fail("README generated date drift: run python scripts/sync_all.py")
+
     index_text = read_text(ROOT / "index.html")
     if f"Data updated: {expected_last_updated}" not in index_text:
         fail("index.html data date drift: run python scripts/sync_all.py")
+    if f"Page generated: {generated_on}" not in index_text:
+        fail("index.html generated date drift: run python scripts/sync_all.py")
     if "og:title" not in index_text:
         fail("index.html missing og:title meta tag")
     if "ai-instructions" not in index_text:
