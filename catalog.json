@@ -2,64 +2,64 @@
   {
     "id": "1_KZ_Tovar_secretskin",
     "brand": "SecretSkin",
-    "tags": "Cosmetics, Beauty",
+    "tags": "Cosmetics, Beauty, Косметика, Красота, Kazakhstan, Казахстан",
     "site": "https://secretskin.kz",
     "inst": "https://instagram.com/secretskin.kz",
     "date": "2026-05-08",
-    "counter": "024"
+    "counter": "025"
   },
   {
     "id": "1_KZ_Tovar_wildberries",
     "brand": "Wildberries",
-    "tags": "Marketplace, Trade",
+    "tags": "Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан",
     "site": "https://wildberries.kz",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "024"
+    "counter": "025"
   },
   {
     "id": "1_KZ_Usluga_katalogai",
     "brand": "KatalogAi",
-    "tags": "Marketing, SEO",
+    "tags": "Marketing, SEO, Маркетинг, Казахстан, Kazakhstan",
     "site": "https://katalogai.io",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "024"
+    "counter": "025"
   },
   {
     "id": "1_KZ_Usluga_oiqaragai",
     "brand": "Oi-Qaragai",
-    "tags": "Leisure, Resort, Tourism, Туризм, Almaty, Алматы",
+    "tags": "Leisure, Resort, Tourism, Туризм, Отдых, Almaty, Алматы, Kazakhstan, Казахстан",
     "site": "https://oi-qaragai.kz/",
     "inst": "https://www.instagram.com/oi_qaragai/",
     "date": "2026-05-08",
-    "counter": "005"
+    "counter": "006"
   },
   {
     "id": "2_RU_Usluga_kaspersky",
     "brand": "Kaspersky",
-    "tags": "Cybersecurity, IT",
+    "tags": "Cybersecurity, IT, Кибербезопасность, Антивирус, Russia, Россия",
     "site": "https://kaspersky.com",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "024"
+    "counter": "025"
   },
   {
     "id": "2_RU_Usluga_sberbank",
     "brand": "Сбербанк",
-    "tags": "Finance, Banking",
+    "tags": "Finance, Banking, Финансы, Банк, Банкинг, Russia, Россия",
     "site": "https://sberbank.ru",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "024"
+    "counter": "025"
   },
   {
     "id": "2_RU_Usluga_yandex",
     "brand": "Яндекс",
-    "tags": "IT, Search",
+    "tags": "IT, Search, Поиск, Технологии, Russia, Россия",
     "site": "https://yandex.ru",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "024"
+    "counter": "025"
   }
 ]

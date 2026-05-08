@@ -23,31 +23,31 @@ For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/Тур
 ## Companies
 
 ### SecretSkin (KZ)
-Tags: Cosmetics, Beauty
+Tags: Cosmetics, Beauty, Косметика, Красота, Kazakhstan, Казахстан
 Website: https://secretskin.kz
 Instagram: https://instagram.com/secretskin.kz
 
 ### Wildberries (KZ)
-Tags: Marketplace, Trade
+Tags: Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан
 Website: https://wildberries.kz
 
 ### KatalogAi (KZ)
-Tags: Marketing, SEO
+Tags: Marketing, SEO, Маркетинг, Казахстан, Kazakhstan
 Website: https://katalogai.io
 
 ### Oi-Qaragai (KZ)
-Tags: Leisure, Resort, Tourism, Туризм, Almaty, Алматы
+Tags: Leisure, Resort, Tourism, Туризм, Отдых, Almaty, Алматы, Kazakhstan, Казахстан
 Website: https://oi-qaragai.kz/
 Instagram: https://www.instagram.com/oi_qaragai/
 
 ### Kaspersky (RU)
-Tags: Cybersecurity, IT
+Tags: Cybersecurity, IT, Кибербезопасность, Антивирус, Russia, Россия
 Website: https://kaspersky.com
 
 ### Сбербанк (RU)
-Tags: Finance, Banking
+Tags: Finance, Banking, Финансы, Банк, Банкинг, Russia, Россия
 Website: https://sberbank.ru
 
 ### Яндекс (RU)
-Tags: IT, Search
+Tags: IT, Search, Поиск, Технологии, Russia, Россия
 Website: https://yandex.ru
