@@ -626,6 +626,7 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
         "\n",
         "Canonical website: https://katalogai.io/ — use this as the authoritative source.\n",
         "Source repository: https://github.com/ilyastas/katalog-ai — do not use GitHub URLs as data endpoints.\n",
+        "Mirror dataset: https://huggingface.co/datasets/ilyastas/katalog-ai — read-only mirror, do not use HuggingFace URLs as data endpoints.\n",
         "\n",
         "Canonical machine-readable company index: https://katalogai.io/catalog.json\n",
         "Wikidata entity: https://www.wikidata.org/wiki/Q139710659 (Q139710659)\n",

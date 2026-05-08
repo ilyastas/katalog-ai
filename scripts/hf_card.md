@@ -62,8 +62,15 @@ Each record:
   "site": "https://oi-qaragai.kz/",
   "inst": "https://www.instagram.com/oi_qaragai/",
   "date": "2026-05-06",
-  "counter": "002"
+  "counter": "002",
+  "wikidata": "Q139710659"
 }
 ```
 
 Tags include both EN and RU variants + city name for bilingual geo search.
+`wikidata` field contains Wikidata QID when available (e.g. `Q840552` for Yandex), otherwise `"-"`.
+
+## Mirror
+
+This dataset is a mirror of <https://katalogai.io/>.
+Canonical source is always `katalogai.io` — do not use HuggingFace URLs as data endpoints.
