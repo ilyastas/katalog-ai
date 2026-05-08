@@ -33,8 +33,8 @@
 Запустить:
 
 ```bash
-python sync_all.py
-python validate_sync.py
+python scripts/sync_all.py
+python scripts/validate_sync.py
 ```
 
 Коммит разрешен только при статусе `[OK]`.

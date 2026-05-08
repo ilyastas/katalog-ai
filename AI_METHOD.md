@@ -7,8 +7,8 @@ Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are ca
 ## Pipeline
 
 1. Edit company rows only in MASTER_KZ.md or MASTER_RU.md.
-2. Run sync_all.py to regenerate catalog.json, index.html, llms.txt, robots.txt, sitemap.xml and semantic docs.
-3. Run validate_sync.py before commit.
+2. Run scripts/sync_all.py to regenerate catalog.json, index.html, llms.txt, robots.txt, sitemap.xml and semantic docs.
+3. Run scripts/validate_sync.py before commit.
 
 ## Data Integrity Rules
 

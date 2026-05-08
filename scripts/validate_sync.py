@@ -112,7 +112,7 @@ def main() -> int:
     canonical_catalog = json.dumps(catalog_data, ensure_ascii=False, indent=2) + "\n"
     normalized_catalog_text = catalog_text.replace("\r\n", "\n").replace("\r", "\n")
     if normalized_catalog_text != canonical_catalog:
-        fail("catalog.json formatting drift: run python sync_all.py")
+        fail("catalog.json formatting drift: run python scripts/sync_all.py")
 
     if catalog_data != all_rows:
         fail("catalog.json is not a strict mirror of MASTER tables")
@@ -132,7 +132,7 @@ def main() -> int:
 
     for semantic_doc in ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]:
         if not (ROOT / semantic_doc).exists():
-            fail(f"{semantic_doc} is missing: run python sync_all.py")
+            fail(f"{semantic_doc} is missing: run python scripts/sync_all.py")
 
     # Ensure sitemap keeps the required endpoints for crawlers.
     sitemap_path = ROOT / "sitemap.xml"
@@ -153,20 +153,20 @@ def main() -> int:
         "https://katalogai.io/AI_FAQ.md",
     }
     if loc_values != required_locs:
-        fail("sitemap.xml entries drift: run python sync_all.py")
+        fail("sitemap.xml entries drift: run python scripts/sync_all.py")
 
     lastmod_values = {
         (node.text or "").strip() for node in tree.findall("sm:url/sm:lastmod", ns)
     }
     if lastmod_values != {generated_on}:
-        fail(f"sitemap.xml lastmod drift: expected {generated_on}, run python sync_all.py")
+        fail(f"sitemap.xml lastmod drift: expected {generated_on}, run python scripts/sync_all.py")
 
     if not (ROOT / "index.html").exists():
         fail("index.html is missing: GitHub Pages root will return 404")
 
     index_text = read_text(ROOT / "index.html")
     if f"Data updated: {expected_last_updated}" not in index_text:
-        fail("index.html data date drift: run python sync_all.py")
+        fail("index.html data date drift: run python scripts/sync_all.py")
     if "og:title" not in index_text:
         fail("index.html missing og:title meta tag")
     if "ai-instructions" not in index_text:
@@ -191,7 +191,7 @@ def main() -> int:
     robots_text = read_text(ROOT / "robots.txt")
     marker = f"# Updated on {generated_on}"
     if marker not in robots_text:
-        fail("robots.txt date drift: run python sync_all.py")
+        fail("robots.txt date drift: run python scripts/sync_all.py")
 
     print("[OK] Master-table sync checks passed")
     return 0

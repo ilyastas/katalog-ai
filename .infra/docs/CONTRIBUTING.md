@@ -29,8 +29,8 @@
 Перед коммитом обязательно:
 
 ```bash
-python sync_all.py
-python validate_sync.py
+python scripts/sync_all.py
+python scripts/validate_sync.py
 ```
 
 Если валидатор не выдал `[OK]`, коммит запрещен.
