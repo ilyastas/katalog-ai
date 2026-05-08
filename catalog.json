@@ -6,7 +6,7 @@
     "site": "https://secretskin.kz",
     "inst": "https://instagram.com/secretskin.kz",
     "date": "2026-05-08",
-    "counter": "031",
+    "counter": "032",
     "wikidata": "-"
   },
   {
@@ -16,8 +16,8 @@
     "site": "https://wildberries.kz",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "031",
-    "wikidata": "-"
+    "counter": "032",
+    "wikidata": "Q24495962"
   },
   {
     "id": "1_KZ_Usluga_katalogai",
@@ -26,7 +26,7 @@
     "site": "https://katalogai.io",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "031",
+    "counter": "032",
     "wikidata": "Q139710659"
   },
   {
@@ -36,7 +36,7 @@
     "site": "https://oi-qaragai.kz/",
     "inst": "https://www.instagram.com/oi_qaragai/",
     "date": "2026-05-08",
-    "counter": "012",
+    "counter": "013",
     "wikidata": "-"
   },
   {
@@ -46,7 +46,8 @@
     "site": "https://kaspersky.com",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "031"
+    "counter": "032",
+    "wikidata": "Q860440"
   },
   {
     "id": "2_RU_Usluga_sberbank",
@@ -55,7 +56,8 @@
     "site": "https://sberbank.ru",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "031"
+    "counter": "032",
+    "wikidata": "Q275167"
   },
   {
     "id": "2_RU_Usluga_yandex",
@@ -64,6 +66,7 @@
     "site": "https://yandex.ru",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "031"
+    "counter": "032",
+    "wikidata": "Q840552"
   }
 ]

@@ -45,6 +45,7 @@ Instagram: https://instagram.com/secretskin.kz
 ### Wildberries (KZ)
 Tags: Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан
 Website: https://wildberries.kz
+Wikidata: https://www.wikidata.org/wiki/Q24495962
 
 ### KatalogAi (KZ)
 Tags: Marketing, SEO, Маркетинг, Казахстан, Kazakhstan
@@ -59,11 +60,14 @@ Instagram: https://www.instagram.com/oi_qaragai/
 ### Kaspersky (RU)
 Tags: Cybersecurity, IT, Кибербезопасность, Антивирус, Russia, Россия
 Website: https://kaspersky.com
+Wikidata: https://www.wikidata.org/wiki/Q860440
 
 ### Сбербанк (RU)
 Tags: Finance, Banking, Финансы, Банк, Банкинг, Russia, Россия
 Website: https://sberbank.ru
+Wikidata: https://www.wikidata.org/wiki/Q275167
 
 ### Яндекс (RU)
 Tags: IT, Search, Поиск, Технологии, Russia, Россия
 Website: https://yandex.ru
+Wikidata: https://www.wikidata.org/wiki/Q840552
