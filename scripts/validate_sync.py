@@ -46,26 +46,28 @@ def parse_master(path: Path) -> list[dict[str, str]]:
         fail(f"{path.name}: table is missing or too short")
 
     header = [c.strip() for c in table_lines[0].strip("|").split("|")]
-    expected_header = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
-    if header != expected_header:
-        fail(f"{path.name}: invalid header, expected {expected_header}")
+    expected_header_7 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
+    expected_header_8 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER", "Wikidata"]
+    has_wikidata_col = (header == expected_header_8)
+    if header not in (expected_header_7, expected_header_8):
+        fail(f"{path.name}: invalid header, expected {expected_header_7}")
 
     for i, line in enumerate(table_lines[2:], start=3):
         match = TABLE_RE.match(line)
         if not match:
             fail(f"{path.name}: malformed table line at visual row {i}")
         cols = [normalize_cell(c.strip()) for c in match.group(1).split("|")]
-        if len(cols) != 7:
-            fail(f"{path.name}: row has {len(cols)} columns, expected 7")
-        if not all(cols):
+        expected_cols = 8 if has_wikidata_col else 7
+        if len(cols) != expected_cols:
+            fail(f"{path.name}: row has {len(cols)} columns, expected {expected_cols}")
+        if not all(cols[:7]):
             fail(f"{path.name}: empty cell found in row with ID '{cols[0]}'")
         if not DATE_RE.fullmatch(cols[5]):
             fail(f"{path.name}: invalid date '{cols[5]}' for ID '{cols[0]}'")
         if not COUNTER_RE.fullmatch(cols[6]):
             fail(f"{path.name}: invalid COUNTER '{cols[6]}' for ID '{cols[0]}'")
 
-        rows.append(
-            {
+        row = {
                 "id": cols[0],
                 "brand": cols[1],
                 "tags": cols[2],
@@ -74,7 +76,9 @@ def parse_master(path: Path) -> list[dict[str, str]]:
                 "date": cols[5],
                 "counter": cols[6],
             }
-        )
+        if has_wikidata_col:
+            row["wikidata"] = cols[7]
+        rows.append(row)
 
     if not rows:
         fail(f"{path.name}: no data rows found")
@@ -112,11 +116,13 @@ def main() -> int:
         fail("catalog.json must be a JSON array")
 
     required_keys = ["id", "brand", "tags", "site", "inst", "date", "counter"]
+    optional_keys = ["wikidata"]
     for item in catalog_data:
         if not isinstance(item, dict):
             fail("catalog.json: each array item must be an object")
-        if list(item.keys()) != required_keys:
-            fail("catalog.json: keys must be exactly [id, brand, tags, site, inst, date, counter]")
+        allowed_keys = required_keys + [k for k in optional_keys if k in item]
+        if list(item.keys()) != allowed_keys:
+            fail(f"catalog.json: unexpected keys {list(item.keys())}, expected {allowed_keys}")
         for key in required_keys:
             value = item.get(key, "")
             if not isinstance(value, str) or not value.strip():

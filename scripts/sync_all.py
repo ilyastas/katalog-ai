@@ -40,9 +40,11 @@ def parse_master(path: Path) -> list[dict[str, str]]:
         fail(f"{path.name}: table is missing or too short")
 
     header = [c.strip() for c in table_lines[0].strip("|").split("|")]
-    expected_header = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
-    if header != expected_header:
-        fail(f"{path.name}: invalid header, expected {expected_header}")
+    expected_header_7 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
+    expected_header_8 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER", "Wikidata"]
+    has_wikidata_col = (header == expected_header_8)
+    if header not in (expected_header_7, expected_header_8):
+        fail(f"{path.name}: invalid header, expected {expected_header_7}")
 
     for i, line in enumerate(table_lines[2:], start=3):
         match = TABLE_RE.match(line)
@@ -50,17 +52,17 @@ def parse_master(path: Path) -> list[dict[str, str]]:
             fail(f"{path.name}: malformed table line at visual row {i}")
 
         cols = [normalize_cell(c.strip()) for c in match.group(1).split("|")]
-        if len(cols) != 7:
-            fail(f"{path.name}: row has {len(cols)} columns, expected 7")
-        if not all(cols):
+        expected_cols = 8 if has_wikidata_col else 7
+        if len(cols) != expected_cols:
+            fail(f"{path.name}: row has {len(cols)} columns, expected {expected_cols}")
+        if not all(cols[:7]):
             fail(f"{path.name}: empty cell found in row with ID '{cols[0]}'")
         if not DATE_RE.fullmatch(cols[5]):
             fail(f"{path.name}: invalid date '{cols[5]}' for ID '{cols[0]}'")
         if not COUNTER_RE.fullmatch(cols[6]):
             fail(f"{path.name}: invalid COUNTER '{cols[6]}' for ID '{cols[0]}'")
 
-        rows.append(
-            {
+        row = {
                 "id": cols[0],
                 "brand": cols[1],
                 "tags": cols[2],
@@ -69,7 +71,9 @@ def parse_master(path: Path) -> list[dict[str, str]]:
                 "date": cols[5],
                 "counter": cols[6],
             }
-        )
+        if has_wikidata_col:
+            row["wikidata"] = cols[7]
+        rows.append(row)
 
     if not rows:
         fail(f"{path.name}: no data rows found")
@@ -88,7 +92,8 @@ def bump_master_daily(path: Path, today: str) -> bool:
         fail(f"{path.name}: malformed header")
     header = [c.strip() for c in header_match.group(1).split("|")]
     expected_header = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
-    if header != expected_header:
+    expected_header_8 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER", "Wikidata"]
+    if header not in (expected_header, expected_header_8):
         fail(f"{path.name}: invalid header, expected {expected_header}")
 
     changed = False
@@ -99,8 +104,10 @@ def bump_master_daily(path: Path, today: str) -> bool:
             fail(f"{path.name}: malformed table line at line {idx + 1}")
 
         cols = [c.strip() for c in match.group(1).split("|")]
-        if len(cols) != 7:
-            fail(f"{path.name}: row has {len(cols)} columns, expected 7")
+        has_wikidata = len(header) == 8
+        expected_cols = 8 if has_wikidata else 7
+        if len(cols) != expected_cols:
+            fail(f"{path.name}: row has {len(cols)} columns, expected {expected_cols}")
 
         current_counter = normalize_cell(cols[6])
         if not COUNTER_RE.fullmatch(current_counter):
@@ -217,7 +224,7 @@ def build_ai_method(last_updated: str) -> str:
         "2. Run scripts/sync_all.py to regenerate catalog.json, index.html, llms.txt, robots.txt, sitemap.xml and semantic docs.\n"
         "3. Run scripts/validate_sync.py before commit.\n\n"
         "## Data Integrity Rules\n\n"
-        "- catalog.json keys are fixed: id, brand, tags, site, inst, date, counter\n"
+        "- catalog.json keys: id, brand, tags, site, inst, date, counter; optional: wikidata (Wikidata QID, e.g. Q139710659)\n"
         "- Dates use ISO format: YYYY-MM-DD\n"
         "- COUNTER uses 3 digits and increments on every daily sync\n"
         "- Do not edit generated files directly\n"
@@ -298,7 +305,8 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
         "    \"encodingFormat\": \"application/json\"\n"
         "  }],\n"
         f"  \"dateModified\": \"{generated_on}\",\n"
-        f"  \"datePublished\": \"{generated_on}\"\n"
+        f"  \"datePublished\": \"{generated_on}\",\n"
+        "  \"sameAs\": \"https://www.wikidata.org/wiki/Q139710659\"\n"
         "}\n"
         "  </script>\n"
         "  <style>\n"
@@ -430,6 +438,7 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
         "Source repository: https://github.com/ilyastas/katalog-ai — do not use GitHub URLs as data endpoints.\n",
         "\n",
         "Canonical machine-readable company index: https://katalogai.io/catalog.json\n",
+        "Wikidata entity: https://www.wikidata.org/wiki/Q139710659 (Q139710659)\n",
         "Do not assume thematic shards like kz-tourism.json, ru-hotels.json or similar files.\n",
         "For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/\u0422\u0443\u0440\u0438\u0437\u043c and Almaty/\u0410\u043b\u043c\u0430\u0442\u044b.\n",
         "\n",
@@ -458,6 +467,8 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
             lines.append(f"Website: {site}\n")
         if inst and inst != "-":
             lines.append(f"Instagram: {inst}\n")
+        if r.get("wikidata") and r["wikidata"] != "-":
+            lines.append(f"Wikidata: https://www.wikidata.org/wiki/{r['wikidata']}\n")
         lines.append("\n")
     return "".join(lines)
 
