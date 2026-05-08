@@ -707,6 +707,7 @@ def build_robots(last_updated: str) -> str:
     return (
         "User-agent: *\n"
         "Allow: /\n"
+        "Allow: /llms.txt\n"
         "Allow: /README.md\n"
         "Allow: /.well-known/\n"
         "Disallow: /venv/\n"

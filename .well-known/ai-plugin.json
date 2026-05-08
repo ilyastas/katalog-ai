@@ -7,6 +7,9 @@
     "auth": {
         "type": "none"
     },
+    "api": {
+        "type": "none"
+    },
     "data_sources": {
         "catalog": "https://katalogai.io/catalog.json",
         "master_kz": "https://katalogai.io/MASTER_KZ.md",
