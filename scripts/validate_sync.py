@@ -149,6 +149,14 @@ def main() -> int:
             if expected not in text:
                 fail(f"{name}: missing link or reference to {expected}")
 
+    llms_text = read_text(ROOT / "llms.txt")
+    if "Crawler/LLM priority targets" not in llms_text:
+        fail("llms.txt missing crawler priority targets block")
+    for row in all_rows:
+        company_url = f"https://katalogai.io/company/{row['id']}.html"
+        if company_url not in llms_text:
+            fail(f"llms.txt missing company page URL: {company_url}")
+
     for semantic_doc in ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]:
         if not (ROOT / semantic_doc).exists():
             fail(f"{semantic_doc} is missing: run python scripts/sync_all.py")
@@ -171,8 +179,17 @@ def main() -> int:
         "https://katalogai.io/AI_SCHEMA.md",
         "https://katalogai.io/AI_FAQ.md",
     }
-    if loc_values != required_locs:
-        fail("sitemap.xml entries drift: run python scripts/sync_all.py")
+    if not required_locs.issubset(loc_values):
+        fail("sitemap.xml required endpoints drift: run python scripts/sync_all.py")
+
+    expected_company_locs = {
+        f"https://katalogai.io/company/{row['id']}.html" for row in all_rows
+    }
+    sitemap_company_locs = {
+        loc for loc in loc_values if loc.startswith("https://katalogai.io/company/")
+    }
+    if sitemap_company_locs != expected_company_locs:
+        fail("sitemap.xml company endpoints drift: run python scripts/sync_all.py")
 
     lastmod_values = {
         (node.text or "").strip() for node in tree.findall("sm:url/sm:lastmod", ns)
@@ -200,6 +217,25 @@ def main() -> int:
         fail("index.html missing JSON-LD script")
     if "datePublished" not in index_text:
         fail("index.html missing datePublished in JSON-LD: run python scripts/sync_all.py")
+    if "fetch('/catalog.json')" in index_text:
+        fail("index.html must be server-first and not rely on fetch('/catalog.json')")
+    if "id=\"catalog-data\"" not in index_text:
+        fail("index.html missing embedded catalog-data payload")
+
+    company_dir = ROOT / "company"
+    if not company_dir.exists():
+        fail("company directory is missing: run python scripts/sync_all.py")
+
+    expected_company_files = {f"{row['id']}.html" for row in all_rows}
+    actual_company_files = {p.name for p in company_dir.glob("*.html")}
+    if actual_company_files != expected_company_files:
+        fail("company pages drift: run python scripts/sync_all.py")
+
+    for row in all_rows:
+        company_path = company_dir / f"{row['id']}.html"
+        text = read_text(company_path)
+        if "Organization" not in text or "application/ld+json" not in text:
+            fail(f"{company_path.name}: missing Organization JSON-LD")
 
     ai_plugin_path = ROOT / ".well-known" / "ai-plugin.json"
     if not ai_plugin_path.exists():
@@ -219,6 +255,9 @@ def main() -> int:
     marker = f"# Updated on {generated_on}"
     if marker not in robots_text:
         fail("robots.txt date drift: run python scripts/sync_all.py")
+    for ua in ["GPTBot", "ChatGPT-User", "OAI-SearchBot", "Googlebot", "Google-Extended", "Bingbot", "msnbot"]:
+        if f"User-agent: {ua}" not in robots_text:
+            fail(f"robots.txt missing AI crawler user-agent: {ua}")
 
     print("[OK] Master-table sync checks passed")
     return 0
