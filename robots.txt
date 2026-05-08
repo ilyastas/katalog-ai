@@ -4,6 +4,9 @@ Allow: /README.md
 Allow: /.well-known/
 Disallow: /venv/
 Disallow: /.venv/
+Disallow: /scripts/
+Disallow: /.gitignore
+Disallow: /.pre-commit-config.yaml
 Allow: /.infra/docs/
 Disallow: /.infra/
 

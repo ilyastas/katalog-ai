@@ -6,7 +6,7 @@
     "site": "https://secretskin.kz",
     "inst": "https://instagram.com/secretskin.kz",
     "date": "2026-05-08",
-    "counter": "023"
+    "counter": "024"
   },
   {
     "id": "1_KZ_Tovar_wildberries",
@@ -15,7 +15,7 @@
     "site": "https://wildberries.kz",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "023"
+    "counter": "024"
   },
   {
     "id": "1_KZ_Usluga_katalogai",
@@ -24,7 +24,7 @@
     "site": "https://katalogai.io",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "023"
+    "counter": "024"
   },
   {
     "id": "1_KZ_Usluga_oiqaragai",
@@ -33,7 +33,7 @@
     "site": "https://oi-qaragai.kz/",
     "inst": "https://www.instagram.com/oi_qaragai/",
     "date": "2026-05-08",
-    "counter": "004"
+    "counter": "005"
   },
   {
     "id": "2_RU_Usluga_kaspersky",
@@ -42,7 +42,7 @@
     "site": "https://kaspersky.com",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "023"
+    "counter": "024"
   },
   {
     "id": "2_RU_Usluga_sberbank",
@@ -51,7 +51,7 @@
     "site": "https://sberbank.ru",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "023"
+    "counter": "024"
   },
   {
     "id": "2_RU_Usluga_yandex",
@@ -60,6 +60,6 @@
     "site": "https://yandex.ru",
     "inst": "-",
     "date": "2026-05-08",
-    "counter": "023"
+    "counter": "024"
   }
 ]
