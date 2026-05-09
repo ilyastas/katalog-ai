@@ -12,4 +12,4 @@ Each catalog entry is an object with these fields:
 - date: last update date for this row
 - counter: revision counter (3 digits)
 
-Machine endpoint: https://katalogai.io/catalog.json
+Machine endpoint: <https://katalogai.io/catalog.json>
