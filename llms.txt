@@ -1,5 +1,5 @@
 # Katalog-AI LLM Index
-Last updated: 2026-05-08
+Last updated: 2026-05-09
 
 Single source of truth is stored in regional master tables.
 
@@ -72,3 +72,4 @@ Wikidata: https://www.wikidata.org/wiki/Q275167
 Tags: IT, Search, Поиск, Технологии, Russia, Россия
 Website: https://yandex.ru
 Wikidata: https://www.wikidata.org/wiki/Q840552
+
