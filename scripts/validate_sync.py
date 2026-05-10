@@ -100,19 +100,6 @@ def main() -> int:
     expected_last_updated = max(row["date"] for row in all_rows)
     generated_on = date.today().isoformat()
 
-    if expected_last_updated != generated_on:
-        fail(
-            f"MASTER tables must be updated daily: expected all row dates to be {generated_on}, got max {expected_last_updated}"
-        )
-
-    stale_ids = [row["id"] for row in all_rows if row["date"] != generated_on]
-    if stale_ids:
-        fail(
-            "MASTER tables contain stale row dates: "
-            + ", ".join(stale_ids[:5])
-            + (" ..." if len(stale_ids) > 5 else "")
-        )
-
     catalog_path = ROOT / "catalog.json"
     catalog_bytes = read_bytes(catalog_path)
     if catalog_bytes.startswith(b"\xef\xbb\xbf"):

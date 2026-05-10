@@ -47,9 +47,15 @@ for u in ["katalogai.io/", "catalog.json", "llms.txt", "README.md"]:
     if u in sitemap: ok(f"{u} listed")
     else:            fail(f"{u} MISSING")
 lastmods = re.findall(r"<lastmod>(.+?)</lastmod>", sitemap)
-stale = [d for d in lastmods if d != TODAY]
-if not stale: ok(f"all lastmod = {TODAY}")
-else:         fail(f"stale lastmods: {stale}")
+invalid_lastmods = [d for d in lastmods if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", d)]
+if invalid_lastmods:
+    fail(f"invalid lastmod values: {invalid_lastmods}")
+else:
+    ok("all sitemap lastmod values are ISO dates")
+if TODAY in lastmods:
+    ok(f"sitemap includes generated_on marker {TODAY}")
+else:
+    warn(f"sitemap has no generated_on marker {TODAY}")
 
 # ── llms.txt (Claude-User) ────────────────────────────────────────────────────
 print("\n── llms.txt (Claude-User) ──")
@@ -69,8 +75,14 @@ cat_raw = fetch("https://katalogai.io/catalog.json", ua="GPTBot/1.0")
 cat = json.loads(cat_raw)
 ok(f"{len(cat)} entries parsed")
 stale_entries = [e["id"] for e in cat if e.get("date") != TODAY]
-if not stale_entries: ok(f"all entry dates = {TODAY}")
-else:                 fail(f"stale entry dates: {stale_entries}")
+invalid_entry_dates = [e.get("id", "?") for e in cat if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", e.get("date", ""))]
+if invalid_entry_dates:
+    fail(f"invalid entry date format: {invalid_entry_dates}")
+else:
+    ok("all entry dates are ISO dates")
+future_entries = [e.get("id", "?") for e in cat if e.get("date", "") > TODAY]
+if future_entries:
+    fail(f"future entry dates detected: {future_entries}")
 required_fields = ["id", "brand", "tags", "site", "date", "counter"]
 for e in cat:
     for field in required_fields:

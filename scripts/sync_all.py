@@ -194,10 +194,10 @@ def build_ai_method(last_updated: str) -> str:
         "4. Keep tags bilingual (EN + RU) and include geo tags where relevant.\n"
         "5. Run sync_all.py and then validate_sync.py.\n"
         "6. Never edit generated outputs directly.\n\n"
-        "## Daily Date/Counter Update (Instruction)\n\n"
-        "- sync_all.py performs daily bump for both date and counter in all MASTER rows.\n"
-        "- counter is always 3-digit and incremented by +1 per daily run.\n"
-        "- validate_sync.py enforces that MASTER dates match today and generated artifacts stay in sync.\n\n"
+        "## Date/Counter Update Policy\n\n"
+        "- sync_all.py does NOT perform daily mass bump for MASTER rows.\n"
+        "- date and counter for a company are updated only when that company record changes.\n"
+        "- generated artifacts keep daily generation markers, while company data dates remain event-based.\n\n"
         "## Data Integrity Rules\n\n"
         "- catalog.json keys: id, brand, tags, site, inst, date, counter; optional: wikidata (Wikidata QID, e.g. Q139710659)\n"
         "- Dates use ISO format: YYYY-MM-DD\n"
@@ -724,10 +724,6 @@ def build_robots(last_updated: str) -> str:
 def main() -> int:
     generated_on = date.today().isoformat()
     changed: list[str] = []
-
-    for master in MASTER_FILES:
-        if bump_master_daily(master, generated_on):
-            changed.append(master.name)
 
     all_rows: list[dict[str, str]] = []
     for master in MASTER_FILES:
