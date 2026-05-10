@@ -2,6 +2,7 @@
 import json
 import re
 import sys
+import hashlib
 from datetime import date
 from pathlib import Path
 from typing import Final
@@ -24,6 +25,11 @@ def read_text(path: Path) -> str:
     if not path.exists():
         fail(f"Missing file: {path.name}")
     return path.read_text(encoding="utf-8")
+
+
+def compute_hash(content: str) -> str:
+    """Compute SHA256 hash of content for integrity checking."""
+    return hashlib.sha256(content.encode("utf-8")).hexdigest()
 
 
 def normalize_cell(value: str) -> str:
@@ -301,6 +307,13 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
             .replace("'", "&#39;")
         )
 
+    # Generate hidden navigation hub for crawlers (Entry Point)
+    nav_links = ""
+    for r in all_rows:
+        href = company_href(r["id"])
+        brand = r.get("brand", "")
+        nav_links += f'  <link rel="related" href="{esc_attr(href)}" title="{esc_attr(brand)}" />\n'
+
     static_rows = ""
     static_cards = ""
     item_list: list[dict[str, object]] = []
@@ -409,6 +422,8 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
         "  <meta property=\"og:type\" content=\"website\">\n"
         "  <link rel=\"canonical\" href=\"https://katalogai.io/\">\n"
         "  <link rel=\"ai-instructions\" href=\"https://katalogai.io/llms.txt\" type=\"text/plain\">\n"
+        "  <!-- Navigation Hub for Crawlers: Entry Point (hidden from users) -->\n"
+        f"{nav_links}"
         "  <script type=\"application/ld+json\">\n"
         f"{graph_json}\n"
         "  </script>\n"
@@ -544,6 +559,7 @@ def build_company_page(row: dict[str, str], generated_on: str) -> str:
         "keywords": tags,
         "areaServed": region,
         "dateModified": generated_on,
+        "inLanguage": "ru",
     }
     if site and site != "-":
         org["sameAs"] = [site]
@@ -553,6 +569,26 @@ def build_company_page(row: dict[str, str], generated_on: str) -> str:
     if wikidata and wikidata != "-":
         org.setdefault("sameAs", [])
         org["sameAs"].append(f"https://www.wikidata.org/wiki/{wikidata}")
+
+    # BreadcrumbList for crawler navigation (semantic SEO)
+    breadcrumb: dict[str, object] = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Katalog-AI",
+                "item": "https://katalogai.io/",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": brand,
+                "item": page_url,
+            },
+        ],
+    }
 
     site_html = f'<a href="{esc(site)}" target="_blank" rel="noopener">{esc(site)}</a>' if site and site != "-" else "-"
     inst_html = f'<a href="{esc(inst)}" target="_blank" rel="noopener">{esc(inst)}</a>' if inst and inst != "-" else "-"
@@ -571,7 +607,7 @@ def build_company_page(row: dict[str, str], generated_on: str) -> str:
         f"  <meta property=\"og:title\" content=\"{esc(brand)} — Katalog-AI\">\n"
         f"  <meta property=\"og:url\" content=\"{page_url}\">\n"
         "  <script type=\"application/ld+json\">\n"
-        f"{json.dumps(org, ensure_ascii=False)}\n"
+        f"{json.dumps([org, breadcrumb], ensure_ascii=False)}\n"
         "  </script>\n"
         "  <style>\n"
         "    *{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:#f5f5f5;color:#222}main{max-width:860px;margin:2rem auto;background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:1.25rem 1.5rem}h1{margin:.25rem 0 1rem;font-size:1.6rem}a{color:#0057b8;text-decoration:none}a:hover{text-decoration:underline}.meta{color:#666;font-size:.9rem;margin-bottom:1rem}.grid{display:grid;grid-template-columns:170px 1fr;gap:.6rem 1rem}.k{font-weight:600}.tags{margin:.2rem 0 0 1rem;padding:0}.tags li{margin:.2rem 0}@media (max-width:640px){main{margin:1rem}.grid{grid-template-columns:1fr}}\n"
@@ -674,25 +710,40 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
 
 
 def build_sitemap(last_updated: str, all_rows: list[dict[str, str]]) -> str:
-    urls = [
-        "https://katalogai.io/",
-        "https://katalogai.io/llms.txt",
-        "https://katalogai.io/catalog.json",
-        "https://katalogai.io/MASTER_KZ.md",
-        "https://katalogai.io/MASTER_RU.md",
-        "https://katalogai.io/README.md",
-        "https://katalogai.io/AI_METHOD.md",
-        "https://katalogai.io/AI_SCHEMA.md",
-        "https://katalogai.io/AI_FAQ.md",
-    ]
-    urls.extend(f"https://katalogai.io/{company_href(row['id'])}" for row in all_rows)
-
+    # Dynamic lastmod strategy: use row date for company pages, last_updated for content indexes
+    # This prevents spam-update signals to search engines when content hasn't actually changed
     body = ""
-    for loc in urls:
+
+    # Index pages (updated frequently when any company changes)
+    index_urls = [
+        ("https://katalogai.io/", last_updated),
+        ("https://katalogai.io/catalog.json", last_updated),
+        ("https://katalogai.io/llms.txt", last_updated),
+        ("https://katalogai.io/README.md", last_updated),
+        ("https://katalogai.io/AI_METHOD.md", last_updated),
+        ("https://katalogai.io/AI_SCHEMA.md", last_updated),
+        ("https://katalogai.io/AI_FAQ.md", last_updated),
+    ]
+
+    # Master files - use max company date (indicates when data was last modified)
+    max_company_date = max([row["date"] for row in all_rows], default=last_updated)
+    index_urls.extend([
+        ("https://katalogai.io/MASTER_KZ.md", max_company_date),
+        ("https://katalogai.io/MASTER_RU.md", max_company_date),
+    ])
+
+    # Company pages - use individual company date (only signals update if company data changed)
+    # This is critical: prevents daily noise in search indexes from auto-bump of COUNTER
+    for row in all_rows:
+        company_date = row.get("date", last_updated)
+        url = f"https://katalogai.io/{company_href(row['id'])}"
+        index_urls.append((url, company_date))
+
+    for loc, lastmod in index_urls:
         body += (
             "  <url>\n"
             f"    <loc>{loc}</loc>\n"
-            f"    <lastmod>{last_updated}</lastmod>\n"
+            f"    <lastmod>{lastmod}</lastmod>\n"
             "  </url>\n"
         )
 

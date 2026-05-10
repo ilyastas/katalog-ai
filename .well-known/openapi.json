@@ -1,0 +1,219 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Katalog-AI Catalog API",
+        "description": "Machine-readable catalog of verified companies from Kazakhstan and Russia. Optimized for LLM agents and AI search systems.",
+        "version": "1.0.0",
+        "x-apisguru-categories": [
+            "business",
+            "catalog"
+        ],
+        "contact": {
+            "name": "Katalog-AI",
+            "url": "https://katalogai.io/",
+            "x-twitter": "katalog_ai"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://katalogai.io",
+            "description": "Production"
+        }
+    ],
+    "paths": {
+        "/catalog.json": {
+            "get": {
+                "summary": "Get complete company catalog",
+                "description": "Returns JSON array of all verified companies with their metadata",
+                "operationId": "getCatalog",
+                "responses": {
+                    "200": {
+                        "description": "Array of company records",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CompanyRecord"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/company/{id}.html": {
+            "get": {
+                "summary": "Get company profile page",
+                "description": "Returns HTML profile page for a specific company with rich structured data (JSON-LD)",
+                "operationId": "getCompanyProfile",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "1_KZ_Tovar_secretskin"
+                        },
+                        "description": "Company ID in format {number}_{region}_{type}_{slug}"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Company profile HTML with embedded JSON-LD structured data"
+                    },
+                    "404": {
+                        "description": "Company not found"
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/llms.txt": {
+            "get": {
+                "summary": "Get LLM index and navigation guide",
+                "description": "Plain-text index with all company pages and semantic guidance for AI agents",
+                "operationId": "getLLMIndex",
+                "responses": {
+                    "200": {
+                        "description": "LLM-friendly index with company listings and fetch recommendations"
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/sitemap.xml": {
+            "get": {
+                "summary": "Get sitemap",
+                "description": "XML sitemap with all catalog URLs and lastmod dates for search engine crawlers",
+                "operationId": "getSitemap",
+                "responses": {
+                    "200": {
+                        "description": "XML sitemap"
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/MASTER_KZ.md": {
+            "get": {
+                "summary": "Get master table for Kazakhstan companies",
+                "description": "Markdown source table with all KZ company records (source of truth)",
+                "operationId": "getMasterKZ",
+                "responses": {
+                    "200": {
+                        "description": "Markdown table with Kazakhstan company data"
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/MASTER_RU.md": {
+            "get": {
+                "summary": "Get master table for Russia companies",
+                "description": "Markdown source table with all RU company records (source of truth)",
+                "operationId": "getMasterRU",
+                "responses": {
+                    "200": {
+                        "description": "Markdown table with Russia company data"
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
+        "/AI_SCHEMA.md": {
+            "get": {
+                "summary": "Get data schema documentation",
+                "description": "Documentation of company record fields and data types",
+                "operationId": "getSchema",
+                "responses": {
+                    "200": {
+                        "description": "Schema documentation in Markdown"
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CompanyRecord": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "brand",
+                    "tags",
+                    "site",
+                    "inst",
+                    "date",
+                    "counter"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Stable identifier with region marker (KZ or RU)",
+                        "example": "1_KZ_Tovar_secretskin",
+                        "pattern": "^\\d+_(KZ|RU)_(Tovar|Usluga)_[a-z0-9_-]+$"
+                    },
+                    "brand": {
+                        "type": "string",
+                        "description": "Company name",
+                        "example": "SecretSkin"
+                    },
+                    "tags": {
+                        "type": "string",
+                        "description": "Comma-separated semantic tags in English and Russian, including geo-tags",
+                        "example": "Cosmetics, Beauty, Skincare, Косметика, Красота, Уход за кожей, Almaty, Алматы"
+                    },
+                    "site": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Primary website URL or '-' if not available",
+                        "example": "https://secretskin.kz"
+                    },
+                    "inst": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Instagram profile URL or '-' if not available",
+                        "example": "https://instagram.com/secretskin_kz"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Last update date (ISO 8601)",
+                        "example": "2026-05-10"
+                    },
+                    "counter": {
+                        "type": "string",
+                        "description": "Revision counter (3 digits, auto-incremented daily)",
+                        "example": "042",
+                        "pattern": "^\\d{3}$"
+                    },
+                    "wikidata": {
+                        "type": "string",
+                        "description": "Optional: Wikidata QID for entity linking",
+                        "example": "Q139710659"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Catalog",
+            "description": "Catalog data endpoints"
+        },
+        {
+            "name": "Index",
+            "description": "Navigation and index endpoints"
+        }
+    ],
+    "x-apisguru-metrics": {
+        "public": true,
+        "preferredName": "Katalog-AI",
+        "sdkGenServer": "https://api.apis.guru/v2/sdks/generate"
+    }
+}

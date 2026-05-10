@@ -194,8 +194,11 @@ def main() -> int:
     lastmod_values = {
         (node.text or "").strip() for node in tree.findall("sm:url/sm:lastmod", ns)
     }
-    if lastmod_values != {generated_on}:
-        fail(f"sitemap.xml lastmod drift: expected {generated_on}, run python scripts/sync_all.py")
+    # Lastmod strategy: index pages use generated_on, company pages use row dates
+    # This prevents spam signals to search engines when only COUNTER is bumped
+    valid_dates = {generated_on} | {row["date"] for row in all_rows}
+    if not lastmod_values.issubset(valid_dates):
+        fail(f"sitemap.xml lastmod contains unexpected dates: run python scripts/sync_all.py")
 
     if not (ROOT / "index.html").exists():
         fail("index.html is missing: GitHub Pages root will return 404")
@@ -217,6 +220,8 @@ def main() -> int:
         fail("index.html missing JSON-LD script")
     if "datePublished" not in index_text:
         fail("index.html missing datePublished in JSON-LD: run python scripts/sync_all.py")
+    if 'rel="related"' not in index_text:
+        fail("index.html missing navigation hub links (rel=related): run python scripts/sync_all.py")
     if "fetch('/catalog.json')" in index_text:
         fail("index.html must be server-first and not rely on fetch('/catalog.json')")
     if "id=\"catalog-data\"" not in index_text:
@@ -236,14 +241,32 @@ def main() -> int:
         text = read_text(company_path)
         if "Organization" not in text or "application/ld+json" not in text:
             fail(f"{company_path.name}: missing Organization JSON-LD")
+        if "BreadcrumbList" not in text:
+            fail(f"{company_path.name}: missing BreadcrumbList semantic markup: run python scripts/sync_all.py")
 
     ai_plugin_path = ROOT / ".well-known" / "ai-plugin.json"
     if not ai_plugin_path.exists():
         fail(".well-known/ai-plugin.json is missing")
     try:
-        json.loads(ai_plugin_path.read_text(encoding="utf-8"))
+        ai_plugin = json.loads(ai_plugin_path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
         fail(f".well-known/ai-plugin.json is invalid JSON: {exc}")
+
+    # Validate ai-plugin.json has required fields
+    if "api" not in ai_plugin:
+        fail(".well-known/ai-plugin.json missing 'api' field with OpenAPI spec")
+    if "company_fields" not in ai_plugin:
+        fail(".well-known/ai-plugin.json missing 'company_fields' description")
+
+    openapi_path = ROOT / ".well-known" / "openapi.json"
+    if not openapi_path.exists():
+        fail(".well-known/openapi.json is missing")
+    try:
+        openapi_spec = json.loads(openapi_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        fail(f".well-known/openapi.json is invalid JSON: {exc}")
+    if openapi_spec.get("openapi", "").startswith("3.0"):
+        print("[OK] .well-known/openapi.json is valid OpenAPI 3.0 spec")
 
     cname_path = ROOT / "CNAME"
     if not cname_path.exists():

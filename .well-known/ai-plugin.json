@@ -2,20 +2,41 @@
     "schema_version": "v1",
     "name_for_model": "katalog_ai",
     "name_for_human": "Katalog-AI — AI-каталог компаний",
-    "description_for_model": "AI-native catalog of verified companies from Kazakhstan and Russia. Use catalog.json for machine-readable data. Filter by the 'tags' field for category and geo search. Tags include both English and Russian variants plus city names. Example: tags containing 'Туризм' AND 'Алматы' returns tourism companies in Almaty.",
+    "description_for_model": "AI-native catalog of verified companies from Kazakhstan and Russia. Use catalog.json for machine-readable data. Filter by the 'tags' field for category and geo search. Tags include both English and Russian variants plus city names. Example: tags containing 'Туризм' AND 'Алматы' returns tourism companies in Almaty. Each company entry has: id (stable identifier), brand (company name), tags (comma-separated semantic tags in EN+RU), site (website URL), inst (Instagram or '-'), date (last update date), counter (revision number, 3 digits), optional: wikidata (Wikidata QID like Q139710659).",
     "description_for_human": "AI-native каталог верифицированных компаний KZ/RU. Поиск по тегам, гео, категориям.",
     "auth": {
         "type": "none"
     },
     "api": {
-        "type": "none"
+        "type": "openapi",
+        "url": "https://katalogai.io/.well-known/openapi.json",
+        "is_user_authenticated": false
     },
     "data_sources": {
         "catalog": "https://katalogai.io/catalog.json",
         "master_kz": "https://katalogai.io/MASTER_KZ.md",
         "master_ru": "https://katalogai.io/MASTER_RU.md",
-        "llm_index": "https://katalogai.io/llms.txt"
+        "llm_index": "https://katalogai.io/llms.txt",
+        "semantic_schema": "https://katalogai.io/AI_SCHEMA.md",
+        "methodology": "https://katalogai.io/AI_METHOD.md"
     },
+    "company_fields": {
+        "id": "Stable identifier with region marker (KZ or RU)",
+        "brand": "Company name",
+        "tags": "Comma-separated semantic tags (English + Russian + geo)",
+        "site": "Primary website URL",
+        "inst": "Instagram profile URL or '-'",
+        "date": "Last update date (ISO 8601)",
+        "counter": "Revision counter (3 digits, auto-incremented daily)",
+        "wikidata": "Wikidata QID for entity linking (optional)"
+    },
+    "search_examples": {
+        "tourism_almaty": "filter tags: Tourism,Туризм,Almaty,Алматы",
+        "all_kz_companies": "filter id prefix: 1_KZ_ or 2_KZ_",
+        "all_ru_services": "filter id contains: _RU_ and category Usluga/Service",
+        "recent_updates": "sort by date descending"
+    },
+    "crawl_policy": "AI access policy: open to any AI crawler or agent. No vendor restrictions. Daily updates via https://katalogai.io/sitemap.xml. Company pages: https://katalogai.io/company/{id}.html",
     "contact_email": "",
     "legal_info_url": "https://katalogai.io/"
 }
