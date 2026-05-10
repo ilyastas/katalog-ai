@@ -3,6 +3,7 @@ venv/
 .DS_Store
 __pycache__/
 *.log
+public-site/
 
 # окальные инструменты
 fix.py
