@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Katalog-AI — AI-каталог компаний</title>
-  <meta name="description"
-    content="AI-native каталог верифицированных компаний для LLM, AI-агентов и поисковых систем.">
+  <meta name="description" content="AI-native каталог верифицированных компаний для LLM, AI-агентов и поисковых систем.">
   <meta property="og:title" content="Katalog-AI — AI-каталог компаний">
-  <meta property="og:description"
-    content="AI-native каталог верифицированных компаний для LLM, AI-агентов и поисковых систем.">
+  <meta property="og:description" content="AI-native каталог верифицированных компаний для LLM, AI-агентов и поисковых систем.">
   <meta property="og:url" content="https://katalogai.io/">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://katalogai.io/">
@@ -26,209 +23,44 @@
 {"@context": "https://schema.org", "@graph": [{"@type": "Dataset", "name": "Katalog-AI — AI-каталог верифицированных компаний", "description": "AI-native каталог верифицированных компаний для LLM, AI-агентов и поисковых систем.", "url": "https://katalogai.io/", "distribution": [{"@type": "DataDownload", "contentUrl": "https://katalogai.io/catalog.json", "encodingFormat": "application/json"}], "dateModified": "2026-05-10", "datePublished": "2026-05-10", "sameAs": "https://www.wikidata.org/wiki/Q139710659"}, {"@type": "CollectionPage", "name": "Katalog-AI Компании", "url": "https://katalogai.io/", "inLanguage": "ru", "mainEntity": {"@type": "ItemList", "numberOfItems": 7, "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://katalogai.io/company/1_KZ_Tovar_secretskin.html", "name": "SecretSkin"}, {"@type": "ListItem", "position": 2, "url": "https://katalogai.io/company/1_KZ_Tovar_wildberries.html", "name": "Wildberries"}, {"@type": "ListItem", "position": 3, "url": "https://katalogai.io/company/1_KZ_Usluga_katalogai.html", "name": "KatalogAi"}, {"@type": "ListItem", "position": 4, "url": "https://katalogai.io/company/1_KZ_Usluga_oiqaragai.html", "name": "Oi-Qaragai"}, {"@type": "ListItem", "position": 5, "url": "https://katalogai.io/company/2_RU_Usluga_kaspersky.html", "name": "Kaspersky"}, {"@type": "ListItem", "position": 6, "url": "https://katalogai.io/company/2_RU_Usluga_sberbank.html", "name": "Сбербанк"}, {"@type": "ListItem", "position": 7, "url": "https://katalogai.io/company/2_RU_Usluga_yandex.html", "name": "Яндекс"}]}}, {"@type": "WebSite", "name": "Katalog-AI", "url": "https://katalogai.io/", "inLanguage": "ru"}]}
   </script>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    body {
-      font-family: system-ui, sans-serif;
-      background: #f5f5f5;
-      color: #222
-    }
-
-    header {
-      background: #111;
-      color: #fff;
-      padding: 1.5rem 2rem
-    }
-
-    header h1 {
-      font-size: 1.6rem;
-      letter-spacing: -.5px
-    }
-
-    header p {
-      font-size: .85rem;
-      color: #aaa;
-      margin-top: .3rem
-    }
-
-    .toolbar {
-      background: #fff;
-      border-bottom: 1px solid #e0e0e0;
-      padding: 1rem 2rem;
-      display: flex;
-      gap: .75rem;
-      flex-wrap: wrap;
-      align-items: center
-    }
-
-    #search {
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: .5rem .75rem;
-      font-size: .9rem;
-      width: 260px;
-      outline: none
-    }
-
-    #search:focus {
-      border-color: #555
-    }
-
-    .tag-filters {
-      display: flex;
-      gap: .4rem;
-      flex-wrap: wrap
-    }
-
-    .tag-btn {
-      background: #f0f0f0;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      padding: .3rem .8rem;
-      font-size: .8rem;
-      cursor: pointer;
-      transition: background .15s
-    }
-
-    .tag-btn:hover {
-      background: #e0e0e0
-    }
-
-    .tag-btn.active {
-      background: #111;
-      color: #fff;
-      border-color: #111
-    }
-
-    #count {
-      font-size: .82rem;
-      color: #666;
-      margin-left: auto
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
-      padding: 1.5rem 2rem
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid #e5e5e5;
-      border-radius: 10px;
-      padding: 1.25rem
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: .5rem
-    }
-
-    .card h2 {
-      font-size: 1rem;
-      font-weight: 600
-    }
-
-    .card h2 .brand-link {
-      color: #222;
-      text-decoration: none
-    }
-
-    .card h2 .brand-link:hover {
-      text-decoration: underline
-    }
-
-    .card .country {
-      font-size: .75rem;
-      background: #f0f0f0;
-      border-radius: 4px;
-      padding: .2rem .5rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-      margin-left: .5rem
-    }
-
-    .card .url {
-      font-size: .8rem;
-      color: #555;
-      margin-bottom: .4rem;
-      word-break: break-all
-    }
-
-    .card .url a {
-      color: #0066cc;
-      text-decoration: none
-    }
-
-    .card .url a:hover {
-      text-decoration: underline
-    }
-
-    .card .inst {
-      font-size: .8rem;
-      margin-bottom: .75rem
-    }
-
-    .card .inst a {
-      color: #c13584;
-      text-decoration: none
-    }
-
-    .card .inst a:hover {
-      text-decoration: underline
-    }
-
-    .card .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .3rem
-    }
-
-    .card .tag {
-      font-size: .72rem;
-      background: #f5f5f5;
-      border: 1px solid #e0e0e0;
-      border-radius: 12px;
-      padding: .2rem .55rem;
-      cursor: pointer
-    }
-
-    .card .tag:hover {
-      background: #e8e8e8
-    }
-
-    #no-results {
-      display: none;
-      text-align: center;
-      padding: 3rem;
-      color: #888
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: .8rem;
-      color: #999
-    }
-
-    footer a {
-      color: #666
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:system-ui,sans-serif;background:#f5f5f5;color:#222}
+    header{background:#111;color:#fff;padding:1.5rem 2rem}
+    header h1{font-size:1.6rem;letter-spacing:-.5px}
+    header p{font-size:.85rem;color:#aaa;margin-top:.3rem}
+    .toolbar{background:#fff;border-bottom:1px solid #e0e0e0;padding:1rem 2rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+    #search{border:1px solid #ccc;border-radius:6px;padding:.5rem .75rem;font-size:.9rem;width:260px;outline:none}
+    #search:focus{border-color:#555}
+    .tag-filters{display:flex;gap:.4rem;flex-wrap:wrap}
+    .tag-btn{background:#f0f0f0;border:1px solid #ddd;border-radius:20px;padding:.3rem .8rem;font-size:.8rem;cursor:pointer;transition:background .15s}
+    .tag-btn:hover{background:#e0e0e0}
+    .tag-btn.active{background:#111;color:#fff;border-color:#111}
+    #count{font-size:.82rem;color:#666;margin-left:auto}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;padding:1.5rem 2rem}
+    .card{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:1.25rem}
+    .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem}
+    .card h2{font-size:1rem;font-weight:600}
+    .card h2 .brand-link{color:#222;text-decoration:none}
+    .card h2 .brand-link:hover{text-decoration:underline}
+    .card .country{font-size:.75rem;background:#f0f0f0;border-radius:4px;padding:.2rem .5rem;white-space:nowrap;flex-shrink:0;margin-left:.5rem}
+    .card .url{font-size:.8rem;color:#555;margin-bottom:.4rem;word-break:break-all}
+    .card .url a{color:#0066cc;text-decoration:none}
+    .card .url a:hover{text-decoration:underline}
+    .card .inst{font-size:.8rem;margin-bottom:.75rem}
+    .card .inst a{color:#c13584;text-decoration:none}
+    .card .inst a:hover{text-decoration:underline}
+    .card .tags{display:flex;flex-wrap:wrap;gap:.3rem}
+    .card .tag{font-size:.72rem;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:12px;padding:.2rem .55rem;cursor:pointer}
+    .card .tag:hover{background:#e8e8e8}
+    #no-results{display:none;text-align:center;padding:3rem;color:#888}
+    footer{text-align:center;padding:2rem;font-size:.8rem;color:#999}
+    footer a{color:#666}
   </style>
 </head>
-
 <body>
   <header>
     <h1>Katalog-AI</h1>
-    <p>AI-native каталог верифицированных компаний &nbsp;&middot;&nbsp; Data updated: 2026-05-10 &nbsp;&middot;&nbsp;
-      Page generated: 2026-05-10</p>
+    <p>AI-native каталог верифицированных компаний &nbsp;&middot;&nbsp; Data updated: 2026-05-10 &nbsp;&middot;&nbsp; Page generated: 2026-05-10</p>
   </header>
   <div class="toolbar">
     <input id="search" type="search" placeholder="Поиск по названию или тегу..." autocomplete="off">
@@ -237,203 +69,111 @@
   </div>
   <div id="grid" class="grid">
     <article class="card" data-brand="secretskin" data-tags="cosmetics|beauty|косметика|красота|kazakhstan|казахстан">
-      <div class="card-header">
-        <h2><a class="brand-link" href="company/1_KZ_Tovar_secretskin.html">SecretSkin</a></h2><span
-          class="country">KZ</span>
-      </div>
+      <div class="card-header"><h2><a class="brand-link" href="company/1_KZ_Tovar_secretskin.html">SecretSkin</a></h2><span class="country">KZ</span></div>
       <div class="url"><a href="https://secretskin.kz" target="_blank" rel="noopener">https://secretskin.kz</a></div>
       <div class="inst"><a href="https://instagram.com/secretskin.kz" target="_blank" rel="noopener">Instagram</a></div>
-      <div class="tags"><span class="tag" data-tag="Cosmetics">Cosmetics</span><span class="tag"
-          data-tag="Beauty">Beauty</span><span class="tag" data-tag="Косметика">Косметика</span><span class="tag"
-          data-tag="Красота">Красота</span><span class="tag" data-tag="Kazakhstan">Kazakhstan</span><span class="tag"
-          data-tag="Казахстан">Казахстан</span></div>
+      <div class="tags"><span class="tag" data-tag="Cosmetics">Cosmetics</span><span class="tag" data-tag="Beauty">Beauty</span><span class="tag" data-tag="Косметика">Косметика</span><span class="tag" data-tag="Красота">Красота</span><span class="tag" data-tag="Kazakhstan">Kazakhstan</span><span class="tag" data-tag="Казахстан">Казахстан</span></div>
     </article>
-    <article class="card" data-brand="wildberries"
-      data-tags="marketplace|trade|маркетплейс|торговля|kazakhstan|казахстан">
-      <div class="card-header">
-        <h2><a class="brand-link" href="company/1_KZ_Tovar_wildberries.html">Wildberries</a></h2><span
-          class="country">KZ</span>
-      </div>
+    <article class="card" data-brand="wildberries" data-tags="marketplace|trade|маркетплейс|торговля|kazakhstan|казахстан">
+      <div class="card-header"><h2><a class="brand-link" href="company/1_KZ_Tovar_wildberries.html">Wildberries</a></h2><span class="country">KZ</span></div>
       <div class="url"><a href="https://wildberries.kz" target="_blank" rel="noopener">https://wildberries.kz</a></div>
 
-      <div class="tags"><span class="tag" data-tag="Marketplace">Marketplace</span><span class="tag"
-          data-tag="Trade">Trade</span><span class="tag" data-tag="Маркетплейс">Маркетплейс</span><span class="tag"
-          data-tag="Торговля">Торговля</span><span class="tag" data-tag="Kazakhstan">Kazakhstan</span><span class="tag"
-          data-tag="Казахстан">Казахстан</span></div>
+      <div class="tags"><span class="tag" data-tag="Marketplace">Marketplace</span><span class="tag" data-tag="Trade">Trade</span><span class="tag" data-tag="Маркетплейс">Маркетплейс</span><span class="tag" data-tag="Торговля">Торговля</span><span class="tag" data-tag="Kazakhstan">Kazakhstan</span><span class="tag" data-tag="Казахстан">Казахстан</span></div>
     </article>
     <article class="card" data-brand="katalogai" data-tags="marketing|seo|маркетинг|казахстан|kazakhstan">
-      <div class="card-header">
-        <h2><a class="brand-link" href="company/1_KZ_Usluga_katalogai.html">KatalogAi</a></h2><span
-          class="country">KZ</span>
-      </div>
+      <div class="card-header"><h2><a class="brand-link" href="company/1_KZ_Usluga_katalogai.html">KatalogAi</a></h2><span class="country">KZ</span></div>
       <div class="url"><a href="https://katalogai.io" target="_blank" rel="noopener">https://katalogai.io</a></div>
 
-      <div class="tags"><span class="tag" data-tag="Marketing">Marketing</span><span class="tag"
-          data-tag="SEO">SEO</span><span class="tag" data-tag="Маркетинг">Маркетинг</span><span class="tag"
-          data-tag="Казахстан">Казахстан</span><span class="tag" data-tag="Kazakhstan">Kazakhstan</span></div>
+      <div class="tags"><span class="tag" data-tag="Marketing">Marketing</span><span class="tag" data-tag="SEO">SEO</span><span class="tag" data-tag="Маркетинг">Маркетинг</span><span class="tag" data-tag="Казахстан">Казахстан</span><span class="tag" data-tag="Kazakhstan">Kazakhstan</span></div>
     </article>
-    <article class="card" data-brand="oi-qaragai"
-      data-tags="leisure|resort|tourism|туризм|отдых|almaty|алматы|kazakhstan|казахстан">
-      <div class="card-header">
-        <h2><a class="brand-link" href="company/1_KZ_Usluga_oiqaragai.html">Oi-Qaragai</a></h2><span
-          class="country">KZ</span>
-      </div>
+    <article class="card" data-brand="oi-qaragai" data-tags="leisure|resort|tourism|туризм|отдых|almaty|алматы|kazakhstan|казахстан">
+      <div class="card-header"><h2><a class="brand-link" href="company/1_KZ_Usluga_oiqaragai.html">Oi-Qaragai</a></h2><span class="country">KZ</span></div>
       <div class="url"><a href="https://oi-qaragai.kz/" target="_blank" rel="noopener">https://oi-qaragai.kz/</a></div>
-      <div class="inst"><a href="https://www.instagram.com/oi_qaragai/" target="_blank" rel="noopener">Instagram</a>
-      </div>
-      <div class="tags"><span class="tag" data-tag="Leisure">Leisure</span><span class="tag"
-          data-tag="Resort">Resort</span><span class="tag" data-tag="Tourism">Tourism</span><span class="tag"
-          data-tag="Туризм">Туризм</span><span class="tag" data-tag="Отдых">Отдых</span><span class="tag"
-          data-tag="Almaty">Almaty</span><span class="tag" data-tag="Алматы">Алматы</span><span class="tag"
-          data-tag="Kazakhstan">Kazakhstan</span><span class="tag" data-tag="Казахстан">Казахстан</span></div>
+      <div class="inst"><a href="https://www.instagram.com/oi_qaragai/" target="_blank" rel="noopener">Instagram</a></div>
+      <div class="tags"><span class="tag" data-tag="Leisure">Leisure</span><span class="tag" data-tag="Resort">Resort</span><span class="tag" data-tag="Tourism">Tourism</span><span class="tag" data-tag="Туризм">Туризм</span><span class="tag" data-tag="Отдых">Отдых</span><span class="tag" data-tag="Almaty">Almaty</span><span class="tag" data-tag="Алматы">Алматы</span><span class="tag" data-tag="Kazakhstan">Kazakhstan</span><span class="tag" data-tag="Казахстан">Казахстан</span></div>
     </article>
     <article class="card" data-brand="kaspersky" data-tags="cybersecurity|it|кибербезопасность|антивирус|russia|россия">
-      <div class="card-header">
-        <h2><a class="brand-link" href="company/2_RU_Usluga_kaspersky.html">Kaspersky</a></h2><span
-          class="country">RU</span>
-      </div>
+      <div class="card-header"><h2><a class="brand-link" href="company/2_RU_Usluga_kaspersky.html">Kaspersky</a></h2><span class="country">RU</span></div>
       <div class="url"><a href="https://kaspersky.com" target="_blank" rel="noopener">https://kaspersky.com</a></div>
 
-      <div class="tags"><span class="tag" data-tag="Cybersecurity">Cybersecurity</span><span class="tag"
-          data-tag="IT">IT</span><span class="tag" data-tag="Кибербезопасность">Кибербезопасность</span><span
-          class="tag" data-tag="Антивирус">Антивирус</span><span class="tag" data-tag="Russia">Russia</span><span
-          class="tag" data-tag="Россия">Россия</span></div>
+      <div class="tags"><span class="tag" data-tag="Cybersecurity">Cybersecurity</span><span class="tag" data-tag="IT">IT</span><span class="tag" data-tag="Кибербезопасность">Кибербезопасность</span><span class="tag" data-tag="Антивирус">Антивирус</span><span class="tag" data-tag="Russia">Russia</span><span class="tag" data-tag="Россия">Россия</span></div>
     </article>
     <article class="card" data-brand="сбербанк" data-tags="finance|banking|финансы|банк|банкинг|russia|россия">
-      <div class="card-header">
-        <h2><a class="brand-link" href="company/2_RU_Usluga_sberbank.html">Сбербанк</a></h2><span
-          class="country">RU</span>
-      </div>
+      <div class="card-header"><h2><a class="brand-link" href="company/2_RU_Usluga_sberbank.html">Сбербанк</a></h2><span class="country">RU</span></div>
       <div class="url"><a href="https://sberbank.ru" target="_blank" rel="noopener">https://sberbank.ru</a></div>
 
-      <div class="tags"><span class="tag" data-tag="Finance">Finance</span><span class="tag"
-          data-tag="Banking">Banking</span><span class="tag" data-tag="Финансы">Финансы</span><span class="tag"
-          data-tag="Банк">Банк</span><span class="tag" data-tag="Банкинг">Банкинг</span><span class="tag"
-          data-tag="Russia">Russia</span><span class="tag" data-tag="Россия">Россия</span></div>
+      <div class="tags"><span class="tag" data-tag="Finance">Finance</span><span class="tag" data-tag="Banking">Banking</span><span class="tag" data-tag="Финансы">Финансы</span><span class="tag" data-tag="Банк">Банк</span><span class="tag" data-tag="Банкинг">Банкинг</span><span class="tag" data-tag="Russia">Russia</span><span class="tag" data-tag="Россия">Россия</span></div>
     </article>
     <article class="card" data-brand="яндекс" data-tags="it|search|поиск|технологии|russia|россия">
-      <div class="card-header">
-        <h2><a class="brand-link" href="company/2_RU_Usluga_yandex.html">Яндекс</a></h2><span class="country">RU</span>
-      </div>
+      <div class="card-header"><h2><a class="brand-link" href="company/2_RU_Usluga_yandex.html">Яндекс</a></h2><span class="country">RU</span></div>
       <div class="url"><a href="https://yandex.ru" target="_blank" rel="noopener">https://yandex.ru</a></div>
 
-      <div class="tags"><span class="tag" data-tag="IT">IT</span><span class="tag" data-tag="Search">Search</span><span
-          class="tag" data-tag="Поиск">Поиск</span><span class="tag" data-tag="Технологии">Технологии</span><span
-          class="tag" data-tag="Russia">Russia</span><span class="tag" data-tag="Россия">Россия</span></div>
+      <div class="tags"><span class="tag" data-tag="IT">IT</span><span class="tag" data-tag="Search">Search</span><span class="tag" data-tag="Поиск">Поиск</span><span class="tag" data-tag="Технологии">Технологии</span><span class="tag" data-tag="Russia">Russia</span><span class="tag" data-tag="Россия">Россия</span></div>
     </article>
   </div>
   <p id="no-results">Ничего не найдено</p>
   <noscript>
-    <table style="border-collapse:collapse;width:100%;font-size:.9rem">
-      <thead>
-        <tr>
-          <th>Компания</th>
-          <th>Регион</th>
-          <th>Сайт</th>
-          <th>Теги</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="company/1_KZ_Tovar_secretskin.html">SecretSkin</a></td>
-          <td>KZ</td>
-          <td><a href="https://secretskin.kz">https://secretskin.kz</a></td>
-          <td>Cosmetics, Beauty, Косметика, Красота, Kazakhstan, Казахстан</td>
-        </tr>
-        <tr>
-          <td><a href="company/1_KZ_Tovar_wildberries.html">Wildberries</a></td>
-          <td>KZ</td>
-          <td><a href="https://wildberries.kz">https://wildberries.kz</a></td>
-          <td>Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан</td>
-        </tr>
-        <tr>
-          <td><a href="company/1_KZ_Usluga_katalogai.html">KatalogAi</a></td>
-          <td>KZ</td>
-          <td><a href="https://katalogai.io">https://katalogai.io</a></td>
-          <td>Marketing, SEO, Маркетинг, Казахстан, Kazakhstan</td>
-        </tr>
-        <tr>
-          <td><a href="company/1_KZ_Usluga_oiqaragai.html">Oi-Qaragai</a></td>
-          <td>KZ</td>
-          <td><a href="https://oi-qaragai.kz/">https://oi-qaragai.kz/</a></td>
-          <td>Leisure, Resort, Tourism, Туризм, Отдых, Almaty, Алматы, Kazakhstan, Казахстан</td>
-        </tr>
-        <tr>
-          <td><a href="company/2_RU_Usluga_kaspersky.html">Kaspersky</a></td>
-          <td>RU</td>
-          <td><a href="https://kaspersky.com">https://kaspersky.com</a></td>
-          <td>Cybersecurity, IT, Кибербезопасность, Антивирус, Russia, Россия</td>
-        </tr>
-        <tr>
-          <td><a href="company/2_RU_Usluga_sberbank.html">Сбербанк</a></td>
-          <td>RU</td>
-          <td><a href="https://sberbank.ru">https://sberbank.ru</a></td>
-          <td>Finance, Banking, Финансы, Банк, Банкинг, Russia, Россия</td>
-        </tr>
-        <tr>
-          <td><a href="company/2_RU_Usluga_yandex.html">Яндекс</a></td>
-          <td>RU</td>
-          <td><a href="https://yandex.ru">https://yandex.ru</a></td>
-          <td>IT, Search, Поиск, Технологии, Russia, Россия</td>
-        </tr>
-      </tbody>
-    </table>
+  <table style="border-collapse:collapse;width:100%;font-size:.9rem">
+    <thead><tr><th>Компания</th><th>Регион</th><th>Сайт</th><th>Теги</th></tr></thead>
+    <tbody>
+      <tr><td><a href="company/1_KZ_Tovar_secretskin.html">SecretSkin</a></td><td>KZ</td><td><a href="https://secretskin.kz">https://secretskin.kz</a></td><td>Cosmetics, Beauty, Косметика, Красота, Kazakhstan, Казахстан</td></tr>
+      <tr><td><a href="company/1_KZ_Tovar_wildberries.html">Wildberries</a></td><td>KZ</td><td><a href="https://wildberries.kz">https://wildberries.kz</a></td><td>Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан</td></tr>
+      <tr><td><a href="company/1_KZ_Usluga_katalogai.html">KatalogAi</a></td><td>KZ</td><td><a href="https://katalogai.io">https://katalogai.io</a></td><td>Marketing, SEO, Маркетинг, Казахстан, Kazakhstan</td></tr>
+      <tr><td><a href="company/1_KZ_Usluga_oiqaragai.html">Oi-Qaragai</a></td><td>KZ</td><td><a href="https://oi-qaragai.kz/">https://oi-qaragai.kz/</a></td><td>Leisure, Resort, Tourism, Туризм, Отдых, Almaty, Алматы, Kazakhstan, Казахстан</td></tr>
+      <tr><td><a href="company/2_RU_Usluga_kaspersky.html">Kaspersky</a></td><td>RU</td><td><a href="https://kaspersky.com">https://kaspersky.com</a></td><td>Cybersecurity, IT, Кибербезопасность, Антивирус, Russia, Россия</td></tr>
+      <tr><td><a href="company/2_RU_Usluga_sberbank.html">Сбербанк</a></td><td>RU</td><td><a href="https://sberbank.ru">https://sberbank.ru</a></td><td>Finance, Banking, Финансы, Банк, Банкинг, Russia, Россия</td></tr>
+      <tr><td><a href="company/2_RU_Usluga_yandex.html">Яндекс</a></td><td>RU</td><td><a href="https://yandex.ru">https://yandex.ru</a></td><td>IT, Search, Поиск, Технологии, Russia, Россия</td></tr>
+    </tbody>
+  </table>
   </noscript>
   <footer>
-    <p><strong>Machine-Readable Resources:</strong>
-      <a href="catalog.json">catalog.json</a> &nbsp;&middot;&nbsp;
-      <a href="llms.txt">llms.txt (AI Instructions)</a> &nbsp;&middot;&nbsp;
-      <a href=".well-known/openapi.json">OpenAPI</a> &nbsp;&middot;&nbsp;
-      <a href=".well-known/ai-plugin.json">AI Plugin</a>
-    </p>
-    <p><strong>Documentation:</strong>
-      <a href="MASTER_KZ.md">MASTER_KZ</a> &nbsp;&middot;&nbsp;
-      <a href="MASTER_RU.md">MASTER_RU</a> &nbsp;&middot;&nbsp;
-      <a href="README.md">README</a>
-    </p>
+    <a href="catalog.json">catalog.json</a> &nbsp;&middot;&nbsp;
+    <a href="llms.txt">llms.txt</a> &nbsp;&middot;&nbsp;
+    <a href="MASTER_KZ.md">MASTER_KZ</a> &nbsp;&middot;&nbsp;
+    <a href="MASTER_RU.md">MASTER_RU</a> &nbsp;&middot;&nbsp;
+    <a href="README.md">README</a>
   </footer>
   <script id="catalog-data" type="application/json">
-[{"id": "1_KZ_Tovar_secretskin", "brand": "SecretSkin", "tags": "Cosmetics, Beauty, Косметика, Красота, Kazakhstan, Казахстан", "site": "https://secretskin.kz", "inst": "https://instagram.com/secretskin.kz", "date": "2026-05-10", "counter": "037", "wikidata": "-"}, {"id": "1_KZ_Tovar_wildberries", "brand": "Wildberries", "tags": "Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан", "site": "https://wildberries.kz", "inst": "-", "date": "2026-05-10", "counter": "037", "wikidata": "Q24495962"}, {"id": "1_KZ_Usluga_katalogai", "brand": "KatalogAi", "tags": "Marketing, SEO, Маркетинг, Казахстан, Kazakhstan", "site": "https://katalogai.io", "inst": "-", "date": "2026-05-10", "counter": "037", "wikidata": "Q139710659"}, {"id": "1_KZ_Usluga_oiqaragai", "brand": "Oi-Qaragai", "tags": "Leisure, Resort, Tourism, Туризм, Отдых, Almaty, Алматы, Kazakhstan, Казахстан", "site": "https://oi-qaragai.kz/", "inst": "https://www.instagram.com/oi_qaragai/", "date": "2026-05-10", "counter": "018", "wikidata": "-"}, {"id": "2_RU_Usluga_kaspersky", "brand": "Kaspersky", "tags": "Cybersecurity, IT, Кибербезопасность, Антивирус, Russia, Россия", "site": "https://kaspersky.com", "inst": "-", "date": "2026-05-10", "counter": "037", "wikidata": "Q860440"}, {"id": "2_RU_Usluga_sberbank", "brand": "Сбербанк", "tags": "Finance, Banking, Финансы, Банк, Банкинг, Russia, Россия", "site": "https://sberbank.ru", "inst": "-", "date": "2026-05-10", "counter": "037", "wikidata": "Q275167"}, {"id": "2_RU_Usluga_yandex", "brand": "Яндекс", "tags": "IT, Search, Поиск, Технологии, Russia, Россия", "site": "https://yandex.ru", "inst": "-", "date": "2026-05-10", "counter": "037", "wikidata": "Q840552"}]
+[{"id": "1_KZ_Tovar_secretskin", "brand": "SecretSkin", "tags": "Cosmetics, Beauty, Косметика, Красота, Kazakhstan, Казахстан", "site": "https://secretskin.kz", "inst": "https://instagram.com/secretskin.kz", "date": "2026-05-10", "wikidata": "-"}, {"id": "1_KZ_Tovar_wildberries", "brand": "Wildberries", "tags": "Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан", "site": "https://wildberries.kz", "inst": "-", "date": "2026-05-10", "wikidata": "Q24495962"}, {"id": "1_KZ_Usluga_katalogai", "brand": "KatalogAi", "tags": "Marketing, SEO, Маркетинг, Казахстан, Kazakhstan", "site": "https://katalogai.io", "inst": "-", "date": "2026-05-10", "wikidata": "Q139710659"}, {"id": "1_KZ_Usluga_oiqaragai", "brand": "Oi-Qaragai", "tags": "Leisure, Resort, Tourism, Туризм, Отдых, Almaty, Алматы, Kazakhstan, Казахстан", "site": "https://oi-qaragai.kz/", "inst": "https://www.instagram.com/oi_qaragai/", "date": "2026-05-10", "wikidata": "-"}, {"id": "2_RU_Usluga_kaspersky", "brand": "Kaspersky", "tags": "Cybersecurity, IT, Кибербезопасность, Антивирус, Russia, Россия", "site": "https://kaspersky.com", "inst": "-", "date": "2026-05-10", "wikidata": "Q860440"}, {"id": "2_RU_Usluga_sberbank", "brand": "Сбербанк", "tags": "Finance, Banking, Финансы, Банк, Банкинг, Russia, Россия", "site": "https://sberbank.ru", "inst": "-", "date": "2026-05-10", "wikidata": "Q275167"}, {"id": "2_RU_Usluga_yandex", "brand": "Яндекс", "tags": "IT, Search, Поиск, Технологии, Russia, Россия", "site": "https://yandex.ru", "inst": "-", "date": "2026-05-10", "wikidata": "Q840552"}]
   </script>
   <script>
-    var allData = JSON.parse(document.getElementById('catalog-data').textContent); var activeTag = null;
-    function parseTags(s) { return (s || '').split(',').map(function (t) { return t.trim(); }).filter(Boolean); }
-    function plural(n) { return n + ' компани' + (n === 1 ? 'я' : n < 5 ? 'и' : 'й'); }
-    function renderTagBtns(tags) {
-      var c = document.getElementById('tag-filters'); c.innerHTML = '';
-      tags.forEach(function (tag) {
-        var b = document.createElement('button'); b.className = 'tag-btn'; b.textContent = tag;
-        b.onclick = function () { activeTag = activeTag === tag ? null : tag; syncActive(); render(); };
+    var allData=JSON.parse(document.getElementById('catalog-data').textContent);var activeTag=null;
+    function parseTags(s){return(s||'').split(',').map(function(t){return t.trim();}).filter(Boolean);}
+    function plural(n){return n+' компани'+(n===1?'я':n<5?'и':'й');}
+    function renderTagBtns(tags){
+      var c=document.getElementById('tag-filters');c.innerHTML='';
+      tags.forEach(function(tag){
+        var b=document.createElement('button');b.className='tag-btn';b.textContent=tag;
+        b.onclick=function(){activeTag=activeTag===tag?null:tag;syncActive();render();};
         c.appendChild(b);
       });
     }
-    function syncActive() {
-      document.querySelectorAll('.tag-btn').forEach(function (b) { b.classList.toggle('active', b.textContent === activeTag); });
+    function syncActive(){
+      document.querySelectorAll('.tag-btn').forEach(function(b){b.classList.toggle('active',b.textContent===activeTag);});
     }
-    function render() {
-      var q = document.getElementById('search').value.toLowerCase();
-      var cards = document.querySelectorAll('.card');
-      var count = 0;
-      cards.forEach(function (card) {
-        var brand = (card.getAttribute('data-brand') || '');
-        var tags = (card.getAttribute('data-tags') || '').split('|').filter(Boolean);
-        var mq = !q || brand.includes(q) || tags.some(function (t) { return t.includes(q); });
-        var mt = !activeTag || tags.indexOf(activeTag.toLowerCase()) >= 0;
-        var show = mq && mt;
-        card.style.display = show ? 'block' : 'none';
-        if (show) { count += 1; }
+    function render(){
+      var q=document.getElementById('search').value.toLowerCase();
+      var cards=document.querySelectorAll('.card');
+      var count=0;
+      cards.forEach(function(card){
+        var brand=(card.getAttribute('data-brand')||'');
+        var tags=(card.getAttribute('data-tags')||'').split('|').filter(Boolean);
+        var mq=!q||brand.includes(q)||tags.some(function(t){return t.includes(q);});
+        var mt=!activeTag||tags.indexOf(activeTag.toLowerCase())>=0;
+        var show=mq&&mt;
+        card.style.display=show?'block':'none';
+        if(show){count+=1;}
       });
-      document.getElementById('count').textContent = plural(count);
-      document.getElementById('no-results').style.display = count ? 'none' : 'block';
+      document.getElementById('count').textContent=plural(count);
+      document.getElementById('no-results').style.display=count?'none':'block';
     }
-    document.querySelectorAll('.tag').forEach(function (el) {
-      el.onclick = function () { activeTag = activeTag === el.dataset.tag ? null : el.dataset.tag; syncActive(); render(); };
+    document.querySelectorAll('.tag').forEach(function(el){
+      el.onclick=function(){activeTag=activeTag===el.dataset.tag?null:el.dataset.tag;syncActive();render();};
     });
-    var allTags = [...new Set(allData.flatMap(function (c) { return parseTags(c.tags); }))].sort();
+    var allTags=[...new Set(allData.flatMap(function(c){return parseTags(c.tags);} ))].sort();
     renderTagBtns(allTags);
     render();
-    document.getElementById('search').addEventListener('input', render);
+    document.getElementById('search').addEventListener('input',render);
   </script>
 </body>
-
 </html>

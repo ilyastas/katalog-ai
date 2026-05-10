@@ -13,7 +13,6 @@ MASTER_FILES: Final[list[Path]] = [ROOT / "MASTER_KZ.md", ROOT / "MASTER_RU.md"]
 SEMANTIC_DOCS: Final[list[str]] = ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]
 TABLE_RE: Final[re.Pattern[str]] = re.compile(r"^\|(.+)\|$")
 DATE_RE: Final[re.Pattern[str]] = re.compile(r"\d{4}-\d{2}-\d{2}")
-COUNTER_RE: Final[re.Pattern[str]] = re.compile(r"\d{3}")
 
 
 def fail(msg: str) -> None:
@@ -46,11 +45,11 @@ def parse_master(path: Path) -> list[dict[str, str]]:
         fail(f"{path.name}: table is missing or too short")
 
     header = [c.strip() for c in table_lines[0].strip("|").split("|")]
-    expected_header_7 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
-    expected_header_8 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER", "Wikidata"]
-    has_wikidata_col = (header == expected_header_8)
-    if header not in (expected_header_7, expected_header_8):
-        fail(f"{path.name}: invalid header, expected {expected_header_7}")
+    expected_header_6 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата"]
+    expected_header_7 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "Wikidata"]
+    has_wikidata_col = (header == expected_header_7)
+    if header not in (expected_header_6, expected_header_7):
+        fail(f"{path.name}: invalid header, expected {expected_header_6}")
 
     for i, line in enumerate(table_lines[2:], start=3):
         match = TABLE_RE.match(line)
@@ -58,15 +57,13 @@ def parse_master(path: Path) -> list[dict[str, str]]:
             fail(f"{path.name}: malformed table line at visual row {i}")
 
         cols = [normalize_cell(c.strip()) for c in match.group(1).split("|")]
-        expected_cols = 8 if has_wikidata_col else 7
+        expected_cols = 7 if has_wikidata_col else 6
         if len(cols) != expected_cols:
             fail(f"{path.name}: row has {len(cols)} columns, expected {expected_cols}")
-        if not all(cols[:7]):
+        if not all(cols[:6]):
             fail(f"{path.name}: empty cell found in row with ID '{cols[0]}'")
         if not DATE_RE.fullmatch(cols[5]):
             fail(f"{path.name}: invalid date '{cols[5]}' for ID '{cols[0]}'")
-        if not COUNTER_RE.fullmatch(cols[6]):
-            fail(f"{path.name}: invalid COUNTER '{cols[6]}' for ID '{cols[0]}'")
 
         row = {
                 "id": cols[0],
@@ -75,69 +72,15 @@ def parse_master(path: Path) -> list[dict[str, str]]:
                 "site": cols[3],
                 "inst": cols[4],
                 "date": cols[5],
-                "counter": cols[6],
             }
         if has_wikidata_col:
-            row["wikidata"] = cols[7]
+            row["wikidata"] = cols[6]
         rows.append(row)
 
     if not rows:
         fail(f"{path.name}: no data rows found")
     return rows
 
-
-def bump_master_daily(path: Path, today: str) -> bool:
-    lines = read_text(path).splitlines()
-    table_row_indices = [i for i, line in enumerate(lines) if line.strip().startswith("|")]
-    if len(table_row_indices) < 3:
-        fail(f"{path.name}: table is missing or too short")
-
-    header_idx = table_row_indices[0]
-    header_match = TABLE_RE.match(lines[header_idx].strip())
-    if not header_match:
-        fail(f"{path.name}: malformed header")
-    header = [c.strip() for c in header_match.group(1).split("|")]
-    expected_header = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER"]
-    expected_header_8 = ["ID", "Бренд", "Теги", "Сайт", "Inst", "Дата", "COUNTER", "Wikidata"]
-    if header not in (expected_header, expected_header_8):
-        fail(f"{path.name}: invalid header, expected {expected_header}")
-
-    changed = False
-    for idx in table_row_indices[2:]:
-        raw_line = lines[idx].strip()
-        match = TABLE_RE.match(raw_line)
-        if not match:
-            fail(f"{path.name}: malformed table line at line {idx + 1}")
-
-        cols = [c.strip() for c in match.group(1).split("|")]
-        has_wikidata = len(header) == 8
-        expected_cols = 8 if has_wikidata else 7
-        if len(cols) != expected_cols:
-            fail(f"{path.name}: row has {len(cols)} columns, expected {expected_cols}")
-
-        current_counter = normalize_cell(cols[6])
-        if not COUNTER_RE.fullmatch(current_counter):
-            fail(f"{path.name}: invalid COUNTER '{current_counter}' at line {idx + 1}")
-
-        current_date = normalize_cell(cols[5])
-        if current_date == today:
-            continue
-
-        next_counter = int(current_counter) + 1
-        if next_counter > 999:
-            fail(f"{path.name}: COUNTER overflow at line {idx + 1}")
-
-        cols[5] = today
-        cols[6] = f"{next_counter:03d}"
-        new_line = "| " + " | ".join(cols) + " |"
-        if lines[idx] != new_line:
-            lines[idx] = new_line
-            changed = True
-
-    if not changed:
-        return False
-
-    return write_text(path, "\n".join(lines) + "\n")
 
 
 def write_text(path: Path, content: str) -> bool:
@@ -163,7 +106,7 @@ def build_readme(last_updated: str, generated_on: str) -> str:
         "- [catalog.json](catalog.json)\n\n"
         "Master-файлы являются каноническим источником. `catalog.json` — их строгое машиночитаемое зеркало. HTML-страницы, sitemap и LLM-индексы публикуются из того же набора данных.\n\n"
         "## Поля Каталога\n\n"
-        "Каждая запись содержит стабильный `id`, название `brand`, теги `tags`, сайт `site`, Instagram `inst`, дату `date`, ревизию `counter` и при наличии `wikidata`. Для отсутствующих внешних значений используется единый строковый маркер `-`.\n\n"
+        "Каждая запись содержит стабильный `id`, название `brand`, теги `tags`, сайт `site`, Instagram `inst`, дату `date` (дата регистрации в каталоге) и при наличии `wikidata`. Для отсутствующих внешних значений используется единый строковый маркер `-`.\n\n"
         "## Для AI Систем\n\n"
         "This catalog is a machine-readable dataset optimized for RAG. Для машинного чтения основной входной точкой служит `catalog.json`, а для навигации и политики доступа используются `llms.txt`, `sitemap.xml` и `.well-known`-файлы.\n\n"
         "## Инфраструктура\n\n"
@@ -189,7 +132,7 @@ def build_ai_method(last_updated: str) -> str:
         "3. Run scripts/validate_sync.py before commit.\n\n"
         "## Add New Company (Instruction)\n\n"
         "1. Insert a new row into MASTER_KZ.md or MASTER_RU.md only.\n"
-        "2. Fill all required columns: ID, brand, tags, site, inst, date, counter (and wikidata when column exists).\n"
+        "2. Fill all required columns: ID, brand, tags, site, inst, date (registration date, immutable) and wikidata (optional, use '-' if absent).\n"
         "3. Keep ID stable and region-marked (KZ or RU).\n"
         "4. Keep tags bilingual (EN + RU) and include geo tags where relevant.\n"
         "5. Run sync_all.py and then validate_sync.py.\n"
@@ -199,9 +142,9 @@ def build_ai_method(last_updated: str) -> str:
         "- date and counter for a company are updated only when that company record changes.\n"
         "- generated artifacts keep daily generation markers, while company data dates remain event-based.\n\n"
         "## Data Integrity Rules\n\n"
-        "- catalog.json keys: id, brand, tags, site, inst, date, counter; optional: wikidata (Wikidata QID, e.g. Q139710659)\n"
+        "- catalog.json keys: id, brand, tags, site, inst, date; optional: wikidata (Wikidata QID, e.g. Q139710659)\n"
         "- Dates use ISO format: YYYY-MM-DD\n"
-        "- COUNTER uses 3 digits and increments on every daily sync\n"
+        "- date is the registration date in the catalog (immutable after first entry)\n"
         "- Do not edit generated files directly\n"
     )
 
@@ -216,8 +159,8 @@ def build_ai_schema(last_updated: str) -> str:
         "- tags: comma-separated semantic tags\n"
         "- site: primary website URL\n"
         "- inst: Instagram URL or '-'\n"
-        "- date: last update date for this row\n"
-        "- counter: revision counter (3 digits)\n\n"
+        "- date: registration date in the catalog (set once on entry, immutable)\n"
+        "- wikidata: Wikidata QID or '-' if not available\n\n"
         "Machine endpoint: https://katalogai.io/catalog.json\n"
     )
 

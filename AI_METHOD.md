@@ -13,7 +13,7 @@ Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are ca
 ## Add New Company (Instruction)
 
 1. Insert a new row into MASTER_KZ.md or MASTER_RU.md only.
-2. Fill all required columns: ID, brand, tags, site, inst, date, counter (and wikidata when column exists).
+2. Fill all required columns: ID, brand, tags, site, inst, date (registration date, immutable) and wikidata (optional, use '-' if absent).
 3. Keep ID stable and region-marked (KZ or RU).
 4. Keep tags bilingual (EN + RU) and include geo tags where relevant.
 5. Run sync_all.py and then validate_sync.py.
@@ -27,7 +27,7 @@ Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are ca
 
 ## Data Integrity Rules
 
-- catalog.json keys: id, brand, tags, site, inst, date, counter; optional: wikidata (Wikidata QID, e.g. Q139710659)
+- catalog.json keys: id, brand, tags, site, inst, date; optional: wikidata (Wikidata QID, e.g. Q139710659)
 - Dates use ISO format: YYYY-MM-DD
-- COUNTER uses 3 digits and increments on every daily sync
+- date is the registration date in the catalog (immutable after first entry)
 - Do not edit generated files directly

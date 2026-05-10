@@ -9,7 +9,7 @@ Each catalog entry is an object with these fields:
 - tags: comma-separated semantic tags
 - site: primary website URL
 - inst: Instagram URL or '-'
-- date: last update date for this row
-- counter: revision counter (3 digits)
+- date: registration date in the catalog (set once on entry, immutable)
+- wikidata: Wikidata QID or '-' if not available
 
 Machine endpoint: https://katalogai.io/catalog.json
