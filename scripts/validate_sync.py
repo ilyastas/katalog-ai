@@ -38,6 +38,14 @@ def normalize_cell(value: str) -> str:
     return value
 
 
+def is_valid_uri_or_dash(value: str) -> bool:
+    return value == "-" or value.startswith("https://") or value.startswith("http://")
+
+
+def is_valid_wikidata_or_dash(value: str) -> bool:
+    return value == "-" or bool(re.fullmatch(r"Q\d+", value))
+
+
 def parse_master(path: Path) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     lines = read_text(path).splitlines()
@@ -127,6 +135,12 @@ def main() -> int:
             value = item.get(key, "")
             if not isinstance(value, str) or not value.strip():
                 fail(f"catalog.json: empty or invalid '{key}' field detected")
+        if not is_valid_uri_or_dash(item["site"]):
+            fail(f"catalog.json: invalid site value for {item['id']}")
+        if not is_valid_uri_or_dash(item["inst"]):
+            fail(f"catalog.json: invalid inst value for {item['id']}")
+        if "wikidata" in item and not is_valid_wikidata_or_dash(item["wikidata"]):
+            fail(f"catalog.json: invalid wikidata value for {item['id']}")
 
     canonical_catalog = json.dumps(catalog_data, ensure_ascii=False, indent=2) + "\n"
     normalized_catalog_text = catalog_text.replace("\r\n", "\n").replace("\r", "\n")
@@ -257,6 +271,11 @@ def main() -> int:
         fail(".well-known/ai-plugin.json missing 'api' field with OpenAPI spec")
     if "company_fields" not in ai_plugin:
         fail(".well-known/ai-plugin.json missing 'company_fields' description")
+    company_fields = ai_plugin.get("company_fields", {})
+    if company_fields.get("inst") != "Instagram profile URL or '-'":
+        fail(".well-known/ai-plugin.json inst contract drift: expected URL or '-' sentinel")
+    if company_fields.get("wikidata") != "Wikidata QID or '-' sentinel":
+        fail(".well-known/ai-plugin.json wikidata contract drift: expected QID or '-' sentinel")
 
     openapi_path = ROOT / ".well-known" / "openapi.json"
     if not openapi_path.exists():
@@ -267,6 +286,16 @@ def main() -> int:
         fail(f".well-known/openapi.json is invalid JSON: {exc}")
     if openapi_spec.get("openapi", "").startswith("3.0"):
         print("[OK] .well-known/openapi.json is valid OpenAPI 3.0 spec")
+    company_schema = openapi_spec.get("components", {}).get("schemas", {}).get("CompanyRecord", {}).get("properties", {})
+    site_schema = company_schema.get("site", {})
+    inst_schema = company_schema.get("inst", {})
+    wikidata_schema = company_schema.get("wikidata", {})
+    if site_schema.get("description") != "Primary website URL or '-' if not available":
+        fail(".well-known/openapi.json site contract drift")
+    if inst_schema.get("description") != "Instagram profile URL or '-' if not available":
+        fail(".well-known/openapi.json inst contract drift")
+    if wikidata_schema.get("description") != "Wikidata QID or '-' sentinel":
+        fail(".well-known/openapi.json wikidata contract drift")
 
     cname_path = ROOT / "CNAME"
     if not cname_path.exists():

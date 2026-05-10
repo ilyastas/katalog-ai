@@ -170,14 +170,14 @@
                     },
                     "site": {
                         "type": "string",
-                        "format": "uri",
                         "description": "Primary website URL or '-' if not available",
+                        "pattern": "^(https?://.+|-)$",
                         "example": "https://secretskin.kz"
                     },
                     "inst": {
                         "type": "string",
-                        "format": "uri",
                         "description": "Instagram profile URL or '-' if not available",
+                        "pattern": "^(https?://.+|-)$",
                         "example": "https://instagram.com/secretskin_kz"
                     },
                     "date": {
@@ -194,7 +194,8 @@
                     },
                     "wikidata": {
                         "type": "string",
-                        "description": "Optional: Wikidata QID for entity linking",
+                        "description": "Wikidata QID or '-' sentinel",
+                        "pattern": "^(Q\\d+|-)$",
                         "example": "Q139710659"
                     }
                 }
