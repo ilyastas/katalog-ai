@@ -254,6 +254,10 @@ def main() -> int:
     if "company_fields" not in ai_plugin:
         fail(".well-known/ai-plugin.json missing 'company_fields' description")
     company_fields = ai_plugin.get("company_fields", {})
+    if company_fields.get("date") != "Registration date in catalog (ISO 8601, immutable after entry)":
+        fail(".well-known/ai-plugin.json date contract drift: expected immutable registration date")
+    if "counter" in company_fields:
+        fail(".well-known/ai-plugin.json must not include deprecated 'counter' field")
     if company_fields.get("inst") != "Instagram profile URL or '-'":
         fail(".well-known/ai-plugin.json inst contract drift: expected URL or '-' sentinel")
     if company_fields.get("wikidata") != "Wikidata QID or '-' sentinel":
@@ -269,13 +273,19 @@ def main() -> int:
     if openapi_spec.get("openapi", "").startswith("3.0"):
         print("[OK] .well-known/openapi.json is valid OpenAPI 3.0 spec")
     company_schema = openapi_spec.get("components", {}).get("schemas", {}).get("CompanyRecord", {}).get("properties", {})
+    company_required = openapi_spec.get("components", {}).get("schemas", {}).get("CompanyRecord", {}).get("required", [])
     site_schema = company_schema.get("site", {})
     inst_schema = company_schema.get("inst", {})
+    date_schema = company_schema.get("date", {})
     wikidata_schema = company_schema.get("wikidata", {})
+    if "counter" in company_schema or "counter" in company_required:
+        fail(".well-known/openapi.json must not include deprecated 'counter' field")
     if site_schema.get("description") != "Primary website URL or '-' if not available":
         fail(".well-known/openapi.json site contract drift")
     if inst_schema.get("description") != "Instagram profile URL or '-' if not available":
         fail(".well-known/openapi.json inst contract drift")
+    if date_schema.get("description") != "Registration date in catalog (ISO 8601, immutable after entry)":
+        fail(".well-known/openapi.json date contract drift")
     if wikidata_schema.get("description") != "Wikidata QID or '-' sentinel":
         fail(".well-known/openapi.json wikidata contract drift")
 

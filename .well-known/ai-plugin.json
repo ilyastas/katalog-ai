@@ -2,7 +2,7 @@
     "schema_version": "v1",
     "name_for_model": "katalog_ai",
     "name_for_human": "Katalog-AI — AI-каталог компаний",
-    "description_for_model": "AI-native catalog of verified companies from Kazakhstan and Russia. Use catalog.json for machine-readable data. Filter by the 'tags' field for category and geo search. Tags include both English and Russian variants plus city names. Example: tags containing 'Туризм' AND 'Алматы' returns tourism companies in Almaty. This catalog is a machine-readable dataset optimized for RAG. Each company entry has: id (stable identifier), brand (company name), tags (comma-separated semantic tags in EN+RU), site (website URL or '-'), inst (Instagram URL or '-'), date (last update date), counter (revision number, 3 digits), wikidata (Wikidata QID or '-').",
+    "description_for_model": "AI-native catalog of verified companies from Kazakhstan and Russia. Use catalog.json for machine-readable data. Filter by the 'tags' field for category and geo search. Tags include both English and Russian variants plus city names. Example: tags containing 'Туризм' AND 'Алматы' returns tourism companies in Almaty. This catalog is a machine-readable dataset optimized for RAG. Each company entry has: id (stable identifier), brand (company name), tags (comma-separated semantic tags in EN+RU), site (website URL or '-'), inst (Instagram URL or '-'), date (registration date in catalog, immutable after entry), wikidata (Wikidata QID or '-').",
     "description_for_human": "AI-native каталог верифицированных компаний KZ/RU. Поиск по тегам, гео, категориям.",
     "auth": {
         "type": "none"
@@ -26,8 +26,7 @@
         "tags": "Comma-separated semantic tags (English + Russian + geo)",
         "site": "Primary website URL or '-'",
         "inst": "Instagram profile URL or '-'",
-        "date": "Last update date (ISO 8601)",
-        "counter": "Revision counter (3 digits, auto-incremented daily)",
+        "date": "Registration date in catalog (ISO 8601, immutable after entry)",
         "wikidata": "Wikidata QID or '-' sentinel"
     },
     "search_examples": {

@@ -148,8 +148,7 @@
                     "tags",
                     "site",
                     "inst",
-                    "date",
-                    "counter"
+                    "date"
                 ],
                 "properties": {
                     "id": {
@@ -183,14 +182,8 @@
                     "date": {
                         "type": "string",
                         "format": "date",
-                        "description": "Last update date (ISO 8601)",
+                        "description": "Registration date in catalog (ISO 8601, immutable after entry)",
                         "example": "2026-05-10"
-                    },
-                    "counter": {
-                        "type": "string",
-                        "description": "Revision counter (3 digits, auto-incremented daily)",
-                        "example": "042",
-                        "pattern": "^\\d{3}$"
                     },
                     "wikidata": {
                         "type": "string",
