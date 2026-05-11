@@ -5,6 +5,7 @@ import re
 from datetime import date
 
 TODAY = date.today().isoformat()
+ISO_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
 errors: list[str] = []
 warns: list[str] = []
 
@@ -37,8 +38,14 @@ else:
     fail("open AI policy MISSING in robots.txt")
 if "llms.txt" in robots:           ok("llms.txt referenced")
 else:                              warn("llms.txt not referenced")
-if TODAY in robots:                ok(f"date {TODAY} found")
-else:                              fail(f"date {TODAY} MISSING")
+robots_date_match = re.search(r"# Updated on (\d{4}-\d{2}-\d{2})", robots)
+if not robots_date_match:
+    fail("robots.txt updated marker MISSING")
+else:
+    robots_date = robots_date_match.group(1)
+    ok(f"robots updated marker found: {robots_date}")
+    if robots_date > TODAY:
+        fail(f"robots updated marker is in the future: {robots_date}")
 
 # ── sitemap.xml ───────────────────────────────────────────────────────────────
 print("\n── sitemap.xml ──")
@@ -52,10 +59,10 @@ if invalid_lastmods:
     fail(f"invalid lastmod values: {invalid_lastmods}")
 else:
     ok("all sitemap lastmod values are ISO dates")
-if TODAY in lastmods:
-    ok(f"sitemap includes generated_on marker {TODAY}")
+if any(d <= TODAY for d in lastmods):
+    ok("sitemap lastmod markers are present and not in the future")
 else:
-    warn(f"sitemap has no generated_on marker {TODAY}")
+    warn("sitemap lastmod markers look suspicious")
 
 # ── llms.txt (Claude-User) ────────────────────────────────────────────────────
 print("\n── llms.txt (Claude-User) ──")
@@ -66,16 +73,21 @@ if "catalog.json" in llms:    ok("catalog.json linked")
 else:                         fail("catalog.json MISSING")
 if "github" in llms.lower():  ok("GitHub notice present")
 else:                         warn("GitHub notice missing")
-if TODAY in llms:             ok(f"date {TODAY} found")
-else:                         fail(f"date {TODAY} MISSING")
+llms_date_match = re.search(r"Last updated: (\d{4}-\d{2}-\d{2})", llms)
+if not llms_date_match:
+    fail("llms.txt date marker MISSING")
+else:
+    llms_date = llms_date_match.group(1)
+    ok(f"llms.txt date marker found: {llms_date}")
+    if llms_date > TODAY:
+        fail(f"llms.txt date is in the future: {llms_date}")
 
 # ── catalog.json (GPTBot) ─────────────────────────────────────────────────────
 print("\n── catalog.json (GPTBot) ──")
 cat_raw = fetch("https://katalogai.io/catalog.json", ua="GPTBot/1.0")
 cat = json.loads(cat_raw)
 ok(f"{len(cat)} entries parsed")
-stale_entries = [e["id"] for e in cat if e.get("date") != TODAY]
-invalid_entry_dates = [e.get("id", "?") for e in cat if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", e.get("date", ""))]
+invalid_entry_dates = [e.get("id", "?") for e in cat if not ISO_DATE_RE.fullmatch(e.get("date", ""))]
 if invalid_entry_dates:
     fail(f"invalid entry date format: {invalid_entry_dates}")
 else:
@@ -83,7 +95,7 @@ else:
 future_entries = [e.get("id", "?") for e in cat if e.get("date", "") > TODAY]
 if future_entries:
     fail(f"future entry dates detected: {future_entries}")
-required_fields = ["id", "brand", "tags", "site", "date", "counter"]
+required_fields = ["id", "brand", "tags", "site", "inst", "date"]
 for e in cat:
     for field in required_fields:
         if field not in e:
@@ -99,8 +111,13 @@ if "datePublished" in html:   ok("JSON-LD datePublished present")
 else:                         fail("datePublished MISSING in JSON-LD")
 if "dateModified" in html:    ok("JSON-LD dateModified present")
 else:                         fail("dateModified MISSING in JSON-LD")
-if TODAY in html:             ok(f"date {TODAY} found")
-else:                         fail(f"date {TODAY} MISSING")
+if re.search(r"Page generated: (\d{4}-\d{2}-\d{2})", html):
+    page_date = re.search(r"Page generated: (\d{4}-\d{2}-\d{2})", html).group(1)
+    ok(f"page generated marker found: {page_date}")
+    if page_date > TODAY:
+        fail(f"page generated marker is in the future: {page_date}")
+else:
+    fail("page generated marker MISSING")
 if 'rel="canonical"' in html: ok("canonical link present")
 else:                         fail("canonical link MISSING")
 if "ai-instructions" in html: ok("ai-instructions link present")
@@ -122,8 +139,14 @@ print("\n── Semantic docs (AI_*.md) ──")
 for doc in ["AI_METHOD.md", "AI_FAQ.md", "AI_SCHEMA.md"]:
     try:
         content = fetch(f"https://katalogai.io/{doc}")
-        if TODAY in content: ok(f"{doc}: date {TODAY} present")
-        else:                fail(f"{doc}: date {TODAY} MISSING")
+        date_match = re.search(r"Updated: (\d{4}-\d{2}-\d{2})", content)
+        if not date_match:
+            fail(f"{doc}: updated marker MISSING")
+        else:
+            doc_date = date_match.group(1)
+            ok(f"{doc}: updated marker found: {doc_date}")
+            if doc_date > TODAY:
+                fail(f"{doc}: updated marker in the future: {doc_date}")
     except Exception as e:
         fail(f"{doc}: {e}")
 

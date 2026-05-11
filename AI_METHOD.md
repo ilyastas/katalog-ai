@@ -19,11 +19,11 @@ Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are ca
 5. Run sync_all.py and then validate_sync.py.
 6. Never edit generated outputs directly.
 
-## Date/Counter Update Policy
+## Date Policy
 
 - sync_all.py does NOT perform daily mass bump for MASTER rows.
-- date and counter for a company are updated only when that company record changes.
-- generated artifacts keep daily generation markers, while company data dates remain event-based.
+- date for a company is updated only when that company record changes.
+- generated metadata dates follow the latest company data date.
 
 ## Data Integrity Rules
 

@@ -3,7 +3,6 @@ import json
 import re
 import sys
 import xml.etree.ElementTree as ET
-from datetime import date
 from pathlib import Path
 
 
@@ -94,7 +93,7 @@ def main() -> int:
     for master in MASTER_FILES:
         all_rows.extend(parse_master(master))
     expected_last_updated = max(row["date"] for row in all_rows)
-    generated_on = date.today().isoformat()
+    generated_on = expected_last_updated
 
     catalog_path = ROOT / "catalog.json"
     catalog_bytes = read_bytes(catalog_path)

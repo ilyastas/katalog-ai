@@ -3,7 +3,6 @@ import json
 import re
 import sys
 import hashlib
-from datetime import date
 from pathlib import Path
 from typing import Final
 
@@ -137,10 +136,10 @@ def build_ai_method(last_updated: str) -> str:
         "4. Keep tags bilingual (EN + RU) and include geo tags where relevant.\n"
         "5. Run sync_all.py and then validate_sync.py.\n"
         "6. Never edit generated outputs directly.\n\n"
-        "## Date/Counter Update Policy\n\n"
+        "## Date Policy\n\n"
         "- sync_all.py does NOT perform daily mass bump for MASTER rows.\n"
-        "- date and counter for a company are updated only when that company record changes.\n"
-        "- generated artifacts keep daily generation markers, while company data dates remain event-based.\n\n"
+        "- date for a company is updated only when that company record changes.\n"
+        "- generated metadata dates follow the latest company data date.\n\n"
         "## Data Integrity Rules\n\n"
         "- catalog.json keys: id, brand, tags, site, inst, date; optional: wikidata (Wikidata QID, e.g. Q139710659)\n"
         "- Dates use ISO format: YYYY-MM-DD\n"
@@ -665,7 +664,6 @@ def build_robots(last_updated: str) -> str:
 
 
 def main() -> int:
-    generated_on = date.today().isoformat()
     changed: list[str] = []
 
     all_rows: list[dict[str, str]] = []
@@ -673,6 +671,7 @@ def main() -> int:
         all_rows.extend(parse_master(master))
 
     last_updated = max(row["date"] for row in all_rows)
+    generated_on = last_updated
 
     catalog_content = json.dumps(all_rows, ensure_ascii=False, indent=2) + "\n"
     if write_text(ROOT / "catalog.json", catalog_content):
