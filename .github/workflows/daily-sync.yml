@@ -47,12 +47,9 @@ jobs:
           from pathlib import Path
           root = Path('.')
           data = json.loads((root / 'catalog.json').read_text(encoding='utf-8'))
+          # Submit only canonical HTML pages.
           urls = [
               "https://katalogai.io/",
-              "https://katalogai.io/catalog.json",
-              "https://katalogai.io/llms.txt",
-              "https://katalogai.io/sitemap.xml",
-              "https://katalogai.io/README.md",
           ]
           urls.extend(f"https://katalogai.io/company/{row['id']}.html" for row in data)
           payload = {
