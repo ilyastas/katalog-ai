@@ -598,36 +598,21 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
 
 
 def build_sitemap(last_updated: str, all_rows: list[dict[str, str]]) -> str:
-    # Dynamic lastmod strategy: use row date for company pages, last_updated for content indexes
-    # This prevents spam-update signals to search engines when content hasn't actually changed
     body = ""
 
-    # Index pages (updated frequently when any company changes)
-    index_urls = [
+    # Sitemap contains only HTML pages — non-HTML resources (json/txt/md) cause Bing
+    # indexing errors because search engines can't index them as web pages.
+    # Non-HTML files are discoverable via llms.txt / robots.txt / ai-plugin.json for LLM crawlers.
+    html_urls: list[tuple[str, str]] = [
         ("https://katalogai.io/", last_updated),
-        ("https://katalogai.io/catalog.json", last_updated),
-        ("https://katalogai.io/llms.txt", last_updated),
-        ("https://katalogai.io/README.md", last_updated),
-        ("https://katalogai.io/AI_METHOD.md", last_updated),
-        ("https://katalogai.io/AI_SCHEMA.md", last_updated),
-        ("https://katalogai.io/AI_FAQ.md", last_updated),
     ]
-
-    # Master files - use max company date (indicates when data was last modified)
-    max_company_date = max([row["date"] for row in all_rows], default=last_updated)
-    index_urls.extend([
-        ("https://katalogai.io/MASTER_KZ.md", max_company_date),
-        ("https://katalogai.io/MASTER_RU.md", max_company_date),
-    ])
-
-    # Company pages - use individual company date (only signals update if company data changed)
-    # This is critical: prevents daily noise in search indexes from auto-bump of COUNTER
+    # Company pages — use individual company date
     for row in all_rows:
         company_date = row.get("date", last_updated)
         url = f"https://katalogai.io/{company_href(row['id'])}"
-        index_urls.append((url, company_date))
+        html_urls.append((url, company_date))
 
-    for loc, lastmod in index_urls:
+    for loc, lastmod in html_urls:
         body += (
             "  <url>\n"
             f"    <loc>{loc}</loc>\n"

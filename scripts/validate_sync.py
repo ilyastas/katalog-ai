@@ -166,14 +166,6 @@ def main() -> int:
     }
     required_locs = {
         "https://katalogai.io/",
-        "https://katalogai.io/llms.txt",
-        "https://katalogai.io/catalog.json",
-        "https://katalogai.io/MASTER_KZ.md",
-        "https://katalogai.io/MASTER_RU.md",
-        "https://katalogai.io/README.md",
-        "https://katalogai.io/AI_METHOD.md",
-        "https://katalogai.io/AI_SCHEMA.md",
-        "https://katalogai.io/AI_FAQ.md",
     }
     if not required_locs.issubset(loc_values):
         fail("sitemap.xml required endpoints drift: run python scripts/sync_all.py")
@@ -190,8 +182,7 @@ def main() -> int:
     lastmod_values = {
         (node.text or "").strip() for node in tree.findall("sm:url/sm:lastmod", ns)
     }
-    # Lastmod strategy: index pages use generated_on, company pages use row dates
-    # This prevents spam signals to search engines when only COUNTER is bumped
+    # Sitemap contains only HTML pages; lastmod = last_updated (index) or row date (company pages)
     valid_dates = {generated_on} | {row["date"] for row in all_rows}
     if not lastmod_values.issubset(valid_dates):
         fail(f"sitemap.xml lastmod contains unexpected dates: run python scripts/sync_all.py")
