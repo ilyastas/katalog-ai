@@ -72,3 +72,4 @@ Wikidata: https://www.wikidata.org/wiki/Q275167
 Tags: IT, Search, Поиск, Технологии, Russia, Россия
 Website: https://yandex.ru
 Wikidata: https://www.wikidata.org/wiki/Q840552
+
