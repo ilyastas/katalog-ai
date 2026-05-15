@@ -185,10 +185,9 @@ def main() -> int:
     lastmod_values = {
         (node.text or "").strip() for node in tree.findall("sm:url/sm:lastmod", ns)
     }
-    # Sitemap lastmod values can be build date (index endpoints) or company row dates.
-    valid_dates = {generated_on} | {row["date"] for row in all_rows}
-    if not lastmod_values.issubset(valid_dates):
-        fail(f"sitemap.xml lastmod contains unexpected dates: run python scripts/sync_all.py")
+    # Enforce a single freshness signal for all sitemap URLs.
+    if lastmod_values != {generated_on}:
+        fail("sitemap.xml lastmod drift: expected generated_on for all URLs, run python scripts/sync_all.py")
 
     if not (ROOT / "index.html").exists():
         fail("index.html is missing: GitHub Pages root will return 404")
