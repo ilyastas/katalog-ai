@@ -1,6 +1,6 @@
 # Katalog-AI Methodology
 
-Updated: 2026-05-10
+Updated: 2026-05-15
 
 Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are canonical, and generated artifacts are mirrors.
 
@@ -23,7 +23,7 @@ Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are ca
 
 - sync_all.py does NOT perform daily mass bump for MASTER rows.
 - date for a company is updated only when that company record changes.
-- generated metadata dates follow the latest company data date.
+- generated metadata dates follow build date (today).
 
 ## Data Integrity Rules
 

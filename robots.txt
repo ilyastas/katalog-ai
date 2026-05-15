@@ -15,4 +15,6 @@ Disallow: /.infra/
 
 Sitemap: https://katalogai.io/sitemap.xml
 
-# Updated on 2026-05-10
+Sitemap: https://katalogai.io/llms.txt
+
+# Updated on 2026-05-15

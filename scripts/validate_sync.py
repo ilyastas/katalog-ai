@@ -3,6 +3,7 @@ import json
 import re
 import sys
 import xml.etree.ElementTree as ET
+from datetime import date
 from pathlib import Path
 
 
@@ -93,7 +94,7 @@ def main() -> int:
     for master in MASTER_FILES:
         all_rows.extend(parse_master(master))
     expected_last_updated = max(row["date"] for row in all_rows)
-    generated_on = expected_last_updated
+    generated_on = date.today().isoformat()
 
     catalog_path = ROOT / "catalog.json"
     catalog_bytes = read_bytes(catalog_path)
@@ -166,6 +167,8 @@ def main() -> int:
     }
     required_locs = {
         "https://katalogai.io/",
+        "https://katalogai.io/catalog.json",
+        "https://katalogai.io/llms.txt",
     }
     if not required_locs.issubset(loc_values):
         fail("sitemap.xml required endpoints drift: run python scripts/sync_all.py")
@@ -182,7 +185,7 @@ def main() -> int:
     lastmod_values = {
         (node.text or "").strip() for node in tree.findall("sm:url/sm:lastmod", ns)
     }
-    # Sitemap contains only HTML pages; lastmod = last_updated (index) or row date (company pages)
+    # Sitemap lastmod values can be build date (index endpoints) or company row dates.
     valid_dates = {generated_on} | {row["date"] for row in all_rows}
     if not lastmod_values.issubset(valid_dates):
         fail(f"sitemap.xml lastmod contains unexpected dates: run python scripts/sync_all.py")

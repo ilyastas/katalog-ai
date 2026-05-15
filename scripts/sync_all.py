@@ -3,6 +3,7 @@ import json
 import re
 import sys
 import hashlib
+from datetime import date
 from pathlib import Path
 from typing import Final
 
@@ -139,7 +140,7 @@ def build_ai_method(last_updated: str) -> str:
         "## Date Policy\n\n"
         "- sync_all.py does NOT perform daily mass bump for MASTER rows.\n"
         "- date for a company is updated only when that company record changes.\n"
-        "- generated metadata dates follow the latest company data date.\n\n"
+        "- generated metadata dates follow build date (today).\n\n"
         "## Data Integrity Rules\n\n"
         "- catalog.json keys: id, brand, tags, site, inst, date; optional: wikidata (Wikidata QID, e.g. Q139710659)\n"
         "- Dates use ISO format: YYYY-MM-DD\n"
@@ -600,19 +601,19 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
 def build_sitemap(last_updated: str, all_rows: list[dict[str, str]]) -> str:
     body = ""
 
-    # Sitemap contains only HTML pages — non-HTML resources (json/txt/md) cause Bing
-    # indexing errors because search engines can't index them as web pages.
-    # Non-HTML files are discoverable via llms.txt / robots.txt / ai-plugin.json for LLM crawlers.
-    html_urls: list[tuple[str, str]] = [
+    # Include machine-readable discovery endpoints for LLM crawlers.
+    sitemap_urls: list[tuple[str, str]] = [
         ("https://katalogai.io/", last_updated),
+        ("https://katalogai.io/catalog.json", last_updated),
+        ("https://katalogai.io/llms.txt", last_updated),
     ]
     # Company pages — use individual company date
     for row in all_rows:
         company_date = row.get("date", last_updated)
         url = f"https://katalogai.io/{company_href(row['id'])}"
-        html_urls.append((url, company_date))
+        sitemap_urls.append((url, company_date))
 
-    for loc, lastmod in html_urls:
+    for loc, lastmod in sitemap_urls:
         body += (
             "  <url>\n"
             f"    <loc>{loc}</loc>\n"
@@ -644,6 +645,7 @@ def build_robots(last_updated: str) -> str:
         "Disallow: /.infra/\n\n"
         "# AI access policy: all crawlers are allowed via User-agent: *\n\n"
         "Sitemap: https://katalogai.io/sitemap.xml\n\n"
+        "Sitemap: https://katalogai.io/llms.txt\n\n"
         f"# Updated on {last_updated}\n"
     )
 
@@ -656,7 +658,7 @@ def main() -> int:
         all_rows.extend(parse_master(master))
 
     last_updated = max(row["date"] for row in all_rows)
-    generated_on = last_updated
+    generated_on = date.today().isoformat()
 
     catalog_content = json.dumps(all_rows, ensure_ascii=False, indent=2) + "\n"
     if write_text(ROOT / "catalog.json", catalog_content):

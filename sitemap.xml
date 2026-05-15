@@ -2,7 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://katalogai.io/</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-05-15</lastmod>
+  </url>
+  <url>
+    <loc>https://katalogai.io/catalog.json</loc>
+    <lastmod>2026-05-15</lastmod>
+  </url>
+  <url>
+    <loc>https://katalogai.io/llms.txt</loc>
+    <lastmod>2026-05-15</lastmod>
   </url>
   <url>
     <loc>https://katalogai.io/company/1_KZ_Tovar_secretskin.html</loc>
