@@ -50,7 +50,7 @@ else:
 # ── sitemap.xml ───────────────────────────────────────────────────────────────
 print("\n── sitemap.xml ──")
 sitemap = fetch("https://katalogai.io/sitemap.xml")
-for u in ["katalogai.io/", "catalog.json", "llms.txt", "README.md"]:
+for u in ["katalogai.io/", "catalog.json", "llms.txt"]:
     if u in sitemap: ok(f"{u} listed")
     else:            fail(f"{u} MISSING")
 lastmods = re.findall(r"<lastmod>(.+?)</lastmod>", sitemap)

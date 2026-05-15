@@ -607,9 +607,9 @@ def build_sitemap(last_updated: str, all_rows: list[dict[str, str]]) -> str:
         ("https://katalogai.io/catalog.json", last_updated),
         ("https://katalogai.io/llms.txt", last_updated),
     ]
-    # Company pages — use individual company date
+    # Company pages are generated artifacts; align lastmod with current build date.
     for row in all_rows:
-        company_date = row.get("date", last_updated)
+        company_date = last_updated
         url = f"https://katalogai.io/{company_href(row['id'])}"
         sitemap_urls.append((url, company_date))
 
