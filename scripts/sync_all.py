@@ -226,12 +226,12 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
             f'<span class="tag" data-tag="{esc_attr(t)}">{esc(t)}</span>' for t in tags
         )
         inst_html = (
-            f'<div class="inst"><a href="{esc_attr(inst)}" target="_blank" rel="noopener">Instagram</a></div>'
+            f'<div class="inst"><a href="{esc_attr(inst)}" target="_blank" rel="noopener noreferrer">Instagram</a></div>'
             if inst and inst != "-"
             else ""
         )
         site_html = (
-            f'<a href="{esc_attr(site)}" target="_blank" rel="noopener">{esc(site)}</a>'
+            f'<a href="{esc_attr(site)}" target="_blank" rel="noopener noreferrer">{esc(site)}</a>'
             if site and site != "-"
             else ""
         )
@@ -386,7 +386,7 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
         "  <script>\n"
         "    var allData=JSON.parse(document.getElementById('catalog-data').textContent);var activeTag=null;\n"
         "    function parseTags(s){return(s||'').split(',').map(function(t){return t.trim();}).filter(Boolean);}\n"
-        "    function plural(n){return n+' компани'+(n===1?'я':n<5?'и':'й');}\n"
+        "    function plural(n){var m10=n%10,m100=n%100;var form=(m10===1&&m100!==11)?'компания':(m10>=2&&m10<=4&&(m100<12||m100>14))?'компании':'компаний';return n+' '+form;}\n"
         "    function renderTagBtns(tags){\n"
         "      var c=document.getElementById('tag-filters');c.innerHTML='';\n"
         "      tags.forEach(function(tag){\n"
@@ -479,8 +479,8 @@ def build_company_page(row: dict[str, str], generated_on: str) -> str:
         ],
     }
 
-    site_html = f'<a href="{esc(site)}" target="_blank" rel="noopener">{esc(site)}</a>' if site and site != "-" else "-"
-    inst_html = f'<a href="{esc(inst)}" target="_blank" rel="noopener">{esc(inst)}</a>' if inst and inst != "-" else "-"
+    site_html = f'<a href="{esc(site)}" target="_blank" rel="noopener noreferrer">{esc(site)}</a>' if site and site != "-" else "-"
+    inst_html = f'<a href="{esc(inst)}" target="_blank" rel="noopener noreferrer">{esc(inst)}</a>' if inst and inst != "-" else "-"
     tags_html = "".join(f"<li>{esc(t)}</li>" for t in tags)
 
     return (
