@@ -91,11 +91,12 @@ def write_text(path: Path, content: str) -> bool:
     return True
 
 
-def build_readme(last_updated: str, generated_on: str) -> str:
+def build_readme(last_updated: str, generated_on: str, count: int) -> str:
     return (
         "# Katalog-AI: Master-Table Architecture\n\n"
         f"Data updated (content): {last_updated}.\n"
-        f"README generated: {generated_on}.\n\n"
+        f"README generated: {generated_on}.\n"
+        f"Companies: {count}.\n\n"
         "Katalog-AI — машиночитаемый каталог верифицированных компаний из Казахстана и России, оптимизированный для LLM, AI-агентов и поисковых краулеров.\n\n"
         "Проект использует один формат источника истины: master-таблицы в Markdown, которые синхронно зеркалируются в JSON, HTML и индексные файлы. Публичный сайт, удалённый репозиторий и live-артефакты должны описывать один и тот же набор данных без расхождений.\n\n"
         "## Что Это За Проект\n\n"
@@ -542,6 +543,7 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
     lines = [
         "# Katalog-AI LLM Index\n",
         f"Last updated: {last_updated}\n",
+        f"Companies: {len(all_rows)}\n",
         "\n",
         "Single source of truth is stored in regional master tables.\n",
         "\n",
@@ -664,7 +666,7 @@ def main() -> int:
     if write_text(ROOT / "catalog.json", catalog_content):
         changed.append("catalog.json")
 
-    if write_text(ROOT / "README.md", build_readme(last_updated, generated_on)):
+    if write_text(ROOT / "README.md", build_readme(last_updated, generated_on, len(all_rows))):
         changed.append("README.md")
 
     if write_text(ROOT / "AI_METHOD.md", build_ai_method(generated_on)):
