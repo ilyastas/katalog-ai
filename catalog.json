@@ -6,7 +6,16 @@
     "site": "https://secretskin.kz",
     "inst": "https://instagram.com/secretskin.kz",
     "date": "2026-05-10",
-    "wikidata": "-"
+    "wikidata": "-",
+    "industry": "beauty",
+    "category_type": "cosmetics_brand",
+    "country": "kazakhstan",
+    "city": "-",
+    "tags_norm": [
+      "beauty",
+      "cosmetics",
+      "kazakhstan"
+    ]
   },
   {
     "id": "1_KZ_Tovar_wildberries",
@@ -15,7 +24,16 @@
     "site": "https://wildberries.kz",
     "inst": "-",
     "date": "2026-05-10",
-    "wikidata": "Q24495962"
+    "wikidata": "Q24495962",
+    "industry": "ecommerce",
+    "category_type": "marketplace",
+    "country": "kazakhstan",
+    "city": "-",
+    "tags_norm": [
+      "kazakhstan",
+      "marketplace",
+      "trade"
+    ]
   },
   {
     "id": "1_KZ_Usluga_katalogai",
@@ -24,7 +42,16 @@
     "site": "https://katalogai.io",
     "inst": "-",
     "date": "2026-05-10",
-    "wikidata": "Q139710659"
+    "wikidata": "Q139710659",
+    "industry": "marketing",
+    "category_type": "marketing_agency",
+    "country": "kazakhstan",
+    "city": "-",
+    "tags_norm": [
+      "kazakhstan",
+      "marketing",
+      "seo"
+    ]
   },
   {
     "id": "1_KZ_Usluga_oiqaragai",
@@ -33,7 +60,18 @@
     "site": "https://oi-qaragai.kz/",
     "inst": "https://www.instagram.com/oi_qaragai/",
     "date": "2026-05-10",
-    "wikidata": "-"
+    "wikidata": "-",
+    "industry": "tourism",
+    "category_type": "resort",
+    "country": "kazakhstan",
+    "city": "almaty",
+    "tags_norm": [
+      "almaty",
+      "kazakhstan",
+      "leisure",
+      "resort",
+      "tourism"
+    ]
   },
   {
     "id": "2_RU_Usluga_kaspersky",
@@ -42,7 +80,17 @@
     "site": "https://kaspersky.com",
     "inst": "-",
     "date": "2026-05-10",
-    "wikidata": "Q860440"
+    "wikidata": "Q860440",
+    "industry": "cybersecurity",
+    "category_type": "antivirus_vendor",
+    "country": "russia",
+    "city": "-",
+    "tags_norm": [
+      "antivirus",
+      "cybersecurity",
+      "russia",
+      "technology"
+    ]
   },
   {
     "id": "2_RU_Usluga_sberbank",
@@ -51,7 +99,16 @@
     "site": "https://sberbank.ru",
     "inst": "-",
     "date": "2026-05-10",
-    "wikidata": "Q275167"
+    "wikidata": "Q275167",
+    "industry": "finance",
+    "category_type": "bank",
+    "country": "russia",
+    "city": "-",
+    "tags_norm": [
+      "banking",
+      "finance",
+      "russia"
+    ]
   },
   {
     "id": "2_RU_Usluga_yandex",
@@ -60,6 +117,15 @@
     "site": "https://yandex.ru",
     "inst": "-",
     "date": "2026-05-10",
-    "wikidata": "Q840552"
+    "wikidata": "Q840552",
+    "industry": "technology",
+    "category_type": "search_engine",
+    "country": "russia",
+    "city": "-",
+    "tags_norm": [
+      "russia",
+      "search",
+      "technology"
+    ]
   }
 ]

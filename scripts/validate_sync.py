@@ -106,18 +106,33 @@ def main() -> int:
     if not isinstance(catalog_data, list):
         fail("catalog.json must be a JSON array")
 
-    required_keys = ["id", "brand", "tags", "site", "inst", "date"]
+    required_keys = [
+        "id",
+        "brand",
+        "tags",
+        "site",
+        "inst",
+        "date",
+        "industry",
+        "category_type",
+        "country",
+        "city",
+        "tags_norm",
+    ]
     optional_keys = ["wikidata"]
     for item in catalog_data:
         if not isinstance(item, dict):
             fail("catalog.json: each array item must be an object")
-        allowed_keys = required_keys + [k for k in optional_keys if k in item]
-        if list(item.keys()) != allowed_keys:
-            fail(f"catalog.json: unexpected keys {list(item.keys())}, expected {allowed_keys}")
-        for key in required_keys:
+        expected_keys = set(required_keys + [k for k in optional_keys if k in item])
+        if set(item.keys()) != expected_keys:
+            fail(f"catalog.json: unexpected keys {list(item.keys())}, expected set {sorted(expected_keys)}")
+        for key in ["id", "brand", "tags", "site", "inst", "date", "industry", "category_type", "country", "city"]:
             value = item.get(key, "")
             if not isinstance(value, str) or not value.strip():
                 fail(f"catalog.json: empty or invalid '{key}' field detected")
+        tags_norm = item.get("tags_norm")
+        if not isinstance(tags_norm, list) or not all(isinstance(v, str) and v.strip() for v in tags_norm):
+            fail(f"catalog.json: invalid tags_norm for {item.get('id', '<unknown>')}")
         if not is_valid_uri_or_dash(item["site"]):
             fail(f"catalog.json: invalid site value for {item['id']}")
         if not is_valid_uri_or_dash(item["inst"]):
@@ -130,8 +145,22 @@ def main() -> int:
     if normalized_catalog_text != canonical_catalog:
         fail("catalog.json formatting drift: run python scripts/sync_all.py")
 
-    if catalog_data != all_rows:
-        fail("catalog.json is not a strict mirror of MASTER tables")
+    catalog_core = []
+    for item in catalog_data:
+        core = {
+            "id": item["id"],
+            "brand": item["brand"],
+            "tags": item["tags"],
+            "site": item["site"],
+            "inst": item["inst"],
+            "date": item["date"],
+        }
+        if "wikidata" in item:
+            core["wikidata"] = item["wikidata"]
+        catalog_core.append(core)
+
+    if catalog_core != all_rows:
+        fail("catalog.json core fields are not a strict mirror of MASTER tables")
 
     expected_files = [
         "MASTER_KZ.md",
@@ -246,6 +275,8 @@ def main() -> int:
         fail(".well-known/ai-plugin.json missing 'api' field with OpenAPI spec")
     if "company_fields" not in ai_plugin:
         fail(".well-known/ai-plugin.json missing 'company_fields' description")
+    if ai_plugin.get("schema_version") != "v2":
+        fail(".well-known/ai-plugin.json schema_version drift: expected v2")
     company_fields = ai_plugin.get("company_fields", {})
     if company_fields.get("date") != "Registration date in catalog (ISO 8601, immutable after entry)":
         fail(".well-known/ai-plugin.json date contract drift: expected immutable registration date")
@@ -255,6 +286,16 @@ def main() -> int:
         fail(".well-known/ai-plugin.json inst contract drift: expected URL or '-' sentinel")
     if company_fields.get("wikidata") != "Wikidata QID or '-' sentinel":
         fail(".well-known/ai-plugin.json wikidata contract drift: expected QID or '-' sentinel")
+    if company_fields.get("industry") != "Canonical industry label for deterministic filtering":
+        fail(".well-known/ai-plugin.json industry contract drift")
+    if company_fields.get("category_type") != "Canonical business type for deterministic filtering":
+        fail(".well-known/ai-plugin.json category_type contract drift")
+    if company_fields.get("country") != "Canonical country (kazakhstan or russia)":
+        fail(".well-known/ai-plugin.json country contract drift")
+    if company_fields.get("city") != "Canonical city or '-' when not specified":
+        fail(".well-known/ai-plugin.json city contract drift")
+    if company_fields.get("tags_norm") != "Normalized lowercase tags (EN canonical vocabulary)":
+        fail(".well-known/ai-plugin.json tags_norm contract drift")
 
     openapi_path = ROOT / ".well-known" / "openapi.json"
     if not openapi_path.exists():
@@ -265,6 +306,8 @@ def main() -> int:
         fail(f".well-known/openapi.json is invalid JSON: {exc}")
     if openapi_spec.get("openapi", "").startswith("3.0"):
         print("[OK] .well-known/openapi.json is valid OpenAPI 3.0 spec")
+    if openapi_spec.get("info", {}).get("version") != "2.0.0":
+        fail(".well-known/openapi.json info.version drift: expected 2.0.0")
     company_schema = openapi_spec.get("components", {}).get("schemas", {}).get("CompanyRecord", {}).get("properties", {})
     company_required = openapi_spec.get("components", {}).get("schemas", {}).get("CompanyRecord", {}).get("required", [])
     site_schema = company_schema.get("site", {})
@@ -281,6 +324,19 @@ def main() -> int:
         fail(".well-known/openapi.json date contract drift")
     if wikidata_schema.get("description") != "Wikidata QID or '-' sentinel":
         fail(".well-known/openapi.json wikidata contract drift")
+    if company_schema.get("industry", {}).get("description") != "Canonical industry label for deterministic filtering":
+        fail(".well-known/openapi.json industry contract drift")
+    if company_schema.get("category_type", {}).get("description") != "Canonical business type for deterministic filtering":
+        fail(".well-known/openapi.json category_type contract drift")
+    if company_schema.get("country", {}).get("description") != "Canonical country (kazakhstan or russia)":
+        fail(".well-known/openapi.json country contract drift")
+    if company_schema.get("city", {}).get("description") != "Canonical city or '-' if not specified":
+        fail(".well-known/openapi.json city contract drift")
+    if company_schema.get("tags_norm", {}).get("description") != "Normalized lowercase tags (EN canonical vocabulary)":
+        fail(".well-known/openapi.json tags_norm contract drift")
+    required_v2 = {"industry", "category_type", "country", "city", "tags_norm"}
+    if not required_v2.issubset(set(company_required)):
+        fail(".well-known/openapi.json required fields drift: schema v2 normalized fields are missing")
 
     cname_path = ROOT / "CNAME"
     if not cname_path.exists():

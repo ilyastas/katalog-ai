@@ -14,6 +14,54 @@ SEMANTIC_DOCS: Final[list[str]] = ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]
 TABLE_RE: Final[re.Pattern[str]] = re.compile(r"^\|(.+)\|$")
 DATE_RE: Final[re.Pattern[str]] = re.compile(r"\d{4}-\d{2}-\d{2}")
 
+CANON_TAG_MAP: Final[dict[str, str]] = {
+    "cosmetics": "cosmetics",
+    "beauty": "beauty",
+    "косметика": "cosmetics",
+    "красота": "beauty",
+    "marketplace": "marketplace",
+    "trade": "trade",
+    "маркетплейс": "marketplace",
+    "торговля": "trade",
+    "marketing": "marketing",
+    "seo": "seo",
+    "маркетинг": "marketing",
+    "leisure": "leisure",
+    "resort": "resort",
+    "tourism": "tourism",
+    "туризм": "tourism",
+    "отдых": "leisure",
+    "almaty": "almaty",
+    "алматы": "almaty",
+    "cybersecurity": "cybersecurity",
+    "кибербезопасность": "cybersecurity",
+    "antivirus": "antivirus",
+    "антивирус": "antivirus",
+    "finance": "finance",
+    "banking": "banking",
+    "финансы": "finance",
+    "банк": "banking",
+    "банкинг": "banking",
+    "it": "technology",
+    "search": "search",
+    "поиск": "search",
+    "технологии": "technology",
+    "kazakhstan": "kazakhstan",
+    "казахстан": "kazakhstan",
+    "russia": "russia",
+    "россия": "russia",
+}
+
+COUNTRY_BY_REGION: Final[dict[str, str]] = {
+    "KZ": "kazakhstan",
+    "RU": "russia",
+}
+
+COUNTRY_CODE_BY_NAME: Final[dict[str, str]] = {
+    "kazakhstan": "KZ",
+    "russia": "RU",
+}
+
 
 def fail(msg: str) -> None:
     print(f"[FAIL] {msg}")
@@ -35,6 +83,80 @@ def normalize_cell(value: str) -> str:
     if value.startswith("<") and value.endswith(">"):
         return value[1:-1].strip()
     return value
+
+
+def row_str(row: dict[str, object], key: str) -> str:
+    value = row.get(key, "")
+    return value if isinstance(value, str) else ""
+
+
+def split_tags(value: str) -> list[str]:
+    return [t.strip() for t in value.split(",") if t.strip()]
+
+
+def canonicalize_tag(tag: str) -> str:
+    lowered = tag.strip().lower().replace("ё", "е")
+    return CANON_TAG_MAP.get(lowered, lowered)
+
+
+def derive_normalized_fields(row: dict[str, object]) -> tuple[str, str, str, str, list[str]]:
+    row_id = row_str(row, "id")
+    region = row_id.split("_")[1] if "_" in row_id else ""
+    tags_norm = sorted({canonicalize_tag(t) for t in split_tags(row_str(row, "tags"))})
+
+    country = COUNTRY_BY_REGION.get(region, "-")
+    if "kazakhstan" in tags_norm:
+        country = "kazakhstan"
+    if "russia" in tags_norm:
+        country = "russia"
+
+    city = "almaty" if "almaty" in tags_norm else "-"
+
+    industry = "-"
+    tags_set = set(tags_norm)
+    if {"tourism", "resort", "leisure"} & tags_set:
+        industry = "tourism"
+    elif {"cosmetics", "beauty"} & tags_set:
+        industry = "beauty"
+    elif {"marketplace", "trade"} & tags_set:
+        industry = "ecommerce"
+    elif {"cybersecurity", "antivirus"} & tags_set:
+        industry = "cybersecurity"
+    elif {"finance", "banking"} & tags_set:
+        industry = "finance"
+    elif {"marketing", "seo"} & tags_set:
+        industry = "marketing"
+    elif {"technology", "search"} & tags_set:
+        industry = "technology"
+
+    category_type = "-"
+    if "resort" in tags_set:
+        category_type = "resort"
+    elif "marketplace" in tags_set:
+        category_type = "marketplace"
+    elif "banking" in tags_set:
+        category_type = "bank"
+    elif "antivirus" in tags_set:
+        category_type = "antivirus_vendor"
+    elif "search" in tags_set:
+        category_type = "search_engine"
+    elif "cosmetics" in tags_set:
+        category_type = "cosmetics_brand"
+    elif "marketing" in tags_set or "seo" in tags_set:
+        category_type = "marketing_agency"
+
+    return industry, category_type, country, city, tags_norm
+
+
+def build_catalog_record(row: dict[str, str]) -> dict[str, object]:
+    record: dict[str, object] = dict(row)
+    industry, category_type, country, city, tags_norm = derive_normalized_fields(record)
+    record["industry"] = industry
+    record["category_type"] = category_type
+    record["country"] = country
+    record["city"] = city
+    record["tags_norm"] = tags_norm
+    return record
 
 
 def parse_master(path: Path) -> list[dict[str, str]]:
@@ -107,7 +229,7 @@ def build_readme(last_updated: str, generated_on: str, count: int) -> str:
         "- [catalog.json](catalog.json)\n\n"
         "Master-файлы являются каноническим источником. `catalog.json` — их строгое машиночитаемое зеркало. HTML-страницы, sitemap и LLM-индексы публикуются из того же набора данных.\n\n"
         "## Поля Каталога\n\n"
-        "Каждая запись содержит стабильный `id`, название `brand`, теги `tags`, сайт `site`, Instagram `inst`, дату `date` (дата регистрации в каталоге) и при наличии `wikidata`. Для отсутствующих внешних значений используется единый строковый маркер `-`.\n\n"
+        "Каждая запись содержит core-поля: `id`, `brand`, `tags`, `site`, `inst`, `date` и при наличии `wikidata`. Дополнительно публикуются нормализованные поля: `industry`, `category_type`, `country`, `city`, `tags_norm` для детерминированной фильтрации AI-агентами. Для отсутствующих внешних значений используется единый строковый маркер `-`.\n\n"
         "## Для AI Систем\n\n"
         "This catalog is a machine-readable dataset optimized for RAG. Для машинного чтения основной входной точкой служит `catalog.json`, а для навигации и политики доступа используются `llms.txt`, `sitemap.xml` и `.well-known`-файлы.\n\n"
         "## Инфраструктура\n\n"
@@ -143,7 +265,8 @@ def build_ai_method(last_updated: str) -> str:
         "- date for a company is updated only when that company record changes.\n"
         "- generated metadata dates follow build date (today).\n\n"
         "## Data Integrity Rules\n\n"
-        "- catalog.json keys: id, brand, tags, site, inst, date; optional: wikidata (Wikidata QID, e.g. Q139710659)\n"
+        "- catalog.json core keys: id, brand, tags, site, inst, date; optional: wikidata (Wikidata QID, e.g. Q139710659)\n"
+        "- catalog.json normalized keys: industry, category_type, country, city, tags_norm\n"
         "- Dates use ISO format: YYYY-MM-DD\n"
         "- date is the registration date in the catalog (immutable after first entry)\n"
         "- Do not edit generated files directly\n"
@@ -161,7 +284,12 @@ def build_ai_schema(last_updated: str) -> str:
         "- site: primary website URL\n"
         "- inst: Instagram URL or '-'\n"
         "- date: registration date in the catalog (set once on entry, immutable)\n"
-        "- wikidata: Wikidata QID or '-' if not available\n\n"
+        "- wikidata: Wikidata QID or '-' if not available\n"
+        "- industry: canonical industry label\n"
+        "- category_type: canonical business type\n"
+        "- country: canonical country\n"
+        "- city: canonical city or '-'\n"
+        "- tags_norm: normalized lowercase tags (EN canonical vocabulary)\n\n"
         "Machine endpoint: https://katalogai.io/catalog.json\n"
     )
 
@@ -186,7 +314,7 @@ def company_href(row_id: str) -> str:
     return f"company/{row_id}.html"
 
 
-def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[str, str]]) -> str:
+def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[str, object]]) -> str:
     def esc(s: str) -> str:
         return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
@@ -200,8 +328,8 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
     # Generate hidden navigation hub for crawlers (Entry Point)
     nav_links = ""
     for r in all_rows:
-        href = company_href(r["id"])
-        brand = r.get("brand", "")
+        href = company_href(row_str(r, "id"))
+        brand = row_str(r, "brand")
         nav_links += f'  <link rel="related" href="{esc_attr(href)}" title="{esc_attr(brand)}" />\n'
 
     static_rows = ""
@@ -209,18 +337,19 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
     item_list: list[dict[str, object]] = []
 
     for idx, r in enumerate(all_rows, start=1):
-        region = (r["id"].split("_")[1]) if "_" in r["id"] else ""
-        site = r.get("site", "")
-        inst = r.get("inst", "")
-        tags = [t.strip() for t in (r.get("tags", "").split(",")) if t.strip()]
-        profile = company_href(r["id"])
+        row_id = row_str(r, "id")
+        region = (row_id.split("_")[1]) if "_" in row_id else ""
+        site = row_str(r, "site")
+        inst = row_str(r, "inst")
+        tags = split_tags(row_str(r, "tags"))
+        profile = company_href(row_id)
 
         url_cell = f'<a href="{esc(site)}">{esc(site)}</a>' if site and site != "-" else ""
         static_rows += (
-            f"      <tr><td><a href=\"{esc_attr(profile)}\">{esc(r.get('brand',''))}</a></td>"
+            f"      <tr><td><a href=\"{esc_attr(profile)}\">{esc(row_str(r, 'brand'))}</a></td>"
             f"<td>{esc(region)}</td>"
             f"<td>{url_cell}</td>"
-            f"<td>{esc(r.get('tags',''))}</td></tr>\n"
+            f"<td>{esc(row_str(r, 'tags'))}</td></tr>\n"
         )
 
         tags_html = "".join(
@@ -237,9 +366,9 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
             else ""
         )
         static_cards += (
-            f'    <article class="card" data-brand="{esc_attr(r.get("brand", "").lower())}" '
+            f'    <article class="card" data-brand="{esc_attr(row_str(r, "brand").lower())}" '
             f'data-tags="{esc_attr("|".join(t.lower() for t in tags))}">\n'
-            f'      <div class="card-header"><h2><a class="brand-link" href="{esc_attr(profile)}">{esc(r.get("brand", ""))}</a></h2><span class="country">{esc(region)}</span></div>\n'
+            f'      <div class="card-header"><h2><a class="brand-link" href="{esc_attr(profile)}">{esc(row_str(r, "brand"))}</a></h2><span class="country">{esc(region)}</span></div>\n'
             f'      <div class="url">{site_html}</div>\n'
             f'      {inst_html}\n'
             f'      <div class="tags">{tags_html}</div>\n'
@@ -250,7 +379,7 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
                 "@type": "ListItem",
                 "position": idx,
                 "url": f"https://katalogai.io/{profile}",
-                "name": r.get("brand", ""),
+                "name": row_str(r, "brand"),
             }
         )
 
@@ -272,6 +401,14 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
                     ],
                     "dateModified": generated_on,
                     "datePublished": generated_on,
+                    "schemaVersion": "2.0",
+                    "variableMeasured": [
+                        {"@type": "PropertyValue", "name": "industry"},
+                        {"@type": "PropertyValue", "name": "category_type"},
+                        {"@type": "PropertyValue", "name": "country"},
+                        {"@type": "PropertyValue", "name": "city"},
+                        {"@type": "PropertyValue", "name": "tags_norm"},
+                    ],
                     "sameAs": "https://www.wikidata.org/wiki/Q139710659",
                 },
                 {
@@ -428,29 +565,49 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
     )
 
 
-def build_company_page(row: dict[str, str], generated_on: str) -> str:
+def build_company_page(row: dict[str, object], generated_on: str) -> str:
     def esc(s: str) -> str:
         return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
-    brand = row.get("brand", "")
-    tags = [t.strip() for t in row.get("tags", "").split(",") if t.strip()]
-    region = row["id"].split("_")[1] if "_" in row["id"] else ""
-    site = row.get("site", "")
-    inst = row.get("inst", "")
-    wikidata = row.get("wikidata", "")
-    page_url = f"https://katalogai.io/{company_href(row['id'])}"
+    brand = row_str(row, "brand")
+    tags = split_tags(row_str(row, "tags"))
+    tags_norm_val = row.get("tags_norm", [])
+    tags_norm = tags_norm_val if isinstance(tags_norm_val, list) else []
+    row_id = row_str(row, "id")
+    region = row_id.split("_")[1] if "_" in row_id else ""
+    site = row_str(row, "site")
+    inst = row_str(row, "inst")
+    wikidata = row_str(row, "wikidata")
+    industry = row_str(row, "industry")
+    category_type = row_str(row, "category_type")
+    country = row_str(row, "country")
+    city = row_str(row, "city")
+    page_url = f"https://katalogai.io/{company_href(row_id)}"
 
     org: dict[str, object] = {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": brand,
         "url": site if site and site != "-" else page_url,
-        "identifier": row["id"],
+        "identifier": row_id,
         "keywords": tags,
         "areaServed": region,
         "dateModified": generated_on,
         "inLanguage": "ru",
     }
+    if industry and industry != "-":
+        org["industry"] = industry
+    if tags_norm:
+        org["knowsAbout"] = [t for t in tags_norm if isinstance(t, str)]
+    if category_type and category_type != "-":
+        org["additionalType"] = f"https://katalogai.io/types/{category_type}"
+    if country != "-" or city != "-":
+        address: dict[str, str] = {"@type": "PostalAddress"}
+        if country != "-":
+            address["addressCountry"] = COUNTRY_CODE_BY_NAME.get(country, country.upper()[:2])
+        if city != "-":
+            address["addressLocality"] = city.title()
+        org["address"] = address
     if site and site != "-":
         org["sameAs"] = [site]
     if inst and inst != "-":
@@ -507,7 +664,7 @@ def build_company_page(row: dict[str, str], generated_on: str) -> str:
         "  <main>\n"
         "    <p><a href=\"/\">← В каталог</a></p>\n"
         f"    <h1>{esc(brand)}</h1>\n"
-        f"    <p class=\"meta\">ID: {esc(row['id'])} · Обновлено: {esc(row.get('date', generated_on))}</p>\n"
+        f"    <p class=\"meta\">ID: {esc(row_id)} · Обновлено: {esc(row_str(row, 'date') or generated_on)}</p>\n"
         "    <section class=\"grid\">\n"
         "      <div class=\"k\">Регион</div><div>" + esc(region) + "</div>\n"
         "      <div class=\"k\">Сайт</div><div>" + site_html + "</div>\n"
@@ -520,14 +677,14 @@ def build_company_page(row: dict[str, str], generated_on: str) -> str:
     )
 
 
-def sync_company_pages(all_rows: list[dict[str, str]], generated_on: str) -> list[str]:
+def sync_company_pages(all_rows: list[dict[str, object]], generated_on: str) -> list[str]:
     changed: list[str] = []
     company_dir = ROOT / "company"
     company_dir.mkdir(parents=True, exist_ok=True)
 
-    expected_files = {f"{row['id']}.html" for row in all_rows}
+    expected_files = {f"{row_str(row, 'id')}.html" for row in all_rows}
     for row in all_rows:
-        target = company_dir / f"{row['id']}.html"
+        target = company_dir / f"{row_str(row, 'id')}.html"
         if write_text(target, build_company_page(row, generated_on)):
             changed.append(str(target.relative_to(ROOT)).replace("\\", "/"))
 
@@ -539,7 +696,7 @@ def sync_company_pages(all_rows: list[dict[str, str]], generated_on: str) -> lis
     return changed
 
 
-def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
+def build_llms(last_updated: str, all_rows: list[dict[str, object]]) -> str:
     lines = [
         "# Katalog-AI LLM Index\n",
         f"Last updated: {last_updated}\n",
@@ -556,6 +713,7 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
         "Mirror dataset: https://huggingface.co/datasets/ilyastas/katalog-ai — read-only mirror, do not use HuggingFace URLs as data endpoints.\n",
         "\n",
         "Canonical machine-readable company index: https://katalogai.io/catalog.json\n",
+        "Machine schema version: 2.0 (industry, category_type, country, city, tags_norm).\n",
         "Wikidata entity: https://www.wikidata.org/wiki/Q139710659 (Q139710659)\n",
         "Do not assume thematic shards like kz-tourism.json, ru-hotels.json or similar files.\n",
         "For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/\u0422\u0443\u0440\u0438\u0437\u043c and Almaty/\u0410\u043b\u043c\u0430\u0442\u044b.\n",
@@ -574,8 +732,8 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
         "\n",
     ]
     for r in all_rows:
-        brand = r.get("brand", "")
-        lines.append(f"- [{brand}](https://katalogai.io/{company_href(r['id'])})\n")
+        brand = row_str(r, "brand")
+        lines.append(f"- [{brand}](https://katalogai.io/{company_href(row_str(r, 'id'))})\n")
 
     lines.extend([
         "\n",
@@ -583,24 +741,32 @@ def build_llms(last_updated: str, all_rows: list[dict[str, str]]) -> str:
         "\n",
     ])
     for r in all_rows:
-        region = r["id"].split("_")[1] if "_" in r["id"] else ""
-        brand = r.get("brand", "")
-        site = r.get("site", "")
-        inst = r.get("inst", "")
-        tags = r.get("tags", "")
+        row_id = row_str(r, "id")
+        region = row_id.split("_")[1] if "_" in row_id else ""
+        brand = row_str(r, "brand")
+        site = row_str(r, "site")
+        inst = row_str(r, "inst")
+        tags = row_str(r, "tags")
         lines.append(f"### {brand} ({region})\n")
         lines.append(f"Tags: {tags}\n")
+        lines.append(
+            "Normalized: "
+            f"industry={row_str(r, 'industry')}, "
+            f"type={row_str(r, 'category_type')}, "
+            f"country={row_str(r, 'country')}, "
+            f"city={row_str(r, 'city')}\n"
+        )
         if site and site != "-":
             lines.append(f"Website: {site}\n")
         if inst and inst != "-":
             lines.append(f"Instagram: {inst}\n")
-        if r.get("wikidata") and r["wikidata"] != "-":
-            lines.append(f"Wikidata: https://www.wikidata.org/wiki/{r['wikidata']}\n")
+        if row_str(r, "wikidata") and row_str(r, "wikidata") != "-":
+            lines.append(f"Wikidata: https://www.wikidata.org/wiki/{row_str(r, 'wikidata')}\n")
         lines.append("\n")
     return "".join(lines)
 
 
-def build_sitemap(last_updated: str, all_rows: list[dict[str, str]]) -> str:
+def build_sitemap(last_updated: str, all_rows: list[dict[str, object]]) -> str:
     body = ""
 
     # Include machine-readable discovery endpoints for LLM crawlers.
@@ -612,7 +778,7 @@ def build_sitemap(last_updated: str, all_rows: list[dict[str, str]]) -> str:
     # Company pages are generated artifacts; align lastmod with current build date.
     for row in all_rows:
         company_date = last_updated
-        url = f"https://katalogai.io/{company_href(row['id'])}"
+        url = f"https://katalogai.io/{company_href(row_str(row, 'id'))}"
         sitemap_urls.append((url, company_date))
 
     for loc, lastmod in sitemap_urls:
@@ -659,10 +825,12 @@ def main() -> int:
     for master in MASTER_FILES:
         all_rows.extend(parse_master(master))
 
+    catalog_rows = [build_catalog_record(row) for row in all_rows]
+
     last_updated = max(row["date"] for row in all_rows)
     generated_on = date.today().isoformat()
 
-    catalog_content = json.dumps(all_rows, ensure_ascii=False, indent=2) + "\n"
+    catalog_content = json.dumps(catalog_rows, ensure_ascii=False, indent=2) + "\n"
     if write_text(ROOT / "catalog.json", catalog_content):
         changed.append("catalog.json")
 
@@ -678,15 +846,15 @@ def main() -> int:
     if write_text(ROOT / "AI_FAQ.md", build_ai_faq(generated_on)):
         changed.append("AI_FAQ.md")
 
-    if write_text(ROOT / "index.html", build_index_html(last_updated, generated_on, all_rows)):
+    if write_text(ROOT / "index.html", build_index_html(last_updated, generated_on, catalog_rows)):
         changed.append("index.html")
 
-    changed.extend(sync_company_pages(all_rows, generated_on))
+    changed.extend(sync_company_pages(catalog_rows, generated_on))
 
-    if write_text(ROOT / "llms.txt", build_llms(generated_on, all_rows)):
+    if write_text(ROOT / "llms.txt", build_llms(generated_on, catalog_rows)):
         changed.append("llms.txt")
 
-    if write_text(ROOT / "sitemap.xml", build_sitemap(generated_on, all_rows)):
+    if write_text(ROOT / "sitemap.xml", build_sitemap(generated_on, catalog_rows)):
         changed.append("sitemap.xml")
 
     if write_text(ROOT / "robots.txt", build_robots(generated_on)):

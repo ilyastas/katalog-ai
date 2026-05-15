@@ -3,7 +3,7 @@
     "info": {
         "title": "Katalog-AI Catalog API",
         "description": "Machine-readable catalog of verified companies from Kazakhstan and Russia. Optimized for LLM agents and AI search systems.",
-        "version": "1.0.0",
+        "version": "2.0.0",
         "x-apisguru-categories": [
             "business",
             "catalog"
@@ -148,7 +148,12 @@
                     "tags",
                     "site",
                     "inst",
-                    "date"
+                    "date",
+                    "industry",
+                    "category_type",
+                    "country",
+                    "city",
+                    "tags_norm"
                 ],
                 "properties": {
                     "id": {
@@ -190,6 +195,39 @@
                         "description": "Wikidata QID or '-' sentinel",
                         "pattern": "^(Q\\d+|-)$",
                         "example": "Q139710659"
+                    },
+                    "industry": {
+                        "type": "string",
+                        "description": "Canonical industry label for deterministic filtering",
+                        "example": "tourism"
+                    },
+                    "category_type": {
+                        "type": "string",
+                        "description": "Canonical business type for deterministic filtering",
+                        "example": "resort"
+                    },
+                    "country": {
+                        "type": "string",
+                        "description": "Canonical country (kazakhstan or russia)",
+                        "example": "kazakhstan"
+                    },
+                    "city": {
+                        "type": "string",
+                        "description": "Canonical city or '-' if not specified",
+                        "example": "almaty"
+                    },
+                    "tags_norm": {
+                        "type": "array",
+                        "description": "Normalized lowercase tags (EN canonical vocabulary)",
+                        "items": {
+                            "type": "string"
+                        },
+                        "example": [
+                            "tourism",
+                            "resort",
+                            "almaty",
+                            "kazakhstan"
+                        ]
                     }
                 }
             }

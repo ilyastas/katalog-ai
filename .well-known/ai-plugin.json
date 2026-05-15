@@ -1,8 +1,8 @@
 {
-    "schema_version": "v1",
+    "schema_version": "v2",
     "name_for_model": "katalog_ai",
     "name_for_human": "Katalog-AI — AI-каталог компаний",
-    "description_for_model": "AI-native catalog of verified companies from Kazakhstan and Russia. Use catalog.json for machine-readable data. Filter by the 'tags' field for category and geo search. Tags include both English and Russian variants plus city names. Example: tags containing 'Туризм' AND 'Алматы' returns tourism companies in Almaty. This catalog is a machine-readable dataset optimized for RAG. Each company entry has: id (stable identifier), brand (company name), tags (comma-separated semantic tags in EN+RU), site (website URL or '-'), inst (Instagram URL or '-'), date (registration date in catalog, immutable after entry), wikidata (Wikidata QID or '-').",
+    "description_for_model": "AI-native catalog of verified companies from Kazakhstan and Russia. Use catalog.json for machine-readable data. Prefer normalized fields for deterministic filtering: industry, category_type, country, city, tags_norm. The tags field remains multilingual (EN+RU) for recall and compatibility. Example: industry='tourism' AND city='almaty'. Core fields: id, brand, tags, site, inst, date, optional wikidata.",
     "description_for_human": "AI-native каталог верифицированных компаний KZ/RU. Поиск по тегам, гео, категориям.",
     "auth": {
         "type": "none"
@@ -27,10 +27,16 @@
         "site": "Primary website URL or '-'",
         "inst": "Instagram profile URL or '-'",
         "date": "Registration date in catalog (ISO 8601, immutable after entry)",
-        "wikidata": "Wikidata QID or '-' sentinel"
+        "wikidata": "Wikidata QID or '-' sentinel",
+        "industry": "Canonical industry label for deterministic filtering",
+        "category_type": "Canonical business type for deterministic filtering",
+        "country": "Canonical country (kazakhstan or russia)",
+        "city": "Canonical city or '-' when not specified",
+        "tags_norm": "Normalized lowercase tags (EN canonical vocabulary)"
     },
     "search_examples": {
-        "tourism_almaty": "filter tags: Tourism,Туризм,Almaty,Алматы",
+        "tourism_almaty": "filter industry=tourism and city=almaty",
+        "tourism_almaty_fallback": "filter tags: Tourism,Туризм,Almaty,Алматы",
         "all_kz_companies": "filter id prefix: 1_KZ_ or 2_KZ_",
         "all_ru_services": "filter id contains: _RU_ and category Usluga/Service",
         "recent_updates": "sort by date descending"

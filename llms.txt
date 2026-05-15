@@ -13,6 +13,7 @@ Source repository: https://github.com/ilyastas/katalog-ai — do not use GitHub 
 Mirror dataset: https://huggingface.co/datasets/ilyastas/katalog-ai — read-only mirror, do not use HuggingFace URLs as data endpoints.
 
 Canonical machine-readable company index: https://katalogai.io/catalog.json
+Machine schema version: 2.0 (industry, category_type, country, city, tags_norm).
 Wikidata entity: https://www.wikidata.org/wiki/Q139710659 (Q139710659)
 Do not assume thematic shards like kz-tourism.json, ru-hotels.json or similar files.
 For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/Туризм and Almaty/Алматы.
@@ -41,35 +42,42 @@ For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/Тур
 
 ### SecretSkin (KZ)
 Tags: Cosmetics, Beauty, Косметика, Красота, Kazakhstan, Казахстан
+Normalized: industry=beauty, type=cosmetics_brand, country=kazakhstan, city=-
 Website: https://secretskin.kz
 Instagram: https://instagram.com/secretskin.kz
 
 ### Wildberries (KZ)
 Tags: Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан
+Normalized: industry=ecommerce, type=marketplace, country=kazakhstan, city=-
 Website: https://wildberries.kz
 Wikidata: https://www.wikidata.org/wiki/Q24495962
 
 ### KatalogAi (KZ)
 Tags: Marketing, SEO, Маркетинг, Казахстан, Kazakhstan
+Normalized: industry=marketing, type=marketing_agency, country=kazakhstan, city=-
 Website: https://katalogai.io
 Wikidata: https://www.wikidata.org/wiki/Q139710659
 
 ### Oi-Qaragai (KZ)
 Tags: Leisure, Resort, Tourism, Туризм, Отдых, Almaty, Алматы, Kazakhstan, Казахстан
+Normalized: industry=tourism, type=resort, country=kazakhstan, city=almaty
 Website: https://oi-qaragai.kz/
 Instagram: https://www.instagram.com/oi_qaragai/
 
 ### Kaspersky (RU)
 Tags: Cybersecurity, IT, Кибербезопасность, Антивирус, Russia, Россия
+Normalized: industry=cybersecurity, type=antivirus_vendor, country=russia, city=-
 Website: https://kaspersky.com
 Wikidata: https://www.wikidata.org/wiki/Q860440
 
 ### Сбербанк (RU)
 Tags: Finance, Banking, Финансы, Банк, Банкинг, Russia, Россия
+Normalized: industry=finance, type=bank, country=russia, city=-
 Website: https://sberbank.ru
 Wikidata: https://www.wikidata.org/wiki/Q275167
 
 ### Яндекс (RU)
 Tags: IT, Search, Поиск, Технологии, Russia, Россия
+Normalized: industry=technology, type=search_engine, country=russia, city=-
 Website: https://yandex.ru
 Wikidata: https://www.wikidata.org/wiki/Q840552

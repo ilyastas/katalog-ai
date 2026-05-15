@@ -11,5 +11,10 @@ Each catalog entry is an object with these fields:
 - inst: Instagram URL or '-'
 - date: registration date in the catalog (set once on entry, immutable)
 - wikidata: Wikidata QID or '-' if not available
+- industry: canonical industry label
+- category_type: canonical business type
+- country: canonical country
+- city: canonical city or '-'
+- tags_norm: normalized lowercase tags (EN canonical vocabulary)
 
 Machine endpoint: https://katalogai.io/catalog.json

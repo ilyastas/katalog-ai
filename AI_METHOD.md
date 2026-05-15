@@ -27,7 +27,8 @@ Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are ca
 
 ## Data Integrity Rules
 
-- catalog.json keys: id, brand, tags, site, inst, date; optional: wikidata (Wikidata QID, e.g. Q139710659)
+- catalog.json core keys: id, brand, tags, site, inst, date; optional: wikidata (Wikidata QID, e.g. Q139710659)
+- catalog.json normalized keys: industry, category_type, country, city, tags_norm
 - Dates use ISO format: YYYY-MM-DD
 - date is the registration date in the catalog (immutable after first entry)
 - Do not edit generated files directly
