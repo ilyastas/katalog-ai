@@ -1,5 +1,5 @@
 # Katalog-AI LLM Index
-Last updated: 2026-05-15
+Last updated: 2026-05-16
 Companies: 7
 
 Single source of truth is stored in regional master tables.
@@ -81,3 +81,4 @@ Tags: IT, Search, Поиск, Технологии, Russia, Россия
 Normalized: industry=technology, type=search_engine, country=russia, city=-
 Website: https://yandex.ru
 Wikidata: https://www.wikidata.org/wiki/Q840552
+

@@ -1,6 +1,6 @@
 # Katalog-AI Methodology
 
-Updated: 2026-05-15
+Updated: 2026-05-16
 
 Katalog-AI uses a strict source-of-truth pipeline: MASTER markdown tables are canonical, and generated artifacts are mirrors.
 
