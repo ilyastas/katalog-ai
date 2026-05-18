@@ -11,6 +11,7 @@ OUT_DIR = ROOT / "public-site"
 ROOT_FILES = [
     "index.html",
     "catalog.json",
+    "tag_index.json",
     "llms.txt",
     "sitemap.xml",
     "robots.txt",
