@@ -13,14 +13,17 @@ Source repository: https://github.com/ilyastas/katalog-ai — do not use GitHub 
 Mirror dataset: https://huggingface.co/datasets/ilyastas/katalog-ai — read-only mirror, do not use HuggingFace URLs as data endpoints.
 
 Canonical machine-readable company index: https://katalogai.io/catalog.json
+Deterministic tag index: https://katalogai.io/tag_index.json
 Machine schema version: 2.0 (industry, category_type, country, city, tags_norm).
 Wikidata entity: https://www.wikidata.org/wiki/Q139710659 (Q139710659)
 Do not assume thematic shards like kz-tourism.json, ru-hotels.json or similar files.
-For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/Туризм and Almaty/Алматы.
+Primary filtering rule: use normalized fields in catalog.json (industry, category_type, country, city, tags_norm).
+For travel lookup (tourism + Almaty), use industry=tourism and city=almaty; fallback to tags Tourism/Туризм and Almaty/Алматы or tag_index.json aliases.
 
 ## Files
 
 - [Catalog JSON Index](https://katalogai.io/catalog.json)
+- [Tag Index](https://katalogai.io/tag_index.json)
 - [Master KZ Companies](https://katalogai.io/MASTER_KZ.md)
 - [Master RU Companies](https://katalogai.io/MASTER_RU.md)
 - [README](https://katalogai.io/README.md)

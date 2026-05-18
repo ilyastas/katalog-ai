@@ -32,6 +32,7 @@ This catalog is a machine-readable dataset optimized for RAG. Для машин�
 
 - [index.html](index.html)
 - [catalog.json](catalog.json)
+- [tag_index.json](tag_index.json)
 - [llms.txt](llms.txt)
 - [AI_METHOD.md](AI_METHOD.md)
 - [AI_SCHEMA.md](AI_SCHEMA.md)

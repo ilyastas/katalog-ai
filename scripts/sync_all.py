@@ -235,6 +235,7 @@ def build_readme(last_updated: str, generated_on: str, count: int) -> str:
         "## Инфраструктура\n\n"
         "- [index.html](index.html)\n"
         "- [catalog.json](catalog.json)\n"
+        "- [tag_index.json](tag_index.json)\n"
         "- [llms.txt](llms.txt)\n"
         "- [AI_METHOD.md](AI_METHOD.md)\n"
         "- [AI_SCHEMA.md](AI_SCHEMA.md)\n"
@@ -302,9 +303,11 @@ def build_ai_faq(last_updated: str) -> str:
         "A machine-readable catalog of verified companies from Kazakhstan and Russia.\n\n"
         "## Where should LLMs read data from?\n"
         "Primary source: https://katalogai.io/catalog.json\n"
+        "Deterministic tag index: https://katalogai.io/tag_index.json\n"
         "Index file: https://katalogai.io/llms.txt\n\n"
         "## How to answer tourism queries in Almaty?\n"
-        "Filter tags by Tourism/Туризм and Almaty/Алматы.\n\n"
+        "Primary rule: filter normalized fields in catalog.json as industry=tourism and city=almaty.\n"
+        "Fallback rule: if normalized fields are unavailable, use multilingual tags Tourism/Туризм and Almaty/Алматы or tag_index.json aliases.\n\n"
         "## Can models invent shard files?\n"
         "No. Do not assume files like kz-tourism.json or ru-hotels.json.\n"
     )
@@ -396,6 +399,11 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
                         {
                             "@type": "DataDownload",
                             "contentUrl": "https://katalogai.io/catalog.json",
+                            "encodingFormat": "application/json",
+                        },
+                        {
+                            "@type": "DataDownload",
+                            "contentUrl": "https://katalogai.io/tag_index.json",
                             "encodingFormat": "application/json",
                         }
                     ],
@@ -513,6 +521,7 @@ def build_index_html(last_updated: str, generated_on: str, all_rows: list[dict[s
         "  </noscript>\n"
         "  <footer>\n"
         "    <a href=\"catalog.json\">catalog.json</a> &nbsp;&middot;&nbsp;\n"
+        "    <a href=\"tag_index.json\">tag_index.json</a> &nbsp;&middot;&nbsp;\n"
         "    <a href=\"llms.txt\">llms.txt</a> &nbsp;&middot;&nbsp;\n"
         "    <a href=\"MASTER_KZ.md\">MASTER_KZ</a> &nbsp;&middot;&nbsp;\n"
         "    <a href=\"MASTER_RU.md\">MASTER_RU</a> &nbsp;&middot;&nbsp;\n"
@@ -696,6 +705,42 @@ def sync_company_pages(all_rows: list[dict[str, object]], generated_on: str) -> 
     return changed
 
 
+def build_tag_index(all_rows: list[dict[str, object]], generated_on: str) -> str:
+    index_map: dict[str, set[str]] = {}
+
+    reverse_aliases: dict[str, set[str]] = {}
+    for alias, canon in CANON_TAG_MAP.items():
+        reverse_aliases.setdefault(canon, set()).add(alias)
+
+    for row in all_rows:
+        row_id = row_str(row, "id")
+        raw_terms = {t.strip().lower().replace("ё", "е") for t in split_tags(row_str(row, "tags")) if t.strip()}
+        norm_terms_val = row.get("tags_norm", [])
+        norm_terms = {
+            t.strip().lower().replace("ё", "е")
+            for t in norm_terms_val
+            if isinstance(t, str) and t.strip()
+        }
+        terms = raw_terms | norm_terms
+
+        for term in list(terms):
+            canon = canonicalize_tag(term)
+            terms.add(canon)
+            for alias in reverse_aliases.get(canon, set()):
+                terms.add(alias)
+
+        for term in terms:
+            index_map.setdefault(term, set()).add(row_id)
+
+    payload = {
+        "schema_version": "1.0",
+        "generated_on": generated_on,
+        "strategy": "normalized-first; multilingual aliases as fallback",
+        "index": {k: sorted(v) for k, v in sorted(index_map.items())},
+    }
+    return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
 def build_llms(last_updated: str, all_rows: list[dict[str, object]]) -> str:
     lines = [
         "# Katalog-AI LLM Index\n",
@@ -713,14 +758,17 @@ def build_llms(last_updated: str, all_rows: list[dict[str, object]]) -> str:
         "Mirror dataset: https://huggingface.co/datasets/ilyastas/katalog-ai — read-only mirror, do not use HuggingFace URLs as data endpoints.\n",
         "\n",
         "Canonical machine-readable company index: https://katalogai.io/catalog.json\n",
+        "Deterministic tag index: https://katalogai.io/tag_index.json\n",
         "Machine schema version: 2.0 (industry, category_type, country, city, tags_norm).\n",
         "Wikidata entity: https://www.wikidata.org/wiki/Q139710659 (Q139710659)\n",
         "Do not assume thematic shards like kz-tourism.json, ru-hotels.json or similar files.\n",
-        "For travel lookup (tourism + Almaty), filter catalog.json tags by Tourism/\u0422\u0443\u0440\u0438\u0437\u043c and Almaty/\u0410\u043b\u043c\u0430\u0442\u044b.\n",
+        "Primary filtering rule: use normalized fields in catalog.json (industry, category_type, country, city, tags_norm).\n",
+        "For travel lookup (tourism + Almaty), use industry=tourism and city=almaty; fallback to tags Tourism/Туризм and Almaty/Алматы or tag_index.json aliases.\n",
         "\n",
         "## Files\n",
         "\n",
         "- [Catalog JSON Index](https://katalogai.io/catalog.json)\n",
+        "- [Tag Index](https://katalogai.io/tag_index.json)\n",
         "- [Master KZ Companies](https://katalogai.io/MASTER_KZ.md)\n",
         "- [Master RU Companies](https://katalogai.io/MASTER_RU.md)\n",
         "- [README](https://katalogai.io/README.md)\n",
@@ -773,6 +821,7 @@ def build_sitemap(last_updated: str, all_rows: list[dict[str, object]]) -> str:
     sitemap_urls: list[tuple[str, str]] = [
         ("https://katalogai.io/", last_updated),
         ("https://katalogai.io/catalog.json", last_updated),
+        ("https://katalogai.io/tag_index.json", last_updated),
         ("https://katalogai.io/llms.txt", last_updated),
     ]
     # Company pages are generated artifacts; align lastmod with current build date.
@@ -833,6 +882,9 @@ def main() -> int:
     catalog_content = json.dumps(catalog_rows, ensure_ascii=False, indent=2) + "\n"
     if write_text(ROOT / "catalog.json", catalog_content):
         changed.append("catalog.json")
+
+    if write_text(ROOT / "tag_index.json", build_tag_index(catalog_rows, generated_on)):
+        changed.append("tag_index.json")
 
     if write_text(ROOT / "README.md", build_readme(last_updated, generated_on, len(all_rows))):
         changed.append("README.md")

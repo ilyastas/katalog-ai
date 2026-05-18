@@ -1,4 +1,5 @@
 """Симуляция краулеров, поисковиков и LLM-ботов для katalogai.io"""
+import urllib.error
 import urllib.request
 import json
 import re
@@ -71,6 +72,12 @@ if "katalogai.io" in llms:    ok("canonical URL present")
 else:                         fail("canonical URL MISSING")
 if "catalog.json" in llms:    ok("catalog.json linked")
 else:                         fail("catalog.json MISSING")
+if "tag_index.json" in llms:  ok("tag_index.json linked")
+else:                         warn("tag_index.json MISSING (possible deploy lag)")
+if "Primary filtering rule: use normalized fields in catalog.json" in llms:
+    ok("normalized-first guidance present")
+else:
+    warn("normalized-first guidance MISSING in llms.txt (possible deploy lag)")
 if "github" in llms.lower():  ok("GitHub notice present")
 else:                         warn("GitHub notice missing")
 llms_date_match = re.search(r"Last updated: (\d{4}-\d{2}-\d{2})", llms)
@@ -101,6 +108,27 @@ for e in cat:
         if field not in e:
             fail(f"entry {e.get('id')} missing field '{field}'")
 ok("all required fields present") if not errors else None
+
+# ── tag_index.json (alias layer) ─────────────────────────────────────────────
+print("\n── tag_index.json (GPTBot) ──")
+try:
+    tag_index = json.loads(fetch("https://katalogai.io/tag_index.json", ua="GPTBot/1.0"))
+    if tag_index.get("schema_version") == "1.0":
+        ok("tag_index schema version is 1.0")
+    else:
+        fail("tag_index schema version drift")
+    index_map = tag_index.get("index", {})
+    for key in ["tourism", "туризм", "almaty", "алматы"]:
+        ids = index_map.get(key, [])
+        if "1_KZ_Usluga_oiqaragai" in ids:
+            ok(f"tag_index maps '{key}' to Oi-Qaragai")
+        else:
+            fail(f"tag_index missing expected mapping for '{key}'")
+except urllib.error.HTTPError as exc:
+    if exc.code == 404:
+        warn("tag_index.json not live yet (404): likely deploy lag, re-check after push/pages publish")
+    else:
+        fail(f"tag_index.json HTTP error: {exc}")
 
 # ── index.html (GPTBot — no JS) ───────────────────────────────────────────────
 print("\n── index.html (GPTBot, no JS) ──")
@@ -149,6 +177,12 @@ for doc in ["AI_METHOD.md", "AI_FAQ.md", "AI_SCHEMA.md"]:
                 fail(f"{doc}: updated marker in the future: {doc_date}")
     except Exception as e:
         fail(f"{doc}: {e}")
+
+faq = fetch("https://katalogai.io/AI_FAQ.md")
+if "Primary rule: filter normalized fields in catalog.json as industry=tourism and city=almaty." in faq:
+    ok("AI_FAQ normalized-first travel guidance present")
+else:
+    warn("AI_FAQ normalized-first travel guidance MISSING (possible deploy lag)")
 
 # ── Итог ─────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 55)

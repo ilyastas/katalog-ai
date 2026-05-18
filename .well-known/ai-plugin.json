@@ -14,6 +14,7 @@
     },
     "data_sources": {
         "catalog": "https://katalogai.io/catalog.json",
+        "tag_index": "https://katalogai.io/tag_index.json",
         "master_kz": "https://katalogai.io/MASTER_KZ.md",
         "master_ru": "https://katalogai.io/MASTER_RU.md",
         "llm_index": "https://katalogai.io/llms.txt",

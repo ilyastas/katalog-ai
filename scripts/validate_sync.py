@@ -162,6 +162,27 @@ def main() -> int:
     if catalog_core != all_rows:
         fail("catalog.json core fields are not a strict mirror of MASTER tables")
 
+    tag_index_path = ROOT / "tag_index.json"
+    if not tag_index_path.exists():
+        fail("tag_index.json is missing: run python scripts/sync_all.py")
+    try:
+        tag_index_data = json.loads(read_text(tag_index_path))
+    except json.JSONDecodeError as exc:
+        fail(f"tag_index.json is invalid JSON: {exc}")
+    if not isinstance(tag_index_data, dict):
+        fail("tag_index.json must be a JSON object")
+    if tag_index_data.get("schema_version") != "1.0":
+        fail("tag_index.json schema_version drift: expected 1.0")
+    if tag_index_data.get("generated_on") != generated_on:
+        fail("tag_index.json generated_on drift: run python scripts/sync_all.py")
+    index_map = tag_index_data.get("index")
+    if not isinstance(index_map, dict):
+        fail("tag_index.json index must be an object")
+    for key in ["tourism", "туризм", "almaty", "алматы"]:
+        ids = index_map.get(key)
+        if not isinstance(ids, list) or "1_KZ_Usluga_oiqaragai" not in ids:
+            fail(f"tag_index.json missing expected mapping for '{key}' -> 1_KZ_Usluga_oiqaragai")
+
     expected_files = [
         "MASTER_KZ.md",
         "MASTER_RU.md",
@@ -174,14 +195,26 @@ def main() -> int:
         for expected in expected_files:
             if expected not in text:
                 fail(f"{name}: missing link or reference to {expected}")
+    if "tag_index.json" not in read_text(ROOT / "README.md"):
+        fail("README.md must reference tag_index.json")
 
     llms_text = read_text(ROOT / "llms.txt")
     if "AI access policy: open to any AI crawler or agent. No vendor restrictions." not in llms_text:
         fail("llms.txt missing open AI access policy block")
+    if "Primary filtering rule: use normalized fields in catalog.json" not in llms_text:
+        fail("llms.txt must enforce normalized-first filtering guidance")
+    if "https://katalogai.io/tag_index.json" not in llms_text:
+        fail("llms.txt must reference tag_index.json")
     for row in all_rows:
         company_url = f"https://katalogai.io/company/{row['id']}.html"
         if company_url not in llms_text:
             fail(f"llms.txt missing company page URL: {company_url}")
+
+    ai_faq_text = read_text(ROOT / "AI_FAQ.md")
+    if "Primary rule: filter normalized fields in catalog.json as industry=tourism and city=almaty." not in ai_faq_text:
+        fail("AI_FAQ.md must define normalized-first tourism/almaty lookup")
+    if "tag_index.json" not in ai_faq_text:
+        fail("AI_FAQ.md must reference tag_index.json as alias fallback")
 
     for semantic_doc in ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]:
         if not (ROOT / semantic_doc).exists():
@@ -197,6 +230,7 @@ def main() -> int:
     required_locs = {
         "https://katalogai.io/",
         "https://katalogai.io/catalog.json",
+        "https://katalogai.io/tag_index.json",
         "https://katalogai.io/llms.txt",
     }
     if not required_locs.issubset(loc_values):
@@ -244,6 +278,8 @@ def main() -> int:
         fail("index.html must be server-first and not rely on fetch('/catalog.json')")
     if "id=\"catalog-data\"" not in index_text:
         fail("index.html missing embedded catalog-data payload")
+    if "tag_index.json" not in index_text:
+        fail("index.html must expose tag_index.json discovery link")
 
     company_dir = ROOT / "company"
     if not company_dir.exists():
@@ -296,6 +332,9 @@ def main() -> int:
         fail(".well-known/ai-plugin.json city contract drift")
     if company_fields.get("tags_norm") != "Normalized lowercase tags (EN canonical vocabulary)":
         fail(".well-known/ai-plugin.json tags_norm contract drift")
+    ai_data_sources = ai_plugin.get("data_sources", {})
+    if ai_data_sources.get("tag_index") != "https://katalogai.io/tag_index.json":
+        fail(".well-known/ai-plugin.json must include data_sources.tag_index")
 
     openapi_path = ROOT / ".well-known" / "openapi.json"
     if not openapi_path.exists():
@@ -308,6 +347,8 @@ def main() -> int:
         print("[OK] .well-known/openapi.json is valid OpenAPI 3.0 spec")
     if openapi_spec.get("info", {}).get("version") != "2.0.0":
         fail(".well-known/openapi.json info.version drift: expected 2.0.0")
+    if "/tag_index.json" not in openapi_spec.get("paths", {}):
+        fail(".well-known/openapi.json must expose /tag_index.json path")
     company_schema = openapi_spec.get("components", {}).get("schemas", {}).get("CompanyRecord", {}).get("properties", {})
     company_required = openapi_spec.get("components", {}).get("schemas", {}).get("CompanyRecord", {}).get("required", [])
     site_schema = company_schema.get("site", {})

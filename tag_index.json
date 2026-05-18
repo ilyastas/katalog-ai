@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "generated_on": "2026-05-18",
+  "strategy": "normalized-first; multilingual aliases as fallback",
+  "index": {
+    "almaty": [
+      "1_KZ_Usluga_oiqaragai"
+    ],
+    "antivirus": [
+      "2_RU_Usluga_kaspersky"
+    ],
+    "banking": [
+      "2_RU_Usluga_sberbank"
+    ],
+    "beauty": [
+      "1_KZ_Tovar_secretskin"
+    ],
+    "cosmetics": [
+      "1_KZ_Tovar_secretskin"
+    ],
+    "cybersecurity": [
+      "2_RU_Usluga_kaspersky"
+    ],
+    "finance": [
+      "2_RU_Usluga_sberbank"
+    ],
+    "it": [
+      "2_RU_Usluga_kaspersky",
+      "2_RU_Usluga_yandex"
+    ],
+    "kazakhstan": [
+      "1_KZ_Tovar_secretskin",
+      "1_KZ_Tovar_wildberries",
+      "1_KZ_Usluga_katalogai",
+      "1_KZ_Usluga_oiqaragai"
+    ],
+    "leisure": [
+      "1_KZ_Usluga_oiqaragai"
+    ],
+    "marketing": [
+      "1_KZ_Usluga_katalogai"
+    ],
+    "marketplace": [
+      "1_KZ_Tovar_wildberries"
+    ],
+    "resort": [
+      "1_KZ_Usluga_oiqaragai"
+    ],
+    "russia": [
+      "2_RU_Usluga_kaspersky",
+      "2_RU_Usluga_sberbank",
+      "2_RU_Usluga_yandex"
+    ],
+    "search": [
+      "2_RU_Usluga_yandex"
+    ],
+    "seo": [
+      "1_KZ_Usluga_katalogai"
+    ],
+    "technology": [
+      "2_RU_Usluga_kaspersky",
+      "2_RU_Usluga_yandex"
+    ],
+    "tourism": [
+      "1_KZ_Usluga_oiqaragai"
+    ],
+    "trade": [
+      "1_KZ_Tovar_wildberries"
+    ],
+    "алматы": [
+      "1_KZ_Usluga_oiqaragai"
+    ],
+    "антивирус": [
+      "2_RU_Usluga_kaspersky"
+    ],
+    "банк": [
+      "2_RU_Usluga_sberbank"
+    ],
+    "банкинг": [
+      "2_RU_Usluga_sberbank"
+    ],
+    "казахстан": [
+      "1_KZ_Tovar_secretskin",
+      "1_KZ_Tovar_wildberries",
+      "1_KZ_Usluga_katalogai",
+      "1_KZ_Usluga_oiqaragai"
+    ],
+    "кибербезопасность": [
+      "2_RU_Usluga_kaspersky"
+    ],
+    "косметика": [
+      "1_KZ_Tovar_secretskin"
+    ],
+    "красота": [
+      "1_KZ_Tovar_secretskin"
+    ],
+    "маркетинг": [
+      "1_KZ_Usluga_katalogai"
+    ],
+    "маркетплейс": [
+      "1_KZ_Tovar_wildberries"
+    ],
+    "отдых": [
+      "1_KZ_Usluga_oiqaragai"
+    ],
+    "поиск": [
+      "2_RU_Usluga_yandex"
+    ],
+    "россия": [
+      "2_RU_Usluga_kaspersky",
+      "2_RU_Usluga_sberbank",
+      "2_RU_Usluga_yandex"
+    ],
+    "технологии": [
+      "2_RU_Usluga_kaspersky",
+      "2_RU_Usluga_yandex"
+    ],
+    "торговля": [
+      "1_KZ_Tovar_wildberries"
+    ],
+    "туризм": [
+      "1_KZ_Usluga_oiqaragai"
+    ],
+    "финансы": [
+      "2_RU_Usluga_sberbank"
+    ]
+  }
+}

@@ -44,6 +44,70 @@
                 "x-openai-isConsequential": false
             }
         },
+        "/tag_index.json": {
+            "get": {
+                "summary": "Get deterministic tag index",
+                "description": "Returns normalized-first and alias fallback tag -> company id mappings",
+                "operationId": "getTagIndex",
+                "responses": {
+                    "200": {
+                        "description": "Tag index object",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": [
+                                        "schema_version",
+                                        "generated_on",
+                                        "strategy",
+                                        "index"
+                                    ],
+                                    "properties": {
+                                        "schema_version": {
+                                            "type": "string",
+                                            "example": "1.0"
+                                        },
+                                        "generated_on": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2026-05-18"
+                                        },
+                                        "strategy": {
+                                            "type": "string",
+                                            "example": "normalized-first; multilingual aliases as fallback"
+                                        },
+                                        "index": {
+                                            "type": "object",
+                                            "additionalProperties": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "example": {
+                                                "tourism": [
+                                                    "1_KZ_Usluga_oiqaragai"
+                                                ],
+                                                "туризм": [
+                                                    "1_KZ_Usluga_oiqaragai"
+                                                ],
+                                                "almaty": [
+                                                    "1_KZ_Usluga_oiqaragai"
+                                                ],
+                                                "алматы": [
+                                                    "1_KZ_Usluga_oiqaragai"
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-openai-isConsequential": false
+            }
+        },
         "/company/{id}.html": {
             "get": {
                 "summary": "Get company profile page",
