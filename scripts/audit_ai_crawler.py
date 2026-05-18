@@ -68,7 +68,8 @@ for f in sorted(root_files):
         print(f"  {f.name}")
 
 # Ищем JSON файлы компаний вне catalog.json
-json_files = [f for f in root_files if f.suffix == ".json" and f.name != "catalog.json" and f.is_file()]
+allowed_root_json = {"catalog.json", "tag_index.json"}
+json_files = [f for f in root_files if f.suffix == ".json" and f.name not in allowed_root_json and f.is_file()]
 for jf in json_files:
     errors.append((jf.name, "JSON файл компании вне catalog.json", "HIGH — LLM может прочитать устаревшие данные вместо catalog.json"))
 
