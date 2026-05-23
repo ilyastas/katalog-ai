@@ -253,7 +253,7 @@ def main() -> int:
         fail("sitemap.xml lastmod drift: expected generated_on for all URLs, run python scripts/sync_all.py")
 
     if not (ROOT / "index.html").exists():
-        fail("index.html is missing: GitHub Pages root will return 404")
+        fail("index.html is missing: site root will return 404")
 
     readme_text = read_text(ROOT / "README.md")
     if f"README generated: {generated_on}." not in readme_text:

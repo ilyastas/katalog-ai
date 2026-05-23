@@ -73,11 +73,11 @@ else:                         fail("canonical URL MISSING")
 if "catalog.json" in llms:    ok("catalog.json linked")
 else:                         fail("catalog.json MISSING")
 if "tag_index.json" in llms:  ok("tag_index.json linked")
-else:                         warn("tag_index.json MISSING (possible deploy lag)")
+else:                         warn("tag_index.json MISSING (possible CDN propagation lag)")
 if "Primary filtering rule: use normalized fields in catalog.json" in llms:
     ok("normalized-first guidance present")
 else:
-    warn("normalized-first guidance MISSING in llms.txt (possible deploy lag)")
+    warn("normalized-first guidance MISSING in llms.txt (possible CDN propagation lag)")
 if "github" in llms.lower():  ok("GitHub notice present")
 else:                         warn("GitHub notice missing")
 llms_date_match = re.search(r"Last updated: (\d{4}-\d{2}-\d{2})", llms)
@@ -126,7 +126,7 @@ try:
             fail(f"tag_index missing expected mapping for '{key}'")
 except urllib.error.HTTPError as exc:
     if exc.code == 404:
-        warn("tag_index.json not live yet (404): likely deploy lag, re-check after push/pages publish")
+        warn("tag_index.json not live yet (404): likely CDN propagation lag, re-check after push/cache refresh")
     else:
         fail(f"tag_index.json HTTP error: {exc}")
 
@@ -182,7 +182,7 @@ faq = fetch("https://katalogai.io/AI_FAQ.md")
 if "Primary rule: filter normalized fields in catalog.json as industry=tourism and city=almaty." in faq:
     ok("AI_FAQ normalized-first travel guidance present")
 else:
-    warn("AI_FAQ normalized-first travel guidance MISSING (possible deploy lag)")
+    warn("AI_FAQ normalized-first travel guidance MISSING (possible CDN propagation lag)")
 
 # ── Итог ─────────────────────────────────────────────────────────────────────
 print("\n" + "=" * 55)
