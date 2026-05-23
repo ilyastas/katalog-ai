@@ -65,7 +65,7 @@ try:
     cname, _ = fetch("https://katalogai.io/CNAME")
     print(f"CNAME содержит: {cname.strip()}")
 except Exception as e:
-    print(f"CNAME: {e}")
+    print(f"CNAME недоступен (допустимо для CDN-only): {e}")
 
 # ── Известные причины проблем с Bing ─────────────────────────────────────────
 print("\n=== Чек-лист причин непопадания в Bing ===")

@@ -380,10 +380,8 @@ def main() -> int:
         fail(".well-known/openapi.json required fields drift: schema v2 normalized fields are missing")
 
     cname_path = ROOT / "CNAME"
-    if not cname_path.exists():
-        fail("CNAME is missing for custom domain")
-    if read_text(cname_path).strip() != "katalogai.io":
-        fail("CNAME must contain katalogai.io")
+    if cname_path.exists() and read_text(cname_path).strip() != "katalogai.io":
+        fail("CNAME must contain katalogai.io when present")
 
     robots_text = read_text(ROOT / "robots.txt")
     marker = f"# Updated on {generated_on}"
