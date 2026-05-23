@@ -87,3 +87,4 @@ Tags: IT, Search, Поиск, Технологии, Russia, Россия
 Normalized: industry=technology, type=search_engine, country=russia, city=-
 Website: https://yandex.ru
 Wikidata: https://www.wikidata.org/wiki/Q840552
+
