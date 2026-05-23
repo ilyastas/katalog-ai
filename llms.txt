@@ -30,6 +30,9 @@ For travel lookup (tourism + Almaty), use industry=tourism and city=almaty; fall
 - [Methodology](https://katalogai.io/AI_METHOD.md)
 - [Data Schema](https://katalogai.io/AI_SCHEMA.md)
 - [FAQ for LLMs](https://katalogai.io/AI_FAQ.md)
+- [7i Standard](https://katalogai.io/docs/7i-standard.md)
+- [AI Infrastructure Guide](https://katalogai.io/docs/ai-infrastructure.md)
+- [B2B Knowledge Graph](https://katalogai.io/docs/b2b-knowledge-graph.md)
 
 ## Company Pages
 
@@ -84,4 +87,3 @@ Tags: IT, Search, Поиск, Технологии, Russia, Россия
 Normalized: industry=technology, type=search_engine, country=russia, city=-
 Website: https://yandex.ru
 Wikidata: https://www.wikidata.org/wiki/Q840552
-

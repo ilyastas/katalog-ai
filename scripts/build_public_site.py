@@ -27,7 +27,7 @@ ROOT_FILES = [
     "9a1f3247e0e9496aa35d6b290e5862bb.txt",
 ]
 
-DIRS_TO_COPY = ["company", ".well-known"]
+DIRS_TO_COPY = ["company", ".well-known", "docs"]
 
 
 def copy_file(rel_path: str) -> None:

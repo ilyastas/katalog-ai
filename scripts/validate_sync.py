@@ -189,6 +189,9 @@ def main() -> int:
         "AI_METHOD.md",
         "AI_SCHEMA.md",
         "AI_FAQ.md",
+        "docs/7i-standard.md",
+        "docs/ai-infrastructure.md",
+        "docs/b2b-knowledge-graph.md",
     ]
     for name in ["README.md", "llms.txt"]:
         text = read_text(ROOT / name)
@@ -216,7 +219,14 @@ def main() -> int:
     if "tag_index.json" not in ai_faq_text:
         fail("AI_FAQ.md must reference tag_index.json as alias fallback")
 
-    for semantic_doc in ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]:
+    for semantic_doc in [
+        "AI_METHOD.md",
+        "AI_SCHEMA.md",
+        "AI_FAQ.md",
+        "docs/7i-standard.md",
+        "docs/ai-infrastructure.md",
+        "docs/b2b-knowledge-graph.md",
+    ]:
         if not (ROOT / semantic_doc).exists():
             fail(f"{semantic_doc} is missing: run python scripts/sync_all.py")
 
@@ -232,6 +242,12 @@ def main() -> int:
         "https://katalogai.io/catalog.json",
         "https://katalogai.io/tag_index.json",
         "https://katalogai.io/llms.txt",
+        "https://katalogai.io/AI_METHOD.md",
+        "https://katalogai.io/AI_SCHEMA.md",
+        "https://katalogai.io/AI_FAQ.md",
+        "https://katalogai.io/docs/7i-standard.md",
+        "https://katalogai.io/docs/ai-infrastructure.md",
+        "https://katalogai.io/docs/b2b-knowledge-graph.md",
     }
     if not required_locs.issubset(loc_values):
         fail("sitemap.xml required endpoints drift: run python scripts/sync_all.py")

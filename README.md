@@ -37,5 +37,8 @@ This catalog is a machine-readable dataset optimized for RAG. Для машин�
 - [AI_METHOD.md](AI_METHOD.md)
 - [AI_SCHEMA.md](AI_SCHEMA.md)
 - [AI_FAQ.md](AI_FAQ.md)
+- [7i Standard](docs/7i-standard.md)
+- [AI Infrastructure Guide](docs/ai-infrastructure.md)
+- [B2B Knowledge Graph](docs/b2b-knowledge-graph.md)
 - [robots.txt](robots.txt)
 - [sitemap.xml](sitemap.xml)

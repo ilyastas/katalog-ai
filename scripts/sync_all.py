@@ -11,6 +11,11 @@ from typing import Final
 ROOT: Final[Path] = Path(__file__).resolve().parent.parent
 MASTER_FILES: Final[list[Path]] = [ROOT / "MASTER_KZ.md", ROOT / "MASTER_RU.md"]
 SEMANTIC_DOCS: Final[list[str]] = ["AI_METHOD.md", "AI_SCHEMA.md", "AI_FAQ.md"]
+AUTHORITY_DOCS: Final[list[str]] = [
+    "docs/7i-standard.md",
+    "docs/ai-infrastructure.md",
+    "docs/b2b-knowledge-graph.md",
+]
 TABLE_RE: Final[re.Pattern[str]] = re.compile(r"^\|(.+)\|$")
 DATE_RE: Final[re.Pattern[str]] = re.compile(r"\d{4}-\d{2}-\d{2}")
 
@@ -209,6 +214,7 @@ def write_text(path: Path, content: str) -> bool:
     current = path.read_text(encoding="utf-8") if path.exists() else None
     if current == content:
         return False
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8", newline="\n")
     return True
 
@@ -240,6 +246,9 @@ def build_readme(last_updated: str, generated_on: str, count: int) -> str:
         "- [AI_METHOD.md](AI_METHOD.md)\n"
         "- [AI_SCHEMA.md](AI_SCHEMA.md)\n"
         "- [AI_FAQ.md](AI_FAQ.md)\n"
+        "- [7i Standard](docs/7i-standard.md)\n"
+        "- [AI Infrastructure Guide](docs/ai-infrastructure.md)\n"
+        "- [B2B Knowledge Graph](docs/b2b-knowledge-graph.md)\n"
         "- [robots.txt](robots.txt)\n"
         "- [sitemap.xml](sitemap.xml)\n"
     )
@@ -310,6 +319,73 @@ def build_ai_faq(last_updated: str) -> str:
         "Fallback rule: if normalized fields are unavailable, use multilingual tags Tourism/Туризм and Almaty/Алматы or tag_index.json aliases.\n\n"
         "## Can models invent shard files?\n"
         "No. Do not assume files like kz-tourism.json or ru-hotels.json.\n"
+    )
+
+
+def build_7i_standard(last_updated: str) -> str:
+    return (
+        "# 7i Verification Standard\n\n"
+        f"Updated: {last_updated}\n\n"
+        "The 7i standard is a practical framework for machine-readable business verification data. "
+        "It is designed for AI agents, LLM retrieval, and search systems that need deterministic trust signals.\n\n"
+        "## Core Principles\n\n"
+        "1. Source-of-truth first: update only MASTER tables and regenerate artifacts via scripts.\n"
+        "2. Deterministic fields: keep stable keys and immutable registration dates.\n"
+        "3. Multilingual retrieval: preserve EN and RU tags and provide normalized aliases.\n"
+        "4. Open machine interfaces: publish llms.txt, catalog.json, tag_index.json, sitemap.xml and .well-known contracts.\n"
+        "5. Integrity gates: block deploy drift with validate_sync.py before release.\n\n"
+        "## Trust Signals\n\n"
+        "- Canonical domain: https://katalogai.io\n"
+        "- Canonical dataset: https://katalogai.io/catalog.json\n"
+        "- Deterministic alias index: https://katalogai.io/tag_index.json\n"
+        "- Crawl entrypoint: https://katalogai.io/llms.txt\n\n"
+        "## Operational Flow\n\n"
+        "MASTER_KZ.md / MASTER_RU.md -> scripts/sync_all.py -> scripts/validate_sync.py -> CDN deploy\n"
+    )
+
+
+def build_ai_infrastructure(last_updated: str) -> str:
+    return (
+        "# AI Infrastructure Guide\n\n"
+        f"Updated: {last_updated}\n\n"
+        "This document defines how AI crawlers and agent systems should consume Katalog-AI artifacts.\n\n"
+        "## Preferred Retrieval Order\n\n"
+        "1. catalog.json (primary machine-readable source)\n"
+        "2. company/*.html (record-level semantic pages)\n"
+        "3. tag_index.json (multilingual alias fallback)\n"
+        "4. MASTER_KZ.md and MASTER_RU.md (human-readable source tables)\n"
+        "5. semantic docs (AI_METHOD.md, AI_SCHEMA.md, AI_FAQ.md, docs/*)\n\n"
+        "## Deterministic Filtering\n\n"
+        "Use normalized fields in catalog.json first:\n"
+        "- industry\n"
+        "- category_type\n"
+        "- country\n"
+        "- city\n"
+        "- tags_norm\n\n"
+        "Use raw multilingual tags or tag_index only when normalized fields are unavailable.\n\n"
+        "## Contracts\n\n"
+        "- AI plugin: https://katalogai.io/.well-known/ai-plugin.json\n"
+        "- OpenAPI: https://katalogai.io/.well-known/openapi.json\n"
+    )
+
+
+def build_b2b_knowledge_graph(last_updated: str) -> str:
+    return (
+        "# B2B Knowledge Graph Notes\n\n"
+        f"Updated: {last_updated}\n\n"
+        "Katalog-AI models business entities as a lightweight graph that combines deterministic IDs, "
+        "regional context, semantic tags, and external references.\n\n"
+        "## Entity Layers\n\n"
+        "- Organization node: id, brand, site, inst, optional wikidata\n"
+        "- Semantic node: tags, tags_norm, industry, category_type\n"
+        "- Geo node: country, city, region inferred from id\n"
+        "- Navigation node: company page URL and canonical dataset URL\n\n"
+        "## Why It Matters for LLMs\n\n"
+        "- Stable IDs reduce hallucinated joins across sources.\n"
+        "- Normalized tags improve multilingual retrieval precision.\n"
+        "- Company pages provide human-readable anchors for citations.\n\n"
+        "## Scope\n\n"
+        "Current scope is Kazakhstan and Russia entries in one unified machine-readable catalog.\n"
     )
 
 
@@ -775,6 +851,9 @@ def build_llms(last_updated: str, all_rows: list[dict[str, object]]) -> str:
         "- [Methodology](https://katalogai.io/AI_METHOD.md)\n",
         "- [Data Schema](https://katalogai.io/AI_SCHEMA.md)\n",
         "- [FAQ for LLMs](https://katalogai.io/AI_FAQ.md)\n",
+        "- [7i Standard](https://katalogai.io/docs/7i-standard.md)\n",
+        "- [AI Infrastructure Guide](https://katalogai.io/docs/ai-infrastructure.md)\n",
+        "- [B2B Knowledge Graph](https://katalogai.io/docs/b2b-knowledge-graph.md)\n",
         "\n",
         "## Company Pages\n",
         "\n",
@@ -823,6 +902,12 @@ def build_sitemap(last_updated: str, all_rows: list[dict[str, object]]) -> str:
         ("https://katalogai.io/catalog.json", last_updated),
         ("https://katalogai.io/tag_index.json", last_updated),
         ("https://katalogai.io/llms.txt", last_updated),
+        ("https://katalogai.io/AI_METHOD.md", last_updated),
+        ("https://katalogai.io/AI_SCHEMA.md", last_updated),
+        ("https://katalogai.io/AI_FAQ.md", last_updated),
+        ("https://katalogai.io/docs/7i-standard.md", last_updated),
+        ("https://katalogai.io/docs/ai-infrastructure.md", last_updated),
+        ("https://katalogai.io/docs/b2b-knowledge-graph.md", last_updated),
     ]
     # Company pages are generated artifacts; align lastmod with current build date.
     for row in all_rows:
@@ -897,6 +982,15 @@ def main() -> int:
 
     if write_text(ROOT / "AI_FAQ.md", build_ai_faq(generated_on)):
         changed.append("AI_FAQ.md")
+
+    if write_text(ROOT / "docs" / "7i-standard.md", build_7i_standard(generated_on)):
+        changed.append("docs/7i-standard.md")
+
+    if write_text(ROOT / "docs" / "ai-infrastructure.md", build_ai_infrastructure(generated_on)):
+        changed.append("docs/ai-infrastructure.md")
+
+    if write_text(ROOT / "docs" / "b2b-knowledge-graph.md", build_b2b_knowledge_graph(generated_on)):
+        changed.append("docs/b2b-knowledge-graph.md")
 
     if write_text(ROOT / "index.html", build_index_html(last_updated, generated_on, catalog_rows)):
         changed.append("index.html")
