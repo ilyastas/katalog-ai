@@ -1,7 +1,7 @@
 # Katalog-AI: Master-Table Architecture
 
 Data updated (content): 2026-05-10.
-README generated: 2026-05-24.
+README generated: 2026-05-25.
 Companies: 7.
 
 Katalog-AI — машиночитаемый каталог верифицированных компаний из Казахстана и России, оптимизированный для LLM, AI-агентов и поисковых краулеров.
