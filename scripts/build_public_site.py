@@ -60,6 +60,19 @@ def main() -> int:
     for rel_dir in DIRS_TO_COPY:
         copy_dir(rel_dir)
 
+    # --- Cloudflare Pages _headers for charset enforcement ---
+    headers_content = (
+        "/*.md\n"
+        "  Content-Type: text/markdown; charset=utf-8\n"
+        "\n"
+        "/*.txt\n"
+        "  Content-Type: text/plain; charset=utf-8\n"
+        "\n"
+        "/llms.txt\n"
+        "  Content-Type: text/plain; charset=utf-8\n"
+    )
+    (OUT_DIR / "_headers").write_text(headers_content, encoding="utf-8", newline="\n")
+
     print(f"[OK] Built publish bundle: {OUT_DIR}")
     return 0
 
