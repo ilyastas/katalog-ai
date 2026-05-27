@@ -1,8 +1,12 @@
 {
     "$schema": "node_modules/wrangler/config-schema.json",
     "name": "katalog-ai",
-    "compatibility_date": "2026-05-23",
+    "main": "cloudflare_worker_charset.js",
+    "compatibility_date": "2026-05-27",
     "assets": {
         "directory": "public-site"
-    }
+    },
+    "routes": [
+        "katalogai.io/*"
+    ]
 }
