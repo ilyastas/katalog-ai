@@ -1,6 +1,6 @@
 # Katalog-AI LLM Index
 Last updated: 2026-05-27
-Companies: 7
+Companies: 6
 
 Single source of truth is stored in regional master tables.
 
@@ -37,7 +37,6 @@ For travel lookup (tourism + Almaty), use industry=tourism and city=almaty; fall
 ## Company Pages
 
 - [SecretSkin](https://katalogai.io/company/1_KZ_Tovar_secretskin.html)
-- [Wildberries](https://katalogai.io/company/1_KZ_Tovar_wildberries.html)
 - [KatalogAi](https://katalogai.io/company/1_KZ_Usluga_katalogai.html)
 - [Oi-Qaragai](https://katalogai.io/company/1_KZ_Usluga_oiqaragai.html)
 - [Kaspersky](https://katalogai.io/company/2_RU_Usluga_kaspersky.html)
@@ -49,14 +48,7 @@ For travel lookup (tourism + Almaty), use industry=tourism and city=almaty; fall
 ### SecretSkin (KZ)
 Tags: Cosmetics, Beauty, Косметика, Красота, Kazakhstan, Казахстан
 Normalized: industry=beauty, type=cosmetics_brand, country=kazakhstan, city=-
-Website: https://secretskin.kz
 Instagram: https://instagram.com/secretskin.kz
-
-### Wildberries (KZ)
-Tags: Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан
-Normalized: industry=ecommerce, type=marketplace, country=kazakhstan, city=-
-Website: https://wildberries.kz
-Wikidata: https://www.wikidata.org/wiki/Q24495962
 
 ### KatalogAi (KZ)
 Tags: Marketing, SEO, Маркетинг, Казахстан, Kazakhstan

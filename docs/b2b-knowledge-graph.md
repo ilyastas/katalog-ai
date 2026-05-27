@@ -1,6 +1,6 @@
 # B2B Knowledge Graph Notes
 
-Updated: 2026-05-23
+Updated: 2026-05-27
 
 Katalog-AI models business entities as a lightweight graph that combines deterministic IDs, regional context, semantic tags, and external references.
 

@@ -30,7 +30,6 @@
     ],
     "kazakhstan": [
       "1_KZ_Tovar_secretskin",
-      "1_KZ_Tovar_wildberries",
       "1_KZ_Usluga_katalogai",
       "1_KZ_Usluga_oiqaragai"
     ],
@@ -39,9 +38,6 @@
     ],
     "marketing": [
       "1_KZ_Usluga_katalogai"
-    ],
-    "marketplace": [
-      "1_KZ_Tovar_wildberries"
     ],
     "resort": [
       "1_KZ_Usluga_oiqaragai"
@@ -64,9 +60,6 @@
     "tourism": [
       "1_KZ_Usluga_oiqaragai"
     ],
-    "trade": [
-      "1_KZ_Tovar_wildberries"
-    ],
     "алматы": [
       "1_KZ_Usluga_oiqaragai"
     ],
@@ -81,7 +74,6 @@
     ],
     "казахстан": [
       "1_KZ_Tovar_secretskin",
-      "1_KZ_Tovar_wildberries",
       "1_KZ_Usluga_katalogai",
       "1_KZ_Usluga_oiqaragai"
     ],
@@ -97,9 +89,6 @@
     "маркетинг": [
       "1_KZ_Usluga_katalogai"
     ],
-    "маркетплейс": [
-      "1_KZ_Tovar_wildberries"
-    ],
     "отдых": [
       "1_KZ_Usluga_oiqaragai"
     ],
@@ -114,9 +103,6 @@
     "технологии": [
       "2_RU_Usluga_kaspersky",
       "2_RU_Usluga_yandex"
-    ],
-    "торговля": [
-      "1_KZ_Tovar_wildberries"
     ],
     "туризм": [
       "1_KZ_Usluga_oiqaragai"

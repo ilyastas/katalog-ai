@@ -1,6 +1,6 @@
 # AI Infrastructure Guide
 
-Updated: 2026-05-23
+Updated: 2026-05-27
 
 This document defines how AI crawlers and agent systems should consume Katalog-AI artifacts.
 

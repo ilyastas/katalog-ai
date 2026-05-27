@@ -3,7 +3,7 @@
     "id": "1_KZ_Tovar_secretskin",
     "brand": "SecretSkin",
     "tags": "Cosmetics, Beauty, Косметика, Красота, Kazakhstan, Казахстан",
-    "site": "https://secretskin.kz",
+    "site": "-",
     "inst": "https://instagram.com/secretskin.kz",
     "date": "2026-05-10",
     "wikidata": "-",
@@ -15,24 +15,6 @@
       "beauty",
       "cosmetics",
       "kazakhstan"
-    ]
-  },
-  {
-    "id": "1_KZ_Tovar_wildberries",
-    "brand": "Wildberries",
-    "tags": "Marketplace, Trade, Маркетплейс, Торговля, Kazakhstan, Казахстан",
-    "site": "https://wildberries.kz",
-    "inst": "-",
-    "date": "2026-05-10",
-    "wikidata": "Q24495962",
-    "industry": "ecommerce",
-    "category_type": "marketplace",
-    "country": "kazakhstan",
-    "city": "-",
-    "tags_norm": [
-      "kazakhstan",
-      "marketplace",
-      "trade"
     ]
   },
   {

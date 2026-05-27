@@ -1,6 +1,6 @@
 # 7i Verification Standard
 
-Updated: 2026-05-23
+Updated: 2026-05-27
 
 The 7i standard is a practical framework for machine-readable business verification data. It is designed for AI agents, LLM retrieval, and search systems that need deterministic trust signals.
 

@@ -1,0 +1,22 @@
+name: Live Site Consistency Check
+
+on:
+    push:
+        branches: [main]
+    workflow_dispatch:
+
+jobs:
+    check-site:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.13"
+            - name: Validate Sync
+              run: python scripts/validate_sync.py
+            - name: Simulate Crawlers
+              run: python scripts/simulate_crawlers.py
+            - name: Check UTF-8 Encoding
+              run: python scripts/check_utf8.py
