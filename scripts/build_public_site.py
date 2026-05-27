@@ -54,8 +54,15 @@ def main() -> int:
         shutil.rmtree(OUT_DIR)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
+
     for rel_file in ROOT_FILES:
-        copy_file(rel_file)
+        if rel_file == "README.md":
+            src = ROOT / rel_file
+            dst = OUT_DIR / rel_file
+            content = src.read_text(encoding="utf-8")
+            dst.write_text(content, encoding="utf-8-sig", newline="\n")
+        else:
+            copy_file(rel_file)
 
     for rel_dir in DIRS_TO_COPY:
         copy_dir(rel_dir)

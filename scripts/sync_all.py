@@ -971,7 +971,13 @@ def main() -> int:
     if write_text(ROOT / "tag_index.json", build_tag_index(catalog_rows, generated_on)):
         changed.append("tag_index.json")
 
-    if write_text(ROOT / "README.md", build_readme(last_updated, generated_on, len(all_rows))):
+    # README.md с BOM для Cloudflare Pages
+    readme_path = ROOT / "README.md"
+    readme_content = build_readme(last_updated, generated_on, len(all_rows))
+    current = readme_path.read_text(encoding="utf-8-sig") if readme_path.exists() else None
+    if current != readme_content:
+        readme_path.parent.mkdir(parents=True, exist_ok=True)
+        readme_path.write_text(readme_content, encoding="utf-8-sig", newline="\n")
         changed.append("README.md")
 
     if write_text(ROOT / "AI_METHOD.md", build_ai_method(generated_on)):
