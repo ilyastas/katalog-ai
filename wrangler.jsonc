@@ -3,6 +3,7 @@
     "name": "katalog-ai",
     "main": "cloudflare_worker_charset.js",
     "compatibility_date": "2026-05-27",
+    "account_id": "a5443809dca3ddf2ecda0e1c8c63f796",
     "assets": {
         "directory": "public-site"
     },
