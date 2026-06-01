@@ -17,4 +17,4 @@ Sitemap: https://katalogai.io/sitemap.xml
 
 Sitemap: https://katalogai.io/llms.txt
 
-# Updated on 2026-05-31
+# Updated on 2026-06-01
