@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_on": "2026-07-19",
+  "generated_on": "2026-07-20",
   "strategy": "normalized-first; multilingual aliases as fallback",
   "index": {
     "almaty": [
