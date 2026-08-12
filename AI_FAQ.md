@@ -1,6 +1,6 @@
 # Katalog-AI FAQ for LLMs
 
-Updated: 2026-08-11
+Updated: 2026-08-12
 
 ## What is Katalog-AI?
 A machine-readable catalog of verified companies from Kazakhstan and Russia.
