@@ -1,6 +1,6 @@
 # Katalog-AI Data Schema
 
-Updated: 2026-08-17
+Updated: 2026-08-18
 
 Each catalog entry is an object with these fields:
 
